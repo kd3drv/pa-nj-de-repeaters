@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_ddfc32e2a87152ed39faa44c1d063c54 {
+                #map_f309ba020c5f6fd5e4c90c70b1bb5f42 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,297 +54,1421 @@
 <body>
     
     
+
 <style>
+
 #filterButton {
-    position: fixed; top: 12px; left: 12px; z-index: 9999;
-    background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
-    padding: 10px 14px; font-size: 14px; font-weight: 600; color: #1e293b;
-    cursor: pointer; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+
+    position: fixed;
+
+    top: 12px;
+    left: 12px;
+
+    z-index: 9999;
+
+    background: #ffffff;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    padding: 10px 14px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #1e293b;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 6px -1px rgba(0,0,0,0.1),
+        0 2px 4px -1px rgba(0,0,0,0.06);
+
     transition: background 0.2s;
 }
-#filterButton:hover { background: #f8fafc; }
+
+
+#filterButton:hover {
+
+    background: #f8fafc;
+
+}
+
 
 #filterPanel {
-    position: fixed; top: 62px; left: 12px; z-index: 9998;
-    background: #ffffff; padding: 16px; width: 260px; border-radius: 10px;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 13px; color: #334155; max-height: calc(100vh - 90px); overflow-y: auto;
-    border: 1px solid #e2e8f0;
+
+    position: fixed;
+
+    top: 62px;
+    left: 12px;
+
+    z-index: 9998;
+
+    background: #ffffff;
+
+    padding: 16px;
+
+    width: 260px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 10px 15px -3px rgba(0,0,0,0.1),
+        0 4px 6px -2px rgba(0,0,0,0.05);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    font-size: 13px;
+
+    color: #334155;
+
+    max-height:
+        calc(100vh - 90px);
+
+    overflow-y: auto;
+
+    border:
+        1px solid #e2e8f0;
 }
 
-.filterTitle { font-weight: 700; font-size: 15px; margin-bottom: 12px; color: #0f172a; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
-.sectionTitle { font-weight: 600; margin-top: 10px; margin-bottom: 4px; color: #475569; }
 
-#filterPanel input[type="text"] { 
-    width: 100%; padding: 7px 10px; margin-top: 2px; margin-bottom: 6px; 
-    box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px;
+.filterTitle {
+
+    font-weight: 700;
+
+    font-size: 15px;
+
+    margin-bottom: 12px;
+
+    color: #0f172a;
+
+    border-bottom:
+        1px solid #f1f5f9;
+
+    padding-bottom: 8px;
 }
-#filterPanel input[type="text"]:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
 
-#filterPanel select { 
-    width: 100%; padding: 7px 10px; margin-top: 2px; margin-bottom: 10px; 
-    border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font-size: 13px;
+
+.sectionTitle {
+
+    font-weight: 600;
+
+    margin-top: 10px;
+
+    margin-bottom: 4px;
+
+    color: #475569;
 }
 
-#filterPanel label { display: flex; align-items: center; margin-bottom: 6px; cursor: pointer; font-weight: 500; }
-#filterPanel input[type="checkbox"] { margin-right: 8px; transform: scale(1.1); accent-color: #3b82f6; }
 
-.filterButton { 
-    width: 100%; margin-top: 6px; padding: 7px 12px; cursor: pointer; 
-    background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; color: #334155;
-    transition: background 0.2s;
+#filterPanel input[type="text"] {
+
+    width: 100%;
+
+    padding: 7px 10px;
+
+    margin-top: 2px;
+
+    margin-bottom: 6px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 6px;
+
+    font-size: 13px;
 }
-.filterButton:hover { background: #e2e8f0; }
 
-.primaryBtn { background: #3b82f6; color: white; border-color: #2563eb; }
-.primaryBtn:hover { background: #2563eb; }
+
+#filterPanel input[type="text"]:focus {
+
+    outline: none;
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(59,130,246,0.1);
+}
+
+
+#filterPanel select {
+
+    width: 100%;
+
+    padding: 7px 10px;
+
+    margin-top: 2px;
+
+    margin-bottom: 10px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 6px;
+
+    background: #fff;
+
+    font-size: 13px;
+}
+
+
+#filterPanel label {
+
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 6px;
+
+    cursor: pointer;
+
+    font-weight: 500;
+}
+
+
+#filterPanel input[type="checkbox"] {
+
+    margin-right: 8px;
+
+    transform: scale(1.1);
+
+    accent-color: #3b82f6;
+}
+
+
+.filterButton {
+
+    width: 100%;
+
+    margin-top: 6px;
+
+    padding: 7px 12px;
+
+    cursor: pointer;
+
+    background: #f1f5f9;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 6px;
+
+    font-weight: 600;
+
+    color: #334155;
+
+    transition:
+        background 0.2s;
+}
+
+
+.filterButton:hover {
+
+    background: #e2e8f0;
+
+}
+
+
+.primaryBtn {
+
+    background: #3b82f6;
+
+    color: white;
+
+    border-color: #2563eb;
+}
+
+
+.primaryBtn:hover {
+
+    background: #2563eb;
+
+}
+
 </style>
 
-<button id="filterButton" onclick="toggleFilterPanel()">🔎 Find / Filter</button>
+
+<button
+    id="filterButton"
+    onclick="toggleFilterPanel()"
+>
+    🔎 Find / Filter
+</button>
+
 
 <div id="filterPanel">
-    <div class="filterTitle">Repeater Finder & Filter</div>
-    
-    <div class="sectionTitle">Location Search</div>
-    <input type="text" id="locationInput" placeholder="e.g. Media, PA">
-    
-    <div class="sectionTitle">Radius</div>
+
+    <div class="filterTitle">
+        Repeater Finder & Filter
+    </div>
+
+
+    <div class="sectionTitle">
+        Location Search
+    </div>
+
+    <input
+        type="text"
+        id="locationInput"
+        placeholder="e.g. Media, PA"
+    >
+
+
+    <div class="sectionTitle">
+        Radius
+    </div>
+
     <select id="radiusSelect">
-        <option value="5">5 miles</option>
-        <option value="10">10 miles</option>
-        <option value="25" selected>25 miles</option>
-        <option value="50">50 miles</option>
-        <option value="100">100 miles</option>
+
+        <option value="5">
+            5 miles
+        </option>
+
+        <option value="10">
+            10 miles
+        </option>
+
+        <option value="25" selected>
+            25 miles
+        </option>
+
+        <option value="50">
+            50 miles
+        </option>
+
+        <option value="100">
+            100 miles
+        </option>
+
     </select>
-    
-    <button class="filterButton primaryBtn" onclick="searchLocation()">Search Location</button>
 
-    <div class="sectionTitle" style="margin-top: 14px;">Frequency Filter</div>
-    <input type="text" id="frequencyInput" placeholder="e.g. 146.520 or 443.9" oninput="updateMarkers()">
 
-    <div class="sectionTitle" style="margin-top: 14px;">Bands</div>
-    <label><input type="checkbox" id="allBand" checked onchange="toggleAllBands()"> All Bands</label>
-    <label><input type="checkbox" class="bandCheckbox" value="2m" checked onchange="updateBandState()"><span style="color: #2563eb; font-weight: bold; margin-left: 4px;">●</span>&nbsp;2m</label>
-    <label><input type="checkbox" class="bandCheckbox" value="70cm" checked onchange="updateBandState()"><span style="color: #16a34a; font-weight: bold; margin-left: 4px;">●</span>&nbsp;70cm</label>
-    <label><input type="checkbox" class="bandCheckbox" value="GMRS" checked onchange="updateBandState()"><span style="color: #dc2626; font-weight: bold; margin-left: 4px;">●</span>&nbsp;GMRS</label>
-    
-    <button class="filterButton" style="margin-top: 12px;" onclick="clearSearch()">Clear All Filters</button>
+    <button
+        class="filterButton primaryBtn"
+        onclick="searchLocation()"
+    >
+        Search Location
+    </button>
+
+
+    <div
+        class="sectionTitle"
+        style="margin-top: 14px;"
+    >
+        Frequency Filter
+    </div>
+
+    <input
+        type="text"
+        id="frequencyInput"
+        placeholder="e.g. 146.520 or 443.9"
+        oninput="updateMarkers()"
+    >
+
+
+    <div
+        class="sectionTitle"
+        style="margin-top: 14px;"
+    >
+        Bands
+    </div>
+
+
+    <label>
+        <input
+            type="checkbox"
+            id="allBand"
+            checked
+            onchange="toggleAllBands()"
+        >
+
+        <span>
+            All Bands
+        </span>
+    </label>
+
+
+    <label>
+
+        <input
+            type="checkbox"
+            class="bandCheckbox"
+            value="2m"
+            checked
+            onchange="updateBandState()"
+        >
+
+        <span
+            style="
+                color: #2563eb;
+                font-weight: bold;
+                margin-left: 4px;
+            "
+        >
+            ●
+        </span>
+
+        &nbsp;2m
+
+    </label>
+
+
+    <label>
+
+        <input
+            type="checkbox"
+            class="bandCheckbox"
+            value="70cm"
+            checked
+            onchange="updateBandState()"
+        >
+
+        <span
+            style="
+                color: #16a34a;
+                font-weight: bold;
+                margin-left: 4px;
+            "
+        >
+            ●
+        </span>
+
+        &nbsp;70cm
+
+    </label>
+
+
+    <label>
+
+        <input
+            type="checkbox"
+            class="bandCheckbox"
+            value="GMRS"
+            checked
+            onchange="updateBandState()"
+        >
+
+        <span
+            style="
+                color: #dc2626;
+                font-weight: bold;
+                margin-left: 4px;
+            "
+        >
+            ●
+        </span>
+
+        &nbsp;GMRS
+
+    </label>
+
+
+    <button
+        class="filterButton"
+        style="margin-top: 12px;"
+        onclick="clearSearch()"
+    >
+        Clear All Filters
+    </button>
+
 </div>
+
     
+
 <script>
+
+
+// ==========================================================
+// GLOBAL STATE
+// ==========================================================
+
 var searchMarker = null;
+
 var radiusCircle = null;
+
 var searchLocationState = null;
-var bandColors = { "2m": "blue", "70cm": "green", "GMRS": "red" };
+
+var bandColors = {
+    "2m": "blue",
+    "70cm": "green",
+    "GMRS": "red"
+};
+
 var repeaterData = [];
+
 var markerLayers = [];
 
-fetch('repeaters.json')
-    .then(response => {
-        if (!response.ok) throw new Error('Failed to load repeater data');
-        return response.json();
-    })
-    .then(data => {
-        repeaterData = data;
-        initMarkers();
-    })
-    .catch(error => console.error('Error fetching JSON:', error));
+
+// ==========================================================
+// LOAD REPEATER JSON
+// ==========================================================
+
+fetch("repeaters.json")
+
+    .then(
+        response => {
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Failed to load repeater data"
+                );
+
+            }
+
+            return response.json();
+
+        }
+    )
+
+    .then(
+        data => {
+
+            repeaterData = data;
+
+            initMarkers();
+
+        }
+    )
+
+    .catch(
+        error => {
+
+            console.error(
+                "Error fetching JSON:",
+                error
+            );
+
+        }
+    );
+
+
+// ==========================================================
+// INITIALIZE MARKERS
+// ==========================================================
 
 function initMarkers() {
-    // Remove any existing markers from the map first to prevent duplicates
-    markerLayers.forEach(function(item) {
-        map_ddfc32e2a87152ed39faa44c1d063c54.removeLayer(item.marker);
-    });
+
+    // Remove any existing markers
+    markerLayers.forEach(
+        function(item) {
+
+            if (
+                map_f309ba020c5f6fd5e4c90c70b1bb5f42.hasLayer(
+                    item.marker
+                )
+            ) {
+
+                map_f309ba020c5f6fd5e4c90c70b1bb5f42.removeLayer(
+                    item.marker
+                );
+
+            }
+
+        }
+    );
+
+
     markerLayers = [];
 
-    repeaterData.forEach(repeater => {
-        var color = bandColors[repeater.band] || "gray";
-        
-        var icon = L.icon({
-            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-' + color + '.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
-        });
 
-        var marker = L.marker([repeater.lat, repeater.lon], { icon: icon });
-        marker.bindPopup(L.popup({ max_width: 350 }).setContent(repeater.popup));
-        marker.addTo(map_ddfc32e2a87152ed39faa44c1d063c54);
-        
-        markerLayers.push({ marker: marker, repeater: repeater });
-    });
+    repeaterData.forEach(
+        function(repeater) {
+
+            var color =
+                bandColors[
+                    repeater.band
+                ] || "gray";
+
+
+            var icon = L.icon({
+
+                iconUrl:
+                    "https://raw.githubusercontent.com/"
+                    +
+                    "pointhi/leaflet-color-markers/"
+                    +
+                    "master/img/marker-icon-2x-"
+                    +
+                    color
+                    +
+                    ".png",
+
+                shadowUrl:
+                    "https://cdnjs.cloudflare.com/"
+                    +
+                    "ajax/libs/leaflet/0.7.7/"
+                    +
+                    "images/marker-shadow.png",
+
+                iconSize:
+                    [25, 41],
+
+                iconAnchor:
+                    [12, 41],
+
+                popupAnchor:
+                    [1, -34],
+
+                shadowSize:
+                    [41, 41]
+
+            });
+
+
+            var marker =
+                L.marker(
+                    [
+                        repeater.lat,
+                        repeater.lon
+                    ],
+                    {
+                        icon: icon
+                    }
+                );
+
+
+            marker.bindPopup(
+                L.popup(
+                    {
+                        max_width: 350
+                    }
+                ).setContent(
+                    repeater.popup
+                )
+            );
+
+
+            marker.addTo(
+                map_f309ba020c5f6fd5e4c90c70b1bb5f42
+            );
+
+
+            markerLayers.push({
+                marker: marker,
+                repeater: repeater
+            });
+
+        }
+    );
+
+
     updateMarkers();
+
 }
+
+
+// ==========================================================
+// TOGGLE FILTER PANEL
+// ==========================================================
+
 function toggleFilterPanel() {
-    var panel = document.getElementById("filterPanel");
-    var button = document.getElementById("filterButton");
-    if (panel.style.display === "none") {
-        panel.style.display = "block";
-        button.innerHTML = "🔎 Hide Filters";
+
+    var panel =
+        document.getElementById(
+            "filterPanel"
+        );
+
+    var button =
+        document.getElementById(
+            "filterButton"
+        );
+
+
+    if (
+        panel.style.display === "none"
+    ) {
+
+        panel.style.display =
+            "block";
+
+        button.innerHTML =
+            "🔎 Hide Filters";
+
     } else {
-        panel.style.display = "none";
-        button.innerHTML = "🔎 Find / Filter";
+
+        panel.style.display =
+            "none";
+
+        button.innerHTML =
+            "🔎 Find / Filter";
+
     }
+
 }
+
+
+// ==========================================================
+// GET SELECTED BANDS
+// ==========================================================
 
 function getSelectedBands() {
-    var checkboxes = document.querySelectorAll(".bandCheckbox");
+
+    var checkboxes =
+        document.querySelectorAll(
+            ".bandCheckbox"
+        );
+
     var selected = [];
-    checkboxes.forEach(function(checkbox) {
-        if (checkbox.checked) selected.push(checkbox.value);
-    });
+
+
+    checkboxes.forEach(
+        function(checkbox) {
+
+            if (
+                checkbox.checked
+            ) {
+
+                selected.push(
+                    checkbox.value
+                );
+
+            }
+
+        }
+    );
+
+
     return selected;
+
 }
+
+
+// ==========================================================
+// ALL BAND CHECKBOX
+// ==========================================================
 
 function toggleAllBands() {
-    var allCheckbox = document.getElementById("allBand");
-    document.querySelectorAll(".bandCheckbox").forEach(function(checkbox) {
-        checkbox.checked = allCheckbox.checked;
-    });
+
+    var allCheckbox =
+        document.getElementById(
+            "allBand"
+        );
+
+    var checkboxes =
+        document.querySelectorAll(
+            ".bandCheckbox"
+        );
+
+
+    checkboxes.forEach(
+        function(checkbox) {
+
+            checkbox.checked =
+                allCheckbox.checked;
+
+        }
+    );
+
+
     updateMarkers();
+
 }
+
+
+// ==========================================================
+// INDIVIDUAL BAND CHECKBOXES
+// ==========================================================
 
 function updateBandState() {
-    var checkboxes = document.querySelectorAll(".bandCheckbox");
-    var allCheckbox = document.getElementById("allBand");
+
+    var checkboxes =
+        document.querySelectorAll(
+            ".bandCheckbox"
+        );
+
+    var allCheckbox =
+        document.getElementById(
+            "allBand"
+        );
+
     var allChecked = true;
-    checkboxes.forEach(function(checkbox) {
-        if (!checkbox.checked) allChecked = false;
-    });
-    allCheckbox.checked = allChecked;
+
+
+    checkboxes.forEach(
+        function(checkbox) {
+
+            if (
+                !checkbox.checked
+            ) {
+
+                allChecked = false;
+
+            }
+
+        }
+    );
+
+
+    allCheckbox.checked =
+        allChecked;
+
+
     updateMarkers();
+
 }
 
-function distanceMiles(lat1, lon1, lat2, lon2) {
+
+// ==========================================================
+// DISTANCE CALCULATION
+// ==========================================================
+
+function distanceMiles(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+) {
+
     var R = 3958.8;
-    var dLat = (lat2 - lat1) * Math.PI / 180;
-    var dLon = (lon2 - lon1) * Math.PI / 180;
-    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+
+    var dLat =
+        (lat2 - lat1)
+        *
+        Math.PI
+        /
+        180;
+
+
+    var dLon =
+        (lon2 - lon1)
+        *
+        Math.PI
+        /
+        180;
+
+
+    var a =
+        Math.sin(dLat / 2)
+        *
+        Math.sin(dLat / 2)
+
+        +
+
+        Math.cos(
+            lat1 *
+            Math.PI /
+            180
+        )
+
+        *
+
+        Math.cos(
+            lat2 *
+            Math.PI /
+            180
+        )
+
+        *
+
+        Math.sin(dLon / 2)
+        *
+        Math.sin(dLon / 2);
+
+
+    var c =
+        2 *
+        Math.atan2(
+            Math.sqrt(a),
+            Math.sqrt(1 - a)
+        );
+
+
     return R * c;
+
 }
+
+
+// ==========================================================
+// UPDATE MARKERS
+//
+// IMPORTANT:
+// Matching markers are ADDED to the map.
+// Nonmatching markers are REMOVED from the map.
+//
+// This replaces the old opacity-based filtering.
+// ==========================================================
+
 function updateMarkers() {
-    var selectedBands = getSelectedBands();
-    var radius = parseFloat(document.getElementById("radiusSelect").value);
-    var freqQuery = document.getElementById("frequencyInput").value.trim();
 
-    markerLayers.forEach(function(item) {
-        var visible = selectedBands.includes(item.repeater.band);
+    var selectedBands =
+        getSelectedBands();
 
-        if (visible && freqQuery !== "") {
-            var repeaterFreq = String(item.repeater.frequency || "").trim();
-            
-            // Strict prefix match so typing "147.03" only matches "147.03..." 
-            // instead of pulling in random frequencies containing "147.0"
-            if (!repeaterFreq.startsWith(freqQuery)) {
+
+    var radius =
+        parseFloat(
+            document.getElementById(
+                "radiusSelect"
+            ).value
+        );
+
+
+    var freqQuery =
+        document.getElementById(
+            "frequencyInput"
+        ).value
+        .trim();
+
+
+    markerLayers.forEach(
+        function(item) {
+
+            var visible = true;
+
+
+            // ----------------------------------------------
+            // BAND FILTER
+            // ----------------------------------------------
+
+            if (
+                !selectedBands.includes(
+                    item.repeater.band
+                )
+            ) {
+
                 visible = false;
+
+            }
+
+
+            // ----------------------------------------------
+            // FREQUENCY FILTER
+            // ----------------------------------------------
+
+            if (
+                visible
+                &&
+                freqQuery !== ""
+            ) {
+
+                var repeaterFreq =
+                    String(
+                        item.repeater.frequency
+                        ||
+                        ""
+                    ).trim();
+
+
+                if (
+                    !repeaterFreq.startsWith(
+                        freqQuery
+                    )
+                ) {
+
+                    visible = false;
+
+                }
+
+            }
+
+
+            // ----------------------------------------------
+            // LOCATION / RADIUS FILTER
+            // ----------------------------------------------
+
+            if (
+                visible
+                &&
+                searchLocationState !== null
+            ) {
+
+                var distance =
+                    distanceMiles(
+                        searchLocationState.lat,
+                        searchLocationState.lon,
+                        item.repeater.lat,
+                        item.repeater.lon
+                    );
+
+
+                if (
+                    distance > radius
+                ) {
+
+                    visible = false;
+
+                }
+
+            }
+
+
+            // ----------------------------------------------
+            // ACTUALLY ADD / REMOVE MARKER
+            // ----------------------------------------------
+
+            if (visible) {
+
+                if (
+                    !map_f309ba020c5f6fd5e4c90c70b1bb5f42.hasLayer(
+                        item.marker
+                    )
+                ) {
+
+                    item.marker.addTo(
+                        map_f309ba020c5f6fd5e4c90c70b1bb5f42
+                    );
+
+                }
+
+            } else {
+
+                if (
+                    map_f309ba020c5f6fd5e4c90c70b1bb5f42.hasLayer(
+                        item.marker
+                    )
+                ) {
+
+                    map_f309ba020c5f6fd5e4c90c70b1bb5f42.removeLayer(
+                        item.marker
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+// ==========================================================
+// SEARCH LOCATION
+// ==========================================================
+
+function searchLocation() {
+
+    var query =
+        document.getElementById(
+            "locationInput"
+        ).value.trim();
+
+
+    if (!query) {
+
+        alert(
+            "Enter a location name first."
+        );
+
+        return;
+
+    }
+
+
+    var url =
+        "https://nominatim.openstreetmap.org/search"
+        +
+        "?format=json"
+        +
+        "&limit=1"
+        +
+        "&q="
+        +
+        encodeURIComponent(
+            query
+        );
+
+
+    fetch(
+        url,
+        {
+            headers: {
+                "Accept":
+                    "application/json"
             }
         }
+    )
 
-        // Filter by location radius
-        if (visible && searchLocationState !== null) {
-            var distance = distanceMiles(
-                searchLocationState.lat, searchLocationState.lon,
-                item.repeater.lat, item.repeater.lon
+    .then(
+        response =>
+            response.json()
+    )
+
+    .then(
+        function(data) {
+
+            if (
+                !data
+                ||
+                data.length === 0
+            ) {
+
+                alert(
+                    "Location not found. "
+                    +
+                    "Please check spelling."
+                );
+
+                return;
+
+            }
+
+
+            var lat =
+                parseFloat(
+                    data[0].lat
+                );
+
+
+            var lon =
+                parseFloat(
+                    data[0].lon
+                );
+
+
+            searchLocationState = {
+
+                lat: lat,
+                lon: lon
+
+            };
+
+
+            var radius =
+                parseFloat(
+                    document.getElementById(
+                        "radiusSelect"
+                    ).value
+                );
+
+
+            map_f309ba020c5f6fd5e4c90c70b1bb5f42.setView(
+                [
+                    lat,
+                    lon
+                ],
+                10
             );
-            if (distance > radius) visible = false;
+
+
+            // ------------------------------------------
+            // REMOVE OLD SEARCH MARKER
+            // ------------------------------------------
+
+            if (
+                searchMarker !== null
+            ) {
+
+                map_f309ba020c5f6fd5e4c90c70b1bb5f42.removeLayer(
+                    searchMarker
+                );
+
+            }
+
+
+            // ------------------------------------------
+            // REMOVE OLD RADIUS CIRCLE
+            // ------------------------------------------
+
+            if (
+                radiusCircle !== null
+            ) {
+
+                map_f309ba020c5f6fd5e4c90c70b1bb5f42.removeLayer(
+                    radiusCircle
+                );
+
+            }
+
+
+            // ------------------------------------------
+            // ADD SEARCH LOCATION MARKER
+            // ------------------------------------------
+
+            searchMarker =
+                L.marker(
+                    [
+                        lat,
+                        lon
+                    ],
+                    {
+
+                        icon:
+                            L.divIcon({
+
+                                className:
+                                    "search-location-marker",
+
+                                html:
+                                    '<div style="font-size:28px;">📍</div>',
+
+                                iconSize:
+                                    [30, 30],
+
+                                iconAnchor:
+                                    [15, 30]
+
+                            })
+
+                    }
+                ).addTo(
+                    map_f309ba020c5f6fd5e4c90c70b1bb5f42
+                );
+
+
+            searchMarker.bindPopup(
+                "<b>"
+                +
+                query
+                +
+                "</b>"
+            );
+
+
+            // ------------------------------------------
+            // ADD RADIUS CIRCLE
+            // ------------------------------------------
+
+            radiusCircle =
+                L.circle(
+                    [
+                        lat,
+                        lon
+                    ],
+                    {
+
+                        radius:
+                            radius *
+                            1609.344,
+
+                        color:
+                            "#3b82f6",
+
+                        weight:
+                            1,
+
+                        fillOpacity:
+                            0.05
+
+                    }
+                ).addTo(
+                    map_f309ba020c5f6fd5e4c90c70b1bb5f42
+                );
+
+
+            // ------------------------------------------
+            // APPLY FILTERS
+            // ------------------------------------------
+
+            updateMarkers();
+
         }
+    )
 
-        if (visible) {
-            item.marker.setOpacity(1);
-        } else {
-            item.marker.setOpacity(0);
+    .catch(
+        function(error) {
+
+            console.error(
+                error
+            );
+
+            alert(
+                "Unable to search "
+                +
+                "for that location."
+            );
+
         }
-    });
+    );
+
 }
-function searchLocation() {
-    var query = document.getElementById("locationInput").value.trim();
-    if (!query) { alert("Enter a location name first."); return; }
 
-    var url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query);
 
-    fetch(url, { headers: { "Accept": "application/json" } })
-    .then(response => response.json())
-    .then(function(data) {
-        if (!data || data.length === 0) { alert("Location not found. Please check spelling."); return; }
-        var lat = parseFloat(data[0].lat);
-        var lon = parseFloat(data[0].lon);
-        searchLocationState = { lat: lat, lon: lon };
-        var radius = parseFloat(document.getElementById("radiusSelect").value);
-
-        map_ddfc32e2a87152ed39faa44c1d063c54.setView([lat, lon], 10);
-
-        if (searchMarker !== null) { map_ddfc32e2a87152ed39faa44c1d063c54.removeLayer(searchMarker); }
-        if (radiusCircle !== null) { map_ddfc32e2a87152ed39faa44c1d063c54.removeLayer(radiusCircle); }
-
-        searchMarker = L.marker([lat, lon], {
-            icon: L.divIcon({
-                className: "search-location-marker",
-                html: '<div style="font-size:28px;">📍</div>',
-                iconSize: [30, 30],
-                iconAnchor: [15, 30]
-            })
-        }).addTo(map_ddfc32e2a87152ed39faa44c1d063c54);
-
-        searchMarker.bindPopup("<b>" + query + "</b>");
-
-        radiusCircle = L.circle([lat, lon], {
-            radius: radius * 1609.344,
-            color: "#3b82f6", weight: 1, fillOpacity: 0.05
-        }).addTo(map_ddfc32e2a87152ed39faa44c1d063c54);
-
-        updateMarkers();
-    })
-    .catch(function(error) {
-        console.error(error);
-        alert("Unable to search for that location.");
-    });
-}
+// ==========================================================
+// CLEAR ALL FILTERS
+// ==========================================================
 
 function clearSearch() {
-    document.getElementById("locationInput").value = "";
-    document.getElementById("frequencyInput").value = "";
+
+    document.getElementById(
+        "locationInput"
+    ).value = "";
+
+
+    document.getElementById(
+        "frequencyInput"
+    ).value = "";
+
+
     searchLocationState = null;
-    if (searchMarker !== null) { map_ddfc32e2a87152ed39faa44c1d063c54.removeLayer(searchMarker); searchMarker = null; }
-    if (radiusCircle !== null) { map_ddfc32e2a87152ed39faa44c1d063c54.removeLayer(radiusCircle); radiusCircle = null; }
-    map_ddfc32e2a87152ed39faa44c1d063c54.setView([40.1, -76.5], 8);
+
+
+    if (
+        searchMarker !== null
+    ) {
+
+        map_f309ba020c5f6fd5e4c90c70b1bb5f42.removeLayer(
+            searchMarker
+        );
+
+        searchMarker = null;
+
+    }
+
+
+    if (
+        radiusCircle !== null
+    ) {
+
+        map_f309ba020c5f6fd5e4c90c70b1bb5f42.removeLayer(
+            radiusCircle
+        );
+
+        radiusCircle = null;
+
+    }
+
+
+    // Restore all bands
+    document.getElementById(
+        "allBand"
+    ).checked = true;
+
+
+    document.querySelectorAll(
+        ".bandCheckbox"
+    ).forEach(
+        function(checkbox) {
+
+            checkbox.checked = true;
+
+        }
+    );
+
+
+    map_f309ba020c5f6fd5e4c90c70b1bb5f42.setView(
+        [
+            40.1,
+            -76.5
+        ],
+        8
+    );
+
+
     updateMarkers();
+
 }
 
-document.getElementById("radiusSelect").addEventListener("change", function() {
-    if (searchLocationState !== null) {
-        var radius = parseFloat(document.getElementById("radiusSelect").value);
-        if (radiusCircle !== null) radiusCircle.setRadius(radius * 1609.344);
+
+// ==========================================================
+// RADIUS CHANGE
+// ==========================================================
+
+document.getElementById(
+    "radiusSelect"
+).addEventListener(
+    "change",
+    function() {
+
+        if (
+            searchLocationState !== null
+        ) {
+
+            var radius =
+                parseFloat(
+                    document.getElementById(
+                        "radiusSelect"
+                    ).value
+                );
+
+
+            if (
+                radiusCircle !== null
+            ) {
+
+                radiusCircle.setRadius(
+                    radius *
+                    1609.344
+                );
+
+            }
+
+        }
+
+
+        updateMarkers();
+
     }
-    updateMarkers();
-});
+);
 
-document.getElementById("locationInput").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") searchLocation();
-});
 
-document.getElementById("frequencyInput").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        document.getElementById("frequencyInput").blur();
+// ==========================================================
+// ENTER KEY - LOCATION SEARCH
+// ==========================================================
+
+document.getElementById(
+    "locationInput"
+).addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            searchLocation();
+
+        }
+
     }
-});
+);
 
-document.getElementById("filterPanel").style.display = "block";
+
+// ==========================================================
+// ENTER KEY - FREQUENCY SEARCH
+// ==========================================================
+
+document.getElementById(
+    "frequencyInput"
+).addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            document.getElementById(
+                "frequencyInput"
+            ).blur();
+
+        }
+
+    }
+);
+
+
+// ==========================================================
+// INITIAL UI STATE
+// ==========================================================
+
+document.getElementById(
+    "filterPanel"
+).style.display =
+    "block";
+
+
 </script>
     
-            <div class="folium-map" id="map_ddfc32e2a87152ed39faa44c1d063c54" ></div>
+            <div class="folium-map" id="map_f309ba020c5f6fd5e4c90c70b1bb5f42" ></div>
         
 </body>
 <script>
     
     
-            var map_ddfc32e2a87152ed39faa44c1d063c54 = L.map(
-                "map_ddfc32e2a87152ed39faa44c1d063c54",
+            var map_f309ba020c5f6fd5e4c90c70b1bb5f42 = L.map(
+                "map_f309ba020c5f6fd5e4c90c70b1bb5f42",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -356,13 +1480,13 @@ document.getElementById("filterPanel").style.display = "block";
 
                 }
             );
-            L.control.scale().addTo(map_ddfc32e2a87152ed39faa44c1d063c54);
+            L.control.scale().addTo(map_f309ba020c5f6fd5e4c90c70b1bb5f42);
 
             
 
         
     
-            var tile_layer_3586fa53605bc9914976fd8e8a1c0572 = L.tileLayer(
+            var tile_layer_a8f495bf18e01daf0390477af257c33b = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -379,7 +1503,7 @@ document.getElementById("filterPanel").style.display = "block";
             );
         
     
-            tile_layer_3586fa53605bc9914976fd8e8a1c0572.addTo(map_ddfc32e2a87152ed39faa44c1d063c54);
+            tile_layer_a8f495bf18e01daf0390477af257c33b.addTo(map_f309ba020c5f6fd5e4c90c70b1bb5f42);
         
 </script>
 </html>
