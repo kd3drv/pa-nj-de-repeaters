@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_f5152d3ee2d7473629599fd510357cb5 {
+                #map_2a4a72c5ec9d42a11a21d24c6c077b45 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -166,7 +166,7 @@ function initMarkers() {
 
         var marker = L.marker([repeater.lat, repeater.lon], { icon: icon });
         marker.bindPopup(L.popup({ max_width: 350 }).setContent(repeater.popup));
-        marker.addTo(map_f5152d3ee2d7473629599fd510357cb5);
+        marker.addTo(map_2a4a72c5ec9d42a11a21d24c6c077b45);
         
         markerLayers.push({ marker: marker, repeater: repeater });
     });
@@ -223,7 +223,6 @@ function distanceMiles(lat1, lon1, lat2, lon2) {
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
 }
-
 function updateMarkers() {
     var selectedBands = getSelectedBands();
     var radius = parseFloat(document.getElementById("radiusSelect").value);
@@ -232,12 +231,15 @@ function updateMarkers() {
     markerLayers.forEach(function(item) {
         var visible = selectedBands.includes(item.repeater.band);
 
+        // Robust partial frequency filtering
         if (visible && freqQuery !== "") {
-            if (!item.repeater.frequency.includes(freqQuery)) {
+            var repeaterFreq = String(item.repeater.frequency || "").trim();
+            if (!repeaterFreq.includes(freqQuery)) {
                 visible = false;
             }
         }
 
+        // Filter by location radius
         if (visible && searchLocationState !== null) {
             var distance = distanceMiles(
                 searchLocationState.lat, searchLocationState.lon,
@@ -253,7 +255,6 @@ function updateMarkers() {
         }
     });
 }
-
 function searchLocation() {
     var query = document.getElementById("locationInput").value.trim();
     if (!query) { alert("Enter a location name first."); return; }
@@ -269,10 +270,10 @@ function searchLocation() {
         searchLocationState = { lat: lat, lon: lon };
         var radius = parseFloat(document.getElementById("radiusSelect").value);
 
-        map_f5152d3ee2d7473629599fd510357cb5.setView([lat, lon], 10);
+        map_2a4a72c5ec9d42a11a21d24c6c077b45.setView([lat, lon], 10);
 
-        if (searchMarker !== null) { map_f5152d3ee2d7473629599fd510357cb5.removeLayer(searchMarker); }
-        if (radiusCircle !== null) { map_f5152d3ee2d7473629599fd510357cb5.removeLayer(radiusCircle); }
+        if (searchMarker !== null) { map_2a4a72c5ec9d42a11a21d24c6c077b45.removeLayer(searchMarker); }
+        if (radiusCircle !== null) { map_2a4a72c5ec9d42a11a21d24c6c077b45.removeLayer(radiusCircle); }
 
         searchMarker = L.marker([lat, lon], {
             icon: L.divIcon({
@@ -281,14 +282,14 @@ function searchLocation() {
                 iconSize: [30, 30],
                 iconAnchor: [15, 30]
             })
-        }).addTo(map_f5152d3ee2d7473629599fd510357cb5);
+        }).addTo(map_2a4a72c5ec9d42a11a21d24c6c077b45);
 
         searchMarker.bindPopup("<b>" + query + "</b>");
 
         radiusCircle = L.circle([lat, lon], {
             radius: radius * 1609.344,
             color: "#3b82f6", weight: 1, fillOpacity: 0.05
-        }).addTo(map_f5152d3ee2d7473629599fd510357cb5);
+        }).addTo(map_2a4a72c5ec9d42a11a21d24c6c077b45);
 
         updateMarkers();
     })
@@ -302,9 +303,9 @@ function clearSearch() {
     document.getElementById("locationInput").value = "";
     document.getElementById("frequencyInput").value = "";
     searchLocationState = null;
-    if (searchMarker !== null) { map_f5152d3ee2d7473629599fd510357cb5.removeLayer(searchMarker); searchMarker = null; }
-    if (radiusCircle !== null) { map_f5152d3ee2d7473629599fd510357cb5.removeLayer(radiusCircle); radiusCircle = null; }
-    map_f5152d3ee2d7473629599fd510357cb5.setView([40.1, -76.5], 8);
+    if (searchMarker !== null) { map_2a4a72c5ec9d42a11a21d24c6c077b45.removeLayer(searchMarker); searchMarker = null; }
+    if (radiusCircle !== null) { map_2a4a72c5ec9d42a11a21d24c6c077b45.removeLayer(radiusCircle); radiusCircle = null; }
+    map_2a4a72c5ec9d42a11a21d24c6c077b45.setView([40.1, -76.5], 8);
     updateMarkers();
 }
 
@@ -329,14 +330,14 @@ document.getElementById("frequencyInput").addEventListener("keydown", function(e
 document.getElementById("filterPanel").style.display = "block";
 </script>
     
-            <div class="folium-map" id="map_f5152d3ee2d7473629599fd510357cb5" ></div>
+            <div class="folium-map" id="map_2a4a72c5ec9d42a11a21d24c6c077b45" ></div>
         
 </body>
 <script>
     
     
-            var map_f5152d3ee2d7473629599fd510357cb5 = L.map(
-                "map_f5152d3ee2d7473629599fd510357cb5",
+            var map_2a4a72c5ec9d42a11a21d24c6c077b45 = L.map(
+                "map_2a4a72c5ec9d42a11a21d24c6c077b45",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -348,13 +349,13 @@ document.getElementById("filterPanel").style.display = "block";
 
                 }
             );
-            L.control.scale().addTo(map_f5152d3ee2d7473629599fd510357cb5);
+            L.control.scale().addTo(map_2a4a72c5ec9d42a11a21d24c6c077b45);
 
             
 
         
     
-            var tile_layer_2cd03548526cfd2d5b9cfab38d3109e3 = L.tileLayer(
+            var tile_layer_f275057a60debe4f3959842f1a63e1a4 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -371,7 +372,7 @@ document.getElementById("filterPanel").style.display = "block";
             );
         
     
-            tile_layer_2cd03548526cfd2d5b9cfab38d3109e3.addTo(map_f5152d3ee2d7473629599fd510357cb5);
+            tile_layer_f275057a60debe4f3959842f1a63e1a4.addTo(map_2a4a72c5ec9d42a11a21d24c6c077b45);
         
 </script>
 </html>
