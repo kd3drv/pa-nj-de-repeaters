@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_1f1ae82d6a063ad3047b0362415c1b7f {
+                #map_f0033a0dae6dc2718d1621e973ddaddd {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -166,7 +166,7 @@ function initMarkers() {
 
         var marker = L.marker([repeater.lat, repeater.lon], { icon: icon });
         marker.bindPopup(L.popup({ max_width: 350 }).setContent(repeater.popup));
-        marker.addTo(map_1f1ae82d6a063ad3047b0362415c1b7f);
+        marker.addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
         
         markerLayers.push({ marker: marker, repeater: repeater });
     });
@@ -233,6 +233,12 @@ function updateMarkers() {
 
         if (visible && freqQuery !== "") {
             var repeaterFreq = String(item.repeater.frequency || "").trim();
+            
+            // Temporary debug: log if it's our target frequency
+            if (repeaterFreq.includes("147.03") || freqQuery.includes("147.03")) {
+                console.log("DEBUG -> DB Freq:", JSON.stringify(repeaterFreq), "| Query:", JSON.stringify(freqQuery), "| Match:", repeaterFreq.includes(freqQuery));
+            }
+
             if (!repeaterFreq.includes(freqQuery)) {
                 visible = false;
             }
@@ -268,10 +274,10 @@ function searchLocation() {
         searchLocationState = { lat: lat, lon: lon };
         var radius = parseFloat(document.getElementById("radiusSelect").value);
 
-        map_1f1ae82d6a063ad3047b0362415c1b7f.setView([lat, lon], 10);
+        map_f0033a0dae6dc2718d1621e973ddaddd.setView([lat, lon], 10);
 
-        if (searchMarker !== null) { map_1f1ae82d6a063ad3047b0362415c1b7f.removeLayer(searchMarker); }
-        if (radiusCircle !== null) { map_1f1ae82d6a063ad3047b0362415c1b7f.removeLayer(radiusCircle); }
+        if (searchMarker !== null) { map_f0033a0dae6dc2718d1621e973ddaddd.removeLayer(searchMarker); }
+        if (radiusCircle !== null) { map_f0033a0dae6dc2718d1621e973ddaddd.removeLayer(radiusCircle); }
 
         searchMarker = L.marker([lat, lon], {
             icon: L.divIcon({
@@ -280,14 +286,14 @@ function searchLocation() {
                 iconSize: [30, 30],
                 iconAnchor: [15, 30]
             })
-        }).addTo(map_1f1ae82d6a063ad3047b0362415c1b7f);
+        }).addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
 
         searchMarker.bindPopup("<b>" + query + "</b>");
 
         radiusCircle = L.circle([lat, lon], {
             radius: radius * 1609.344,
             color: "#3b82f6", weight: 1, fillOpacity: 0.05
-        }).addTo(map_1f1ae82d6a063ad3047b0362415c1b7f);
+        }).addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
 
         updateMarkers();
     })
@@ -301,9 +307,9 @@ function clearSearch() {
     document.getElementById("locationInput").value = "";
     document.getElementById("frequencyInput").value = "";
     searchLocationState = null;
-    if (searchMarker !== null) { map_1f1ae82d6a063ad3047b0362415c1b7f.removeLayer(searchMarker); searchMarker = null; }
-    if (radiusCircle !== null) { map_1f1ae82d6a063ad3047b0362415c1b7f.removeLayer(radiusCircle); radiusCircle = null; }
-    map_1f1ae82d6a063ad3047b0362415c1b7f.setView([40.1, -76.5], 8);
+    if (searchMarker !== null) { map_f0033a0dae6dc2718d1621e973ddaddd.removeLayer(searchMarker); searchMarker = null; }
+    if (radiusCircle !== null) { map_f0033a0dae6dc2718d1621e973ddaddd.removeLayer(radiusCircle); radiusCircle = null; }
+    map_f0033a0dae6dc2718d1621e973ddaddd.setView([40.1, -76.5], 8);
     updateMarkers();
 }
 
@@ -328,14 +334,14 @@ document.getElementById("frequencyInput").addEventListener("keydown", function(e
 document.getElementById("filterPanel").style.display = "block";
 </script>
     
-            <div class="folium-map" id="map_1f1ae82d6a063ad3047b0362415c1b7f" ></div>
+            <div class="folium-map" id="map_f0033a0dae6dc2718d1621e973ddaddd" ></div>
         
 </body>
 <script>
     
     
-            var map_1f1ae82d6a063ad3047b0362415c1b7f = L.map(
-                "map_1f1ae82d6a063ad3047b0362415c1b7f",
+            var map_f0033a0dae6dc2718d1621e973ddaddd = L.map(
+                "map_f0033a0dae6dc2718d1621e973ddaddd",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -347,13 +353,13 @@ document.getElementById("filterPanel").style.display = "block";
 
                 }
             );
-            L.control.scale().addTo(map_1f1ae82d6a063ad3047b0362415c1b7f);
+            L.control.scale().addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
 
             
 
         
     
-            var tile_layer_8fbc4322e74c8ac630d869dec9049fb4 = L.tileLayer(
+            var tile_layer_3a535b773242209c53bc289776565e39 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -370,7 +376,7 @@ document.getElementById("filterPanel").style.display = "block";
             );
         
     
-            tile_layer_8fbc4322e74c8ac630d869dec9049fb4.addTo(map_1f1ae82d6a063ad3047b0362415c1b7f);
+            tile_layer_3a535b773242209c53bc289776565e39.addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
         
 </script>
 </html>
