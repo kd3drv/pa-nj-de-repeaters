@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_120980f8ec0a4a5fd2872668b3a845d9 {
+                #map_f5152d3ee2d7473629599fd510357cb5 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -166,7 +166,7 @@ function initMarkers() {
 
         var marker = L.marker([repeater.lat, repeater.lon], { icon: icon });
         marker.bindPopup(L.popup({ max_width: 350 }).setContent(repeater.popup));
-        marker.addTo(map_120980f8ec0a4a5fd2872668b3a845d9);
+        marker.addTo(map_f5152d3ee2d7473629599fd510357cb5);
         
         markerLayers.push({ marker: marker, repeater: repeater });
     });
@@ -269,10 +269,10 @@ function searchLocation() {
         searchLocationState = { lat: lat, lon: lon };
         var radius = parseFloat(document.getElementById("radiusSelect").value);
 
-        map_120980f8ec0a4a5fd2872668b3a845d9.setView([lat, lon], 10);
+        map_f5152d3ee2d7473629599fd510357cb5.setView([lat, lon], 10);
 
-        if (searchMarker !== null) { map_120980f8ec0a4a5fd2872668b3a845d9.removeLayer(searchMarker); }
-        if (radiusCircle !== null) { map_120980f8ec0a4a5fd2872668b3a845d9.removeLayer(radiusCircle); }
+        if (searchMarker !== null) { map_f5152d3ee2d7473629599fd510357cb5.removeLayer(searchMarker); }
+        if (radiusCircle !== null) { map_f5152d3ee2d7473629599fd510357cb5.removeLayer(radiusCircle); }
 
         searchMarker = L.marker([lat, lon], {
             icon: L.divIcon({
@@ -281,14 +281,14 @@ function searchLocation() {
                 iconSize: [30, 30],
                 iconAnchor: [15, 30]
             })
-        }).addTo(map_120980f8ec0a4a5fd2872668b3a845d9);
+        }).addTo(map_f5152d3ee2d7473629599fd510357cb5);
 
         searchMarker.bindPopup("<b>" + query + "</b>");
 
         radiusCircle = L.circle([lat, lon], {
             radius: radius * 1609.344,
             color: "#3b82f6", weight: 1, fillOpacity: 0.05
-        }).addTo(map_120980f8ec0a4a5fd2872668b3a845d9);
+        }).addTo(map_f5152d3ee2d7473629599fd510357cb5);
 
         updateMarkers();
     })
@@ -302,9 +302,9 @@ function clearSearch() {
     document.getElementById("locationInput").value = "";
     document.getElementById("frequencyInput").value = "";
     searchLocationState = null;
-    if (searchMarker !== null) { map_120980f8ec0a4a5fd2872668b3a845d9.removeLayer(searchMarker); searchMarker = null; }
-    if (radiusCircle !== null) { map_120980f8ec0a4a5fd2872668b3a845d9.removeLayer(radiusCircle); radiusCircle = null; }
-    map_120980f8ec0a4a5fd2872668b3a845d9.setView([40.1, -76.5], 8);
+    if (searchMarker !== null) { map_f5152d3ee2d7473629599fd510357cb5.removeLayer(searchMarker); searchMarker = null; }
+    if (radiusCircle !== null) { map_f5152d3ee2d7473629599fd510357cb5.removeLayer(radiusCircle); radiusCircle = null; }
+    map_f5152d3ee2d7473629599fd510357cb5.setView([40.1, -76.5], 8);
     updateMarkers();
 }
 
@@ -320,17 +320,23 @@ document.getElementById("locationInput").addEventListener("keydown", function(ev
     if (event.key === "Enter") searchLocation();
 });
 
+document.getElementById("frequencyInput").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        document.getElementById("frequencyInput").blur();
+    }
+});
+
 document.getElementById("filterPanel").style.display = "block";
 </script>
     
-            <div class="folium-map" id="map_120980f8ec0a4a5fd2872668b3a845d9" ></div>
+            <div class="folium-map" id="map_f5152d3ee2d7473629599fd510357cb5" ></div>
         
 </body>
 <script>
     
     
-            var map_120980f8ec0a4a5fd2872668b3a845d9 = L.map(
-                "map_120980f8ec0a4a5fd2872668b3a845d9",
+            var map_f5152d3ee2d7473629599fd510357cb5 = L.map(
+                "map_f5152d3ee2d7473629599fd510357cb5",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -342,13 +348,13 @@ document.getElementById("filterPanel").style.display = "block";
 
                 }
             );
-            L.control.scale().addTo(map_120980f8ec0a4a5fd2872668b3a845d9);
+            L.control.scale().addTo(map_f5152d3ee2d7473629599fd510357cb5);
 
             
 
         
     
-            var tile_layer_b0aceeecf6918e334507131f92feff37 = L.tileLayer(
+            var tile_layer_2cd03548526cfd2d5b9cfab38d3109e3 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -365,7 +371,7 @@ document.getElementById("filterPanel").style.display = "block";
             );
         
     
-            tile_layer_b0aceeecf6918e334507131f92feff37.addTo(map_120980f8ec0a4a5fd2872668b3a845d9);
+            tile_layer_2cd03548526cfd2d5b9cfab38d3109e3.addTo(map_f5152d3ee2d7473629599fd510357cb5);
         
 </script>
 </html>
