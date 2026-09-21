@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_f0033a0dae6dc2718d1621e973ddaddd {
+                #map_e1a7b635b31d96ea5d3b6a03efbf4340 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -166,7 +166,7 @@ function initMarkers() {
 
         var marker = L.marker([repeater.lat, repeater.lon], { icon: icon });
         marker.bindPopup(L.popup({ max_width: 350 }).setContent(repeater.popup));
-        marker.addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
+        marker.addTo(map_e1a7b635b31d96ea5d3b6a03efbf4340);
         
         markerLayers.push({ marker: marker, repeater: repeater });
     });
@@ -234,16 +234,14 @@ function updateMarkers() {
         if (visible && freqQuery !== "") {
             var repeaterFreq = String(item.repeater.frequency || "").trim();
             
-            // Temporary debug: log if it's our target frequency
-            if (repeaterFreq.includes("147.03") || freqQuery.includes("147.03")) {
-                console.log("DEBUG -> DB Freq:", JSON.stringify(repeaterFreq), "| Query:", JSON.stringify(freqQuery), "| Match:", repeaterFreq.includes(freqQuery));
-            }
-
-            if (!repeaterFreq.includes(freqQuery)) {
+            // Strict prefix match so typing "147.03" only matches "147.03..." 
+            // instead of pulling in random frequencies containing "147.0"
+            if (!repeaterFreq.startsWith(freqQuery)) {
                 visible = false;
             }
         }
 
+        // Filter by location radius
         if (visible && searchLocationState !== null) {
             var distance = distanceMiles(
                 searchLocationState.lat, searchLocationState.lon,
@@ -274,10 +272,10 @@ function searchLocation() {
         searchLocationState = { lat: lat, lon: lon };
         var radius = parseFloat(document.getElementById("radiusSelect").value);
 
-        map_f0033a0dae6dc2718d1621e973ddaddd.setView([lat, lon], 10);
+        map_e1a7b635b31d96ea5d3b6a03efbf4340.setView([lat, lon], 10);
 
-        if (searchMarker !== null) { map_f0033a0dae6dc2718d1621e973ddaddd.removeLayer(searchMarker); }
-        if (radiusCircle !== null) { map_f0033a0dae6dc2718d1621e973ddaddd.removeLayer(radiusCircle); }
+        if (searchMarker !== null) { map_e1a7b635b31d96ea5d3b6a03efbf4340.removeLayer(searchMarker); }
+        if (radiusCircle !== null) { map_e1a7b635b31d96ea5d3b6a03efbf4340.removeLayer(radiusCircle); }
 
         searchMarker = L.marker([lat, lon], {
             icon: L.divIcon({
@@ -286,14 +284,14 @@ function searchLocation() {
                 iconSize: [30, 30],
                 iconAnchor: [15, 30]
             })
-        }).addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
+        }).addTo(map_e1a7b635b31d96ea5d3b6a03efbf4340);
 
         searchMarker.bindPopup("<b>" + query + "</b>");
 
         radiusCircle = L.circle([lat, lon], {
             radius: radius * 1609.344,
             color: "#3b82f6", weight: 1, fillOpacity: 0.05
-        }).addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
+        }).addTo(map_e1a7b635b31d96ea5d3b6a03efbf4340);
 
         updateMarkers();
     })
@@ -307,9 +305,9 @@ function clearSearch() {
     document.getElementById("locationInput").value = "";
     document.getElementById("frequencyInput").value = "";
     searchLocationState = null;
-    if (searchMarker !== null) { map_f0033a0dae6dc2718d1621e973ddaddd.removeLayer(searchMarker); searchMarker = null; }
-    if (radiusCircle !== null) { map_f0033a0dae6dc2718d1621e973ddaddd.removeLayer(radiusCircle); radiusCircle = null; }
-    map_f0033a0dae6dc2718d1621e973ddaddd.setView([40.1, -76.5], 8);
+    if (searchMarker !== null) { map_e1a7b635b31d96ea5d3b6a03efbf4340.removeLayer(searchMarker); searchMarker = null; }
+    if (radiusCircle !== null) { map_e1a7b635b31d96ea5d3b6a03efbf4340.removeLayer(radiusCircle); radiusCircle = null; }
+    map_e1a7b635b31d96ea5d3b6a03efbf4340.setView([40.1, -76.5], 8);
     updateMarkers();
 }
 
@@ -334,14 +332,14 @@ document.getElementById("frequencyInput").addEventListener("keydown", function(e
 document.getElementById("filterPanel").style.display = "block";
 </script>
     
-            <div class="folium-map" id="map_f0033a0dae6dc2718d1621e973ddaddd" ></div>
+            <div class="folium-map" id="map_e1a7b635b31d96ea5d3b6a03efbf4340" ></div>
         
 </body>
 <script>
     
     
-            var map_f0033a0dae6dc2718d1621e973ddaddd = L.map(
-                "map_f0033a0dae6dc2718d1621e973ddaddd",
+            var map_e1a7b635b31d96ea5d3b6a03efbf4340 = L.map(
+                "map_e1a7b635b31d96ea5d3b6a03efbf4340",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -353,13 +351,13 @@ document.getElementById("filterPanel").style.display = "block";
 
                 }
             );
-            L.control.scale().addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
+            L.control.scale().addTo(map_e1a7b635b31d96ea5d3b6a03efbf4340);
 
             
 
         
     
-            var tile_layer_3a535b773242209c53bc289776565e39 = L.tileLayer(
+            var tile_layer_40b3b540a6854947712cad16a05e211d = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -376,7 +374,7 @@ document.getElementById("filterPanel").style.display = "block";
             );
         
     
-            tile_layer_3a535b773242209c53bc289776565e39.addTo(map_f0033a0dae6dc2718d1621e973ddaddd);
+            tile_layer_40b3b540a6854947712cad16a05e211d.addTo(map_e1a7b635b31d96ea5d3b6a03efbf4340);
         
 </script>
 </html>
