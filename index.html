@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_17ac31b62406f46d7ffc4916f25c0229 {
+                #map_7aaab35b0207e450beb3f59ab9a126e2 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -78,6 +78,10 @@
 
 <div id="filterPanel">
     <div class="filterTitle">Find / Filter Repeaters</div>
+
+    <div class="sectionTitle">Frequency Search</div>
+    <input type="text" id="frequencyInput" placeholder="e.g. 146.520 or 443.9" oninput="updateMarkers()">
+
     <div class="sectionTitle">Location</div>
     <input type="text" id="locationInput" placeholder="Media, PA or Philadelphia">
     
@@ -96,8 +100,8 @@
     <label><input type="checkbox" class="bandCheckbox" value="70cm" checked onchange="updateBandState()"><span style="color: green; font-weight: bold;"> ●</span> 70cm</label>
     <label><input type="checkbox" class="bandCheckbox" value="GMRS" checked onchange="updateBandState()"><span style="color: red; font-weight: bold;"> ●</span> GMRS</label>
     
-    <button class="filterButton" onclick="searchLocation()">Search</button>
-    <button class="filterButton" onclick="clearSearch()">Clear</button>
+    <button class="filterButton" onclick="searchLocation()">Search Location</button>
+    <button class="filterButton" onclick="clearSearch()">Clear Filters</button>
 </div>
     
 <script>
@@ -124,7 +128,6 @@ function initMarkers() {
     repeaterData.forEach(repeater => {
         var color = bandColors[repeater.band] || "gray";
         
-        // Use Leaflet colored marker icon URLs
         var icon = L.icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-' + color + '.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -136,7 +139,7 @@ function initMarkers() {
 
         var marker = L.marker([repeater.lat, repeater.lon], { icon: icon });
         marker.bindPopup(L.popup({ max_width: 350 }).setContent(repeater.popup));
-        marker.addTo(map_17ac31b62406f46d7ffc4916f25c0229);
+        marker.addTo(map_7aaab35b0207e450beb3f59ab9a126e2);
         
         markerLayers.push({ marker: marker, repeater: repeater });
     });
@@ -197,10 +200,19 @@ function distanceMiles(lat1, lon1, lat2, lon2) {
 function updateMarkers() {
     var selectedBands = getSelectedBands();
     var radius = parseFloat(document.getElementById("radiusSelect").value);
+    var freqQuery = document.getElementById("frequencyInput").value.trim();
 
     markerLayers.forEach(function(item) {
         var visible = selectedBands.includes(item.repeater.band);
 
+        // Filter by frequency (supports partial typing, e.g., "146.5")
+        if (visible && freqQuery !== "") {
+            if (!item.repeater.frequency.includes(freqQuery)) {
+                visible = false;
+            }
+        }
+
+        // Filter by location radius
         if (visible && searchLocationState !== null) {
             var distance = distanceMiles(
                 searchLocationState.lat, searchLocationState.lon,
@@ -232,10 +244,10 @@ function searchLocation() {
         searchLocationState = { lat: lat, lon: lon };
         var radius = parseFloat(document.getElementById("radiusSelect").value);
 
-        map_17ac31b62406f46d7ffc4916f25c0229.setView([lat, lon], 10);
+        map_7aaab35b0207e450beb3f59ab9a126e2.setView([lat, lon], 10);
 
-        if (searchMarker !== null) { map_17ac31b62406f46d7ffc4916f25c0229.removeLayer(searchMarker); }
-        if (radiusCircle !== null) { map_17ac31b62406f46d7ffc4916f25c0229.removeLayer(radiusCircle); }
+        if (searchMarker !== null) { map_7aaab35b0207e450beb3f59ab9a126e2.removeLayer(searchMarker); }
+        if (radiusCircle !== null) { map_7aaab35b0207e450beb3f59ab9a126e2.removeLayer(radiusCircle); }
 
         searchMarker = L.marker([lat, lon], {
             icon: L.divIcon({
@@ -244,14 +256,14 @@ function searchLocation() {
                 iconSize: [30, 30],
                 iconAnchor: [15, 30]
             })
-        }).addTo(map_17ac31b62406f46d7ffc4916f25c0229);
+        }).addTo(map_7aaab35b0207e450beb3f59ab9a126e2);
 
         searchMarker.bindPopup("<b>" + query + "</b>");
 
         radiusCircle = L.circle([lat, lon], {
             radius: radius * 1609.344,
             color: "black", weight: 1, fillOpacity: 0.05
-        }).addTo(map_17ac31b62406f46d7ffc4916f25c0229);
+        }).addTo(map_7aaab35b0207e450beb3f59ab9a126e2);
 
         updateMarkers();
     })
@@ -263,10 +275,11 @@ function searchLocation() {
 
 function clearSearch() {
     document.getElementById("locationInput").value = "";
+    document.getElementById("frequencyInput").value = "";
     searchLocationState = null;
-    if (searchMarker !== null) { map_17ac31b62406f46d7ffc4916f25c0229.removeLayer(searchMarker); searchMarker = null; }
-    if (radiusCircle !== null) { map_17ac31b62406f46d7ffc4916f25c0229.removeLayer(radiusCircle); radiusCircle = null; }
-    map_17ac31b62406f46d7ffc4916f25c0229.setView([40.1, -76.5], 8);
+    if (searchMarker !== null) { map_7aaab35b0207e450beb3f59ab9a126e2.removeLayer(searchMarker); searchMarker = null; }
+    if (radiusCircle !== null) { map_7aaab35b0207e450beb3f59ab9a126e2.removeLayer(radiusCircle); radiusCircle = null; }
+    map_7aaab35b0207e450beb3f59ab9a126e2.setView([40.1, -76.5], 8);
     updateMarkers();
 }
 
@@ -285,14 +298,14 @@ document.getElementById("locationInput").addEventListener("keydown", function(ev
 document.getElementById("filterPanel").style.display = "block";
 </script>
     
-            <div class="folium-map" id="map_17ac31b62406f46d7ffc4916f25c0229" ></div>
+            <div class="folium-map" id="map_7aaab35b0207e450beb3f59ab9a126e2" ></div>
         
 </body>
 <script>
     
     
-            var map_17ac31b62406f46d7ffc4916f25c0229 = L.map(
-                "map_17ac31b62406f46d7ffc4916f25c0229",
+            var map_7aaab35b0207e450beb3f59ab9a126e2 = L.map(
+                "map_7aaab35b0207e450beb3f59ab9a126e2",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -304,13 +317,13 @@ document.getElementById("filterPanel").style.display = "block";
 
                 }
             );
-            L.control.scale().addTo(map_17ac31b62406f46d7ffc4916f25c0229);
+            L.control.scale().addTo(map_7aaab35b0207e450beb3f59ab9a126e2);
 
             
 
         
     
-            var tile_layer_1c3261adec034ace9a35c2b80da8704c = L.tileLayer(
+            var tile_layer_1fdad577575013091f4ee728afea7db7 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -327,7 +340,7 @@ document.getElementById("filterPanel").style.display = "block";
             );
         
     
-            tile_layer_1c3261adec034ace9a35c2b80da8704c.addTo(map_17ac31b62406f46d7ffc4916f25c0229);
+            tile_layer_1fdad577575013091f4ee728afea7db7.addTo(map_7aaab35b0207e450beb3f59ab9a126e2);
         
 </script>
 </html>
