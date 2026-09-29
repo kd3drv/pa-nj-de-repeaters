@@ -14277,7 +14277,7 @@
     "echoLink": false,
     "callSign": "",
     "linkedRepeater": false,
-    "popup": "\n    <div style=\"\n        font-size: 14px;\n        line-height: 1.45;\n    \">\n\n        <b style=\"font-size: 16px;\">\n            PMT-DCo2\n        </b>\n\n        <br><br>\n\n        <b>Frequency:</b>\n        147.03 MHz<br>\n\n        <b>Duplex:</b>\n        +<br>\n\n        <b>Offset:</b>\n        0.6 MHz\n\n        <br><br>\n\n        <b>CTCSS:</b> 100.0 Hz<br>\n\n        <b>Mode:</b>\n        nan<br>\n\n        <b>Band:</b>\n        2m\n\n        <hr>\n\n        Newtown Square, Delaware County, PA\n\n    </div>\n    "
+    "popup": "\n    <div style=\"\n        font-size: 14px;\n        line-height: 1.45;\n    \">\n\n        <b style=\"font-size: 16px;\">\n            PMT-DCo2 (W3QV)\n        </b>\n\n        <br><br>\n\n        <b>Frequency:</b>\n        147.03 MHz<br>\n\n        <b>Duplex:</b>\n        +<br>\n\n        <b>Offset:</b>\n        0.6 MHz\n\n        <br><br>\n\n        <b>CTCSS:</b> 100.0 Hz<br>\n\n        <b>Mode:</b>\n        nan<br>\n\n        <b>Band:</b>\n        2m\n\n        <hr>\n\n        Newtown Square, Delaware County, PA\n\n    </div>\n    "
   },
   {
     "lat": 39.8241065,
@@ -14287,7 +14287,7 @@
     "echoLink": false,
     "callSign": "",
     "linkedRepeater": false,
-    "popup": "\n    <div style=\"\n        font-size: 14px;\n        line-height: 1.45;\n    \">\n\n        <b style=\"font-size: 16px;\">\n            PMT-SJrs2\n        </b>\n\n        <br><br>\n\n        <b>Frequency:</b>\n        147.03 MHz<br>\n\n        <b>Duplex:</b>\n        +<br>\n\n        <b>Offset:</b>\n        0.6 MHz\n\n        <br><br>\n\n        <b>CTCSS:</b> 82.5 Hz<br>\n\n        <b>Mode:</b>\n        nan<br>\n\n        <b>Band:</b>\n        2m\n\n        <hr>\n\n        Gibbstown, South Jersey, NJ\n\n    </div>\n    "
+    "popup": "\n    <div style=\"\n        font-size: 14px;\n        line-height: 1.45;\n    \">\n\n        <b style=\"font-size: 16px;\">\n            PMT-SJrs2 (W3QV)\n        </b>\n\n        <br><br>\n\n        <b>Frequency:</b>\n        147.03 MHz<br>\n\n        <b>Duplex:</b>\n        +<br>\n\n        <b>Offset:</b>\n        0.6 MHz\n\n        <br><br>\n\n        <b>CTCSS:</b> 82.5 Hz<br>\n\n        <b>Mode:</b>\n        nan<br>\n\n        <b>Band:</b>\n        2m\n\n        <hr>\n\n        Gibbstown, South Jersey, NJ\n\n    </div>\n    "
   },
   {
     "lat": 40.0717549,
@@ -14297,7 +14297,7 @@
     "echoLink": false,
     "callSign": "",
     "linkedRepeater": false,
-    "popup": "\n    <div style=\"\n        font-size: 14px;\n        line-height: 1.45;\n    \">\n\n        <b style=\"font-size: 16px;\">\n            PMT-Rox2\n        </b>\n\n        <br><br>\n\n        <b>Frequency:</b>\n        147.03 MHz<br>\n\n        <b>Duplex:</b>\n        +<br>\n\n        <b>Offset:</b>\n        0.6 MHz\n\n        <br><br>\n\n        <b>CTCSS:</b> 91.5 Hz<br>\n\n        <b>Mode:</b>\n        nan<br>\n\n        <b>Band:</b>\n        2m\n\n        <hr>\n\n        Roxboro, Montgomery County, PA\n\n    </div>\n    "
+    "popup": "\n    <div style=\"\n        font-size: 14px;\n        line-height: 1.45;\n    \">\n\n        <b style=\"font-size: 16px;\">\n            PMT-Rox2 (W3QV)\n        </b>\n\n        <br><br>\n\n        <b>Frequency:</b>\n        147.03 MHz<br>\n\n        <b>Duplex:</b>\n        +<br>\n\n        <b>Offset:</b>\n        0.6 MHz\n\n        <br><br>\n\n        <b>CTCSS:</b> 91.5 Hz<br>\n\n        <b>Mode:</b>\n        nan<br>\n\n        <b>Band:</b>\n        2m\n\n        <hr>\n\n        Roxboro, Montgomery County, PA\n\n    </div>\n    "
   },
   {
     "lat": 40.3009876,
@@ -14307,6 +14307,6 @@
     "echoLink": false,
     "callSign": "",
     "linkedRepeater": false,
-    "popup": "\n    <div style=\"\n        font-size: 14px;\n        line-height: 1.45;\n    \">\n\n        <b style=\"font-size: 16px;\">\n            PMT-MnBks2\n        </b>\n\n        <br><br>\n\n        <b>Frequency:</b>\n        147.03 MHz<br>\n\n        <b>Duplex:</b>\n        +<br>\n\n        <b>Offset:</b>\n        0.6 MHz\n\n        <br><br>\n\n        <b>CTCSS:</b> 88.5 Hz<br>\n\n        <b>Mode:</b>\n        nan<br>\n\n        <b>Band:</b>\n        2m\n\n        <hr>\n\n        Lawrenceville, Bucks County, NJ\n\n    </div>\n    "
+    "popup": "\n    <div style=\"\n        font-size: 14px;\n        line-height: 1.45;\n    \">\n\n        <b style=\"font-size: 16px;\">\n            PMT-MnBks2 (W3QV)\n        </b>\n\n        <br><br>\n\n        <b>Frequency:</b>\n        147.03 MHz<br>\n\n        <b>Duplex:</b>\n        +<br>\n\n        <b>Offset:</b>\n        0.6 MHz\n\n        <br><br>\n\n        <b>CTCSS:</b> 88.5 Hz<br>\n\n        <b>Mode:</b>\n        nan<br>\n\n        <b>Band:</b>\n        2m\n\n        <hr>\n\n        Lawrenceville, Bucks County, NJ\n\n    </div>\n    "
   }
 ]
