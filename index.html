@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_dff83af7730502014b2d5c160d526606 {
+                #map_5121ca2441886048d1c5b895b9aeff8e {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -248,16 +248,18 @@
 
 /* Linked repeater highlighting */
 
+/* Idle state: no repeater selected -> faint, slow glow on every linked repeater */
 .linked-repeater-marker {
 
     animation:
-        linkedGlowSubtle
-        2.4s
+        linkedGlowIdle
+        3s
         ease-in-out
         infinite;
 }
 
 
+/* Selected network: only members of the clicked repeater's network */
 .linked-repeater-marker.linked-repeater-active {
 
     animation:
@@ -268,21 +270,30 @@
 }
 
 
-@keyframes linkedGlowSubtle {
+/* A repeater is selected, but this linked repeater is NOT in its network */
+.linked-repeater-marker.linked-repeater-off {
+
+    animation: none;
+
+    filter: none;
+}
+
+
+@keyframes linkedGlowIdle {
 
     0%, 100% {
 
         filter:
-            drop-shadow(0 0 1px #ffd400)
-            drop-shadow(0 0 3px #ffd400);
+            drop-shadow(0 0 1px rgba(255, 212, 0, 0.35))
+            drop-shadow(0 0 2px rgba(255, 212, 0, 0.25));
 
     }
 
     50% {
 
         filter:
-            drop-shadow(0 0 3px #ffd400)
-            drop-shadow(0 0 6px #ffd400);
+            drop-shadow(0 0 1px rgba(255, 212, 0, 0.55))
+            drop-shadow(0 0 4px rgba(255, 212, 0, 0.35));
 
     }
 
@@ -610,6 +621,8 @@ var markerLayers = [];
 
 var selectedLinkedCallSign = null;
 
+var selectedMarker = null;
+
 var markerSpreadByIndex = [];
 
 
@@ -668,12 +681,12 @@ function initMarkers() {
         function(item) {
 
             if (
-                map_dff83af7730502014b2d5c160d526606.hasLayer(
+                map_5121ca2441886048d1c5b895b9aeff8e.hasLayer(
                     item.marker
                 )
             ) {
 
-                map_dff83af7730502014b2d5c160d526606.removeLayer(
+                map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
                     item.marker
                 );
 
@@ -723,16 +736,16 @@ function initMarkers() {
                     +
                     iconUrl
                     +
-                    '" style="width:25px;height:41px;">',
+                    '" style="width:19px;height:31px;">',
 
                 iconSize:
-                    [25, 41],
+                    [19, 31],
 
                 iconAnchor:
-                    [12, 41],
+                    [9, 31],
 
                 popupAnchor:
-                    [1, -34]
+                    [1, -26]
 
             });
 
@@ -764,14 +777,26 @@ function initMarkers() {
                 "click",
                 function() {
 
-                    if (repeater.callSign) {
+                    // Only linked repeaters trigger network highlighting.
+                    // Clicking a non-linked repeater leaves the default glow.
+                    if (
+                        repeater.linkedRepeater
+                        &&
+                        repeater.callSign
+                    ) {
 
                         selectedLinkedCallSign =
                             repeater.callSign;
 
+                        selectedMarker =
+                            marker;
+
                     } else {
 
                         selectedLinkedCallSign =
+                            null;
+
+                        selectedMarker =
                             null;
 
                     }
@@ -788,12 +813,17 @@ function initMarkers() {
                 "popupclose",
                 function() {
 
+                    // Only clear if THIS marker is the selected one, so
+                    // switching directly between two repeaters in the
+                    // same network doesn't wipe the selection.
                     if (
-                        selectedLinkedCallSign ===
-                        repeater.callSign
+                        selectedMarker === marker
                     ) {
 
                         selectedLinkedCallSign =
+                            null;
+
+                        selectedMarker =
                             null;
 
                         updateLinkedHighlight();
@@ -807,7 +837,7 @@ function initMarkers() {
 
 
             marker.addTo(
-                map_dff83af7730502014b2d5c160d526606
+                map_5121ca2441886048d1c5b895b9aeff8e
             );
 
 
@@ -833,6 +863,10 @@ function initMarkers() {
 
 function updateLinkedHighlight() {
 
+    var hasSelection =
+        selectedLinkedCallSign !== null;
+
+
     markerLayers.forEach(
         function(item) {
 
@@ -844,20 +878,47 @@ function updateLinkedHighlight() {
             }
 
 
-            if (
-                selectedLinkedCallSign !== null
-                &&
+            // Non-linked repeaters never glow
+            if (!item.repeater.linkedRepeater) {
+
+                element.classList.remove(
+                    "linked-repeater-active",
+                    "linked-repeater-off"
+                );
+
+                return;
+
+            }
+
+
+            if (!hasSelection) {
+
+                // Nothing selected: faint idle glow on all linked repeaters
+                element.classList.remove(
+                    "linked-repeater-active",
+                    "linked-repeater-off"
+                );
+
+            } else if (
                 item.repeater.callSign ===
                     selectedLinkedCallSign
-                &&
-                item.repeater.linkedRepeater
             ) {
 
+                // Same network as the selected repeater: strong glow
                 element.classList.add(
                     "linked-repeater-active"
                 );
 
+                element.classList.remove(
+                    "linked-repeater-off"
+                );
+
             } else {
+
+                // Linked, but a different network: no glow
+                element.classList.add(
+                    "linked-repeater-off"
+                );
 
                 element.classList.remove(
                     "linked-repeater-active"
@@ -878,7 +939,7 @@ function updateLinkedHighlight() {
 function updateMarkerPositions() {
 
     var zoom =
-        map_dff83af7730502014b2d5c160d526606.getZoom();
+        map_5121ca2441886048d1c5b895b9aeff8e.getZoom();
 
 
     var spreadFactor =
@@ -898,7 +959,7 @@ function updateMarkerPositions() {
         function(item, index) {
 
             if (
-                !map_dff83af7730502014b2d5c160d526606.hasLayer(
+                !map_5121ca2441886048d1c5b895b9aeff8e.hasLayer(
                     item.marker
                 )
             ) {
@@ -964,7 +1025,7 @@ function updateMarkerPositions() {
 
 
             var radius =
-                32 *
+                26 *
                 spreadFactor;
 
 
@@ -1001,7 +1062,7 @@ function updateMarkerPositions() {
 
 
                     var point =
-                        map_dff83af7730502014b2d5c160d526606.latLngToLayerPoint(
+                        map_5121ca2441886048d1c5b895b9aeff8e.latLngToLayerPoint(
                             center
                         );
 
@@ -1017,7 +1078,7 @@ function updateMarkerPositions() {
 
 
                     var offsetLatLng =
-                        map_dff83af7730502014b2d5c160d526606.layerPointToLatLng(
+                        map_5121ca2441886048d1c5b895b9aeff8e.layerPointToLatLng(
                             point
                         );
 
@@ -1415,13 +1476,13 @@ function updateMarkers() {
             if (visible) {
 
                 if (
-                    !map_dff83af7730502014b2d5c160d526606.hasLayer(
+                    !map_5121ca2441886048d1c5b895b9aeff8e.hasLayer(
                         item.marker
                     )
                 ) {
 
                     item.marker.addTo(
-                        map_dff83af7730502014b2d5c160d526606
+                        map_5121ca2441886048d1c5b895b9aeff8e
                     );
 
                 }
@@ -1429,12 +1490,12 @@ function updateMarkers() {
             } else {
 
                 if (
-                    map_dff83af7730502014b2d5c160d526606.hasLayer(
+                    map_5121ca2441886048d1c5b895b9aeff8e.hasLayer(
                         item.marker
                     )
                 ) {
 
-                    map_dff83af7730502014b2d5c160d526606.removeLayer(
+                    map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
                         item.marker
                     );
 
@@ -1553,7 +1614,7 @@ function searchLocation() {
                 );
 
 
-            map_dff83af7730502014b2d5c160d526606.setView(
+            map_5121ca2441886048d1c5b895b9aeff8e.setView(
                 [
                     lat,
                     lon
@@ -1570,7 +1631,7 @@ function searchLocation() {
                 searchMarker !== null
             ) {
 
-                map_dff83af7730502014b2d5c160d526606.removeLayer(
+                map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
                     searchMarker
                 );
 
@@ -1585,7 +1646,7 @@ function searchLocation() {
                 radiusCircle !== null
             ) {
 
-                map_dff83af7730502014b2d5c160d526606.removeLayer(
+                map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
                     radiusCircle
                 );
 
@@ -1623,7 +1684,7 @@ function searchLocation() {
 
                     }
                 ).addTo(
-                    map_dff83af7730502014b2d5c160d526606
+                    map_5121ca2441886048d1c5b895b9aeff8e
                 );
 
 
@@ -1663,7 +1724,7 @@ function searchLocation() {
 
                     }
                 ).addTo(
-                    map_dff83af7730502014b2d5c160d526606
+                    map_5121ca2441886048d1c5b895b9aeff8e
                 );
 
 
@@ -1720,12 +1781,14 @@ function clearSearch() {
 
     selectedLinkedCallSign = null;
 
+    selectedMarker = null;
+
 
     if (
         searchMarker !== null
     ) {
 
-        map_dff83af7730502014b2d5c160d526606.removeLayer(
+        map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
             searchMarker
         );
 
@@ -1738,7 +1801,7 @@ function clearSearch() {
         radiusCircle !== null
     ) {
 
-        map_dff83af7730502014b2d5c160d526606.removeLayer(
+        map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
             radiusCircle
         );
 
@@ -1764,7 +1827,7 @@ function clearSearch() {
     );
 
 
-    map_dff83af7730502014b2d5c160d526606.setView(
+    map_5121ca2441886048d1c5b895b9aeff8e.setView(
         [
             40.1,
             -76.5
@@ -1886,7 +1949,7 @@ document.getElementById(
 // MAP ZOOM
 // ==========================================================
 
-map_dff83af7730502014b2d5c160d526606.on(
+map_5121ca2441886048d1c5b895b9aeff8e.on(
     "zoomend",
     function() {
 
@@ -1908,14 +1971,14 @@ document.getElementById(
 
 </script>
     
-            <div class="folium-map" id="map_dff83af7730502014b2d5c160d526606" ></div>
+            <div class="folium-map" id="map_5121ca2441886048d1c5b895b9aeff8e" ></div>
         
 </body>
 <script>
     
     
-            var map_dff83af7730502014b2d5c160d526606 = L.map(
-                "map_dff83af7730502014b2d5c160d526606",
+            var map_5121ca2441886048d1c5b895b9aeff8e = L.map(
+                "map_5121ca2441886048d1c5b895b9aeff8e",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -1927,13 +1990,13 @@ document.getElementById(
 
                 }
             );
-            L.control.scale().addTo(map_dff83af7730502014b2d5c160d526606);
+            L.control.scale().addTo(map_5121ca2441886048d1c5b895b9aeff8e);
 
             
 
         
     
-            var tile_layer_5bcf81478d0600462c4cf5e6dc6fda3a = L.tileLayer(
+            var tile_layer_490dffc868aa192d622b87df12599eff = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -1950,7 +2013,7 @@ document.getElementById(
             );
         
     
-            tile_layer_5bcf81478d0600462c4cf5e6dc6fda3a.addTo(map_dff83af7730502014b2d5c160d526606);
+            tile_layer_490dffc868aa192d622b87df12599eff.addTo(map_5121ca2441886048d1c5b895b9aeff8e);
         
 </script>
 </html>
