@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_dff83af7730502014b2d5c160d526606 {
+                #map_7664a2512303823a09bccbd7367f98f7 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,832 +54,720 @@
 <body>
     
     
-
 <style>
 
-#filterButton {
-
+#filter-panel {
     position: fixed;
-
-    top: 12px;
-    left: 12px;
-
+    top: 10px;
+    right: 10px;
     z-index: 9999;
-
-    background: #ffffff;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 8px;
-
-    padding: 10px 14px;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    color: #1e293b;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 4px 6px -1px rgba(0,0,0,0.1),
-        0 2px 4px -1px rgba(0,0,0,0.06);
-
-    transition: background 0.2s;
-}
-
-
-#filterButton:hover {
-
-    background: #f8fafc;
-
-}
-
-
-#filterPanel {
-
-    position: fixed;
-
-    top: 62px;
-    left: 12px;
-
-    z-index: 9998;
-
-    background: #ffffff;
-
-    padding: 16px;
-
-    width: 260px;
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 10px 15px -3px rgba(0,0,0,0.1),
-        0 4px 6px -2px rgba(0,0,0,0.05);
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        sans-serif;
-
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
     font-size: 13px;
-
-    color: #334155;
-
-    max-height:
-        calc(100vh - 90px);
-
-    overflow-y: auto;
-
-    border:
-        1px solid #e2e8f0;
+    width: 240px;
 }
 
-
-.filterTitle {
-
-    font-weight: 700;
-
-    font-size: 15px;
-
-    margin-bottom: 12px;
-
-    color: #0f172a;
-
-    border-bottom:
-        1px solid #f1f5f9;
-
-    padding-bottom: 8px;
+#filter-header {
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: 5px;
 }
 
-
-.sectionTitle {
-
-    font-weight: 600;
-
-    margin-top: 10px;
-
-    margin-bottom: 4px;
-
-    color: #475569;
+#filter-content {
+    display: block;
 }
 
+.filter-row {
+    margin-bottom: 8px;
+}
 
-#filterPanel input[type="text"] {
+.filter-row label {
+    margin-right: 5px;
+}
 
+#location-search {
     width: 100%;
-
-    padding: 7px 10px;
-
-    margin-top: 2px;
-
-    margin-bottom: 6px;
-
     box-sizing: border-box;
-
-    border:
-        1px solid #cbd5e1;
-
-    border-radius: 6px;
-
-    font-size: 13px;
+    margin-bottom: 5px;
 }
 
-
-#filterPanel input[type="text"]:focus {
-
-    outline: none;
-
-    border-color: #3b82f6;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(59,130,246,0.1);
-}
-
-
-#filterPanel select {
-
+#radius-select,
+#frequency-filter {
     width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
 
-    padding: 7px 10px;
-
-    margin-top: 2px;
-
-    margin-bottom: 10px;
-
-    border:
-        1px solid #cbd5e1;
-
-    border-radius: 6px;
-
-    background: #fff;
-
-    font-size: 13px;
+.filter-button {
+    margin-right: 5px;
+    margin-top: 3px;
 }
 
 
-#filterPanel label {
+/* ========================================================
+   LINKED REPEATER GLOW
+   ======================================================== */
 
-    display: flex;
-
-    align-items: center;
-
-    margin-bottom: 6px;
-
-    cursor: pointer;
-
-    font-weight: 500;
-}
-
-
-#filterPanel input[type="checkbox"] {
-
-    margin-right: 8px;
-
-    transform: scale(1.1);
-
-    accent-color: #3b82f6;
-}
-
-
-/* Linked repeater highlighting */
+/*
+ * DEFAULT STATE:
+ *
+ * Linked repeaters have an intentionally VERY subtle
+ * yellow glow.
+ */
 
 .linked-repeater-marker {
-
-    animation:
-        linkedGlowSubtle
-        2.4s
-        ease-in-out
-        infinite;
+    animation: linkedGlowSubtle 3.5s ease-in-out infinite;
 }
 
+
+/*
+ * SELECTED LINKED GROUP:
+ *
+ * Only the repeaters sharing the selected callsign receive
+ * this strong glow.
+ */
 
 .linked-repeater-marker.linked-repeater-active {
-
-    animation:
-        linkedGlowStrong
-        1.2s
-        ease-in-out
-        infinite;
+    animation: linkedGlowStrong 1.2s ease-in-out infinite;
 }
 
+
+/*
+ * Very subtle default glow.
+ *
+ * Deliberately much weaker than the selected state.
+ */
 
 @keyframes linkedGlowSubtle {
 
     0%, 100% {
-
         filter:
-            drop-shadow(0 0 1px #ffd400)
-            drop-shadow(0 0 3px #ffd400);
-
+            drop-shadow(0 0 0.5px #ffd400)
+            drop-shadow(0 0 1px #ffd400);
     }
 
     50% {
-
         filter:
-            drop-shadow(0 0 3px #ffd400)
-            drop-shadow(0 0 6px #ffd400);
-
+            drop-shadow(0 0 0.75px #ffd400)
+            drop-shadow(0 0 1.5px #ffd400);
     }
 
 }
 
+
+/*
+ * Strong selected-group glow.
+ */
 
 @keyframes linkedGlowStrong {
 
     0%, 100% {
-
         filter:
             drop-shadow(0 0 3px #ffd400)
             drop-shadow(0 0 7px #ffd400)
             drop-shadow(0 0 12px #ffd400);
-
     }
 
     50% {
-
         filter:
             drop-shadow(0 0 6px #ffd400)
             drop-shadow(0 0 13px #ffd400)
             drop-shadow(0 0 22px #ffd400);
-
     }
 
 }
 
-
-#filterPanel input[type="checkbox"] {
-
-    margin-right: 8px;
-
-    transform: scale(1.1);
-
-    accent-color: #3b82f6;
-}
-
-
-.filterButton {
-
-    width: 100%;
-
-    margin-top: 6px;
-
-    padding: 7px 12px;
-
-    cursor: pointer;
-
-    background: #f1f5f9;
-
-    border:
-        1px solid #cbd5e1;
-
-    border-radius: 6px;
-
-    font-weight: 600;
-
-    color: #334155;
-
-    transition:
-        background 0.2s;
-}
-
-
-.filterButton:hover {
-
-    background: #e2e8f0;
-
-}
-
-
-.primaryBtn {
-
-    background: #3b82f6;
-
-    color: white;
-
-    border-color: #2563eb;
-}
-
-
-.primaryBtn:hover {
-
-    background: #2563eb;
-
-}
-
 </style>
+    
+<div id="filter-panel">
 
-
-<button
-    id="filterButton"
-    onclick="toggleFilterPanel()"
->
-    🔎 Find / Filter
-</button>
-
-
-<div id="filterPanel">
-
-    <div class="filterTitle">
-        Repeater Finder & Filter
+    <div id="filter-header"
+         onclick="toggleFilters()">
+        Filters ▼
     </div>
 
+    <div id="filter-content">
 
-    <div class="sectionTitle">
-        Location Search
+        <div class="filter-row">
+
+            <input
+                id="location-search"
+                type="text"
+                placeholder="Search location..."
+            >
+
+            <select id="radius-select">
+
+                <option value="5">
+                    5 miles
+                </option>
+
+                <option value="10">
+                    10 miles
+                </option>
+
+                <option value="25" selected>
+                    25 miles
+                </option>
+
+                <option value="50">
+                    50 miles
+                </option>
+
+                <option value="100">
+                    100 miles
+                </option>
+
+            </select>
+
+            <button
+                class="filter-button"
+                onclick="searchLocation()">
+                Find
+            </button>
+
+            <button
+                class="filter-button"
+                onclick="clearSearch()">
+                Clear
+            </button>
+
+        </div>
+
+
+        <div class="filter-row">
+
+            <b>Band</b><br>
+
+            <label>
+                <input
+                    type="checkbox"
+                    id="band-all"
+                    checked
+                    onchange="toggleBandAll()"
+                >
+                All
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    class="band-filter"
+                    value="2m"
+                    checked
+                >
+                2m
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    class="band-filter"
+                    value="70cm"
+                    checked
+                >
+                70cm
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    class="band-filter"
+                    value="GMRS"
+                    checked
+                >
+                GMRS
+            </label>
+
+        </div>
+
+
+        <div class="filter-row">
+
+            <b>EchoLink</b><br>
+
+            <label>
+                <input
+                    type="radio"
+                    name="echolink"
+                    value="all"
+                    checked
+                >
+                All
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="echolink"
+                    value="yes"
+                >
+                Yes
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="echolink"
+                    value="no"
+                >
+                No
+            </label>
+
+        </div>
+
+
+        <div class="filter-row">
+
+            <input
+                id="frequency-filter"
+                type="text"
+                placeholder="Frequency..."
+            >
+
+        </div>
+
     </div>
-
-    <input
-        type="text"
-        id="locationInput"
-        placeholder="e.g. Media, PA"
-    >
-
-
-    <div class="sectionTitle">
-        Radius
-    </div>
-
-    <select id="radiusSelect">
-
-        <option value="5">
-            5 miles
-        </option>
-
-        <option value="10">
-            10 miles
-        </option>
-
-        <option value="25" selected>
-            25 miles
-        </option>
-
-        <option value="50">
-            50 miles
-        </option>
-
-        <option value="100">
-            100 miles
-        </option>
-
-    </select>
-
-
-    <button
-        class="filterButton primaryBtn"
-        onclick="searchLocation()"
-    >
-        Search Location
-    </button>
-
-
-    <div
-        class="sectionTitle"
-        style="margin-top: 14px;"
-    >
-        Frequency Filter
-    </div>
-
-    <input
-        type="text"
-        id="frequencyInput"
-        placeholder="e.g. 146.520 or 443.9"
-        oninput="updateMarkers()"
-    >
-
-
-    <div
-        class="sectionTitle"
-        style="margin-top: 14px;"
-    >
-        Bands
-    </div>
-
-
-    <label>
-        <input
-            type="checkbox"
-            id="allBand"
-            checked
-            onchange="toggleAllBands()"
-        >
-
-        <span>
-            All Bands
-        </span>
-    </label>
-
-
-    <label>
-
-        <input
-            type="checkbox"
-            class="bandCheckbox"
-            value="2m"
-            checked
-            onchange="updateBandState()"
-        >
-
-        <span
-            style="
-                color: #2563eb;
-                font-weight: bold;
-                margin-left: 4px;
-            "
-        >
-            ●
-        </span>
-
-        &nbsp;2m
-
-    </label>
-
-
-    <label>
-
-        <input
-            type="checkbox"
-            class="bandCheckbox"
-            value="70cm"
-            checked
-            onchange="updateBandState()"
-        >
-
-        <span
-            style="
-                color: #16a34a;
-                font-weight: bold;
-                margin-left: 4px;
-            "
-        >
-            ●
-        </span>
-
-        &nbsp;70cm
-
-    </label>
-
-
-    <label>
-
-        <input
-            type="checkbox"
-            class="bandCheckbox"
-            value="GMRS"
-            checked
-            onchange="updateBandState()"
-        >
-
-        <span
-            style="
-                color: #dc2626;
-                font-weight: bold;
-                margin-left: 4px;
-            "
-        >
-            ●
-        </span>
-
-        &nbsp;GMRS
-
-    </label>
-
-
-    <div
-        class="sectionTitle"
-        style="margin-top: 14px;"
-    >
-        EchoLink
-    </div>
-
-    <select id="echoLinkSelect">
-
-        <option value="all" selected>
-            All
-        </option>
-
-        <option value="yes">
-            Yes
-        </option>
-
-        <option value="no">
-            No
-        </option>
-
-    </select>
-
-
-    <button
-        class="filterButton"
-        style="margin-top: 12px;"
-        onclick="clearSearch()"
-    >
-        Clear All Filters
-    </button>
 
 </div>
-
     
-
+            <div class="folium-map" id="map_7664a2512303823a09bccbd7367f98f7" ></div>
+        
+</body>
+<script>
+    
+    
 <script>
 
+var map = map_7664a2512303823a09bccbd7367f98f7;
 
-// ==========================================================
-// GLOBAL STATE
-// ==========================================================
-
-var searchMarker = null;
-
-var radiusCircle = null;
-
-var searchLocationState = null;
-
-var bandColors = {
-    "2m": "blue",
-    "70cm": "green",
-    "GMRS": "red"
-};
-
-var repeaterData = [];
+var repeaters = [];
 
 var markerLayers = [];
 
+var searchMarker = null;
+
+var searchLocationState = null;
+
 var selectedLinkedCallSign = null;
 
-var markerSpreadByIndex = [];
 
-
-// ==========================================================
-// LOAD REPEATER JSON
-// ==========================================================
+/* ========================================================
+   LOAD REPEATER JSON
+   ======================================================== */
 
 fetch("repeaters.json")
+    .then(function(response) {
 
-    .then(
-        response => {
+        if (!response.ok) {
 
-            if (!response.ok) {
-
-                throw new Error(
-                    "Failed to load repeater data"
-                );
-
-            }
-
-            return response.json();
-
-        }
-    )
-
-    .then(
-        data => {
-
-            repeaterData = data;
-
-            initMarkers();
-
-        }
-    )
-
-    .catch(
-        error => {
-
-            console.error(
-                "Error fetching JSON:",
-                error
+            throw new Error(
+                "Could not load repeaters.json"
             );
 
         }
-    );
+
+        return response.json();
+
+    })
+    .then(function(data) {
+
+        repeaters = data;
+
+        createMarkers();
+
+        updateFilters();
+
+    })
+    .catch(function(error) {
+
+        console.error(
+            "Could not load repeater data:",
+            error
+        );
+
+    });
 
 
-// ==========================================================
-// INITIALIZE MARKERS
-// ==========================================================
+/* ========================================================
+   BAND COLORS
+   ======================================================== */
 
-function initMarkers() {
+function bandColor(band) {
 
-    // Remove any existing markers
-    markerLayers.forEach(
-        function(item) {
+    if (band === "2m") {
 
-            if (
-                map_dff83af7730502014b2d5c160d526606.hasLayer(
-                    item.marker
-                )
-            ) {
+        return "blue";
 
-                map_dff83af7730502014b2d5c160d526606.removeLayer(
-                    item.marker
-                );
+    }
 
-            }
+    if (band === "70cm") {
 
-        }
-    );
+        return "green";
 
+    }
+
+    if (band === "GMRS") {
+
+        return "red";
+
+    }
+
+    return "gray";
+
+}
+
+
+/* ========================================================
+   MARKER IMAGE
+   ======================================================== */
+
+function getMarkerImage(color) {
+
+    if (color === "blue") {
+
+        return "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png";
+
+    }
+
+    if (color === "green") {
+
+        return "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png";
+
+    }
+
+    if (color === "red") {
+
+        return "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png";
+
+    }
+
+    return "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png";
+
+}
+
+
+/* ========================================================
+   CREATE MARKERS
+   ======================================================== */
+
+function createMarkers() {
 
     markerLayers = [];
 
 
-    repeaterData.forEach(
-        function(repeater) {
+    repeaters.forEach(function(repeater) {
 
-            var color =
-                bandColors[
-                    repeater.band
-                ] || "gray";
-
-
-            var iconUrl =
-                "https://raw.githubusercontent.com/"
-                +
-                "pointhi/leaflet-color-markers/"
-                +
-                "master/img/marker-icon-2x-"
-                +
-                color
-                +
-                ".png";
+        var color =
+            bandColor(
+                repeater.band
+            );
 
 
-            var markerClass =
-                repeater.linkedRepeater
-                    ? "linked-repeater-marker"
-                    : "";
+        var linkedClass = "";
 
 
-            var icon = L.divIcon({
+        if (repeater.linkedRepeater) {
 
-                className:
-                    markerClass,
+            linkedClass =
+                " linked-repeater-marker";
+
+        }
+
+
+        var icon =
+            L.divIcon({
+
+                className: "",
 
                 html:
-                    '<img src="'
-                    +
-                    iconUrl
-                    +
-                    '" style="width:25px;height:41px;">',
+                    '<img src="' +
+                    getMarkerImage(color) +
+                    '" class="' +
+                    linkedClass +
+                    '">',
 
-                iconSize:
-                    [25, 41],
+                iconSize: [25, 41],
 
-                iconAnchor:
-                    [12, 41],
+                iconAnchor: [12, 41],
 
-                popupAnchor:
-                    [1, -34]
+                popupAnchor: [1, -34]
 
             });
 
 
-            var marker =
-                L.marker(
-                    [
-                        repeater.lat,
-                        repeater.lon
-                    ],
-                    {
-                        icon: icon
-                    }
-                );
-
-
-            marker.bindPopup(
-                L.popup(
-                    {
-                        max_width: 350
-                    }
-                ).setContent(
-                    repeater.popup
-                )
+        var marker =
+            L.marker(
+                [
+                    repeater.latitude,
+                    repeater.longitude
+                ],
+                {
+                    icon: icon
+                }
             );
 
 
-            marker.on(
-                "click",
-                function() {
+        marker.bindPopup(
+            repeater.popup
+        );
 
-                    if (repeater.callSign) {
 
-                        selectedLinkedCallSign =
-                            repeater.callSign;
+        marker.on(
+            "click",
+            function() {
 
-                    } else {
+                /*
+                 * Selecting a linked repeater selects ONLY
+                 * its callsign group.
+                 */
 
-                        selectedLinkedCallSign =
-                            null;
+                if (
+                    repeater.linkedRepeater
+                    &&
+                    repeater.callSign
+                ) {
 
-                    }
+                    selectedLinkedCallSign =
+                        repeater.callSign;
+
+                } else {
+
+                    selectedLinkedCallSign =
+                        null;
+
+                }
+
+
+                updateLinkedHighlight();
+
+                updateMarkerPositions();
+
+            }
+        );
+
+
+        marker.on(
+            "popupclose",
+            function() {
+
+                /*
+                 * Closing the selected linked repeater
+                 * returns the map to its normal state.
+                 */
+
+                if (
+                    selectedLinkedCallSign
+                    &&
+                    repeater.callSign
+                    ===
+                    selectedLinkedCallSign
+                ) {
+
+                    selectedLinkedCallSign =
+                        null;
 
                     updateLinkedHighlight();
 
                     updateMarkerPositions();
 
                 }
-            );
+
+            }
+        );
 
 
-            marker.on(
-                "popupclose",
-                function() {
-
-                    if (
-                        selectedLinkedCallSign ===
-                        repeater.callSign
-                    ) {
-
-                        selectedLinkedCallSign =
-                            null;
-
-                        updateLinkedHighlight();
-
-                        updateMarkerPositions();
-
-                    }
-
-                }
-            );
+        marker.addTo(
+            map
+        );
 
 
-            marker.addTo(
-                map_dff83af7730502014b2d5c160d526606
-            );
-
-
-            markerLayers.push({
+        markerLayers.push(
+            {
                 marker: marker,
                 repeater: repeater
-            });
+            }
+        );
 
-        }
-    );
+    });
 
 
-    updateMarkers();
+    updateLinkedHighlight();
 
     updateMarkerPositions();
 
 }
 
 
-// ==========================================================
-// UPDATE LINKED REPEATER HIGHLIGHT
-// ==========================================================
+/* ========================================================
+   LINKED REPEATER HIGHLIGHT
+   ======================================================== */
 
 function updateLinkedHighlight() {
 
-    markerLayers.forEach(
-        function(item) {
+    markerLayers.forEach(function(item) {
 
-            var element =
-                item.marker.getElement();
+        var marker =
+            item.marker;
 
-            if (!element) {
-                return;
-            }
+        var repeater =
+            item.repeater;
 
 
-            if (
-                selectedLinkedCallSign !== null
-                &&
-                item.repeater.callSign ===
-                    selectedLinkedCallSign
-                &&
-                item.repeater.linkedRepeater
-            ) {
+        var iconElement =
+            marker.getElement();
 
-                element.classList.add(
+
+        if (!iconElement) {
+
+            return;
+
+        }
+
+
+        var markerImage =
+            iconElement.querySelector(
+                "img"
+            );
+
+
+        if (!markerImage) {
+
+            return;
+
+        }
+
+
+        /*
+         * NORMAL / UNSELECTED STATE
+         *
+         * Every linked repeater gets the very subtle glow.
+         */
+
+        if (!selectedLinkedCallSign) {
+
+            if (repeater.linkedRepeater) {
+
+                markerImage.classList.add(
+                    "linked-repeater-marker"
+                );
+
+                markerImage.classList.remove(
                     "linked-repeater-active"
                 );
 
             } else {
 
-                element.classList.remove(
+                markerImage.classList.remove(
+                    "linked-repeater-marker"
+                );
+
+                markerImage.classList.remove(
                     "linked-repeater-active"
                 );
 
             }
 
+            return;
+
         }
-    );
+
+
+        /*
+         * SELECTED STATE
+         *
+         * ONLY repeaters with the exact same callsign
+         * get the strong glow.
+         *
+         * Every other linked repeater loses its glow.
+         */
+
+        if (
+            repeater.linkedRepeater
+            &&
+            repeater.callSign
+            ===
+            selectedLinkedCallSign
+        ) {
+
+            markerImage.classList.add(
+                "linked-repeater-marker"
+            );
+
+            markerImage.classList.add(
+                "linked-repeater-active"
+            );
+
+        } else {
+
+            markerImage.classList.remove(
+                "linked-repeater-marker"
+            );
+
+            markerImage.classList.remove(
+                "linked-repeater-active"
+            );
+
+        }
+
+    });
 
 }
 
 
-// ==========================================================
-// SPREAD CO-LOCATED MARKERS
-// ==========================================================
+/* ========================================================
+   CO-LOCATED MARKER SPREADING
+   ======================================================== */
 
 function updateMarkerPositions() {
 
-    var zoom =
-        map_dff83af7730502014b2d5c160d526606.getZoom();
+    var groups = {};
 
+
+    markerLayers.forEach(function(item) {
+
+        var repeater =
+            item.repeater;
+
+
+        var key =
+            Number(
+                repeater.latitude
+            ).toFixed(7)
+            +
+            ","
+            +
+            Number(
+                repeater.longitude
+            ).toFixed(7);
+
+
+        if (!groups[key]) {
+
+            groups[key] = [];
+
+        }
+
+
+        groups[key].push(
+            item
+        );
+
+    });
+
+
+    var zoom =
+        map.getZoom();
+
+
+    /*
+     * At low zoom levels, co-located repeaters converge.
+     *
+     * At normal/close zoom levels, they spread into a circle.
+     */
 
     var spreadFactor =
         Math.max(
@@ -891,141 +779,90 @@ function updateMarkerPositions() {
         );
 
 
-    var groups = {};
-
-
-    markerLayers.forEach(
-        function(item, index) {
-
-            if (
-                !map_dff83af7730502014b2d5c160d526606.hasLayer(
-                    item.marker
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            var key =
-                item.repeater.lat.toFixed(7)
-                +
-                ","
-                +
-                item.repeater.lon.toFixed(7);
-
-
-            if (!groups[key]) {
-
-                groups[key] = [];
-
-            }
-
-
-            groups[key].push(index);
-
-        }
-    );
-
-
-    markerLayers.forEach(
-        function(item) {
-
-            item.marker.setZIndexOffset(0);
-
-            item.marker.setLatLng([
-                item.repeater.lat,
-                item.repeater.lon
-            ]);
-
-        }
-    );
+    var maxRadius =
+        32 * spreadFactor;
 
 
     Object.keys(groups).forEach(
         function(key) {
 
-            var indexes =
+            var group =
                 groups[key];
 
 
-            if (
-                indexes.length <= 1
-            ) {
+            if (group.length === 1) {
+
+                var single =
+                    group[0].repeater;
+
+
+                group[0].marker.setLatLng(
+                    [
+                        single.latitude,
+                        single.longitude
+                    ]
+                );
+
 
                 return;
 
             }
 
 
-            var count =
-                indexes.length;
+            group.forEach(
+                function(item, index) {
 
-
-            var radius =
-                32 *
-                spreadFactor;
-
-
-            indexes.forEach(
-                function(
-                    markerIndex,
-                    position
-                ) {
-
-                    if (
-                        radius === 0
-                    ) {
-
-                        return;
-
-                    }
+                    var repeater =
+                        item.repeater;
 
 
                     var angle =
                         (
-                            2 *
-                            Math.PI *
-                            position /
-                            count
+                            2
+                            *
+                            Math.PI
+                            *
+                            index
+                            /
+                            group.length
                         )
                         -
                         Math.PI / 2;
 
 
                     var center =
-                        markerLayers[
-                            markerIndex
-                        ].marker.getLatLng();
-
-
-                    var point =
-                        map_dff83af7730502014b2d5c160d526606.latLngToLayerPoint(
-                            center
+                        map.latLngToLayerPoint(
+                            [
+                                repeater.latitude,
+                                repeater.longitude
+                            ]
                         );
 
 
-                    point.x +=
-                        Math.cos(angle) *
-                        radius;
+                    var point =
+                        L.point(
+                            center.x
+                            +
+                            Math.cos(angle)
+                            *
+                            maxRadius,
+
+                            center.y
+                            +
+                            Math.sin(angle)
+                            *
+                            maxRadius
+                        );
 
 
-                    point.y +=
-                        Math.sin(angle) *
-                        radius;
-
-
-                    var offsetLatLng =
-                        map_dff83af7730502014b2d5c160d526606.layerPointToLatLng(
+                    var latLng =
+                        map.layerPointToLatLng(
                             point
                         );
 
 
-                    markerLayers[
-                        markerIndex
-                    ].marker.setLatLng(
-                        offsetLatLng
+                    item.marker.setLatLng(
+                        latLng
                     );
 
                 }
@@ -1037,391 +874,317 @@ function updateMarkerPositions() {
 }
 
 
-// ==========================================================
-// TOGGLE FILTER PANEL
-// ==========================================================
+/* ========================================================
+   ZOOM
+   ======================================================== */
 
-function toggleFilterPanel() {
+map.on(
+    "zoomend",
+    function() {
 
-    var panel =
+        updateMarkerPositions();
+
+    }
+);
+
+
+/* ========================================================
+   FILTER PANEL
+   ======================================================== */
+
+function toggleFilters() {
+
+    var content =
         document.getElementById(
-            "filterPanel"
-        );
-
-    var button =
-        document.getElementById(
-            "filterButton"
+            "filter-content"
         );
 
 
     if (
-        panel.style.display === "none"
+        content.style.display
+        ===
+        "none"
     ) {
 
-        panel.style.display =
+        content.style.display =
             "block";
-
-        button.innerHTML =
-            "🔎 Hide Filters";
 
     } else {
 
-        panel.style.display =
+        content.style.display =
             "none";
-
-        button.innerHTML =
-            "🔎 Find / Filter";
 
     }
 
 }
 
 
-// ==========================================================
-// GET SELECTED BANDS
-// ==========================================================
+/* ========================================================
+   BAND FILTER
+   ======================================================== */
 
-function getSelectedBands() {
+function toggleBandAll() {
 
-    var checkboxes =
-        document.querySelectorAll(
-            ".bandCheckbox"
+    var all =
+        document.getElementById(
+            "band-all"
+        ).checked;
+
+
+    document
+        .querySelectorAll(
+            ".band-filter"
+        )
+        .forEach(
+            function(box) {
+
+                box.checked =
+                    all;
+
+            }
         );
 
-    var selected = [];
+
+    updateFilters();
+
+}
 
 
-    checkboxes.forEach(
-        function(checkbox) {
+document
+    .querySelectorAll(
+        ".band-filter"
+    )
+    .forEach(
+        function(box) {
 
-            if (
-                checkbox.checked
-            ) {
+            box.addEventListener(
+                "change",
+                function() {
 
-                selected.push(
-                    checkbox.value
+                    var boxes =
+                        document.querySelectorAll(
+                            ".band-filter"
+                        );
+
+
+                    var checkedCount =
+                        0;
+
+
+                    boxes.forEach(
+                        function(box) {
+
+                            if (box.checked) {
+
+                                checkedCount++;
+
+                            }
+
+                        }
+                    );
+
+
+                    document.getElementById(
+                        "band-all"
+                    ).checked =
+                        checkedCount
+                        ===
+                        boxes.length;
+
+
+                    updateFilters();
+
+                }
+            );
+
+        }
+    );
+
+
+/* ========================================================
+   ECHOLINK FILTER
+   ======================================================== */
+
+document
+    .querySelectorAll(
+        'input[name="echolink"]'
+    )
+    .forEach(
+        function(radio) {
+
+            radio.addEventListener(
+                "change",
+                function() {
+
+                    updateFilters();
+
+                }
+            );
+
+        }
+    );
+
+
+/* ========================================================
+   FREQUENCY FILTER
+   ======================================================== */
+
+document
+    .getElementById(
+        "frequency-filter"
+    )
+    .addEventListener(
+        "input",
+        function() {
+
+            updateFilters();
+
+        }
+    );
+
+
+/* ========================================================
+   UPDATE FILTERS
+   ======================================================== */
+
+function updateFilters() {
+
+    var selectedBands = [];
+
+
+    document
+        .querySelectorAll(
+            ".band-filter:checked"
+        )
+        .forEach(
+            function(box) {
+
+                selectedBands.push(
+                    box.value
                 );
 
             }
-
-        }
-    );
-
-
-    return selected;
-
-}
-
-
-// ==========================================================
-// ALL BAND CHECKBOX
-// ==========================================================
-
-function toggleAllBands() {
-
-    var allCheckbox =
-        document.getElementById(
-            "allBand"
-        );
-
-    var checkboxes =
-        document.querySelectorAll(
-            ".bandCheckbox"
         );
 
 
-    checkboxes.forEach(
-        function(checkbox) {
-
-            checkbox.checked =
-                allCheckbox.checked;
-
-        }
-    );
+    var echoLinkFilter =
+        document.querySelector(
+            'input[name="echolink"]:checked'
+        ).value;
 
 
-    updateMarkers();
-
-}
-
-
-// ==========================================================
-// INDIVIDUAL BAND CHECKBOXES
-// ==========================================================
-
-function updateBandState() {
-
-    var checkboxes =
-        document.querySelectorAll(
-            ".bandCheckbox"
-        );
-
-    var allCheckbox =
-        document.getElementById(
-            "allBand"
-        );
-
-    var allChecked = true;
-
-
-    checkboxes.forEach(
-        function(checkbox) {
-
-            if (
-                !checkbox.checked
-            ) {
-
-                allChecked = false;
-
-            }
-
-        }
-    );
-
-
-    allCheckbox.checked =
-        allChecked;
-
-
-    updateMarkers();
-
-}
-
-
-// ==========================================================
-// DISTANCE CALCULATION
-// ==========================================================
-
-function distanceMiles(
-    lat1,
-    lon1,
-    lat2,
-    lon2
-) {
-
-    var R = 3958.8;
-
-
-    var dLat =
-        (lat2 - lat1)
-        *
-        Math.PI
-        /
-        180;
-
-
-    var dLon =
-        (lon2 - lon1)
-        *
-        Math.PI
-        /
-        180;
-
-
-    var a =
-        Math.sin(dLat / 2)
-        *
-        Math.sin(dLat / 2)
-
-        +
-
-        Math.cos(
-            lat1 *
-            Math.PI /
-            180
-        )
-
-        *
-
-        Math.cos(
-            lat2 *
-            Math.PI /
-            180
-        )
-
-        *
-
-        Math.sin(dLon / 2)
-        *
-        Math.sin(dLon / 2);
-
-
-    var c =
-        2 *
-        Math.atan2(
-            Math.sqrt(a),
-            Math.sqrt(1 - a)
-        );
-
-
-    return R * c;
-
-}
-
-
-// ==========================================================
-// UPDATE MARKERS
-//
-// IMPORTANT:
-// Matching markers are ADDED to the map.
-// Nonmatching markers are REMOVED from the map.
-//
-// This replaces the old opacity-based filtering.
-// ==========================================================
-
-function updateMarkers() {
-
-    var selectedBands =
-        getSelectedBands();
-
-
-    var radius =
-        parseFloat(
-            document.getElementById(
-                "radiusSelect"
-            ).value
-        );
-
-
-    var freqQuery =
-        document.getElementById(
-            "frequencyInput"
-        ).value
-        .trim();
+    var frequencyFilter =
+        document
+            .getElementById(
+                "frequency-filter"
+            )
+            .value
+            .trim()
+            .toLowerCase();
 
 
     markerLayers.forEach(
         function(item) {
 
-            var visible = true;
+            var repeater =
+                item.repeater;
 
 
-            // ----------------------------------------------
-            // BAND FILTER
-            // ----------------------------------------------
+            var visible =
+                true;
+
+
+            /*
+             * Band
+             */
 
             if (
-                !selectedBands.includes(
-                    item.repeater.band
+                selectedBands.length
+                > 0
+                &&
+                selectedBands.indexOf(
+                    repeater.band
                 )
+                ===
+                -1
             ) {
 
-                visible = false;
+                visible =
+                    false;
 
             }
 
 
-            // ----------------------------------------------
-            // FREQUENCY FILTER
-            // ----------------------------------------------
+            /*
+             * EchoLink
+             */
 
             if (
-                visible
+                echoLinkFilter
+                ===
+                "yes"
                 &&
-                freqQuery !== ""
+                !repeater.echoLink
             ) {
 
-                var repeaterFreq =
-                    String(
-                        item.repeater.frequency
-                        ||
-                        ""
-                    ).trim();
-
-
-                if (
-                    !repeaterFreq.startsWith(
-                        freqQuery
-                    )
-                ) {
-
-                    visible = false;
-
-                }
-
-            }
-
-
-            // ----------------------------------------------
-            // ECHOLINK FILTER
-            // ----------------------------------------------
-
-            var echoLinkFilter =
-                document.getElementById(
-                    "echoLinkSelect"
-                ).value;
-
-
-            if (
-                visible
-                &&
-                echoLinkFilter === "yes"
-                &&
-                !item.repeater.echoLink
-            ) {
-
-                visible = false;
+                visible =
+                    false;
 
             }
 
 
             if (
-                visible
+                echoLinkFilter
+                ===
+                "no"
                 &&
-                echoLinkFilter === "no"
-                &&
-                item.repeater.echoLink
+                repeater.echoLink
             ) {
 
-                visible = false;
+                visible =
+                    false;
 
             }
 
 
-            // ----------------------------------------------
-            // LOCATION / RADIUS FILTER
-            // ----------------------------------------------
+            /*
+             * Frequency
+             */
 
             if (
-                visible
+                frequencyFilter
                 &&
-                searchLocationState !== null
+                String(
+                    repeater.frequency
+                )
+                .toLowerCase()
+                .indexOf(
+                    frequencyFilter
+                )
+                ===
+                -1
             ) {
 
-                var distance =
-                    distanceMiles(
-                        searchLocationState.lat,
-                        searchLocationState.lon,
-                        item.repeater.lat,
-                        item.repeater.lon
-                    );
-
-
-                if (
-                    distance > radius
-                ) {
-
-                    visible = false;
-
-                }
+                visible =
+                    false;
 
             }
 
 
-            // ----------------------------------------------
-            // ACTUALLY ADD / REMOVE MARKER
-            // ----------------------------------------------
+            /*
+             * Show/hide marker.
+             */
 
             if (visible) {
 
                 if (
-                    !map_dff83af7730502014b2d5c160d526606.hasLayer(
+                    !map.hasLayer(
                         item.marker
                     )
                 ) {
 
                     item.marker.addTo(
-                        map_dff83af7730502014b2d5c160d526606
+                        map
                     );
 
                 }
@@ -1429,12 +1192,12 @@ function updateMarkers() {
             } else {
 
                 if (
-                    map_dff83af7730502014b2d5c160d526606.hasLayer(
+                    map.hasLayer(
                         item.marker
                     )
                 ) {
 
-                    map_dff83af7730502014b2d5c160d526606.removeLayer(
+                    map.removeLayer(
                         item.marker
                     );
 
@@ -1448,35 +1211,32 @@ function updateMarkers() {
 
     updateMarkerPositions();
 
-    updateLinkedHighlight();
-
 }
 
 
-// ==========================================================
-// SEARCH LOCATION
-// ==========================================================
+/* ========================================================
+   LOCATION SEARCH
+   ======================================================== */
 
 function searchLocation() {
 
     var query =
-        document.getElementById(
-            "locationInput"
-        ).value.trim();
+        document
+            .getElementById(
+                "location-search"
+            )
+            .value
+            .trim();
 
 
     if (!query) {
-
-        alert(
-            "Enter a location name first."
-        );
 
         return;
 
     }
 
 
-    var url =
+    fetch(
         "https://nominatim.openstreetmap.org/search"
         +
         "?format=json"
@@ -1487,37 +1247,28 @@ function searchLocation() {
         +
         encodeURIComponent(
             query
-        );
+        )
+    )
+    .then(
+        function(response) {
 
+            return response.json();
 
-    fetch(
-        url,
-        {
-            headers: {
-                "Accept":
-                    "application/json"
-            }
         }
     )
-
     .then(
-        response =>
-            response.json()
-    )
-
-    .then(
-        function(data) {
+        function(results) {
 
             if (
-                !data
+                !results
                 ||
-                data.length === 0
+                results.length
+                ===
+                0
             ) {
 
                 alert(
-                    "Location not found. "
-                    +
-                    "Please check spelling."
+                    "Location not found."
                 );
 
                 return;
@@ -1525,157 +1276,79 @@ function searchLocation() {
             }
 
 
-            var lat =
+            var latitude =
                 parseFloat(
-                    data[0].lat
+                    results[0].lat
                 );
 
 
-            var lon =
+            var longitude =
                 parseFloat(
-                    data[0].lon
+                    results[0].lon
                 );
 
 
-            searchLocationState = {
+            searchLocationState =
+                {
+                    latitude:
+                        latitude,
 
-                lat: lat,
-                lon: lon
-
-            };
-
-
-            var radius =
-                parseFloat(
-                    document.getElementById(
-                        "radiusSelect"
-                    ).value
-                );
+                    longitude:
+                        longitude
+                };
 
 
-            map_dff83af7730502014b2d5c160d526606.setView(
-                [
-                    lat,
-                    lon
-                ],
-                10
-            );
+            if (searchMarker) {
 
-
-            // ------------------------------------------
-            // REMOVE OLD SEARCH MARKER
-            // ------------------------------------------
-
-            if (
-                searchMarker !== null
-            ) {
-
-                map_dff83af7730502014b2d5c160d526606.removeLayer(
+                map.removeLayer(
                     searchMarker
                 );
 
             }
 
 
-            // ------------------------------------------
-            // REMOVE OLD RADIUS CIRCLE
-            // ------------------------------------------
-
-            if (
-                radiusCircle !== null
-            ) {
-
-                map_dff83af7730502014b2d5c160d526606.removeLayer(
-                    radiusCircle
-                );
-
-            }
-
-
-            // ------------------------------------------
-            // ADD SEARCH LOCATION MARKER
-            // ------------------------------------------
-
             searchMarker =
                 L.marker(
                     [
-                        lat,
-                        lon
+                        latitude,
+                        longitude
                     ],
                     {
-
-                        icon:
-                            L.divIcon({
-
-                                className:
-                                    "search-location-marker",
-
-                                html:
-                                    '<div style="font-size:28px;">📍</div>',
-
-                                iconSize:
-                                    [30, 30],
-
-                                iconAnchor:
-                                    [15, 30]
-
-                            })
-
+                        title:
+                            "Search location"
                     }
                 ).addTo(
-                    map_dff83af7730502014b2d5c160d526606
+                    map
                 );
 
 
-            searchMarker.bindPopup(
-                "<b>"
-                +
-                query
-                +
-                "</b>"
+            var radius =
+                parseFloat(
+                    document
+                        .getElementById(
+                            "radius-select"
+                        )
+                        .value
+                );
+
+
+            map.setView(
+                [
+                    latitude,
+                    longitude
+                ],
+                10
             );
 
 
-            // ------------------------------------------
-            // ADD RADIUS CIRCLE
-            // ------------------------------------------
-
-            radiusCircle =
-                L.circle(
-                    [
-                        lat,
-                        lon
-                    ],
-                    {
-
-                        radius:
-                            radius *
-                            1609.344,
-
-                        color:
-                            "#3b82f6",
-
-                        weight:
-                            1,
-
-                        fillOpacity:
-                            0.05
-
-                    }
-                ).addTo(
-                    map_dff83af7730502014b2d5c160d526606
-                );
-
-
-            // ------------------------------------------
-            // APPLY FILTERS
-            // ------------------------------------------
-
-            updateMarkers();
+            applyRadiusFilter(
+                latitude,
+                longitude,
+                radius
+            );
 
         }
     )
-
     .catch(
         function(error) {
 
@@ -1684,9 +1357,7 @@ function searchLocation() {
             );
 
             alert(
-                "Unable to search "
-                +
-                "for that location."
+                "Location search failed."
             );
 
         }
@@ -1695,245 +1366,247 @@ function searchLocation() {
 }
 
 
-// ==========================================================
-// CLEAR ALL FILTERS
-// ==========================================================
+/* ========================================================
+   RADIUS FILTER
+   ======================================================== */
 
-function clearSearch() {
+function applyRadiusFilter(
+    latitude,
+    longitude,
+    radiusMiles
+) {
 
-    document.getElementById(
-        "locationInput"
-    ).value = "";
+    markerLayers.forEach(
+        function(item) {
 
-
-    document.getElementById(
-        "frequencyInput"
-    ).value = "";
-
-
-    document.getElementById(
-        "echoLinkSelect"
-    ).value = "all";
+            var repeater =
+                item.repeater;
 
 
-    searchLocationState = null;
-
-    selectedLinkedCallSign = null;
-
-
-    if (
-        searchMarker !== null
-    ) {
-
-        map_dff83af7730502014b2d5c160d526606.removeLayer(
-            searchMarker
-        );
-
-        searchMarker = null;
-
-    }
+            var distance =
+                map.distance(
+                    [
+                        latitude,
+                        longitude
+                    ],
+                    [
+                        repeater.latitude,
+                        repeater.longitude
+                    ]
+                )
+                /
+                1609.344;
 
 
-    if (
-        radiusCircle !== null
-    ) {
+            if (
+                distance
+                <=
+                radiusMiles
+            ) {
 
-        map_dff83af7730502014b2d5c160d526606.removeLayer(
-            radiusCircle
-        );
+                if (
+                    !map.hasLayer(
+                        item.marker
+                    )
+                ) {
 
-        radiusCircle = null;
+                    item.marker.addTo(
+                        map
+                    );
 
-    }
+                }
 
+            } else {
 
-    // Restore all bands
-    document.getElementById(
-        "allBand"
-    ).checked = true;
+                if (
+                    map.hasLayer(
+                        item.marker
+                    )
+                ) {
 
+                    map.removeLayer(
+                        item.marker
+                    );
 
-    document.querySelectorAll(
-        ".bandCheckbox"
-    ).forEach(
-        function(checkbox) {
+                }
 
-            checkbox.checked = true;
+            }
 
         }
     );
 
 
-    map_dff83af7730502014b2d5c160d526606.setView(
-        [
-            40.1,
-            -76.5
-        ],
-        8
-    );
-
-
-    updateMarkers();
+    updateMarkerPositions();
 
 }
 
 
-// ==========================================================
-// ECHOLINK FILTER CHANGE
-// ==========================================================
+/* ========================================================
+   ENTER KEY
+   ======================================================== */
 
-document.getElementById(
-    "echoLinkSelect"
-).addEventListener(
-    "change",
-    function() {
-
-        updateMarkers();
-
-    }
-);
-
-
-// ==========================================================
-// RADIUS CHANGE
-// ==========================================================
-
-document.getElementById(
-    "radiusSelect"
-).addEventListener(
-    "change",
-    function() {
-
-        if (
-            searchLocationState !== null
-        ) {
-
-            var radius =
-                parseFloat(
-                    document.getElementById(
-                        "radiusSelect"
-                    ).value
-                );
-
+document
+    .getElementById(
+        "location-search"
+    )
+    .addEventListener(
+        "keydown",
+        function(event) {
 
             if (
-                radiusCircle !== null
+                event.key
+                ===
+                "Enter"
             ) {
 
-                radiusCircle.setRadius(
-                    radius *
-                    1609.344
+                searchLocation();
+
+            }
+
+        }
+    );
+
+
+/* ========================================================
+   CLEAR
+   ======================================================== */
+
+function clearSearch() {
+
+    document
+        .getElementById(
+            "location-search"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "frequency-filter"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "radius-select"
+        )
+        .value =
+        "25";
+
+
+    document
+        .getElementById(
+            "band-all"
+        )
+        .checked =
+        true;
+
+
+    document
+        .querySelectorAll(
+            ".band-filter"
+        )
+        .forEach(
+            function(box) {
+
+                box.checked =
+                    true;
+
+            }
+        );
+
+
+    document
+        .querySelector(
+            'input[name="echolink"][value="all"]'
+        )
+        .checked =
+        true;
+
+
+    /*
+     * Remove linked-group selection.
+     */
+
+    selectedLinkedCallSign =
+        null;
+
+
+    /*
+     * Remove search marker.
+     */
+
+    if (searchMarker) {
+
+        map.removeLayer(
+            searchMarker
+        );
+
+        searchMarker =
+            null;
+
+    }
+
+
+    searchLocationState =
+        null;
+
+
+    /*
+     * Restore all markers.
+     */
+
+    markerLayers.forEach(
+        function(item) {
+
+            if (
+                !map.hasLayer(
+                    item.marker
+                )
+            ) {
+
+                item.marker.addTo(
+                    map
                 );
 
             }
 
         }
+    );
 
 
-        updateMarkers();
+    updateFilters();
 
-    }
-);
+    updateLinkedHighlight();
 
+    updateMarkerPositions();
 
-// ==========================================================
-// ENTER KEY - LOCATION SEARCH
-// ==========================================================
-
-document.getElementById(
-    "locationInput"
-).addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            searchLocation();
-
-        }
-
-    }
-);
-
-
-// ==========================================================
-// ENTER KEY - FREQUENCY SEARCH
-// ==========================================================
-
-document.getElementById(
-    "frequencyInput"
-).addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            document.getElementById(
-                "frequencyInput"
-            ).blur();
-
-        }
-
-    }
-);
-
-
-// ==========================================================
-// MAP ZOOM
-// ==========================================================
-
-map_dff83af7730502014b2d5c160d526606.on(
-    "zoomend",
-    function() {
-
-        updateMarkerPositions();
-
-    }
-);
-
-
-// ==========================================================
-// INITIAL UI STATE
-// ==========================================================
-
-document.getElementById(
-    "filterPanel"
-).style.display =
-    "block";
-
+}
 
 </script>
     
-            <div class="folium-map" id="map_dff83af7730502014b2d5c160d526606" ></div>
-        
-</body>
-<script>
-    
-    
-            var map_dff83af7730502014b2d5c160d526606 = L.map(
-                "map_dff83af7730502014b2d5c160d526606",
+            var map_7664a2512303823a09bccbd7367f98f7 = L.map(
+                "map_7664a2512303823a09bccbd7367f98f7",
                 {
-                    center: [40.1, -76.5],
+                    center: [40.05, -75.2],
                     crs: L.CRS.EPSG3857,
                     ...{
-  "zoom": 8,
+  "zoom": 9,
   "zoomControl": true,
   "preferCanvas": false,
 }
 
                 }
             );
-            L.control.scale().addTo(map_dff83af7730502014b2d5c160d526606);
 
             
 
         
     
-            var tile_layer_5bcf81478d0600462c4cf5e6dc6fda3a = L.tileLayer(
+            var tile_layer_bd013dad292dc9fa27a34b9434f536b0 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -1950,7 +1623,7 @@ document.getElementById(
             );
         
     
-            tile_layer_5bcf81478d0600462c4cf5e6dc6fda3a.addTo(map_dff83af7730502014b2d5c160d526606);
+            tile_layer_bd013dad292dc9fa27a34b9434f536b0.addTo(map_7664a2512303823a09bccbd7367f98f7);
         
 </script>
 </html>
