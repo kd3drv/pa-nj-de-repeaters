@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_c183b44bf7d14c48b298286fea1dd962 {
+                #map_7d07c7b887f4bbb7665bcf39d77db9c7 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -336,6 +336,41 @@
 .leaflet-popup-content hr {
 
     margin: 6px 0;
+}
+
+
+/* Count badge on pins that are stacked on top of each other */
+.stack-badge {
+
+    position: absolute;
+
+    top: -7px;
+
+    right: -9px;
+
+    min-width: 17px;
+
+    height: 17px;
+
+    padding: 0 4px;
+
+    box-sizing: border-box;
+
+    background: #dc2626;
+
+    color: #ffffff;
+
+    border: 1.5px solid #ffffff;
+
+    border-radius: 999px;
+
+    font: bold 10px/14px Arial, sans-serif;
+
+    text-align: center;
+
+    pointer-events: none;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -733,6 +768,8 @@ fetch("repeaters.json")
 
             initMarkers();
 
+            settleMap();
+
         }
     )
 
@@ -759,12 +796,12 @@ function initMarkers() {
         function(item) {
 
             if (
-                map_c183b44bf7d14c48b298286fea1dd962.hasLayer(
+                map_7d07c7b887f4bbb7665bcf39d77db9c7.hasLayer(
                     item.marker
                 )
             ) {
 
-                map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
+                map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
                     item.marker
                 );
 
@@ -892,7 +929,7 @@ function initMarkers() {
 
 
             marker.addTo(
-                map_c183b44bf7d14c48b298286fea1dd962
+                map_7d07c7b887f4bbb7665bcf39d77db9c7
             );
 
 
@@ -1093,9 +1130,9 @@ document.getElementById(
         }
 
         // Close the info card so the whole network is visible
-        map_c183b44bf7d14c48b298286fea1dd962.closePopup();
+        map_7d07c7b887f4bbb7665bcf39d77db9c7.closePopup();
 
-        map_c183b44bf7d14c48b298286fea1dd962.fitBounds(
+        map_7d07c7b887f4bbb7665bcf39d77db9c7.fitBounds(
             L.latLngBounds(points),
             {
                 padding: [50, 50],
@@ -1141,14 +1178,16 @@ function setMarkerPosition(marker, lat, lon) {
 function updateMarkerPositions() {
 
     var zoom =
-        map_c183b44bf7d14c48b298286fea1dd962.getZoom();
+        map_7d07c7b887f4bbb7665bcf39d77db9c7.getZoom();
 
+    // Fully fanned out from zoom 8 (was 9): typical metro views
+    // no longer show a stack as a single pin.
     var spreadFactor =
         Math.max(
             0,
             Math.min(
                 1,
-                (zoom - 6) / 3
+                (zoom - 6) / 2
             )
         );
 
@@ -1160,7 +1199,7 @@ function updateMarkerPositions() {
         function(item, index) {
 
             if (
-                !map_c183b44bf7d14c48b298286fea1dd962.hasLayer(
+                !map_7d07c7b887f4bbb7665bcf39d77db9c7.hasLayer(
                     item.marker
                 )
             ) {
@@ -1194,73 +1233,109 @@ function updateMarkerPositions() {
         }
     );
 
+    var wantRaised = markerLayers.map(
+        function() {
+            return false;
+        }
+    );
 
-    // ...then fan out stacked groups in a ring
-    if (spreadFactor > 0) {
 
-        Object.keys(groups).forEach(
-            function(key) {
+    // ...then fan out stacked groups in concentric rings
+    Object.keys(groups).forEach(
+        function(key) {
 
-                var indexes = groups[key];
+            var indexes = groups[key];
 
-                var count = indexes.length;
+            var count = indexes.length;
 
-                if (count <= 1) {
-                    return;
-                }
+            if (count <= 1) {
+                return;
+            }
 
-                // Ring grows with the number of pins so a big
-                // stack never collapses into one blob
-                var radius =
+            // The first pin of a stack is raised so its badge
+            // and click target are always on top
+            wantRaised[indexes[0]] = true;
+
+            if (spreadFactor === 0) {
+                return;
+            }
+
+            var placed = 0;
+
+            var ring = 0;
+
+            while (placed < count) {
+
+                var baseRadius = 26 + ring * 24;
+
+                var capacity =
                     Math.max(
-                        26,
-                        (count * 22) / (2 * Math.PI)
+                        6,
+                        Math.floor(
+                            (2 * Math.PI * baseRadius) / 22
+                        )
+                    );
+
+                var inRing =
+                    Math.min(
+                        capacity,
+                        count - placed
+                    );
+
+                var ringRadius =
+                    Math.max(
+                        baseRadius,
+                        (inRing * 22) / (2 * Math.PI)
                     )
                     *
                     spreadFactor;
 
-                indexes.forEach(
-                    function(markerIndex, position) {
+                for (var k = 0; k < inRing; k++) {
 
-                        var item =
-                            markerLayers[markerIndex];
+                    var markerIndex =
+                        indexes[placed + k];
 
-                        var angle =
-                            (
-                                2 * Math.PI *
-                                position / count
+                    var item =
+                        markerLayers[markerIndex];
+
+                    var angle =
+                        (2 * Math.PI * k / inRing)
+                        -
+                        Math.PI / 2
+                        +
+                        (ring % 2) * (Math.PI / inRing);
+
+                    var point =
+                        map_7d07c7b887f4bbb7665bcf39d77db9c7.latLngToLayerPoint(
+                            L.latLng(
+                                item.repeater.lat,
+                                item.repeater.lon
                             )
-                            -
-                            Math.PI / 2;
+                        );
 
-                        var point =
-                            map_c183b44bf7d14c48b298286fea1dd962.latLngToLayerPoint(
-                                L.latLng(
-                                    item.repeater.lat,
-                                    item.repeater.lon
-                                )
-                            );
+                    point.x += Math.cos(angle) * ringRadius;
+                    point.y += Math.sin(angle) * ringRadius;
 
-                        point.x += Math.cos(angle) * radius;
-                        point.y += Math.sin(angle) * radius;
+                    var offset =
+                        map_7d07c7b887f4bbb7665bcf39d77db9c7.layerPointToLatLng(
+                            point
+                        );
 
-                        var offset =
-                            map_c183b44bf7d14c48b298286fea1dd962.layerPointToLatLng(
-                                point
-                            );
+                    targets[markerIndex] = [
+                        offset.lat,
+                        offset.lng
+                    ];
 
-                        targets[markerIndex] = [
-                            offset.lat,
-                            offset.lng
-                        ];
+                }
 
-                    }
-                );
+                placed += inRing;
+
+                ring++;
 
             }
-        );
 
-    }
+        }
+    );
 
 
     markerLayers.forEach(
@@ -1272,8 +1347,74 @@ function updateMarkerPositions() {
                 targets[index][1]
             );
 
+            if (item.raised !== wantRaised[index]) {
+
+                item.raised = wantRaised[index];
+
+                item.marker.setZIndexOffset(
+                    wantRaised[index] ? 1000 : 0
+                );
+
+            }
+
         }
     );
+
+
+    // Count badges on stacks that are not fully fanned out
+    markerLayers.forEach(
+        function(item) {
+
+            var element =
+                item.marker.getElement();
+
+            if (!element) {
+                return;
+            }
+
+            var old =
+                element.querySelector(".stack-badge");
+
+            if (old) {
+                old.remove();
+            }
+
+        }
+    );
+
+    if (spreadFactor < 1) {
+
+        Object.keys(groups).forEach(
+            function(key) {
+
+                var indexes = groups[key];
+
+                if (indexes.length <= 1) {
+                    return;
+                }
+
+                var element =
+                    markerLayers[
+                        indexes[0]
+                    ].marker.getElement();
+
+                if (element) {
+
+                    element.insertAdjacentHTML(
+                        "beforeend",
+                        '<div class="stack-badge">'
+                        +
+                        indexes.length
+                        +
+                        '</div>'
+                    );
+
+                }
+
+            }
+        );
+
+    }
 
 }
 
@@ -1656,13 +1797,13 @@ function updateMarkers() {
             if (visible) {
 
                 if (
-                    !map_c183b44bf7d14c48b298286fea1dd962.hasLayer(
+                    !map_7d07c7b887f4bbb7665bcf39d77db9c7.hasLayer(
                         item.marker
                     )
                 ) {
 
                     item.marker.addTo(
-                        map_c183b44bf7d14c48b298286fea1dd962
+                        map_7d07c7b887f4bbb7665bcf39d77db9c7
                     );
 
                 }
@@ -1670,12 +1811,12 @@ function updateMarkers() {
             } else {
 
                 if (
-                    map_c183b44bf7d14c48b298286fea1dd962.hasLayer(
+                    map_7d07c7b887f4bbb7665bcf39d77db9c7.hasLayer(
                         item.marker
                     )
                 ) {
 
-                    map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
+                    map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
                         item.marker
                     );
 
@@ -1794,12 +1935,15 @@ function searchLocation() {
                 );
 
 
-            map_c183b44bf7d14c48b298286fea1dd962.setView(
+            map_7d07c7b887f4bbb7665bcf39d77db9c7.setView(
                 [
                     lat,
                     lon
                 ],
-                10
+                10,
+                {
+                    animate: false
+                }
             );
 
 
@@ -1811,7 +1955,7 @@ function searchLocation() {
                 searchMarker !== null
             ) {
 
-                map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
+                map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
                     searchMarker
                 );
 
@@ -1826,7 +1970,7 @@ function searchLocation() {
                 radiusCircle !== null
             ) {
 
-                map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
+                map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
                     radiusCircle
                 );
 
@@ -1864,7 +2008,7 @@ function searchLocation() {
 
                     }
                 ).addTo(
-                    map_c183b44bf7d14c48b298286fea1dd962
+                    map_7d07c7b887f4bbb7665bcf39d77db9c7
                 );
 
 
@@ -1904,7 +2048,7 @@ function searchLocation() {
 
                     }
                 ).addTo(
-                    map_c183b44bf7d14c48b298286fea1dd962
+                    map_7d07c7b887f4bbb7665bcf39d77db9c7
                 );
 
 
@@ -1968,7 +2112,7 @@ function clearSearch() {
         searchMarker !== null
     ) {
 
-        map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
+        map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
             searchMarker
         );
 
@@ -1981,7 +2125,7 @@ function clearSearch() {
         radiusCircle !== null
     ) {
 
-        map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
+        map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
             radiusCircle
         );
 
@@ -2007,12 +2151,15 @@ function clearSearch() {
     );
 
 
-    map_c183b44bf7d14c48b298286fea1dd962.setView(
+    map_7d07c7b887f4bbb7665bcf39d77db9c7.setView(
         [
             40.1,
             -76.5
         ],
-        8
+        8,
+        {
+            animate: false
+        }
     );
 
 
@@ -2129,9 +2276,30 @@ document.getElementById(
 // MAP ZOOM
 // ==========================================================
 
+// Re-measure the map and re-lay-out pins once the page has settled
+// (mobile address bars, late layout, rotation, etc.)
+function settleMap() {
+
+    map_7d07c7b887f4bbb7665bcf39d77db9c7.invalidateSize();
+
+    updateMarkerPositions();
+
+}
+
+setTimeout(settleMap, 300);
+
+setTimeout(settleMap, 1500);
+
+window.addEventListener("load", settleMap);
+
+window.addEventListener("resize", settleMap);
+
+window.addEventListener("orientationchange", settleMap);
+
+
 // moveend also fires after zoom and after search / fit animations,
 // so pins are always re-spread once the map has settled.
-map_c183b44bf7d14c48b298286fea1dd962.on(
+map_7d07c7b887f4bbb7665bcf39d77db9c7.on(
     "moveend",
     function() {
 
@@ -2141,7 +2309,7 @@ map_c183b44bf7d14c48b298286fea1dd962.on(
 );
 
 
-map_c183b44bf7d14c48b298286fea1dd962.on(
+map_7d07c7b887f4bbb7665bcf39d77db9c7.on(
     "zoomend",
     function() {
 
@@ -2155,7 +2323,7 @@ map_c183b44bf7d14c48b298286fea1dd962.on(
 // merely dismisses an open info card does not.
 var popupJustClosed = false;
 
-map_c183b44bf7d14c48b298286fea1dd962.on(
+map_7d07c7b887f4bbb7665bcf39d77db9c7.on(
     "popupclose",
     function() {
 
@@ -2171,7 +2339,7 @@ map_c183b44bf7d14c48b298286fea1dd962.on(
     }
 );
 
-map_c183b44bf7d14c48b298286fea1dd962.on(
+map_7d07c7b887f4bbb7665bcf39d77db9c7.on(
     "click",
     function() {
 
@@ -2199,14 +2367,14 @@ document.getElementById(
 
 </script>
     
-            <div class="folium-map" id="map_c183b44bf7d14c48b298286fea1dd962" ></div>
+            <div class="folium-map" id="map_7d07c7b887f4bbb7665bcf39d77db9c7" ></div>
         
 </body>
 <script>
     
     
-            var map_c183b44bf7d14c48b298286fea1dd962 = L.map(
-                "map_c183b44bf7d14c48b298286fea1dd962",
+            var map_7d07c7b887f4bbb7665bcf39d77db9c7 = L.map(
+                "map_7d07c7b887f4bbb7665bcf39d77db9c7",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -2218,13 +2386,13 @@ document.getElementById(
 
                 }
             );
-            L.control.scale().addTo(map_c183b44bf7d14c48b298286fea1dd962);
+            L.control.scale().addTo(map_7d07c7b887f4bbb7665bcf39d77db9c7);
 
             
 
         
     
-            var tile_layer_460565e6c84884284896cf07cf05fa5e = L.tileLayer(
+            var tile_layer_bf02be893538ab98a5b7ee9fcacae5ca = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -2241,7 +2409,7 @@ document.getElementById(
             );
         
     
-            tile_layer_460565e6c84884284896cf07cf05fa5e.addTo(map_c183b44bf7d14c48b298286fea1dd962);
+            tile_layer_bf02be893538ab98a5b7ee9fcacae5ca.addTo(map_7d07c7b887f4bbb7665bcf39d77db9c7);
         
 </script>
 </html>
