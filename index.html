@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_5121ca2441886048d1c5b895b9aeff8e {
+                #map_c183b44bf7d14c48b298286fea1dd962 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -323,13 +323,91 @@
 }
 
 
-#filterPanel input[type="checkbox"] {
+/* Compact popups (important on phones) */
+.leaflet-popup-content {
 
-    margin-right: 8px;
+    margin: 10px 14px !important;
 
-    transform: scale(1.1);
+    font-size: 13px;
 
-    accent-color: #3b82f6;
+    line-height: 1.35;
+}
+
+.leaflet-popup-content hr {
+
+    margin: 6px 0;
+}
+
+
+/* Selected linked-network chip */
+#networkChip {
+
+    display: none;
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+
+    transform: translateX(-50%);
+
+    z-index: 1100;
+
+    align-items: center;
+
+    gap: 8px;
+
+    max-width: calc(100vw - 24px);
+
+    padding: 6px 8px 6px 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 999px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    color: #1e293b;
+}
+
+#networkChip.show {
+
+    display: flex;
+}
+
+#networkChip span {
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+#networkChip button {
+
+    border: 1px solid #cbd5e1;
+
+    background: #f1f5f9;
+
+    color: #334155;
+
+    border-radius: 999px;
+
+    padding: 5px 11px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
 }
 
 
@@ -681,12 +759,12 @@ function initMarkers() {
         function(item) {
 
             if (
-                map_5121ca2441886048d1c5b895b9aeff8e.hasLayer(
+                map_c183b44bf7d14c48b298286fea1dd962.hasLayer(
                     item.marker
                 )
             ) {
 
-                map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
+                map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
                     item.marker
                 );
 
@@ -765,7 +843,11 @@ function initMarkers() {
             marker.bindPopup(
                 L.popup(
                     {
-                        max_width: 350
+                        maxWidth: 250,
+                        maxHeight: Math.round(
+                            window.innerHeight * 0.45
+                        ),
+                        autoPanPadding: [20, 60]
                     }
                 ).setContent(
                     repeater.popup
@@ -809,35 +891,8 @@ function initMarkers() {
             );
 
 
-            marker.on(
-                "popupclose",
-                function() {
-
-                    // Only clear if THIS marker is the selected one, so
-                    // switching directly between two repeaters in the
-                    // same network doesn't wipe the selection.
-                    if (
-                        selectedMarker === marker
-                    ) {
-
-                        selectedLinkedCallSign =
-                            null;
-
-                        selectedMarker =
-                            null;
-
-                        updateLinkedHighlight();
-
-                        updateMarkerPositions();
-
-                    }
-
-                }
-            );
-
-
             marker.addTo(
-                map_5121ca2441886048d1c5b895b9aeff8e
+                map_c183b44bf7d14c48b298286fea1dd962
             );
 
 
@@ -929,18 +984,164 @@ function updateLinkedHighlight() {
         }
     );
 
+
+    updateSelectionChip();
+
 }
+
+
+// ==========================================================
+// SELECTED NETWORK CHIP
+// (selection now stays after the info card is closed)
+// ==========================================================
+
+var selectionChip = document.createElement("div");
+
+selectionChip.id = "networkChip";
+
+selectionChip.innerHTML =
+    '<span id="networkChipText"></span>'
+    +
+    '<button type="button" id="networkFitBtn">Fit</button>'
+    +
+    '<button type="button" id="networkClearBtn" '
+    +
+    'aria-label="Clear selection">&#10005;</button>';
+
+document.body.appendChild(selectionChip);
+
+L.DomEvent.disableClickPropagation(selectionChip);
+
+
+function getNetworkLatLngs(callSign) {
+
+    return repeaterData
+        .filter(
+            function(r) {
+                return r.linkedRepeater
+                    && r.callSign === callSign;
+            }
+        )
+        .map(
+            function(r) {
+                return [r.lat, r.lon];
+            }
+        );
+
+}
+
+
+function clearNetworkSelection() {
+
+    selectedLinkedCallSign = null;
+
+    selectedMarker = null;
+
+    updateLinkedHighlight();
+
+}
+
+
+function updateSelectionChip() {
+
+    if (selectedLinkedCallSign === null) {
+
+        selectionChip.classList.remove("show");
+
+        return;
+
+    }
+
+    var count =
+        getNetworkLatLngs(
+            selectedLinkedCallSign
+        ).length;
+
+    document.getElementById(
+        "networkChipText"
+    ).textContent =
+        selectedLinkedCallSign
+        +
+        " network ("
+        +
+        count
+        +
+        " sites)";
+
+    selectionChip.classList.add("show");
+
+}
+
+
+document.getElementById(
+    "networkFitBtn"
+).addEventListener(
+    "click",
+    function() {
+
+        if (selectedLinkedCallSign === null) {
+            return;
+        }
+
+        var points =
+            getNetworkLatLngs(
+                selectedLinkedCallSign
+            );
+
+        if (points.length === 0) {
+            return;
+        }
+
+        // Close the info card so the whole network is visible
+        map_c183b44bf7d14c48b298286fea1dd962.closePopup();
+
+        map_c183b44bf7d14c48b298286fea1dd962.fitBounds(
+            L.latLngBounds(points),
+            {
+                padding: [50, 50],
+                maxZoom: 12
+            }
+        );
+
+    }
+);
+
+
+document.getElementById(
+    "networkClearBtn"
+).addEventListener(
+    "click",
+    clearNetworkSelection
+);
 
 
 // ==========================================================
 // SPREAD CO-LOCATED MARKERS
 // ==========================================================
 
+function setMarkerPosition(marker, lat, lon) {
+
+    // Only touch the marker if its position really changes.
+    // (Avoids needless popup re-layout / auto-pan loops.)
+    var current = marker.getLatLng();
+
+    if (
+        Math.abs(current.lat - lat) < 1e-9
+        &&
+        Math.abs(current.lng - lon) < 1e-9
+    ) {
+        return;
+    }
+
+    marker.setLatLng([lat, lon]);
+
+}
+
+
 function updateMarkerPositions() {
 
     var zoom =
-        map_5121ca2441886048d1c5b895b9aeff8e.getZoom();
-
+        map_c183b44bf7d14c48b298286fea1dd962.getZoom();
 
     var spreadFactor =
         Math.max(
@@ -952,22 +1153,19 @@ function updateMarkerPositions() {
         );
 
 
+    // Group visible markers that share exact coordinates
     var groups = {};
-
 
     markerLayers.forEach(
         function(item, index) {
 
             if (
-                !map_5121ca2441886048d1c5b895b9aeff8e.hasLayer(
+                !map_c183b44bf7d14c48b298286fea1dd962.hasLayer(
                     item.marker
                 )
             ) {
-
                 return;
-
             }
-
 
             var key =
                 item.repeater.lat.toFixed(7)
@@ -976,13 +1174,9 @@ function updateMarkerPositions() {
                 +
                 item.repeater.lon.toFixed(7);
 
-
             if (!groups[key]) {
-
                 groups[key] = [];
-
             }
-
 
             groups[key].push(index);
 
@@ -990,106 +1184,92 @@ function updateMarkerPositions() {
     );
 
 
-    markerLayers.forEach(
+    // Start every marker at its true position...
+    var targets = markerLayers.map(
         function(item) {
-
-            item.marker.setZIndexOffset(0);
-
-            item.marker.setLatLng([
+            return [
                 item.repeater.lat,
                 item.repeater.lon
-            ]);
-
+            ];
         }
     );
 
 
-    Object.keys(groups).forEach(
-        function(key) {
+    // ...then fan out stacked groups in a ring
+    if (spreadFactor > 0) {
 
-            var indexes =
-                groups[key];
+        Object.keys(groups).forEach(
+            function(key) {
 
+                var indexes = groups[key];
 
-            if (
-                indexes.length <= 1
-            ) {
+                var count = indexes.length;
 
-                return;
+                if (count <= 1) {
+                    return;
+                }
 
-            }
+                // Ring grows with the number of pins so a big
+                // stack never collapses into one blob
+                var radius =
+                    Math.max(
+                        26,
+                        (count * 22) / (2 * Math.PI)
+                    )
+                    *
+                    spreadFactor;
 
+                indexes.forEach(
+                    function(markerIndex, position) {
 
-            var count =
-                indexes.length;
+                        var item =
+                            markerLayers[markerIndex];
 
+                        var angle =
+                            (
+                                2 * Math.PI *
+                                position / count
+                            )
+                            -
+                            Math.PI / 2;
 
-            var radius =
-                26 *
-                spreadFactor;
+                        var point =
+                            map_c183b44bf7d14c48b298286fea1dd962.latLngToLayerPoint(
+                                L.latLng(
+                                    item.repeater.lat,
+                                    item.repeater.lon
+                                )
+                            );
 
+                        point.x += Math.cos(angle) * radius;
+                        point.y += Math.sin(angle) * radius;
 
-            indexes.forEach(
-                function(
-                    markerIndex,
-                    position
-                ) {
+                        var offset =
+                            map_c183b44bf7d14c48b298286fea1dd962.layerPointToLatLng(
+                                point
+                            );
 
-                    if (
-                        radius === 0
-                    ) {
-
-                        return;
+                        targets[markerIndex] = [
+                            offset.lat,
+                            offset.lng
+                        ];
 
                     }
+                );
+
+            }
+        );
+
+    }
 
 
-                    var angle =
-                        (
-                            2 *
-                            Math.PI *
-                            position /
-                            count
-                        )
-                        -
-                        Math.PI / 2;
+    markerLayers.forEach(
+        function(item, index) {
 
-
-                    var center =
-                        markerLayers[
-                            markerIndex
-                        ].marker.getLatLng();
-
-
-                    var point =
-                        map_5121ca2441886048d1c5b895b9aeff8e.latLngToLayerPoint(
-                            center
-                        );
-
-
-                    point.x +=
-                        Math.cos(angle) *
-                        radius;
-
-
-                    point.y +=
-                        Math.sin(angle) *
-                        radius;
-
-
-                    var offsetLatLng =
-                        map_5121ca2441886048d1c5b895b9aeff8e.layerPointToLatLng(
-                            point
-                        );
-
-
-                    markerLayers[
-                        markerIndex
-                    ].marker.setLatLng(
-                        offsetLatLng
-                    );
-
-                }
+            setMarkerPosition(
+                item.marker,
+                targets[index][0],
+                targets[index][1]
             );
 
         }
@@ -1476,13 +1656,13 @@ function updateMarkers() {
             if (visible) {
 
                 if (
-                    !map_5121ca2441886048d1c5b895b9aeff8e.hasLayer(
+                    !map_c183b44bf7d14c48b298286fea1dd962.hasLayer(
                         item.marker
                     )
                 ) {
 
                     item.marker.addTo(
-                        map_5121ca2441886048d1c5b895b9aeff8e
+                        map_c183b44bf7d14c48b298286fea1dd962
                     );
 
                 }
@@ -1490,12 +1670,12 @@ function updateMarkers() {
             } else {
 
                 if (
-                    map_5121ca2441886048d1c5b895b9aeff8e.hasLayer(
+                    map_c183b44bf7d14c48b298286fea1dd962.hasLayer(
                         item.marker
                     )
                 ) {
 
-                    map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
+                    map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
                         item.marker
                     );
 
@@ -1614,7 +1794,7 @@ function searchLocation() {
                 );
 
 
-            map_5121ca2441886048d1c5b895b9aeff8e.setView(
+            map_c183b44bf7d14c48b298286fea1dd962.setView(
                 [
                     lat,
                     lon
@@ -1631,7 +1811,7 @@ function searchLocation() {
                 searchMarker !== null
             ) {
 
-                map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
+                map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
                     searchMarker
                 );
 
@@ -1646,7 +1826,7 @@ function searchLocation() {
                 radiusCircle !== null
             ) {
 
-                map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
+                map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
                     radiusCircle
                 );
 
@@ -1684,7 +1864,7 @@ function searchLocation() {
 
                     }
                 ).addTo(
-                    map_5121ca2441886048d1c5b895b9aeff8e
+                    map_c183b44bf7d14c48b298286fea1dd962
                 );
 
 
@@ -1724,7 +1904,7 @@ function searchLocation() {
 
                     }
                 ).addTo(
-                    map_5121ca2441886048d1c5b895b9aeff8e
+                    map_c183b44bf7d14c48b298286fea1dd962
                 );
 
 
@@ -1788,7 +1968,7 @@ function clearSearch() {
         searchMarker !== null
     ) {
 
-        map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
+        map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
             searchMarker
         );
 
@@ -1801,7 +1981,7 @@ function clearSearch() {
         radiusCircle !== null
     ) {
 
-        map_5121ca2441886048d1c5b895b9aeff8e.removeLayer(
+        map_c183b44bf7d14c48b298286fea1dd962.removeLayer(
             radiusCircle
         );
 
@@ -1827,7 +2007,7 @@ function clearSearch() {
     );
 
 
-    map_5121ca2441886048d1c5b895b9aeff8e.setView(
+    map_c183b44bf7d14c48b298286fea1dd962.setView(
         [
             40.1,
             -76.5
@@ -1949,11 +2129,59 @@ document.getElementById(
 // MAP ZOOM
 // ==========================================================
 
-map_5121ca2441886048d1c5b895b9aeff8e.on(
+// moveend also fires after zoom and after search / fit animations,
+// so pins are always re-spread once the map has settled.
+map_c183b44bf7d14c48b298286fea1dd962.on(
+    "moveend",
+    function() {
+
+        updateMarkerPositions();
+
+    }
+);
+
+
+map_c183b44bf7d14c48b298286fea1dd962.on(
     "zoomend",
     function() {
 
         updateMarkerPositions();
+
+    }
+);
+
+
+// Tapping empty map clears the selected network, but the tap that
+// merely dismisses an open info card does not.
+var popupJustClosed = false;
+
+map_c183b44bf7d14c48b298286fea1dd962.on(
+    "popupclose",
+    function() {
+
+        popupJustClosed = true;
+
+        setTimeout(
+            function() {
+                popupJustClosed = false;
+            },
+            0
+        );
+
+    }
+);
+
+map_c183b44bf7d14c48b298286fea1dd962.on(
+    "click",
+    function() {
+
+        if (popupJustClosed) {
+            return;
+        }
+
+        if (selectedLinkedCallSign !== null) {
+            clearNetworkSelection();
+        }
 
     }
 );
@@ -1971,14 +2199,14 @@ document.getElementById(
 
 </script>
     
-            <div class="folium-map" id="map_5121ca2441886048d1c5b895b9aeff8e" ></div>
+            <div class="folium-map" id="map_c183b44bf7d14c48b298286fea1dd962" ></div>
         
 </body>
 <script>
     
     
-            var map_5121ca2441886048d1c5b895b9aeff8e = L.map(
-                "map_5121ca2441886048d1c5b895b9aeff8e",
+            var map_c183b44bf7d14c48b298286fea1dd962 = L.map(
+                "map_c183b44bf7d14c48b298286fea1dd962",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -1990,13 +2218,13 @@ document.getElementById(
 
                 }
             );
-            L.control.scale().addTo(map_5121ca2441886048d1c5b895b9aeff8e);
+            L.control.scale().addTo(map_c183b44bf7d14c48b298286fea1dd962);
 
             
 
         
     
-            var tile_layer_490dffc868aa192d622b87df12599eff = L.tileLayer(
+            var tile_layer_460565e6c84884284896cf07cf05fa5e = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -2013,7 +2241,7 @@ document.getElementById(
             );
         
     
-            tile_layer_490dffc868aa192d622b87df12599eff.addTo(map_5121ca2441886048d1c5b895b9aeff8e);
+            tile_layer_460565e6c84884284896cf07cf05fa5e.addTo(map_c183b44bf7d14c48b298286fea1dd962);
         
 </script>
 </html>
