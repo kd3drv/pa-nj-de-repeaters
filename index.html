@@ -3,6 +3,7 @@
 <head>
     
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>PA/NJ Repeater Map</title><meta name="theme-color" content="#ffffff">
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -17,7 +18,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_7d07c7b887f4bbb7665bcf39d77db9c7 {
+                #map_f7b2dc187924d4bc996d783c316d1369 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,2327 +55,1526 @@
 <body>
     
     
-
 <style>
-
-#filterButton {
-
-    position: fixed;
-
-    top: 12px;
-    left: 12px;
-
-    z-index: 9999;
-
-    background: #ffffff;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 8px;
-
-    padding: 10px 14px;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    color: #1e293b;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 4px 6px -1px rgba(0,0,0,0.1),
-        0 2px 4px -1px rgba(0,0,0,0.06);
-
-    transition: background 0.2s;
+:root {
+    --ink: #0f172a;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --accent: #2563eb;
+    --bar-h: 52px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+html, body { height: 100%; margin: 0; }
 
-#filterButton:hover {
+body { font-family: Arial, Helvetica, sans-serif; }
 
-    background: #f8fafc;
+/* Keep Leaflet's zoom buttons below the header */
+.leaflet-top { margin-top: calc(var(--bar-h) + var(--safe-top) + 6px); }
 
-}
-
-
-#filterPanel {
-
-    position: fixed;
-
-    top: 62px;
-    left: 12px;
-
-    z-index: 9998;
-
-    background: #ffffff;
-
-    padding: 16px;
-
-    width: 260px;
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 10px 15px -3px rgba(0,0,0,0.1),
-        0 4px 6px -2px rgba(0,0,0,0.05);
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        sans-serif;
-
-    font-size: 13px;
-
-    color: #334155;
-
-    max-height:
-        calc(100vh - 90px);
-
-    overflow-y: auto;
-
-    border:
-        1px solid #e2e8f0;
-}
-
-
-.filterTitle {
-
-    font-weight: 700;
-
-    font-size: 15px;
-
-    margin-bottom: 12px;
-
-    color: #0f172a;
-
-    border-bottom:
-        1px solid #f1f5f9;
-
-    padding-bottom: 8px;
-}
-
-
-.sectionTitle {
-
-    font-weight: 600;
-
-    margin-top: 10px;
-
-    margin-bottom: 4px;
-
-    color: #475569;
-}
-
-
-#filterPanel input[type="text"] {
-
-    width: 100%;
-
-    padding: 7px 10px;
-
-    margin-top: 2px;
-
-    margin-bottom: 6px;
-
+/* ---------- Header ---------- */
+#topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1200;
+    height: calc(var(--bar-h) + var(--safe-top));
+    padding: var(--safe-top) 8px 0;
     box-sizing: border-box;
-
-    border:
-        1px solid #cbd5e1;
-
-    border-radius: 6px;
-
-    font-size: 13px;
+    display: flex; align-items: center; gap: 6px;
+    background: #ffffff; color: var(--ink);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
 
-
-#filterPanel input[type="text"]:focus {
-
-    outline: none;
-
-    border-color: #3b82f6;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(59,130,246,0.1);
-}
-
-
-#filterPanel select {
-
-    width: 100%;
-
-    padding: 7px 10px;
-
-    margin-top: 2px;
-
-    margin-bottom: 10px;
-
-    border:
-        1px solid #cbd5e1;
-
-    border-radius: 6px;
-
-    background: #fff;
-
-    font-size: 13px;
-}
-
-
-#filterPanel label {
-
-    display: flex;
-
-    align-items: center;
-
-    margin-bottom: 6px;
-
+.tb-btn {
+    position: relative; flex: none;
+    height: 38px; padding: 0 12px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #f8fafc; color: var(--ink);
+    border: 1px solid var(--line); border-radius: 10px;
+    font: 600 14px Arial, Helvetica, sans-serif;
     cursor: pointer;
+}
+.tb-btn:hover { background: #eef2f7; }
+.tb-btn.icon { width: 38px; padding: 0; justify-content: center; font-size: 18px; }
 
-    font-weight: 500;
+.brand { flex: none; font-weight: 700; font-size: 15px; padding: 0 4px; white-space: nowrap; }
+
+#searchWrap {
+    flex: 1; min-width: 0; height: 38px; display: flex; align-items: center;
+    border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; overflow: hidden;
+}
+#searchWrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(37, 99, 235, .2); }
+#locationInput {
+    flex: 1; min-width: 0; height: 100%; border: 0; outline: 0;
+    padding: 0 10px; font-size: 16px; background: transparent; color: var(--ink);
+}
+.ghost {
+    flex: none; width: 38px; height: 100%; border: 0; background: transparent;
+    font-size: 17px; cursor: pointer; color: var(--ink);
+}
+.ghost:hover { background: #f1f5f9; }
+
+.badge {
+    position: absolute; top: -6px; right: -6px; min-width: 16px; padding: 0 4px;
+    box-sizing: border-box; border-radius: 999px;
+    background: #dc2626; color: #fff; font: 700 11px/16px Arial, sans-serif; text-align: center;
+}
+.badge:empty { display: none; }
+
+@media (max-width: 760px) {
+    .brand, .tb-btn .lbl { display: none; }
+    .tb-btn { padding: 0; width: 38px; justify-content: center; font-size: 18px; }
 }
 
+/* ---------- Menu ---------- */
+#menu {
+    display: none; position: fixed; z-index: 1300;
+    top: calc(var(--bar-h) + var(--safe-top) + 4px); left: 8px; min-width: 240px;
+    background: #fff; border-radius: 12px; padding: 6px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .3);
+}
+#menu.open { display: block; }
+.menu-item {
+    display: block; width: 100%; text-align: left; padding: 11px 12px;
+    background: none; border: 0; border-radius: 8px; cursor: pointer;
+    font: 500 15px Arial, sans-serif; color: var(--ink);
+}
+.menu-item:hover { background: #f1f5f9; }
 
-#filterPanel input[type="checkbox"] {
+/* ---------- Panels: sidebar on desktop, bottom sheet on phones ---------- */
+.panel {
+    position: fixed; z-index: 1150; display: flex; flex-direction: column;
+    background: #fff; color: var(--ink); box-sizing: border-box;
+    box-shadow: 0 0 18px rgba(0, 0, 0, .3);
+    transition: transform .22s ease; visibility: hidden;
+}
+.panel.open { visibility: visible; transform: none !important; }
 
-    margin-right: 8px;
-
-    transform: scale(1.1);
-
-    accent-color: #3b82f6;
+@media (min-width: 700px) {
+    .panel { top: calc(var(--bar-h) + var(--safe-top)); bottom: 0; width: 340px; }
+    #filterPanel { left: 0; transform: translateX(-105%); }
+    #listPanel { right: 0; transform: translateX(105%); }
+}
+@media (max-width: 699px) {
+    .panel {
+        left: 0; right: 0; bottom: 0; max-height: 72vh;
+        border-radius: 16px 16px 0 0; padding-bottom: var(--safe-bottom);
+        transform: translateY(105%);
+    }
 }
 
+.p-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-bottom: 1px solid var(--line); font-weight: 700; font-size: 16px;
+}
+.p-close { border: 0; background: #f1f5f9; border-radius: 999px; width: 32px; height: 32px; font-size: 16px; cursor: pointer; }
+.p-body { flex: 1; overflow-y: auto; padding: 12px 14px; -webkit-overflow-scrolling: touch; }
+.p-foot { padding: 10px 14px; border-top: 1px solid var(--line); display: flex; gap: 8px; }
 
-/* Linked repeater highlighting */
+.sec { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; }
+.sec:first-child { margin-top: 0; }
+.field { width: 100%; box-sizing: border-box; padding: 9px 10px; font-size: 16px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; color: var(--ink); }
+.chk { display: flex; align-items: center; gap: 10px; padding: 8px 2px; font-size: 15px; cursor: pointer; }
+.chk input { width: 18px; height: 18px; accent-color: var(--accent); margin: 0; }
+.chk .cnt { margin-left: auto; color: var(--muted); font-size: 13px; }
+.hint { color: var(--muted); font-size: 12px; margin-top: 4px; }
 
-/* Idle state: no repeater selected -> faint, slow glow on every linked repeater */
+.btn {
+    flex: 1; padding: 11px 12px; border-radius: 10px; border: 1px solid #cbd5e1;
+    background: #f1f5f9; color: #334155; font: 600 14px Arial, sans-serif; cursor: pointer;
+}
+.btn.primary { background: var(--accent); border-color: #1d4ed8; color: #fff; }
+
+/* ---------- List ---------- */
+.li { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 10px 2px; cursor: pointer; color: var(--ink); font-family: inherit; }
+.li:hover { background: #f8fafc; }
+.li-top { display: flex; justify-content: space-between; gap: 8px; }
+.li-call { font-weight: 700; font-size: 15px; }
+.li-dist { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.li-sub { color: var(--muted); font-size: 13px; margin-top: 1px; }
+.li-freqs { font-size: 13px; margin-top: 3px; }
+.empty { color: var(--muted); padding: 18px 4px; text-align: center; }
+
+/* ---------- Pills, toast, modal ---------- */
+#resultPill {
+    position: fixed; z-index: 1000; left: 50%; transform: translateX(-50%);
+    top: calc(var(--bar-h) + var(--safe-top) + 8px);
+    max-width: calc(100vw - 110px); padding: 5px 12px; border-radius: 999px;
+    background: rgba(255, 255, 255, .96); box-shadow: 0 1px 6px rgba(0, 0, 0, .3);
+    font: 600 12px Arial, sans-serif; color: var(--ink);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#resultPill.warn { background: #fff7ed; color: #9a3412; }
+
+#toast {
+    position: fixed; z-index: 2500; left: 50%; transform: translateX(-50%);
+    bottom: calc(76px + var(--safe-bottom)); max-width: calc(100vw - 32px);
+    padding: 10px 16px; border-radius: 10px; background: #0f172a; color: #fff;
+    font: 500 14px Arial, sans-serif; opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+#toast.show { opacity: 1; }
+
+#modal {
+    display: none; position: fixed; inset: 0; z-index: 2000; padding: 16px;
+    background: rgba(15, 23, 42, .55); align-items: center; justify-content: center;
+}
+#modal.open { display: flex; }
+.m-card {
+    background: #fff; color: var(--ink); width: 100%; max-width: 460px; max-height: 86vh;
+    overflow: auto; border-radius: 14px; padding: 18px; box-sizing: border-box; font-size: 14px; line-height: 1.5;
+}
+.m-card h2 { margin: 0 0 8px; font-size: 19px; }
+.m-card h3 { margin: 14px 0 6px; font-size: 14px; }
+.m-card a { color: var(--accent); }
+.m-row { display: flex; gap: 10px; align-items: flex-start; margin: 8px 0; }
+.m-row .ic { flex: none; width: 34px; text-align: center; }
+.m-actions { display: flex; gap: 8px; margin-top: 14px; }
+
+/* ---------- Tour ---------- */
+#tourOverlay { display: none; position: fixed; inset: 0; z-index: 2200; }
+#tourOverlay.open { display: block; }
+#tourOverlay.dim { background: rgba(15, 23, 42, .6); }
+#tourSpot { position: fixed; border-radius: 10px; box-shadow: 0 0 0 9999px rgba(15, 23, 42, .6); pointer-events: none; transition: all .2s; }
+#tourCard {
+    position: fixed; z-index: 2210; background: #fff; color: var(--ink); border-radius: 12px;
+    padding: 14px; box-sizing: border-box; box-shadow: 0 8px 28px rgba(0, 0, 0, .4); font-size: 14px; line-height: 1.45;
+}
+#tourCard h3 { margin: 0 0 4px; font-size: 16px; }
+.t-foot { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.t-foot .step { margin-right: auto; color: var(--muted); font-size: 12px; }
+.t-foot button { padding: 8px 14px; border-radius: 8px; border: 1px solid #cbd5e1; background: #f1f5f9; font: 600 13px Arial, sans-serif; cursor: pointer; }
+.t-foot button.primary { background: var(--accent); border-color: #1d4ed8; color: #fff; }
+
+/* ---------- Pins ---------- */
+.repeater-pin svg { display: block; width: 100%; height: 100%; }
+
+/* Linked network glow.
+   Idle: no repeater selected -> faint static glow.
+   Active: members of the selected network -> strong pulse.
+   Off: linked repeaters in some other network -> no glow. */
 .linked-repeater-marker {
-
-    animation:
-        linkedGlowIdle
-        3s
-        ease-in-out
-        infinite;
+    filter: drop-shadow(0 0 2px rgba(255, 200, 0, .65)) drop-shadow(0 0 4px rgba(255, 200, 0, .35));
 }
-
-
-/* Selected network: only members of the clicked repeater's network */
-.linked-repeater-marker.linked-repeater-active {
-
-    animation:
-        linkedGlowStrong
-        1.2s
-        ease-in-out
-        infinite;
-}
-
-
-/* A repeater is selected, but this linked repeater is NOT in its network */
-.linked-repeater-marker.linked-repeater-off {
-
-    animation: none;
-
-    filter: none;
-}
-
-
-@keyframes linkedGlowIdle {
-
-    0%, 100% {
-
-        filter:
-            drop-shadow(0 0 1px rgba(255, 212, 0, 0.35))
-            drop-shadow(0 0 2px rgba(255, 212, 0, 0.25));
-
-    }
-
-    50% {
-
-        filter:
-            drop-shadow(0 0 1px rgba(255, 212, 0, 0.55))
-            drop-shadow(0 0 4px rgba(255, 212, 0, 0.35));
-
-    }
-
-}
-
+.linked-repeater-marker.linked-repeater-active { animation: linkedGlowStrong 1.2s ease-in-out infinite; }
+.linked-repeater-marker.linked-repeater-off { animation: none; filter: none; }
 
 @keyframes linkedGlowStrong {
-
-    0%, 100% {
-
-        filter:
-            drop-shadow(0 0 3px #ffd400)
-            drop-shadow(0 0 7px #ffd400)
-            drop-shadow(0 0 12px #ffd400);
-
-    }
-
-    50% {
-
-        filter:
-            drop-shadow(0 0 6px #ffd400)
-            drop-shadow(0 0 13px #ffd400)
-            drop-shadow(0 0 22px #ffd400);
-
-    }
-
+    0%, 100% { filter: drop-shadow(0 0 3px #ffd400) drop-shadow(0 0 7px #ffd400) drop-shadow(0 0 12px #ffd400); }
+    50% { filter: drop-shadow(0 0 6px #ffd400) drop-shadow(0 0 13px #ffd400) drop-shadow(0 0 22px #ffd400); }
 }
 
-
-/* Compact popups (important on phones) */
-.leaflet-popup-content {
-
-    margin: 10px 14px !important;
-
-    font-size: 13px;
-
-    line-height: 1.35;
-}
-
-.leaflet-popup-content hr {
-
-    margin: 6px 0;
-}
-
-
-/* Count badge on pins that are stacked on top of each other */
+/* Count badge on pins stacked at the same spot */
 .stack-badge {
-
-    position: absolute;
-
-    top: -7px;
-
-    right: -9px;
-
-    min-width: 17px;
-
-    height: 17px;
-
-    padding: 0 4px;
-
-    box-sizing: border-box;
-
-    background: #dc2626;
-
-    color: #ffffff;
-
-    border: 1.5px solid #ffffff;
-
-    border-radius: 999px;
-
-    font: bold 10px/14px Arial, sans-serif;
-
-    text-align: center;
-
-    pointer-events: none;
-
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    position: absolute; top: -7px; right: -9px; min-width: 17px; height: 17px; padding: 0 4px;
+    box-sizing: border-box; background: #dc2626; color: #fff; border: 1.5px solid #fff; border-radius: 999px;
+    font: bold 10px/14px Arial, sans-serif; text-align: center; pointer-events: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 }
 
-
-/* Selected linked-network chip */
+/* ---------- Selected network chip ---------- */
 #networkChip {
-
-    display: none;
-
-    position: fixed;
-
-    left: 50%;
-
-    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
-
-    transform: translateX(-50%);
-
-    z-index: 1100;
-
-    align-items: center;
-
-    gap: 8px;
-
-    max-width: calc(100vw - 24px);
-
-    padding: 6px 8px 6px 14px;
-
-    background: #ffffff;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 999px;
-
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-
-    font-family: Arial, sans-serif;
-
-    font-size: 13px;
-
-    color: #1e293b;
+    display: none; position: fixed; z-index: 1100; left: 50%; transform: translateX(-50%);
+    bottom: calc(18px + var(--safe-bottom)); max-width: calc(100vw - 24px);
+    align-items: center; gap: 8px; padding: 6px 8px 6px 14px;
+    background: #fff; border: 1px solid #cbd5e1; border-radius: 999px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .25); font: 13px Arial, sans-serif; color: var(--ink);
 }
-
-#networkChip.show {
-
-    display: flex;
-}
-
-#networkChip span {
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
+#networkChip.show { display: flex; }
+#networkChipText { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #networkChip button {
-
-    border: 1px solid #cbd5e1;
-
-    background: #f1f5f9;
-
-    color: #334155;
-
-    border-radius: 999px;
-
-    padding: 5px 11px;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    cursor: pointer;
+    border: 1px solid #cbd5e1; background: #f1f5f9; color: #334155; border-radius: 999px;
+    padding: 5px 11px; font: 600 13px Arial, sans-serif; cursor: pointer;
 }
 
-
-.filterButton {
-
-    width: 100%;
-
-    margin-top: 6px;
-
-    padding: 7px 12px;
-
-    cursor: pointer;
-
-    background: #f1f5f9;
-
-    border:
-        1px solid #cbd5e1;
-
-    border-radius: 6px;
-
-    font-weight: 600;
-
-    color: #334155;
-
-    transition:
-        background 0.2s;
+/* ---------- Popup cards ---------- */
+.leaflet-popup-content-wrapper { border-radius: 12px; }
+.leaflet-popup-content { margin: 10px 12px !important; font-size: 13px; line-height: 1.35; }
+.pc { font-family: Arial, sans-serif; color: var(--ink); }
+.pc-call { font-size: 17px; font-weight: 700; }
+.tag { display: inline-block; margin-left: 5px; padding: 1px 7px; border-radius: 999px; vertical-align: middle; background: #eef2ff; color: #3730a3; font-size: 10px; font-weight: 700; }
+.tag.echo { background: #ecfdf5; color: #047857; }
+.pc-loc { color: var(--muted); margin: 2px 0 6px; }
+.pc-entry { border-top: 1px solid var(--line); padding: 6px 0; }
+.pc-entry.dim { opacity: .5; }
+.pc-eh { display: flex; align-items: center; margin-bottom: 2px; }
+.pc-b { margin-right: 7px; padding: 1px 7px; border-radius: 5px; background: #dbeafe; color: #1e40af; font-weight: 700; font-size: 11px; }
+.pc-f { font-size: 15px; }
+.pc-row { margin-top: 1px; }
+[data-copy] { cursor: pointer; border-bottom: 1px dotted #94a3b8; }
+.pc-actions { display: flex; gap: 8px; margin-top: 4px; padding-top: 8px; border-top: 1px solid var(--line); }
+.pc-actions a, .pc-actions button {
+    padding: 6px 11px; border-radius: 8px; border: 1px solid #cbd5e1; background: #f1f5f9;
+    color: #334155; font: 600 12px Arial, sans-serif; text-decoration: none; cursor: pointer;
 }
-
-
-.filterButton:hover {
-
-    background: #e2e8f0;
-
-}
-
-
-.primaryBtn {
-
-    background: #3b82f6;
-
-    color: white;
-
-    border-color: #2563eb;
-}
-
-
-.primaryBtn:hover {
-
-    background: #2563eb;
-
-}
-
 </style>
 
-
-<button
-    id="filterButton"
-    onclick="toggleFilterPanel()"
->
-    🔎 Find / Filter
-</button>
-
-
-<div id="filterPanel">
-
-    <div class="filterTitle">
-        Repeater Finder & Filter
+<header id="topbar">
+    <button class="tb-btn icon" id="menuBtn" type="button" aria-label="Menu">&#9776;</button>
+    <div class="brand">PA/NJ Repeaters</div>
+    <div id="searchWrap">
+        <input id="locationInput" type="text" placeholder="Search a city or place" autocomplete="off" enterkeyhint="search">
+        <button class="ghost" id="searchBtn" type="button" aria-label="Search">&#128269;</button>
+        <button class="ghost" id="locateBtn" type="button" aria-label="Use my location">&#128205;</button>
     </div>
+    <button class="tb-btn" id="filtersBtn" type="button" aria-label="Filters">&#9881;&#65039;<span class="lbl">Filters</span><span class="badge" id="filterBadge"></span></button>
+    <button class="tb-btn" id="listBtn" type="button" aria-label="List">&#128203;<span class="lbl">List</span></button>
+    <button class="tb-btn icon" id="helpBtn" type="button" aria-label="Help">?</button>
+</header>
 
+<div id="menu">
+    <button class="menu-item" type="button" data-menu="tour">&#127919;&nbsp; Take the tour</button>
+    <button class="menu-item" type="button" data-menu="legend">&#128218;&nbsp; How to read the map</button>
+    <button class="menu-item" type="button" data-menu="share">&#128279;&nbsp; Copy link to this view</button>
+    <button class="menu-item" type="button" data-menu="about">&#8505;&#65039;&nbsp; About &amp; data</button>
+</div>
 
-    <div class="sectionTitle">
-        Location Search
+<div id="resultPill">Loading repeaters&hellip;</div>
+
+<div class="panel" id="filterPanel">
+    <div class="p-head"><span>Filters</span><button class="p-close" type="button" data-close="filterPanel" aria-label="Close">&#10005;</button></div>
+    <div class="p-body">
+        <div class="sec">Radius (applies to a location search)</div>
+        <select id="radiusSelect" class="field">
+            <option value="5">5 miles</option>
+            <option value="10">10 miles</option>
+            <option value="25" selected>25 miles</option>
+            <option value="50">50 miles</option>
+            <option value="100">100 miles</option>
+        </select>
+        <div class="hint">A selected linked network ignores the radius so every link stays visible.</div>
+
+        <div class="sec">Bands</div>
+        <label class="chk"><input type="checkbox" id="allBand" checked><span>All bands</span></label>
+        <label class="chk"><input type="checkbox" class="bandCheckbox" value="2m" checked><span>2m</span><span class="cnt" data-band="2m"></span></label>
+        <label class="chk"><input type="checkbox" class="bandCheckbox" value="70cm" checked><span>70cm</span><span class="cnt" data-band="70cm"></span></label>
+        <label class="chk"><input type="checkbox" class="bandCheckbox" value="GMRS" checked><span>GMRS</span><span class="cnt" data-band="GMRS"></span></label>
+        <div class="hint">A pin shows if any of its bands match. Its card always lists every band.</div>
+
+        <div class="sec">Frequency starts with</div>
+        <input id="frequencyInput" class="field" type="text" inputmode="decimal" placeholder="e.g. 146.52 or 443.9">
+
+        <div class="sec">EchoLink</div>
+        <select id="echoLinkSelect" class="field">
+            <option value="all" selected>All</option>
+            <option value="yes">EchoLink only</option>
+            <option value="no">Not EchoLink</option>
+        </select>
     </div>
-
-    <input
-        type="text"
-        id="locationInput"
-        placeholder="e.g. Media, PA"
-    >
-
-
-    <div class="sectionTitle">
-        Radius
+    <div class="p-foot">
+        <button class="btn" type="button" id="clearAllBtn">Clear all</button>
+        <button class="btn primary" type="button" id="applyCloseBtn">Show <span id="resultsN">0</span> sites</button>
     </div>
+</div>
 
-    <select id="radiusSelect">
+<div class="panel" id="listPanel">
+    <div class="p-head"><span id="listTitle">Sites</span><button class="p-close" type="button" data-close="listPanel" aria-label="Close">&#10005;</button></div>
+    <div class="p-body" id="listBody"></div>
+</div>
 
-        <option value="5">
-            5 miles
-        </option>
+<div id="networkChip">
+    <span id="networkChipText"></span>
+    <button type="button" id="networkFitBtn">Fit</button>
+    <button type="button" id="networkClearBtn" aria-label="Clear selection">&#10005;</button>
+</div>
 
-        <option value="10">
-            10 miles
-        </option>
+<div id="toast"></div>
+<div id="modal"><div class="m-card" id="modalCard"></div></div>
 
-        <option value="25" selected>
-            25 miles
-        </option>
-
-        <option value="50">
-            50 miles
-        </option>
-
-        <option value="100">
-            100 miles
-        </option>
-
-    </select>
-
-
-    <button
-        class="filterButton primaryBtn"
-        onclick="searchLocation()"
-    >
-        Search Location
-    </button>
-
-
-    <div
-        class="sectionTitle"
-        style="margin-top: 14px;"
-    >
-        Frequency Filter
-    </div>
-
-    <input
-        type="text"
-        id="frequencyInput"
-        placeholder="e.g. 146.520 or 443.9"
-        oninput="updateMarkers()"
-    >
-
-
-    <div
-        class="sectionTitle"
-        style="margin-top: 14px;"
-    >
-        Bands
-    </div>
-
-
-    <label>
-        <input
-            type="checkbox"
-            id="allBand"
-            checked
-            onchange="toggleAllBands()"
-        >
-
-        <span>
-            All Bands
-        </span>
-    </label>
-
-
-    <label>
-
-        <input
-            type="checkbox"
-            class="bandCheckbox"
-            value="2m"
-            checked
-            onchange="updateBandState()"
-        >
-
-        <span
-            style="
-                color: #2563eb;
-                font-weight: bold;
-                margin-left: 4px;
-            "
-        >
-            ●
-        </span>
-
-        &nbsp;2m
-
-    </label>
-
-
-    <label>
-
-        <input
-            type="checkbox"
-            class="bandCheckbox"
-            value="70cm"
-            checked
-            onchange="updateBandState()"
-        >
-
-        <span
-            style="
-                color: #16a34a;
-                font-weight: bold;
-                margin-left: 4px;
-            "
-        >
-            ●
-        </span>
-
-        &nbsp;70cm
-
-    </label>
-
-
-    <label>
-
-        <input
-            type="checkbox"
-            class="bandCheckbox"
-            value="GMRS"
-            checked
-            onchange="updateBandState()"
-        >
-
-        <span
-            style="
-                color: #dc2626;
-                font-weight: bold;
-                margin-left: 4px;
-            "
-        >
-            ●
-        </span>
-
-        &nbsp;GMRS
-
-    </label>
-
-
-    <div
-        class="sectionTitle"
-        style="margin-top: 14px;"
-    >
-        EchoLink
-    </div>
-
-    <select id="echoLinkSelect">
-
-        <option value="all" selected>
-            All
-        </option>
-
-        <option value="yes">
-            Yes
-        </option>
-
-        <option value="no">
-            No
-        </option>
-
-    </select>
-
-
-    <button
-        class="filterButton"
-        style="margin-top: 12px;"
-        onclick="clearSearch()"
-    >
-        Clear All Filters
-    </button>
-
+<div id="tourOverlay">
+    <div id="tourSpot"></div>
+    <div id="tourCard"></div>
 </div>
 
     
-
-<script>
-
-
-// ==========================================================
-// GLOBAL STATE
-// ==========================================================
-
-var searchMarker = null;
-
-var radiusCircle = null;
-
-var searchLocationState = null;
-
-var bandColors = {
-    "2m": "blue",
-    "70cm": "green",
-    "GMRS": "red"
-};
-
-var repeaterData = [];
-
-var markerLayers = [];
-
-var selectedLinkedCallSign = null;
-
-var selectedMarker = null;
-
-var markerSpreadByIndex = [];
-
-
-// ==========================================================
-// LOAD REPEATER JSON
-// ==========================================================
-
-fetch("repeaters.json")
-
-    .then(
-        response => {
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Failed to load repeater data"
-                );
-
-            }
-
-            return response.json();
-
-        }
-    )
-
-    .then(
-        data => {
-
-            repeaterData = data;
-
-            initMarkers();
-
-            settleMap();
-
-        }
-    )
-
-    .catch(
-        error => {
-
-            console.error(
-                "Error fetching JSON:",
-                error
-            );
-
-        }
-    );
-
-
-// ==========================================================
-// INITIALIZE MARKERS
-// ==========================================================
-
-function initMarkers() {
-
-    // Remove any existing markers
-    markerLayers.forEach(
-        function(item) {
-
-            if (
-                map_7d07c7b887f4bbb7665bcf39d77db9c7.hasLayer(
-                    item.marker
-                )
-            ) {
-
-                map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
-                    item.marker
-                );
-
-            }
-
-        }
-    );
-
-
-    markerLayers = [];
-
-
-    repeaterData.forEach(
-        function(repeater) {
-
-            var color =
-                bandColors[
-                    repeater.band
-                ] || "gray";
-
-
-            var iconUrl =
-                "https://raw.githubusercontent.com/"
-                +
-                "pointhi/leaflet-color-markers/"
-                +
-                "master/img/marker-icon-2x-"
-                +
-                color
-                +
-                ".png";
-
-
-            var markerClass =
-                repeater.linkedRepeater
-                    ? "linked-repeater-marker"
-                    : "";
-
-
-            var icon = L.divIcon({
-
-                className:
-                    markerClass,
-
-                html:
-                    '<img src="'
-                    +
-                    iconUrl
-                    +
-                    '" style="width:19px;height:31px;">',
-
-                iconSize:
-                    [19, 31],
-
-                iconAnchor:
-                    [9, 31],
-
-                popupAnchor:
-                    [1, -26]
-
-            });
-
-
-            var marker =
-                L.marker(
-                    [
-                        repeater.lat,
-                        repeater.lon
-                    ],
-                    {
-                        icon: icon
-                    }
-                );
-
-
-            marker.bindPopup(
-                L.popup(
-                    {
-                        maxWidth: 250,
-                        maxHeight: Math.round(
-                            window.innerHeight * 0.45
-                        ),
-                        autoPanPadding: [20, 60]
-                    }
-                ).setContent(
-                    repeater.popup
-                )
-            );
-
-
-            marker.on(
-                "click",
-                function() {
-
-                    // Only linked repeaters trigger network highlighting.
-                    // Clicking a non-linked repeater leaves the default glow.
-                    if (
-                        repeater.linkedRepeater
-                        &&
-                        repeater.callSign
-                    ) {
-
-                        selectedLinkedCallSign =
-                            repeater.callSign;
-
-                        selectedMarker =
-                            marker;
-
-                    } else {
-
-                        selectedLinkedCallSign =
-                            null;
-
-                        selectedMarker =
-                            null;
-
-                    }
-
-                    updateLinkedHighlight();
-
-                    updateMarkerPositions();
-
-                }
-            );
-
-
-            marker.addTo(
-                map_7d07c7b887f4bbb7665bcf39d77db9c7
-            );
-
-
-            markerLayers.push({
-                marker: marker,
-                repeater: repeater
-            });
-
-        }
-    );
-
-
-    updateMarkers();
-
-    updateMarkerPositions();
-
-}
-
-
-// ==========================================================
-// UPDATE LINKED REPEATER HIGHLIGHT
-// ==========================================================
-
-function updateLinkedHighlight() {
-
-    var hasSelection =
-        selectedLinkedCallSign !== null;
-
-
-    markerLayers.forEach(
-        function(item) {
-
-            var element =
-                item.marker.getElement();
-
-            if (!element) {
-                return;
-            }
-
-
-            // Non-linked repeaters never glow
-            if (!item.repeater.linkedRepeater) {
-
-                element.classList.remove(
-                    "linked-repeater-active",
-                    "linked-repeater-off"
-                );
-
-                return;
-
-            }
-
-
-            if (!hasSelection) {
-
-                // Nothing selected: faint idle glow on all linked repeaters
-                element.classList.remove(
-                    "linked-repeater-active",
-                    "linked-repeater-off"
-                );
-
-            } else if (
-                item.repeater.callSign ===
-                    selectedLinkedCallSign
-            ) {
-
-                // Same network as the selected repeater: strong glow
-                element.classList.add(
-                    "linked-repeater-active"
-                );
-
-                element.classList.remove(
-                    "linked-repeater-off"
-                );
-
-            } else {
-
-                // Linked, but a different network: no glow
-                element.classList.add(
-                    "linked-repeater-off"
-                );
-
-                element.classList.remove(
-                    "linked-repeater-active"
-                );
-
-            }
-
-        }
-    );
-
-
-    updateSelectionChip();
-
-}
-
-
-// ==========================================================
-// SELECTED NETWORK CHIP
-// (selection now stays after the info card is closed)
-// ==========================================================
-
-var selectionChip = document.createElement("div");
-
-selectionChip.id = "networkChip";
-
-selectionChip.innerHTML =
-    '<span id="networkChipText"></span>'
-    +
-    '<button type="button" id="networkFitBtn">Fit</button>'
-    +
-    '<button type="button" id="networkClearBtn" '
-    +
-    'aria-label="Clear selection">&#10005;</button>';
-
-document.body.appendChild(selectionChip);
-
-L.DomEvent.disableClickPropagation(selectionChip);
-
-
-function getNetworkLatLngs(callSign) {
-
-    return repeaterData
-        .filter(
-            function(r) {
-                return r.linkedRepeater
-                    && r.callSign === callSign;
-            }
-        )
-        .map(
-            function(r) {
-                return [r.lat, r.lon];
-            }
-        );
-
-}
-
-
-function clearNetworkSelection() {
-
-    selectedLinkedCallSign = null;
-
-    selectedMarker = null;
-
-    updateLinkedHighlight();
-
-}
-
-
-function updateSelectionChip() {
-
-    if (selectedLinkedCallSign === null) {
-
-        selectionChip.classList.remove("show");
-
-        return;
-
-    }
-
-    var count =
-        getNetworkLatLngs(
-            selectedLinkedCallSign
-        ).length;
-
-    document.getElementById(
-        "networkChipText"
-    ).textContent =
-        selectedLinkedCallSign
-        +
-        " network ("
-        +
-        count
-        +
-        " sites)";
-
-    selectionChip.classList.add("show");
-
-}
-
-
-document.getElementById(
-    "networkFitBtn"
-).addEventListener(
-    "click",
-    function() {
-
-        if (selectedLinkedCallSign === null) {
-            return;
-        }
-
-        var points =
-            getNetworkLatLngs(
-                selectedLinkedCallSign
-            );
-
-        if (points.length === 0) {
-            return;
-        }
-
-        // Close the info card so the whole network is visible
-        map_7d07c7b887f4bbb7665bcf39d77db9c7.closePopup();
-
-        map_7d07c7b887f4bbb7665bcf39d77db9c7.fitBounds(
-            L.latLngBounds(points),
-            {
-                padding: [50, 50],
-                maxZoom: 12
-            }
-        );
-
-    }
-);
-
-
-document.getElementById(
-    "networkClearBtn"
-).addEventListener(
-    "click",
-    clearNetworkSelection
-);
-
-
-// ==========================================================
-// SPREAD CO-LOCATED MARKERS
-// ==========================================================
-
-function setMarkerPosition(marker, lat, lon) {
-
-    // Only touch the marker if its position really changes.
-    // (Avoids needless popup re-layout / auto-pan loops.)
-    var current = marker.getLatLng();
-
-    if (
-        Math.abs(current.lat - lat) < 1e-9
-        &&
-        Math.abs(current.lng - lon) < 1e-9
-    ) {
-        return;
-    }
-
-    marker.setLatLng([lat, lon]);
-
-}
-
-
-function updateMarkerPositions() {
-
-    var zoom =
-        map_7d07c7b887f4bbb7665bcf39d77db9c7.getZoom();
-
-    // Fully fanned out from zoom 8 (was 9): typical metro views
-    // no longer show a stack as a single pin.
-    var spreadFactor =
-        Math.max(
-            0,
-            Math.min(
-                1,
-                (zoom - 6) / 2
-            )
-        );
-
-
-    // Group visible markers that share exact coordinates
-    var groups = {};
-
-    markerLayers.forEach(
-        function(item, index) {
-
-            if (
-                !map_7d07c7b887f4bbb7665bcf39d77db9c7.hasLayer(
-                    item.marker
-                )
-            ) {
-                return;
-            }
-
-            var key =
-                item.repeater.lat.toFixed(7)
-                +
-                ","
-                +
-                item.repeater.lon.toFixed(7);
-
-            if (!groups[key]) {
-                groups[key] = [];
-            }
-
-            groups[key].push(index);
-
-        }
-    );
-
-
-    // Start every marker at its true position...
-    var targets = markerLayers.map(
-        function(item) {
-            return [
-                item.repeater.lat,
-                item.repeater.lon
-            ];
-        }
-    );
-
-    var wantRaised = markerLayers.map(
-        function() {
-            return false;
-        }
-    );
-
-
-    // ...then fan out stacked groups in concentric rings
-    Object.keys(groups).forEach(
-        function(key) {
-
-            var indexes = groups[key];
-
-            var count = indexes.length;
-
-            if (count <= 1) {
-                return;
-            }
-
-            // The first pin of a stack is raised so its badge
-            // and click target are always on top
-            wantRaised[indexes[0]] = true;
-
-            if (spreadFactor === 0) {
-                return;
-            }
-
-            var placed = 0;
-
-            var ring = 0;
-
-            while (placed < count) {
-
-                var baseRadius = 26 + ring * 24;
-
-                var capacity =
-                    Math.max(
-                        6,
-                        Math.floor(
-                            (2 * Math.PI * baseRadius) / 22
-                        )
-                    );
-
-                var inRing =
-                    Math.min(
-                        capacity,
-                        count - placed
-                    );
-
-                var ringRadius =
-                    Math.max(
-                        baseRadius,
-                        (inRing * 22) / (2 * Math.PI)
-                    )
-                    *
-                    spreadFactor;
-
-                for (var k = 0; k < inRing; k++) {
-
-                    var markerIndex =
-                        indexes[placed + k];
-
-                    var item =
-                        markerLayers[markerIndex];
-
-                    var angle =
-                        (2 * Math.PI * k / inRing)
-                        -
-                        Math.PI / 2
-                        +
-                        (ring % 2) * (Math.PI / inRing);
-
-                    var point =
-                        map_7d07c7b887f4bbb7665bcf39d77db9c7.latLngToLayerPoint(
-                            L.latLng(
-                                item.repeater.lat,
-                                item.repeater.lon
-                            )
-                        );
-
-                    point.x += Math.cos(angle) * ringRadius;
-                    point.y += Math.sin(angle) * ringRadius;
-
-                    var offset =
-                        map_7d07c7b887f4bbb7665bcf39d77db9c7.layerPointToLatLng(
-                            point
-                        );
-
-                    targets[markerIndex] = [
-                        offset.lat,
-                        offset.lng
-                    ];
-
-                }
-
-                placed += inRing;
-
-                ring++;
-
-            }
-
-        }
-    );
-
-
-    markerLayers.forEach(
-        function(item, index) {
-
-            setMarkerPosition(
-                item.marker,
-                targets[index][0],
-                targets[index][1]
-            );
-
-            if (item.raised !== wantRaised[index]) {
-
-                item.raised = wantRaised[index];
-
-                item.marker.setZIndexOffset(
-                    wantRaised[index] ? 1000 : 0
-                );
-
-            }
-
-        }
-    );
-
-
-    // Count badges on stacks that are not fully fanned out
-    markerLayers.forEach(
-        function(item) {
-
-            var element =
-                item.marker.getElement();
-
-            if (!element) {
-                return;
-            }
-
-            var old =
-                element.querySelector(".stack-badge");
-
-            if (old) {
-                old.remove();
-            }
-
-        }
-    );
-
-    if (spreadFactor < 1) {
-
-        Object.keys(groups).forEach(
-            function(key) {
-
-                var indexes = groups[key];
-
-                if (indexes.length <= 1) {
-                    return;
-                }
-
-                var element =
-                    markerLayers[
-                        indexes[0]
-                    ].marker.getElement();
-
-                if (element) {
-
-                    element.insertAdjacentHTML(
-                        "beforeend",
-                        '<div class="stack-badge">'
-                        +
-                        indexes.length
-                        +
-                        '</div>'
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-}
-
-
-// ==========================================================
-// TOGGLE FILTER PANEL
-// ==========================================================
-
-function toggleFilterPanel() {
-
-    var panel =
-        document.getElementById(
-            "filterPanel"
-        );
-
-    var button =
-        document.getElementById(
-            "filterButton"
-        );
-
-
-    if (
-        panel.style.display === "none"
-    ) {
-
-        panel.style.display =
-            "block";
-
-        button.innerHTML =
-            "🔎 Hide Filters";
-
-    } else {
-
-        panel.style.display =
-            "none";
-
-        button.innerHTML =
-            "🔎 Find / Filter";
-
-    }
-
-}
-
-
-// ==========================================================
-// GET SELECTED BANDS
-// ==========================================================
-
-function getSelectedBands() {
-
-    var checkboxes =
-        document.querySelectorAll(
-            ".bandCheckbox"
-        );
-
-    var selected = [];
-
-
-    checkboxes.forEach(
-        function(checkbox) {
-
-            if (
-                checkbox.checked
-            ) {
-
-                selected.push(
-                    checkbox.value
-                );
-
-            }
-
-        }
-    );
-
-
-    return selected;
-
-}
-
-
-// ==========================================================
-// ALL BAND CHECKBOX
-// ==========================================================
-
-function toggleAllBands() {
-
-    var allCheckbox =
-        document.getElementById(
-            "allBand"
-        );
-
-    var checkboxes =
-        document.querySelectorAll(
-            ".bandCheckbox"
-        );
-
-
-    checkboxes.forEach(
-        function(checkbox) {
-
-            checkbox.checked =
-                allCheckbox.checked;
-
-        }
-    );
-
-
-    updateMarkers();
-
-}
-
-
-// ==========================================================
-// INDIVIDUAL BAND CHECKBOXES
-// ==========================================================
-
-function updateBandState() {
-
-    var checkboxes =
-        document.querySelectorAll(
-            ".bandCheckbox"
-        );
-
-    var allCheckbox =
-        document.getElementById(
-            "allBand"
-        );
-
-    var allChecked = true;
-
-
-    checkboxes.forEach(
-        function(checkbox) {
-
-            if (
-                !checkbox.checked
-            ) {
-
-                allChecked = false;
-
-            }
-
-        }
-    );
-
-
-    allCheckbox.checked =
-        allChecked;
-
-
-    updateMarkers();
-
-}
-
-
-// ==========================================================
-// DISTANCE CALCULATION
-// ==========================================================
-
-function distanceMiles(
-    lat1,
-    lon1,
-    lat2,
-    lon2
-) {
-
-    var R = 3958.8;
-
-
-    var dLat =
-        (lat2 - lat1)
-        *
-        Math.PI
-        /
-        180;
-
-
-    var dLon =
-        (lon2 - lon1)
-        *
-        Math.PI
-        /
-        180;
-
-
-    var a =
-        Math.sin(dLat / 2)
-        *
-        Math.sin(dLat / 2)
-
-        +
-
-        Math.cos(
-            lat1 *
-            Math.PI /
-            180
-        )
-
-        *
-
-        Math.cos(
-            lat2 *
-            Math.PI /
-            180
-        )
-
-        *
-
-        Math.sin(dLon / 2)
-        *
-        Math.sin(dLon / 2);
-
-
-    var c =
-        2 *
-        Math.atan2(
-            Math.sqrt(a),
-            Math.sqrt(1 - a)
-        );
-
-
-    return R * c;
-
-}
-
-
-// ==========================================================
-// UPDATE MARKERS
-//
-// IMPORTANT:
-// Matching markers are ADDED to the map.
-// Nonmatching markers are REMOVED from the map.
-//
-// This replaces the old opacity-based filtering.
-// ==========================================================
-
-function updateMarkers() {
-
-    var selectedBands =
-        getSelectedBands();
-
-
-    var radius =
-        parseFloat(
-            document.getElementById(
-                "radiusSelect"
-            ).value
-        );
-
-
-    var freqQuery =
-        document.getElementById(
-            "frequencyInput"
-        ).value
-        .trim();
-
-
-    markerLayers.forEach(
-        function(item) {
-
-            var visible = true;
-
-
-            // ----------------------------------------------
-            // BAND FILTER
-            // ----------------------------------------------
-
-            if (
-                !selectedBands.includes(
-                    item.repeater.band
-                )
-            ) {
-
-                visible = false;
-
-            }
-
-
-            // ----------------------------------------------
-            // FREQUENCY FILTER
-            // ----------------------------------------------
-
-            if (
-                visible
-                &&
-                freqQuery !== ""
-            ) {
-
-                var repeaterFreq =
-                    String(
-                        item.repeater.frequency
-                        ||
-                        ""
-                    ).trim();
-
-
-                if (
-                    !repeaterFreq.startsWith(
-                        freqQuery
-                    )
-                ) {
-
-                    visible = false;
-
-                }
-
-            }
-
-
-            // ----------------------------------------------
-            // ECHOLINK FILTER
-            // ----------------------------------------------
-
-            var echoLinkFilter =
-                document.getElementById(
-                    "echoLinkSelect"
-                ).value;
-
-
-            if (
-                visible
-                &&
-                echoLinkFilter === "yes"
-                &&
-                !item.repeater.echoLink
-            ) {
-
-                visible = false;
-
-            }
-
-
-            if (
-                visible
-                &&
-                echoLinkFilter === "no"
-                &&
-                item.repeater.echoLink
-            ) {
-
-                visible = false;
-
-            }
-
-
-            // ----------------------------------------------
-            // LOCATION / RADIUS FILTER
-            // ----------------------------------------------
-
-            if (
-                visible
-                &&
-                searchLocationState !== null
-            ) {
-
-                var distance =
-                    distanceMiles(
-                        searchLocationState.lat,
-                        searchLocationState.lon,
-                        item.repeater.lat,
-                        item.repeater.lon
-                    );
-
-
-                if (
-                    distance > radius
-                ) {
-
-                    visible = false;
-
-                }
-
-            }
-
-
-            // ----------------------------------------------
-            // ACTUALLY ADD / REMOVE MARKER
-            // ----------------------------------------------
-
-            if (visible) {
-
-                if (
-                    !map_7d07c7b887f4bbb7665bcf39d77db9c7.hasLayer(
-                        item.marker
-                    )
-                ) {
-
-                    item.marker.addTo(
-                        map_7d07c7b887f4bbb7665bcf39d77db9c7
-                    );
-
-                }
-
-            } else {
-
-                if (
-                    map_7d07c7b887f4bbb7665bcf39d77db9c7.hasLayer(
-                        item.marker
-                    )
-                ) {
-
-                    map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
-                        item.marker
-                    );
-
-                }
-
-            }
-
-        }
-    );
-
-
-    updateMarkerPositions();
-
-    updateLinkedHighlight();
-
-}
-
-
-// ==========================================================
-// SEARCH LOCATION
-// ==========================================================
-
-function searchLocation() {
-
-    var query =
-        document.getElementById(
-            "locationInput"
-        ).value.trim();
-
-
-    if (!query) {
-
-        alert(
-            "Enter a location name first."
-        );
-
-        return;
-
-    }
-
-
-    var url =
-        "https://nominatim.openstreetmap.org/search"
-        +
-        "?format=json"
-        +
-        "&limit=1"
-        +
-        "&q="
-        +
-        encodeURIComponent(
-            query
-        );
-
-
-    fetch(
-        url,
-        {
-            headers: {
-                "Accept":
-                    "application/json"
-            }
-        }
-    )
-
-    .then(
-        response =>
-            response.json()
-    )
-
-    .then(
-        function(data) {
-
-            if (
-                !data
-                ||
-                data.length === 0
-            ) {
-
-                alert(
-                    "Location not found. "
-                    +
-                    "Please check spelling."
-                );
-
-                return;
-
-            }
-
-
-            var lat =
-                parseFloat(
-                    data[0].lat
-                );
-
-
-            var lon =
-                parseFloat(
-                    data[0].lon
-                );
-
-
-            searchLocationState = {
-
-                lat: lat,
-                lon: lon
-
-            };
-
-
-            var radius =
-                parseFloat(
-                    document.getElementById(
-                        "radiusSelect"
-                    ).value
-                );
-
-
-            map_7d07c7b887f4bbb7665bcf39d77db9c7.setView(
-                [
-                    lat,
-                    lon
-                ],
-                10,
-                {
-                    animate: false
-                }
-            );
-
-
-            // ------------------------------------------
-            // REMOVE OLD SEARCH MARKER
-            // ------------------------------------------
-
-            if (
-                searchMarker !== null
-            ) {
-
-                map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
-                    searchMarker
-                );
-
-            }
-
-
-            // ------------------------------------------
-            // REMOVE OLD RADIUS CIRCLE
-            // ------------------------------------------
-
-            if (
-                radiusCircle !== null
-            ) {
-
-                map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
-                    radiusCircle
-                );
-
-            }
-
-
-            // ------------------------------------------
-            // ADD SEARCH LOCATION MARKER
-            // ------------------------------------------
-
-            searchMarker =
-                L.marker(
-                    [
-                        lat,
-                        lon
-                    ],
-                    {
-
-                        icon:
-                            L.divIcon({
-
-                                className:
-                                    "search-location-marker",
-
-                                html:
-                                    '<div style="font-size:28px;">📍</div>',
-
-                                iconSize:
-                                    [30, 30],
-
-                                iconAnchor:
-                                    [15, 30]
-
-                            })
-
-                    }
-                ).addTo(
-                    map_7d07c7b887f4bbb7665bcf39d77db9c7
-                );
-
-
-            searchMarker.bindPopup(
-                "<b>"
-                +
-                query
-                +
-                "</b>"
-            );
-
-
-            // ------------------------------------------
-            // ADD RADIUS CIRCLE
-            // ------------------------------------------
-
-            radiusCircle =
-                L.circle(
-                    [
-                        lat,
-                        lon
-                    ],
-                    {
-
-                        radius:
-                            radius *
-                            1609.344,
-
-                        color:
-                            "#3b82f6",
-
-                        weight:
-                            1,
-
-                        fillOpacity:
-                            0.05
-
-                    }
-                ).addTo(
-                    map_7d07c7b887f4bbb7665bcf39d77db9c7
-                );
-
-
-            // ------------------------------------------
-            // APPLY FILTERS
-            // ------------------------------------------
-
-            updateMarkers();
-
-        }
-    )
-
-    .catch(
-        function(error) {
-
-            console.error(
-                error
-            );
-
-            alert(
-                "Unable to search "
-                +
-                "for that location."
-            );
-
-        }
-    );
-
-}
-
-
-// ==========================================================
-// CLEAR ALL FILTERS
-// ==========================================================
-
-function clearSearch() {
-
-    document.getElementById(
-        "locationInput"
-    ).value = "";
-
-
-    document.getElementById(
-        "frequencyInput"
-    ).value = "";
-
-
-    document.getElementById(
-        "echoLinkSelect"
-    ).value = "all";
-
-
-    searchLocationState = null;
-
-    selectedLinkedCallSign = null;
-
-    selectedMarker = null;
-
-
-    if (
-        searchMarker !== null
-    ) {
-
-        map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
-            searchMarker
-        );
-
-        searchMarker = null;
-
-    }
-
-
-    if (
-        radiusCircle !== null
-    ) {
-
-        map_7d07c7b887f4bbb7665bcf39d77db9c7.removeLayer(
-            radiusCircle
-        );
-
-        radiusCircle = null;
-
-    }
-
-
-    // Restore all bands
-    document.getElementById(
-        "allBand"
-    ).checked = true;
-
-
-    document.querySelectorAll(
-        ".bandCheckbox"
-    ).forEach(
-        function(checkbox) {
-
-            checkbox.checked = true;
-
-        }
-    );
-
-
-    map_7d07c7b887f4bbb7665bcf39d77db9c7.setView(
-        [
-            40.1,
-            -76.5
-        ],
-        8,
-        {
-            animate: false
-        }
-    );
-
-
-    updateMarkers();
-
-}
-
-
-// ==========================================================
-// ECHOLINK FILTER CHANGE
-// ==========================================================
-
-document.getElementById(
-    "echoLinkSelect"
-).addEventListener(
-    "change",
-    function() {
-
-        updateMarkers();
-
-    }
-);
-
-
-// ==========================================================
-// RADIUS CHANGE
-// ==========================================================
-
-document.getElementById(
-    "radiusSelect"
-).addEventListener(
-    "change",
-    function() {
-
-        if (
-            searchLocationState !== null
-        ) {
-
-            var radius =
-                parseFloat(
-                    document.getElementById(
-                        "radiusSelect"
-                    ).value
-                );
-
-
-            if (
-                radiusCircle !== null
-            ) {
-
-                radiusCircle.setRadius(
-                    radius *
-                    1609.344
-                );
-
-            }
-
-        }
-
-
-        updateMarkers();
-
-    }
-);
-
-
-// ==========================================================
-// ENTER KEY - LOCATION SEARCH
-// ==========================================================
-
-document.getElementById(
-    "locationInput"
-).addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            searchLocation();
-
-        }
-
-    }
-);
-
-
-// ==========================================================
-// ENTER KEY - FREQUENCY SEARCH
-// ==========================================================
-
-document.getElementById(
-    "frequencyInput"
-).addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            document.getElementById(
-                "frequencyInput"
-            ).blur();
-
-        }
-
-    }
-);
-
-
-// ==========================================================
-// MAP ZOOM
-// ==========================================================
-
-// Re-measure the map and re-lay-out pins once the page has settled
-// (mobile address bars, late layout, rotation, etc.)
-function settleMap() {
-
-    map_7d07c7b887f4bbb7665bcf39d77db9c7.invalidateSize();
-
-    updateMarkerPositions();
-
-}
-
-setTimeout(settleMap, 300);
-
-setTimeout(settleMap, 1500);
-
-window.addEventListener("load", settleMap);
-
-window.addEventListener("resize", settleMap);
-
-window.addEventListener("orientationchange", settleMap);
-
-
-// moveend also fires after zoom and after search / fit animations,
-// so pins are always re-spread once the map has settled.
-map_7d07c7b887f4bbb7665bcf39d77db9c7.on(
-    "moveend",
-    function() {
-
-        updateMarkerPositions();
-
-    }
-);
-
-
-map_7d07c7b887f4bbb7665bcf39d77db9c7.on(
-    "zoomend",
-    function() {
-
-        updateMarkerPositions();
-
-    }
-);
-
-
-// Tapping empty map clears the selected network, but the tap that
-// merely dismisses an open info card does not.
-var popupJustClosed = false;
-
-map_7d07c7b887f4bbb7665bcf39d77db9c7.on(
-    "popupclose",
-    function() {
-
-        popupJustClosed = true;
-
-        setTimeout(
-            function() {
-                popupJustClosed = false;
-            },
-            0
-        );
-
-    }
-);
-
-map_7d07c7b887f4bbb7665bcf39d77db9c7.on(
-    "click",
-    function() {
-
-        if (popupJustClosed) {
-            return;
-        }
-
-        if (selectedLinkedCallSign !== null) {
-            clearNetworkSelection();
-        }
-
-    }
-);
-
-
-// ==========================================================
-// INITIAL UI STATE
-// ==========================================================
-
-document.getElementById(
-    "filterPanel"
-).style.display =
-    "block";
-
-
-</script>
-    
-            <div class="folium-map" id="map_7d07c7b887f4bbb7665bcf39d77db9c7" ></div>
+            <div class="folium-map" id="map_f7b2dc187924d4bc996d783c316d1369" ></div>
         
 </body>
 <script>
     
     
-            var map_7d07c7b887f4bbb7665bcf39d77db9c7 = L.map(
-                "map_7d07c7b887f4bbb7665bcf39d77db9c7",
+// ==========================================================
+// PURE HELPERS (no DOM / map access)
+// ==========================================================
+var RM = (function () {
+
+    function esc(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c];
+        });
+    }
+
+    function distanceMiles(lat1, lon1, lat2, lon2) {
+        var R = 3958.8;
+        var dLat = (lat2 - lat1) * Math.PI / 180;
+        var dLon = (lon2 - lon1) * Math.PI / 180;
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    // f = { bands: {"2m": true, ...}, freq: "146", echo: "all"|"yes"|"no" }
+    function entryPasses(entry, f) {
+        if (!f.bands[entry.band]) { return false; }
+        if (f.freq && String(entry.frequency || "").indexOf(f.freq) !== 0) { return false; }
+        if (f.echo === "yes" && !entry.echoLink) { return false; }
+        if (f.echo === "no" && entry.echoLink) { return false; }
+        return true;
+    }
+
+    // A pin is shown when ANY of its band entries passes the filters
+    function siteMatches(site, f) {
+        for (var i = 0; i < site.entries.length; i++) {
+            if (entryPasses(site.entries[i], f)) { return true; }
+        }
+        return false;
+    }
+
+    function filtersActive(f, allBands) {
+        for (var i = 0; i < allBands.length; i++) {
+            if (!f.bands[allBands[i]]) { return true; }
+        }
+        return !!f.freq || f.echo !== "all";
+    }
+
+    function copySpan(value, text) {
+        return "<span data-copy=\"" + esc(value) + "\" title=\"Tap to copy\">" + text + "</span>";
+    }
+
+    // ctx = { filters, active, networkSize, outside }
+    function buildPopupHtml(site, idx, ctx) {
+        var h = "<div class=\"pc\">";
+        var hasEcho = site.entries.some(function (e) { return e.echoLink; });
+
+        h += "<div><span class=\"pc-call\">" + esc(site.callSign || "Unknown") + "</span>";
+        if (site.linkedRepeater) {
+            h += "<span class=\"tag\">Linked &middot; " + ctx.networkSize + " sites</span>";
+        }
+        if (hasEcho) { h += "<span class=\"tag echo\">EchoLink</span>"; }
+        h += "</div>";
+
+        var loc = [site.location, site.county, site.state].filter(Boolean).map(esc).join(", ");
+        h += "<div class=\"pc-loc\">" + loc;
+        if (site.approximate) { h += " <i>(approximate location)</i>"; }
+        if (ctx.outside) { h += "<br><i>Outside your search radius</i>"; }
+        h += "</div>";
+
+        site.entries.forEach(function (e) {
+            var dim = ctx.active && !entryPasses(e, ctx.filters);
+            h += "<div class=\"pc-entry" + (dim ? " dim" : "") + "\">";
+            h += "<div class=\"pc-eh\"><span class=\"pc-b\">" + esc(e.band) + "</span>" +
+                "<b class=\"pc-f\" data-copy=\"" + esc(e.frequency) + "\" title=\"Tap to copy\">" +
+                esc(e.frequency) + " MHz</b></div>";
+
+            var parts = [];
+            if (e.inputFrequency) {
+                parts.push("Input " + copySpan(e.inputFrequency, esc(e.inputFrequency)));
+            }
+            if (e.duplex || e.offset) {
+                parts.push("Offset " + esc(e.duplex) + (e.offset ? " " + esc(e.offset) + " MHz" : ""));
+            }
+            if (parts.length) { h += "<div class=\"pc-row\">" + parts.join(" &middot; ") + "</div>"; }
+
+            if (e.tones && e.tones.length) {
+                h += "<div class=\"pc-row\">" + e.tones.map(function (t) {
+                    return copySpan(t.copy, esc(t.label) + " " + esc(t.value));
+                }).join(" &middot; ") + "</div>";
+            } else {
+                h += "<div class=\"pc-row\">Tone: none</div>";
+            }
+
+            if (e.modes) { h += "<div class=\"pc-row\">" + esc(e.modes) + "</div>"; }
+            if (e.digital) {
+                h += "<div class=\"pc-row\">" + esc(e.digitalLabel || "Digital Access") + " " + esc(e.digital) + "</div>";
+            }
+            h += "</div>";
+        });
+
+        h += "<div class=\"pc-actions\">";
+        h += "<a href=\"https://www.google.com/maps/dir/?api=1&destination=" + site.lat + "," + site.lon +
+            "\" target=\"_blank\" rel=\"noopener\">Directions</a>";
+        if (site.linkedRepeater) {
+            h += "<button type=\"button\" data-action=\"network\" data-idx=\"" + idx + "\">Show network</button>";
+        }
+        h += "</div></div>";
+        return h;
+    }
+
+    // One-line summary for the list view: "2m 146.445+ · 70cm 443.1+"
+    function summarizeFreqs(site) {
+        return site.entries.map(function (e) {
+            return esc(e.band) + " " + esc(e.frequency) + esc(e.duplex || "");
+        }).join(" &middot; ");
+    }
+
+    function parseHash(h) {
+        var out = {};
+        h = String(h || "").replace(/^#/, "");
+        if (!h) { return out; }
+        h.split("&").forEach(function (pair) {
+            var i = pair.indexOf("=");
+            if (i < 1) { return; }
+            try {
+                out[decodeURIComponent(pair.slice(0, i))] =
+                    decodeURIComponent(pair.slice(i + 1).replace(/\+/g, " "));
+            } catch (err) { /* ignore malformed pair */ }
+        });
+        return out;
+    }
+
+    function buildHash(obj) {
+        return Object.keys(obj).filter(function (k) {
+            return obj[k] !== "" && obj[k] != null;
+        }).map(function (k) {
+            return encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]);
+        }).join("&");
+    }
+
+    return {
+        esc: esc,
+        distanceMiles: distanceMiles,
+        entryPasses: entryPasses,
+        siteMatches: siteMatches,
+        filtersActive: filtersActive,
+        buildPopupHtml: buildPopupHtml,
+        summarizeFreqs: summarizeFreqs,
+        parseHash: parseHash,
+        buildHash: buildHash
+    };
+})();
+
+
+
+(function () {
+"use strict";
+
+var ALL_BANDS = ["2m", "70cm", "GMRS"];
+var DEFAULT_VIEW = { lat: 40.1, lon: -76.5, zoom: 8 };
+var DATA_UPDATED = "Oct 17, 2026";
+var TOUR_KEY = "rm_tour_done_v1";
+var LIST_LIMIT = 150;
+
+var PIN_SVG =
+    "<svg viewBox=\"0 0 28 42\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\">" +
+    "<path d=\"M14 1C6.8 1 1 6.8 1 13.9c0 9.9 13 27.1 13 27.1s13-17.2 13-27.1C27 6.8 21.2 1 14 1z\" " +
+    "fill=\"#2563eb\" stroke=\"#ffffff\" stroke-width=\"2\"/>" +
+    "<circle cx=\"14\" cy=\"14\" r=\"5\" fill=\"#ffffff\"/></svg>";
+
+function boot() {
+
+    var map = map_f7b2dc187924d4bc996d783c316d1369;
+
+    // ------------------------------------------------------
+    // STATE
+    // ------------------------------------------------------
+    var sites = [];
+    var markerLayers = [];           // { site, marker, idx, distance, outside, raised }
+    var networkSizes = {};
+    var searchLocationState = null;  // { lat, lon, label }
+    var searchMarker = null;
+    var radiusCircle = null;
+    var selectedCall = null;
+    var selectedIdx = null;
+    var popupJustClosed = false;
+    var networkLines = L.layerGroup().addTo(map);
+
+    function $(id) { return document.getElementById(id); }
+
+    // ------------------------------------------------------
+    // SMALL UI HELPERS
+    // ------------------------------------------------------
+    var toastTimer = null;
+
+    function toast(message, ms) {
+        var t = $("toast");
+        t.textContent = message;
+        t.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { t.classList.remove("show"); }, ms || 2200);
+    }
+
+    function fallbackCopy(text) {
+        try {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            var ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            return ok;
+        } catch (err) { return false; }
+    }
+
+    function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text).then(
+                function () { return true; },
+                function () { return fallbackCopy(text); }
+            );
+        }
+        return Promise.resolve(fallbackCopy(text));
+    }
+
+    function isMobile() { return window.matchMedia("(max-width: 699px)").matches; }
+
+    // ------------------------------------------------------
+    // PANELS / MENU / MODAL
+    // ------------------------------------------------------
+    function closeMenu() { $("menu").classList.remove("open"); }
+
+    function closePanel(id) { $(id).classList.remove("open"); }
+
+    function closePanels() { closePanel("filterPanel"); closePanel("listPanel"); }
+
+    function openPanel(id) {
+        if (isMobile()) { closePanels(); }
+        closeMenu();
+        $(id).classList.add("open");
+        if (id === "listPanel") { renderList(); }
+    }
+
+    function togglePanel(id) {
+        if ($(id).classList.contains("open")) { closePanel(id); } else { openPanel(id); }
+    }
+
+    function openModal(html) {
+        closeMenu();
+        $("modalCard").innerHTML = html +
+            "<div class=\"m-actions\"><button class=\"btn primary\" type=\"button\" data-modal-close>Close</button></div>";
+        $("modal").classList.add("open");
+    }
+
+    function closeModal() { $("modal").classList.remove("open"); }
+
+    var LEGEND_HTML =
+        "<h2>How to read the map</h2>" +
+        "<div class=\"m-row\"><div class=\"ic\"><span class=\"repeater-pin\" style=\"display:inline-block;width:22px;height:33px\">" + PIN_SVG + "</span></div>" +
+        "<div><b>One pin = one repeater site.</b> Tap it for a card with every band at that site, plus tones, offsets and modes. Tap a frequency or tone to copy it.</div></div>" +
+        "<div class=\"m-row\"><div class=\"ic\"><span class=\"stack-badge\" style=\"position:static;display:inline-block\">3</span></div>" +
+        "<div><b>Red number:</b> several sites share the same spot. Zoom in and they fan out.</div></div>" +
+        "<div class=\"m-row\"><div class=\"ic\"><span class=\"repeater-pin linked-repeater-marker\" style=\"display:inline-block;width:22px;height:33px\">" + PIN_SVG + "</span></div>" +
+        "<div><b>Soft yellow glow:</b> a linked network (same call sign at more than one site). Tap one and its whole network pulses while other linked pins go dark. The bar at the bottom has <b>Fit</b> to show every link, even outside your search radius.</div></div>" +
+        "<div class=\"m-row\"><div class=\"ic\" style=\"color:#d97706;font-weight:700\">- - -</div>" +
+        "<div><b>Dashed lines</b> connect the selected site to its links.</div></div>" +
+        "<div class=\"m-row\"><div class=\"ic\">&#128205;</div>" +
+        "<div><b>Search spot</b> with a blue circle showing your radius.</div></div>" +
+        "<div class=\"m-row\"><div class=\"ic\" style=\"opacity:.5\">2m</div>" +
+        "<div><b>Dimmed band on a card:</b> it doesn&rsquo;t match your current filters, but the pin stays because another band does.</div></div>";
+
+    function aboutHtml() {
+        return "<h2>About &amp; data</h2>" +
+            "<p><b>Data last updated:</b> " + RM.esc(DATA_UPDATED) + "<br>" +
+            "<b>Sites on the map:</b> " + sites.length + "</p>" +
+            "<p>Repeater details come from a RepeaterBook export. Locations are placed at city level, " +
+            "so a pin can be several miles from the actual tower and Directions leads to the pin, not necessarily the tower.</p>" +
+            "<h3>Please verify</h3>" +
+            "<p>Frequencies, tones and offsets change. Confirm with the repeater owner or your local coordinator " +
+            "before relying on a listing. This is an independent hobby map and is not affiliated with RepeaterBook; " +
+            "see <a href=\"https://www.repeaterbook.com\" target=\"_blank\" rel=\"noopener\">repeaterbook.com</a> for the source and its terms.</p>" +
+            "<h3>Credits</h3>" +
+            "<p>Map tiles &copy; OpenStreetMap contributors. Place search by Nominatim.</p>";
+    }
+
+    // ------------------------------------------------------
+    // FILTERS
+    // ------------------------------------------------------
+    function bandCheckboxes() {
+        return Array.prototype.slice.call(document.querySelectorAll(".bandCheckbox"));
+    }
+
+    function readFilters() {
+        var bands = {};
+        bandCheckboxes().forEach(function (cb) { bands[cb.value] = cb.checked; });
+        return {
+            bands: bands,
+            freq: $("frequencyInput").value.trim(),
+            echo: $("echoLinkSelect").value
+        };
+    }
+
+    function getRadius() {
+        var r = parseFloat($("radiusSelect").value);
+        return isFinite(r) ? r : 25;
+    }
+
+    function syncAllBand() {
+        $("allBand").checked = bandCheckboxes().every(function (cb) { return cb.checked; });
+    }
+
+    // ------------------------------------------------------
+    // MARKERS
+    // ------------------------------------------------------
+    function makeIcon(site) {
+        return L.divIcon({
+            className: "repeater-pin" + (site.linkedRepeater ? " linked-repeater-marker" : ""),
+            html: PIN_SVG,
+            iconSize: [22, 33],
+            iconAnchor: [11, 33],
+            popupAnchor: [0, -28]
+        });
+    }
+
+    function popupContext(idx) {
+        var item = markerLayers[idx];
+        var f = readFilters();
+        return {
+            filters: f,
+            active: RM.filtersActive(f, ALL_BANDS),
+            networkSize: networkSizes[item.site.callSign] || 1,
+            outside: !!item.outside
+        };
+    }
+
+    function buildMarkers() {
+        networkSizes = {};
+        sites.forEach(function (site) {
+            if (site.callSign) { networkSizes[site.callSign] = (networkSizes[site.callSign] || 0) + 1; }
+        });
+
+        sites.forEach(function (site, idx) {
+            var marker = L.marker([site.lat, site.lon], { icon: makeIcon(site) });
+
+            marker.bindPopup(function () {
+                return RM.buildPopupHtml(site, idx, popupContext(idx));
+            }, {
+                maxWidth: 290,
+                minWidth: 210,
+                maxHeight: Math.round(window.innerHeight * 0.55),
+                autoPanPaddingTopLeft: [16, 76],
+                autoPanPaddingBottomRight: [16, 16]
+            });
+
+            marker.on("click", function () {
+                selectNetwork(idx);
+                updateMarkers();
+            });
+
+            markerLayers.push({
+                site: site, marker: marker, idx: idx,
+                distance: null, outside: false, raised: false
+            });
+        });
+
+        ALL_BANDS.forEach(function (band) {
+            var n = markerLayers.filter(function (it) {
+                return it.site.entries.some(function (e) { return e.band === band; });
+            }).length;
+            var el = document.querySelector(".cnt[data-band=\"" + band + "\"]");
+            if (el) { el.textContent = n; }
+        });
+    }
+
+    // ------------------------------------------------------
+    // LINKED NETWORK SELECTION
+    // ------------------------------------------------------
+    function isMember(site) {
+        return selectedCall !== null && site.linkedRepeater && site.callSign === selectedCall;
+    }
+
+    function selectNetwork(idx) {
+        var s = markerLayers[idx].site;
+        if (s.linkedRepeater && s.callSign) {
+            selectedCall = s.callSign;
+            selectedIdx = idx;
+        } else {
+            selectedCall = null;
+            selectedIdx = null;
+        }
+    }
+
+    function clearSelection() {
+        selectedCall = null;
+        selectedIdx = null;
+        updateMarkers();
+    }
+
+    function networkMembers() {
+        return markerLayers.filter(function (it) { return isMember(it.site); });
+    }
+
+    function fitNetwork() {
+        if (selectedCall === null) { return; }
+        var onMap = networkMembers().filter(function (it) { return map.hasLayer(it.marker); });
+        if (onMap.length === 0) { return; }
+
+        map.closePopup();
+
+        if (onMap.length === 1) {
+            map.setView([onMap[0].site.lat, onMap[0].site.lon], Math.max(map.getZoom(), 12), { animate: false });
+            return;
+        }
+
+        var points = onMap.map(function (it) { return [it.site.lat, it.site.lon]; });
+        map.fitBounds(L.latLngBounds(points), {
+            paddingTopLeft: [50, 84],
+            paddingBottomRight: [50, 120],
+            maxZoom: 12,
+            animate: false
+        });
+    }
+
+    function updateLinkedHighlight() {
+        var hasSelection = selectedCall !== null;
+
+        markerLayers.forEach(function (item) {
+            var el = item.marker.getElement();
+            if (!el) { return; }
+
+            if (!item.site.linkedRepeater) {
+                el.classList.remove("linked-repeater-active", "linked-repeater-off");
+            } else if (!hasSelection) {
+                el.classList.remove("linked-repeater-active", "linked-repeater-off");
+            } else if (item.site.callSign === selectedCall) {
+                el.classList.add("linked-repeater-active");
+                el.classList.remove("linked-repeater-off");
+            } else {
+                el.classList.add("linked-repeater-off");
+                el.classList.remove("linked-repeater-active");
+            }
+        });
+    }
+
+    function drawNetworkLines() {
+        networkLines.clearLayers();
+        if (selectedCall === null || selectedIdx === null) { return; }
+
+        var hub = markerLayers[selectedIdx];
+        if (!hub || !map.hasLayer(hub.marker)) { return; }
+
+        markerLayers.forEach(function (item) {
+            if (item === hub || !isMember(item.site) || !map.hasLayer(item.marker)) { return; }
+            L.polyline(
+                [[hub.site.lat, hub.site.lon], [item.site.lat, item.site.lon]],
+                { color: "#d97706", weight: 2, opacity: 0.85, dashArray: "6 6", interactive: false }
+            ).addTo(networkLines);
+        });
+    }
+
+    function updateChip() {
+        var chip = $("networkChip");
+
+        if (selectedCall === null) {
+            chip.classList.remove("show");
+            return;
+        }
+
+        var members = networkMembers();
+        var shown = members.filter(function (it) { return map.hasLayer(it.marker); });
+        var outside = searchLocationState
+            ? shown.filter(function (it) { return it.outside; }).length
+            : 0;
+
+        var text = selectedCall + " network \u00b7 " +
+            (shown.length < members.length ? shown.length + " of " + members.length : members.length) +
+            " sites";
+        if (outside > 0) { text += " \u00b7 " + outside + " outside radius"; }
+
+        $("networkChipText").textContent = text;
+        chip.classList.add("show");
+    }
+
+    // ------------------------------------------------------
+    // SPREAD STACKED PINS (same coordinates)
+    // ------------------------------------------------------
+    function setMarkerPosition(marker, lat, lon) {
+        var cur = marker.getLatLng();
+        if (Math.abs(cur.lat - lat) < 1e-9 && Math.abs(cur.lng - lon) < 1e-9) { return; }
+        marker.setLatLng([lat, lon]);
+    }
+
+    function updateMarkerPositions() {
+        var zoom = map.getZoom();
+        var spreadFactor = Math.max(0, Math.min(1, (zoom - 6) / 2));
+
+        var groups = {};
+        markerLayers.forEach(function (item, index) {
+            if (!map.hasLayer(item.marker)) { return; }
+            var key = item.site.lat.toFixed(7) + "," + item.site.lon.toFixed(7);
+            if (!groups[key]) { groups[key] = []; }
+            groups[key].push(index);
+        });
+
+        var targets = markerLayers.map(function (item) { return [item.site.lat, item.site.lon]; });
+        var wantRaised = markerLayers.map(function () { return false; });
+
+        Object.keys(groups).forEach(function (key) {
+            var indexes = groups[key];
+            var count = indexes.length;
+            if (count <= 1) { return; }
+
+            wantRaised[indexes[0]] = true;
+            if (spreadFactor === 0) { return; }
+
+            var placed = 0;
+            var ring = 0;
+
+            while (placed < count) {
+                var baseRadius = 26 + ring * 24;
+                var capacity = Math.max(6, Math.floor((2 * Math.PI * baseRadius) / 22));
+                var inRing = Math.min(capacity, count - placed);
+                var ringRadius = Math.max(baseRadius, (inRing * 22) / (2 * Math.PI)) * spreadFactor;
+
+                for (var k = 0; k < inRing; k++) {
+                    var markerIndex = indexes[placed + k];
+                    var item = markerLayers[markerIndex];
+                    var angle = (2 * Math.PI * k / inRing) - Math.PI / 2 + (ring % 2) * (Math.PI / inRing);
+
+                    var point = map.latLngToLayerPoint(L.latLng(item.site.lat, item.site.lon));
+                    point.x += Math.cos(angle) * ringRadius;
+                    point.y += Math.sin(angle) * ringRadius;
+
+                    var offset = map.layerPointToLatLng(point);
+                    targets[markerIndex] = [offset.lat, offset.lng];
+                }
+
+                placed += inRing;
+                ring++;
+            }
+        });
+
+        markerLayers.forEach(function (item, index) {
+            setMarkerPosition(item.marker, targets[index][0], targets[index][1]);
+
+            if (item.raised !== wantRaised[index]) {
+                item.raised = wantRaised[index];
+                item.marker.setZIndexOffset(wantRaised[index] ? 1000 : 0);
+            }
+        });
+
+        // Count badges on stacks that are not yet fully fanned out
+        markerLayers.forEach(function (item) {
+            var el = item.marker.getElement();
+            if (!el) { return; }
+            var old = el.querySelector(".stack-badge");
+            if (old) { old.remove(); }
+        });
+
+        if (spreadFactor < 1) {
+            Object.keys(groups).forEach(function (key) {
+                var indexes = groups[key];
+                if (indexes.length <= 1) { return; }
+                var el = markerLayers[indexes[0]].marker.getElement();
+                if (el) {
+                    el.insertAdjacentHTML("beforeend", "<div class=\"stack-badge\">" + indexes.length + "</div>");
+                }
+            });
+        }
+    }
+
+    // ------------------------------------------------------
+    // MAIN FILTER / VISIBILITY PASS
+    // ------------------------------------------------------
+    var lastVisible = 0;
+
+    function updateMarkers() {
+        var f = readFilters();
+        var radius = getRadius();
+        var visibleCount = 0;
+
+        markerLayers.forEach(function (item) {
+            var site = item.site;
+
+            if (searchLocationState) {
+                item.distance = RM.distanceMiles(searchLocationState.lat, searchLocationState.lon, site.lat, site.lon);
+                item.outside = item.distance > radius;
+            } else {
+                item.distance = null;
+                item.outside = false;
+            }
+
+            var visible = RM.siteMatches(site, f);
+
+            // A selected linked network ignores the radius (not the other filters)
+            if (visible && item.outside) { visible = isMember(site); }
+
+            if (visible) {
+                visibleCount++;
+                if (!map.hasLayer(item.marker)) { item.marker.addTo(map); }
+            } else if (map.hasLayer(item.marker)) {
+                map.removeLayer(item.marker);
+            }
+        });
+
+        lastVisible = visibleCount;
+
+        updateMarkerPositions();
+        updateLinkedHighlight();
+        drawNetworkLines();
+        updateChip();
+        updateResultPill();
+        updateFilterBadge();
+        scheduleListRender();
+        scheduleHashWrite();
+    }
+
+    function updateResultPill() {
+        var pill = $("resultPill");
+        var total = markerLayers.length;
+
+        $("resultsN").textContent = lastVisible;
+
+        if (lastVisible === 0) {
+            pill.textContent = "No sites match \u2014 try a larger radius or fewer filters";
+            pill.classList.add("warn");
+            return;
+        }
+
+        pill.classList.remove("warn");
+
+        var text = lastVisible + " of " + total + " sites";
+        if (searchLocationState) {
+            var label = searchLocationState.label || "search spot";
+            if (label.length > 26) { label = label.slice(0, 25) + "\u2026"; }
+            text += " \u00b7 within " + getRadius() + " mi of " + label;
+        }
+        pill.textContent = text;
+    }
+
+    function updateFilterBadge() {
+        var f = readFilters();
+        var n = 0;
+        if (!ALL_BANDS.every(function (b) { return f.bands[b]; })) { n++; }
+        if (f.freq) { n++; }
+        if (f.echo !== "all") { n++; }
+        $("filterBadge").textContent = n ? String(n) : "";
+    }
+
+    // ------------------------------------------------------
+    // LIST VIEW
+    // ------------------------------------------------------
+    var listTimer = null;
+
+    function scheduleListRender() {
+        if (!$("listPanel").classList.contains("open")) { return; }
+        clearTimeout(listTimer);
+        listTimer = setTimeout(renderList, 150);
+    }
+
+    function renderList() {
+        var items = markerLayers.filter(function (it) { return map.hasLayer(it.marker); });
+        var byDistance = !!searchLocationState;
+
+        items.sort(function (a, b) {
+            if (byDistance) { return a.distance - b.distance; }
+            var ca = a.site.callSign || "~", cb = b.site.callSign || "~";
+            return ca < cb ? -1 : (ca > cb ? 1 : 0);
+        });
+
+        var shown = items.slice(0, LIST_LIMIT);
+
+        $("listTitle").textContent = items.length + " site" + (items.length === 1 ? "" : "s");
+
+        if (items.length === 0) {
+            $("listBody").innerHTML = "<div class=\"empty\">No sites match your filters.</div>";
+            return;
+        }
+
+        var html = "<div class=\"hint\" style=\"margin:0 0 4px\">" +
+            (byDistance ? "Nearest first" : "Sorted by call sign") +
+            (items.length > LIST_LIMIT ? " \u00b7 showing first " + LIST_LIMIT + " \u2014 narrow your search to see more" : "") +
+            "</div>";
+
+        shown.forEach(function (it) {
+            var s = it.site;
+            var tags = "";
+            if (s.linkedRepeater) { tags += "<span class=\"tag\">Linked</span>"; }
+            if (s.entries.some(function (e) { return e.echoLink; })) { tags += "<span class=\"tag echo\">EchoLink</span>"; }
+
+            html += "<button type=\"button\" class=\"li\" data-idx=\"" + it.idx + "\">" +
+                "<div class=\"li-top\"><span class=\"li-call\">" + RM.esc(s.callSign || "Unknown") + tags + "</span>" +
+                (it.distance !== null ? "<span class=\"li-dist\">" + it.distance.toFixed(1) + " mi</span>" : "") + "</div>" +
+                "<div class=\"li-sub\">" + RM.esc([s.location, s.county].filter(Boolean).join(", ")) + "</div>" +
+                "<div class=\"li-freqs\">" + RM.summarizeFreqs(s) + "</div></button>";
+        });
+
+        $("listBody").innerHTML = html;
+    }
+
+    function focusSite(idx) {
+        var item = markerLayers[idx];
+        if (!item || !map.hasLayer(item.marker)) { return; }
+
+        if (isMobile()) { closePanels(); }
+
+        selectNetwork(idx);
+        map.setView([item.site.lat, item.site.lon], Math.max(map.getZoom(), 13), { animate: false });
+        updateMarkers();
+        item.marker.openPopup();
+    }
+
+    // ------------------------------------------------------
+    // SEARCH LOCATION / MY LOCATION
+    // ------------------------------------------------------
+    function fitToRadius() {
+        if (!radiusCircle) { return; }
+        map.fitBounds(radiusCircle.getBounds(), {
+            paddingTopLeft: [20, 84],
+            paddingBottomRight: [20, 20],
+            animate: false
+        });
+    }
+
+    function clearSearchVisuals() {
+        if (searchMarker) { map.removeLayer(searchMarker); searchMarker = null; }
+        if (radiusCircle) { map.removeLayer(radiusCircle); radiusCircle = null; }
+    }
+
+    function setSearchLocation(lat, lon, label, doFit) {
+        clearSearchVisuals();
+        searchLocationState = { lat: lat, lon: lon, label: label };
+
+        searchMarker = L.marker([lat, lon], {
+            icon: L.divIcon({
+                className: "search-location-marker",
+                html: "<div style=\"font-size:28px;line-height:28px\">&#128205;</div>",
+                iconSize: [30, 30],
+                iconAnchor: [15, 30]
+            })
+        }).addTo(map);
+        searchMarker.bindPopup("<b>" + RM.esc(label) + "</b>");
+
+        radiusCircle = L.circle([lat, lon], {
+            radius: getRadius() * 1609.344,
+            color: "#3b82f6",
+            weight: 1,
+            fillOpacity: 0.05,
+            interactive: false
+        }).addTo(map);
+
+        if (doFit) { fitToRadius(); }
+        updateMarkers();
+    }
+
+    function setSearching(on) {
+        $("searchBtn").disabled = on;
+        $("searchBtn").style.opacity = on ? "0.4" : "1";
+    }
+
+    function doSearch() {
+        var query = $("locationInput").value.trim();
+        if (!query) {
+            toast("Type a city or place first.");
+            return;
+        }
+
+        var url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us" +
+            "&viewbox=-81,42.6,-73.4,38.6&q=" + encodeURIComponent(query);
+
+        setSearching(true);
+
+        fetch(url, { headers: { "Accept": "application/json" } })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                setSearching(false);
+                if (!data || data.length === 0) {
+                    toast("Location not found \u2014 check the spelling.");
+                    return;
+                }
+                if (isMobile()) { closePanels(); }
+                setSearchLocation(parseFloat(data[0].lat), parseFloat(data[0].lon), query, true);
+            })
+            .catch(function (err) {
+                console.error(err);
+                setSearching(false);
+                toast("Couldn't search right now. Check your connection.");
+            });
+    }
+
+    function useMyLocation() {
+        if (!navigator.geolocation) {
+            toast("Location isn't available in this browser.");
+            return;
+        }
+        toast("Finding your location\u2026", 3000);
+        navigator.geolocation.getCurrentPosition(
+            function (pos) {
+                $("locationInput").value = "My location";
+                if (isMobile()) { closePanels(); }
+                setSearchLocation(pos.coords.latitude, pos.coords.longitude, "My location", true);
+            },
+            function () {
+                toast("Couldn't get your location. Allow location access (needs https or localhost).", 4500);
+            },
+            { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
+        );
+    }
+
+    function clearAll() {
+        $("locationInput").value = "";
+        $("frequencyInput").value = "";
+        $("echoLinkSelect").value = "all";
+        $("radiusSelect").value = "25";
+        bandCheckboxes().forEach(function (cb) { cb.checked = true; });
+        syncAllBand();
+
+        searchLocationState = null;
+        clearSearchVisuals();
+        selectedCall = null;
+        selectedIdx = null;
+        map.closePopup();
+
+        map.setView([DEFAULT_VIEW.lat, DEFAULT_VIEW.lon], DEFAULT_VIEW.zoom, { animate: false });
+        updateMarkers();
+    }
+
+    // ------------------------------------------------------
+    // SHAREABLE LINK (state lives in the URL #hash)
+    // ------------------------------------------------------
+    var hashTimer = null;
+
+    function currentHash() {
+        var f = readFilters();
+        var o = {};
+
+        if (searchLocationState) {
+            o.q = searchLocationState.label || "";
+            o.lat = searchLocationState.lat.toFixed(5);
+            o.lon = searchLocationState.lon.toFixed(5);
+            o.r = $("radiusSelect").value;
+        }
+
+        var on = ALL_BANDS.filter(function (b) { return f.bands[b]; });
+        if (on.length !== ALL_BANDS.length) { o.b = on.join(","); }
+        if (f.freq) { o.f = f.freq; }
+        if (f.echo !== "all") { o.e = f.echo; }
+        if (selectedCall) { o.sel = selectedCall; }
+
+        var c = map.getCenter();
+        o.view = c.lat.toFixed(4) + "," + c.lng.toFixed(4) + "," + map.getZoom();
+
+        return RM.buildHash(o);
+    }
+
+    function writeHash() {
+        var h = currentHash();
+        try {
+            history.replaceState(null, "", window.location.pathname + window.location.search + (h ? "#" + h : ""));
+        } catch (err) {
+            try { window.location.hash = h; } catch (err2) { /* ignore */ }
+        }
+    }
+
+    function scheduleHashWrite() {
+        clearTimeout(hashTimer);
+        hashTimer = setTimeout(writeHash, 400);
+    }
+
+    function shareLink() {
+        writeHash();
+        copyText(window.location.href).then(function (ok) {
+            if (!ok) { toast("Couldn't copy. Copy the address bar instead."); return; }
+            toast(window.location.protocol === "file:"
+                ? "Link copied \u2014 it only works on this computer until the page is hosted."
+                : "Link copied.", 3200);
+        });
+    }
+
+    function restoreFromHash() {
+        var p = RM.parseHash(window.location.hash);
+        if (Object.keys(p).length === 0) { return false; }
+
+        if (p.b) {
+            var set = {};
+            p.b.split(",").forEach(function (b) { set[b] = true; });
+            bandCheckboxes().forEach(function (cb) { cb.checked = !!set[cb.value]; });
+            syncAllBand();
+        }
+        if (p.f) { $("frequencyInput").value = p.f; }
+        if (p.e === "yes" || p.e === "no") { $("echoLinkSelect").value = p.e; }
+        if (p.r && ["5", "10", "25", "50", "100"].indexOf(p.r) >= 0) { $("radiusSelect").value = p.r; }
+
+        var lat = parseFloat(p.lat);
+        var lon = parseFloat(p.lon);
+        if (isFinite(lat) && isFinite(lon)) {
+            $("locationInput").value = p.q || "";
+            setSearchLocation(lat, lon, p.q || "Search spot", false);
+        }
+
+        if (p.sel) {
+            var members = markerLayers.filter(function (it) {
+                return it.site.linkedRepeater && it.site.callSign === p.sel;
+            });
+            if (members.length) {
+                selectedCall = p.sel;
+                selectedIdx = members[0].idx;
+            }
+        }
+
+        updateMarkers();
+
+        var v = (p.view || "").split(",");
+        var vl = parseFloat(v[0]), vo = parseFloat(v[1]), vz = parseInt(v[2], 10);
+        if (isFinite(vl) && isFinite(vo) && isFinite(vz)) {
+            map.setView([vl, vo], vz, { animate: false });
+        } else if (radiusCircle) {
+            fitToRadius();
+        }
+        return true;
+    }
+
+    // ------------------------------------------------------
+    // TOUR
+    // ------------------------------------------------------
+    var TOUR_STEPS = [
+        { target: null, title: "Welcome \ud83d\udc4b",
+          text: "A 30-second tour of the repeater map. You can replay it any time from the menu." },
+        { target: "#searchWrap", title: "Search",
+          text: "Type a city or place to center the map there. Press Enter or tap the magnifier." },
+        { target: "#locateBtn", title: "Near me",
+          text: "Tap the pin icon to search around your current location." },
+        { target: "#filtersBtn", title: "Filters",
+          text: "Choose the radius, bands, a frequency prefix, or EchoLink only. The red number shows how many filters are on." },
+        { target: null, title: "Pins & linked networks",
+          text: "Each pin is one site with every band on its card. A red number means pins are stacked \u2014 zoom in to fan them out. " +
+                "Pins with a yellow glow belong to linked networks: tap one to light up its links, then tap Fit to see them all, even beyond your radius." },
+        { target: "#listBtn", title: "List view",
+          text: "See the same results as a list, nearest first. Tap a row to jump to it on the map." },
+        { target: "#menuBtn", title: "Menu",
+          text: "Replay this tour, read the legend, copy a link to your current view, or see where the data comes from." }
+    ];
+
+    var tourIdx = 0;
+
+    function tourOpen() { return $("tourOverlay").classList.contains("open"); }
+
+    function startTour() {
+        closePanels();
+        closeMenu();
+        closeModal();
+        tourIdx = 0;
+        $("tourOverlay").classList.add("open");
+        showTourStep();
+    }
+
+    function endTour() {
+        $("tourOverlay").classList.remove("open");
+        try { window.localStorage.setItem(TOUR_KEY, "1"); } catch (err) { /* ignore */ }
+    }
+
+    function showTourStep() {
+        var step = TOUR_STEPS[tourIdx];
+        var overlay = $("tourOverlay");
+        var spot = $("tourSpot");
+        var card = $("tourCard");
+        var last = tourIdx === TOUR_STEPS.length - 1;
+
+        card.innerHTML =
+            "<h3>" + step.title + "</h3><div>" + step.text + "</div>" +
+            "<div class=\"t-foot\"><span class=\"step\">" + (tourIdx + 1) + " / " + TOUR_STEPS.length + "</span>" +
+            (tourIdx > 0 ? "<button type=\"button\" data-tour=\"back\">Back</button>" : "<button type=\"button\" data-tour=\"skip\">Skip</button>") +
+            "<button type=\"button\" class=\"primary\" data-tour=\"" + (last ? "done" : "next") + "\">" + (last ? "Done" : "Next") + "</button></div>";
+
+        var w = Math.min(320, window.innerWidth - 24);
+        card.style.width = w + "px";
+
+        var el = step.target ? document.querySelector(step.target) : null;
+
+        if (el) {
+            var r = el.getBoundingClientRect();
+            overlay.classList.remove("dim");
+            spot.style.display = "block";
+            spot.style.left = (r.left - 5) + "px";
+            spot.style.top = (r.top - 5) + "px";
+            spot.style.width = (r.width + 10) + "px";
+            spot.style.height = (r.height + 10) + "px";
+
+            var left = Math.max(12, Math.min(r.left, window.innerWidth - w - 12));
+            var top = r.bottom + 16;
+            if (top + card.offsetHeight > window.innerHeight - 12) { top = Math.max(12, r.top - card.offsetHeight - 16); }
+            card.style.left = left + "px";
+            card.style.top = top + "px";
+        } else {
+            overlay.classList.add("dim");
+            spot.style.display = "none";
+            card.style.left = Math.max(12, (window.innerWidth - w) / 2) + "px";
+            card.style.top = Math.max(12, (window.innerHeight - card.offsetHeight) / 2) + "px";
+        }
+    }
+
+    // ------------------------------------------------------
+    // EVENTS
+    // ------------------------------------------------------
+    $("menuBtn").addEventListener("click", function (e) {
+        e.stopPropagation();
+        $("menu").classList.toggle("open");
+    });
+    $("helpBtn").addEventListener("click", function () { openModal(LEGEND_HTML); });
+    $("filtersBtn").addEventListener("click", function () { togglePanel("filterPanel"); });
+    $("listBtn").addEventListener("click", function () { togglePanel("listPanel"); });
+    $("searchBtn").addEventListener("click", doSearch);
+    $("locateBtn").addEventListener("click", useMyLocation);
+    $("locationInput").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") { e.preventDefault(); doSearch(); }
+    });
+    $("applyCloseBtn").addEventListener("click", function () { closePanel("filterPanel"); });
+    $("clearAllBtn").addEventListener("click", clearAll);
+
+    $("menu").addEventListener("click", function (e) {
+        var b = e.target.closest("[data-menu]");
+        if (!b) { return; }
+        var what = b.getAttribute("data-menu");
+        closeMenu();
+        if (what === "tour") { startTour(); }
+        else if (what === "legend") { openModal(LEGEND_HTML); }
+        else if (what === "share") { shareLink(); }
+        else if (what === "about") { openModal(aboutHtml()); }
+    });
+
+    $("modal").addEventListener("click", function (e) {
+        if (e.target === $("modal") || e.target.closest("[data-modal-close]")) { closeModal(); }
+    });
+
+    document.querySelectorAll("[data-close]").forEach(function (b) {
+        b.addEventListener("click", function () { closePanel(b.getAttribute("data-close")); });
+    });
+
+    $("listBody").addEventListener("click", function (e) {
+        var row = e.target.closest(".li");
+        if (row) { focusSite(parseInt(row.getAttribute("data-idx"), 10)); }
+    });
+
+    $("tourCard").addEventListener("click", function (e) {
+        var b = e.target.closest("[data-tour]");
+        if (!b) { return; }
+        var what = b.getAttribute("data-tour");
+        if (what === "next") { tourIdx++; showTourStep(); }
+        else if (what === "back") { tourIdx = Math.max(0, tourIdx - 1); showTourStep(); }
+        else { endTour(); }
+    });
+
+    $("networkFitBtn").addEventListener("click", fitNetwork);
+    $("networkClearBtn").addEventListener("click", clearSelection);
+
+    // Filter controls
+    var freqTimer = null;
+    $("frequencyInput").addEventListener("input", function () {
+        clearTimeout(freqTimer);
+        freqTimer = setTimeout(updateMarkers, 150);
+    });
+    $("echoLinkSelect").addEventListener("change", updateMarkers);
+
+    $("radiusSelect").addEventListener("change", function () {
+        if (searchLocationState && radiusCircle) {
+            radiusCircle.setRadius(getRadius() * 1609.344);
+            fitToRadius();
+        }
+        updateMarkers();
+    });
+
+    $("allBand").addEventListener("change", function () {
+        var on = $("allBand").checked;
+        bandCheckboxes().forEach(function (cb) { cb.checked = on; });
+        updateMarkers();
+    });
+
+    bandCheckboxes().forEach(function (cb) {
+        cb.addEventListener("change", function () { syncAllBand(); updateMarkers(); });
+    });
+
+    // Copy-to-clipboard and "Show network" inside popup cards
+    document.addEventListener("click", function (e) {
+        var net = e.target.closest("[data-action=\"network\"]");
+        if (net) {
+            selectNetwork(parseInt(net.getAttribute("data-idx"), 10));
+            updateMarkers();
+            fitNetwork();
+            return;
+        }
+
+        var c = e.target.closest("[data-copy]");
+        if (c) {
+            var value = c.getAttribute("data-copy");
+            copyText(value).then(function (ok) {
+                toast(ok ? "Copied " + value : "Couldn't copy " + value);
+            });
+        }
+
+        if (!e.target.closest("#menu") && !e.target.closest("#menuBtn")) { closeMenu(); }
+    });
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape") { return; }
+        if (tourOpen()) { endTour(); }
+        else if ($("modal").classList.contains("open")) { closeModal(); }
+        else { closeMenu(); closePanels(); }
+    });
+
+    window.addEventListener("resize", function () {
+        map.invalidateSize();
+        updateMarkerPositions();
+        if (tourOpen()) { showTourStep(); }
+    });
+    window.addEventListener("orientationchange", function () {
+        map.invalidateSize();
+        updateMarkerPositions();
+    });
+
+    // Re-spread stacked pins whenever the map settles
+    map.on("moveend", function () {
+        updateMarkerPositions();
+        scheduleHashWrite();
+    });
+    map.on("zoomend", updateMarkerPositions);
+
+    // Tapping empty map clears the selected network, but the tap
+    // that merely dismisses an open card does not.
+    map.on("popupclose", function () {
+        popupJustClosed = true;
+        setTimeout(function () { popupJustClosed = false; }, 0);
+    });
+    map.on("click", function () {
+        if (popupJustClosed) { return; }
+        if (selectedCall !== null) { clearSelection(); }
+        closeMenu();
+    });
+
+    L.DomEvent.disableClickPropagation($("networkChip"));
+
+    // ------------------------------------------------------
+    // LOAD DATA
+    // ------------------------------------------------------
+    fetch("repeaters.json")
+        .then(function (r) {
+            if (!r.ok) { throw new Error("HTTP " + r.status); }
+            return r.json();
+        })
+        .then(function (data) {
+            sites = data;
+            buildMarkers();
+
+            var restored = restoreFromHash();
+            if (!restored) { updateMarkers(); }
+
+            map.invalidateSize();
+            updateMarkerPositions();
+            setTimeout(function () { map.invalidateSize(); updateMarkerPositions(); }, 400);
+
+            var seen = false;
+            try { seen = !!window.localStorage.getItem(TOUR_KEY); } catch (err) { /* ignore */ }
+            if (!restored && !seen) { setTimeout(startTour, 700); }
+        })
+        .catch(function (err) {
+            console.error(err);
+            var pill = $("resultPill");
+            pill.textContent = "Couldn't load repeaters.json";
+            pill.classList.add("warn");
+            toast("Couldn't load repeaters.json. Open this page through a web server (for example: python -m http.server) or host both files together.", 9000);
+        });
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+} else {
+    boot();
+}
+
+})();
+
+    
+            var map_f7b2dc187924d4bc996d783c316d1369 = L.map(
+                "map_f7b2dc187924d4bc996d783c316d1369",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -2386,13 +1586,13 @@ document.getElementById(
 
                 }
             );
-            L.control.scale().addTo(map_7d07c7b887f4bbb7665bcf39d77db9c7);
+            L.control.scale().addTo(map_f7b2dc187924d4bc996d783c316d1369);
 
             
 
         
     
-            var tile_layer_bf02be893538ab98a5b7ee9fcacae5ca = L.tileLayer(
+            var tile_layer_1d0b85d2310b04de23339d3e6233e136 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -2409,7 +1609,7 @@ document.getElementById(
             );
         
     
-            tile_layer_bf02be893538ab98a5b7ee9fcacae5ca.addTo(map_7d07c7b887f4bbb7665bcf39d77db9c7);
+            tile_layer_1d0b85d2310b04de23339d3e6233e136.addTo(map_f7b2dc187924d4bc996d783c316d1369);
         
 </script>
 </html>
