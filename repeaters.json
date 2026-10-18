@@ -126,8 +126,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6514194,
-  "lon": -76.4977799,
+  "lat": 40.6742508,
+  "lon": -76.3753115,
   "callSign": "KB3VXB",
   "location": "Hegins - Landfill",
   "county": "Schuylkill",
@@ -174,8 +174,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.844166,
-  "lon": -79.1421229,
+  "lat": 41.8095047,
+  "lon": -79.0608746,
   "callSign": "W3KKC",
   "location": "Warren - Stone Hill",
   "county": "Warren",
@@ -216,8 +216,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.8339654,
-  "lon": -75.8771388,
+  "lat": 41.7903074,
+  "lon": -75.6993333,
   "callSign": "N3KZ",
   "location": "Montrose - Fairgrounds",
   "county": "Susquehanna",
@@ -246,8 +246,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.1597979,
-  "lon": -79.066417,
+  "lat": 40.181629,
+  "lon": -79.0443751,
   "callSign": "N3LZX",
   "location": "Jennerstown - Roaring Run",
   "county": "Somerset",
@@ -276,8 +276,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.2663107,
-  "lon": -76.8861122,
+  "lat": 40.3680299,
+  "lon": -76.8039388,
   "callSign": "W3ND",
   "location": "Harrisburg - Blue Mtn",
   "county": "Dauphin",
@@ -402,8 +402,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.1373067,
-  "lon": -77.4469952,
+  "lat": 41.1781252,
+  "lon": -77.433313,
   "callSign": "NC3PA",
   "location": "Lock Haven - Swissdale",
   "county": "Clinton",
@@ -432,8 +432,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.9184439,
-  "lon": -75.2590258,
+  "lat": 39.9273668,
+  "lon": -75.2682815,
   "callSign": "WB3JOE",
   "location": "Darby - Mercy Fitzgerald Hospital",
   "county": "Delaware",
@@ -510,8 +510,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.4406968,
-  "lon": -80.0025666,
+  "lat": 40.4350531,
+  "lon": -80.0660991,
   "callSign": "AC3DB",
   "location": "Pittsburgh - Crafton",
   "county": "Allegheny",
@@ -534,8 +534,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6120327,
-  "lon": -76.4535692,
+  "lat": 40.5921492,
+  "lon": -76.5418925,
   "callSign": "W3SC",
   "location": "Joliett - Porter Township",
   "county": "Schuylkill",
@@ -684,8 +684,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.1294712,
-  "lon": -80.0852695,
+  "lat": 42.0498374,
+  "lon": -79.953521,
   "callSign": "K3WWA",
   "location": "Erie - Greene Township",
   "county": "Erie",
@@ -774,8 +774,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.2411556,
-  "lon": -77.0011096,
+  "lat": 41.2422534,
+  "lon": -77.0757569,
   "callSign": "W3AHS",
   "location": "Williamsport - High School",
   "county": "Lycoming",
@@ -900,8 +900,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.8604672,
-  "lon": -79.8970522,
+  "lat": 40.8762028,
+  "lon": -79.9285771,
   "callSign": "K3PSG",
   "location": "Butler - Alameda Park",
   "county": "Butler",
@@ -1020,8 +1020,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.3509735,
-  "lon": -76.2109164,
+  "lat": 40.3320401,
+  "lon": -76.2270444,
   "callSign": "N3SWH",
   "location": "Newmanstown - Millcreek Twp",
   "county": "Lebanon",
@@ -1128,8 +1128,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.1294712,
-  "lon": -80.0852695,
+  "lat": 42.1428124,
+  "lon": -80.1359334,
   "callSign": "N3APP",
   "location": "Erie - Presque Isle State Park",
   "county": "Erie",
@@ -1193,8 +1193,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.1747599,
-  "lon": -75.6625203,
+  "lat": 40.1716153,
+  "lon": -75.6747641,
   "callSign": "N3KZ",
   "location": "Bucktown - South Coventry Township",
   "county": "Chester",
@@ -1271,8 +1271,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.0272796,
-  "lon": -78.4391876,
+  "lat": 41.0315784,
+  "lon": -78.4409644,
   "callSign": "W3CPA",
   "location": "Clearfield - Rockton Mtn",
   "county": "Clearfield",
@@ -1337,8 +1337,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.5489742,
-  "lon": -76.8119151,
+  "lat": 40.5350853,
+  "lon": -76.8269158,
   "callSign": "KB3VDL",
   "location": "Elizabethville - Berry Mtn",
   "county": "Dauphin",
@@ -1427,8 +1427,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.0044958,
-  "lon": -76.4537302,
+  "lat": 40.9170311,
+  "lon": -76.3168866,
   "callSign": "KT3A",
   "location": "Bloomsburg - Catawissa Mtn",
   "county": "Columbia",
@@ -1517,8 +1517,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.5284093,
-  "lon": -76.1257621,
+  "lat": 41.5042431,
+  "lon": -76.0660373,
   "callSign": "N3KZ",
   "location": "Forkston - Forkston Mtn",
   "county": "Wyoming",
@@ -1757,8 +1757,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.5997916,
-  "lon": -77.4952585,
+  "lat": 41.6550692,
+  "lon": -77.5763726,
   "callSign": "NR3K",
   "location": "Leetonia - Cedar Mtn",
   "county": "Tioga",
@@ -1787,8 +1787,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7993524,
-  "lon": -76.8619072,
+  "lat": 40.8087878,
+  "lon": -76.8832773,
   "callSign": "K3SNY",
   "location": "Selinsgrove - Selinsgrove Center",
   "county": "Snyder",
@@ -1817,8 +1817,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.335345,
-  "lon": -75.9279495,
+  "lat": 40.3281484,
+  "lon": -75.8907603,
   "callSign": "K2SEH",
   "location": "Reading - Mt Penn",
   "county": "Berks",
@@ -1847,8 +1847,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.3397846,
-  "lon": -78.134172,
+  "lat": 41.3870073,
+  "lon": -78.1255605,
   "callSign": "N3SNN",
   "location": "Driftwood - Grove Hill",
   "county": "Cameron",
@@ -1877,8 +1877,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.0756158,
-  "lon": -78.6530827,
+  "lat": 41.0315784,
+  "lon": -78.4409644,
   "callSign": "WR3IRS",
   "location": "Rockton - Rockton Mtn",
   "county": "Clearfield",
@@ -1961,8 +1961,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.377867,
-  "lon": -76.6463566,
+  "lat": 40.4180886,
+  "lon": -76.6553171,
   "callSign": "K3LV",
   "location": "Grantville - Blue Mtn",
   "county": "Lebanon",
@@ -2135,8 +2135,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6022552,
-  "lon": -75.4716115,
+  "lat": 40.565144,
+  "lon": -75.4375379,
   "callSign": "W3OI",
   "location": "Allentown - South Mtn",
   "county": "Lehigh",
@@ -2423,8 +2423,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.2411556,
-  "lon": -77.0011096,
+  "lat": 41.2161964,
+  "lon": -76.9085709,
   "callSign": "KB3HLL",
   "location": "Williamsport - Bald Eagle Mtn",
   "county": "Lycoming",
@@ -2453,8 +2453,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.2067751,
-  "lon": -75.0996159,
+  "lat": 40.1824826,
+  "lon": -74.85947,
   "callSign": "K3DN",
   "location": "Warminster - Township Bldg",
   "county": "Bucks",
@@ -2573,8 +2573,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.2663107,
-  "lon": -76.8861122,
+  "lat": 40.3995314,
+  "lon": -76.8524726,
   "callSign": "KB3NIA",
   "location": "Harrisburg - Ellendale",
   "county": "Dauphin",
@@ -2687,8 +2687,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.533412,
-  "lon": -77.3855442,
+  "lat": 40.4835005,
+  "lon": -77.3669231,
   "callSign": "K3TAR",
   "location": "Port Royal - Tuscarora Mtn",
   "county": "Juniata",
@@ -2819,8 +2819,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.7158884,
-  "lon": -80.2700613,
+  "lat": 41.7119597,
+  "lon": -80.2081624,
   "callSign": "W3MIE",
   "location": "Norrisville - Hayfield Township",
   "county": "Crawford",
@@ -2987,8 +2987,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.0379958,
-  "lon": -76.3056707,
+  "lat": 40.047535,
+  "lon": -76.3042918,
   "callSign": "W3RRR",
   "location": "Lancaster - Hospital",
   "county": "Lancaster",
@@ -3107,8 +3107,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.1950837,
-  "lon": -76.3835528,
+  "lat": 41.290119,
+  "lon": -76.3005327,
   "callSign": "N3VTH",
   "location": "Benton - Red Rock",
   "county": "Luzerne",
@@ -3232,8 +3232,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.962493,
-  "lon": -76.7276989,
+  "lat": 40.0112357,
+  "lon": -76.6552128,
   "callSign": "W3HZU",
   "location": "York - Rocky Ridge County Park",
   "county": "York",
@@ -3346,8 +3346,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7207964,
-  "lon": -76.1911314,
+  "lat": 40.7736424,
+  "lon": -76.1479186,
   "callSign": "W3SC",
   "location": "Saint Clair - Burma Rd",
   "county": "Schuylkill",
@@ -3406,8 +3406,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.8906112,
-  "lon": -80.3664542,
+  "lat": 42.0003907,
+  "lon": -80.3187645,
   "callSign": "WE3OPS",
   "location": "Albion - Girard",
   "county": "Erie",
@@ -3466,8 +3466,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.4086874,
-  "lon": -75.6621294,
+  "lat": 41.4305532,
+  "lon": -75.7522055,
   "callSign": "K3CSG",
   "location": "Scranton - Pinnacle Rock",
   "county": "Lackawanna",
@@ -3526,8 +3526,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.9167783,
-  "lon": -75.387693,
+  "lat": 39.9174644,
+  "lon": -75.4465339,
   "callSign": "W3KG",
   "location": "Media - Fair Acres",
   "county": "Delaware",
@@ -3556,8 +3556,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.3267407,
-  "lon": -78.9219698,
+  "lat": 40.2987271,
+  "lon": -79.0125808,
   "callSign": "NW3F",
   "location": "Johnstown - Laurel Mtn",
   "county": "Cambria",
@@ -3586,8 +3586,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6022552,
-  "lon": -75.4716115,
+  "lat": 40.5984314,
+  "lon": -75.419348,
   "callSign": "W3OI",
   "location": "Allentown - Lehigh Mtn",
   "county": "Lehigh",
@@ -3706,8 +3706,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.5992395,
-  "lon": -77.571382,
+  "lat": 40.5974876,
+  "lon": -77.5745358,
   "callSign": "K3DNA",
   "location": "Lewistown",
   "county": "Mifflin",
@@ -3784,8 +3784,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.6795186,
-  "lon": -77.0638567,
+  "lat": 41.6063862,
+  "lon": -77.1151635,
   "callSign": "N3FE",
   "location": "Blossburg - Bloss Mtn",
   "county": "Tioga",
@@ -4306,8 +4306,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.1709768,
-  "lon": -80.2454528,
+  "lat": 40.168463,
+  "lon": -80.2189962,
   "callSign": "K3PSP",
   "location": "Washington - Washington Park",
   "county": "Washington",
@@ -4378,8 +4378,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.0298032,
-  "lon": -76.8844936,
+  "lat": 41.6905977,
+  "lon": -76.8015189,
   "callSign": "N3YCT",
   "location": "Seeley",
   "county": "Bradford",
@@ -4432,8 +4432,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.9167511,
-  "lon": -78.3839036,
+  "lat": 39.8403626,
+  "lon": -78.5461281,
   "callSign": "W3ZC",
   "location": "Clearville - Martin Hill",
   "county": "Bedford",
@@ -4522,8 +4522,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.0970507,
-  "lon": -75.4696358,
+  "lat": 40.1066072,
+  "lon": -75.4989563,
   "callSign": "W3PHL",
   "location": "Valley Forge - Schuylkill Township",
   "county": "Chester",
@@ -4582,8 +4582,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.8136931,
-  "lon": -79.024748,
+  "lat": 39.7859857,
+  "lon": -79.1767539,
   "callSign": "W3KKC",
   "location": "Meyersdale - Mt Davis",
   "county": "Somerset",
@@ -4612,8 +4612,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.2663107,
-  "lon": -76.8861122,
+  "lat": 40.3680299,
+  "lon": -76.8039388,
   "callSign": "W3UU",
   "location": "Harrisburg - Blue Mtn",
   "county": "Dauphin",
@@ -4744,8 +4744,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.2411556,
-  "lon": -77.0011096,
+  "lat": 41.2161964,
+  "lon": -76.9085709,
   "callSign": "W3AVK",
   "location": "Williamsport - Bald Eagle Mtn",
   "county": "Lycoming",
@@ -4834,8 +4834,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.4086874,
-  "lon": -75.6621294,
+  "lat": 41.4364673,
+  "lon": -75.7343589,
   "callSign": "N3MBK",
   "location": "Scranton - Bald Mtn",
   "county": "Lackawanna",
@@ -5122,8 +5122,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.9527237,
-  "lon": -75.1635262,
+  "lat": 39.9439923,
+  "lon": -75.1844159,
   "callSign": "WM3PEN",
   "location": "Philadelphia - U of P",
   "county": "Philadelphia",
@@ -5338,8 +5338,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6916081,
-  "lon": -75.2099866,
+  "lat": 40.6648214,
+  "lon": -75.2060095,
   "callSign": "N3LWY",
   "location": "Easton - Morgan Hill",
   "county": "Northampton",
@@ -5542,8 +5542,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.9086848,
-  "lon": -77.1330266,
+  "lat": 41.9434075,
+  "lon": -77.0166329,
   "callSign": "KB3EAR",
   "location": "Tioga - Jackson Summit",
   "county": "Tioga",
@@ -5692,8 +5692,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.1106341,
-  "lon": -78.8019657,
+  "lat": 40.117902,
+  "lon": -78.8657113,
   "callSign": "WR3AJL",
   "location": "Central City - Statler Hill",
   "county": "Somerset",
@@ -5956,8 +5956,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7974296,
-  "lon": -75.9696186,
+  "lat": 40.6869319,
+  "lon": -76.1997644,
   "callSign": "W3TWA",
   "location": "Tamaqua - High Rise",
   "county": "Schuylkill",
@@ -6076,8 +6076,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.3339589,
-  "lon": -79.2997573,
+  "lat": 40.3470148,
+  "lon": -79.2255891,
   "callSign": "WC3PS",
   "location": "Derry - Bear Cave Lookout",
   "county": "Westmoreland",
@@ -6136,8 +6136,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6851324,
-  "lon": -76.1953701,
+  "lat": 40.6341055,
+  "lon": -76.1642326,
   "callSign": "W3TWA",
   "location": "Pottsville - Avenues",
   "county": "Schuylkill",
@@ -6220,8 +6220,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.2464824,
-  "lon": -75.8817316,
+  "lat": 41.2171574,
+  "lon": -75.8436096,
   "callSign": "N3FCK",
   "location": "Wilkes-Barre - Laurel Run",
   "county": "Luzerne",
@@ -6250,8 +6250,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.2764916,
-  "lon": -77.5945591,
+  "lat": 40.2128302,
+  "lon": -77.5904866,
   "callSign": "N3TWT",
   "location": "Toboyne - Three Square Hollow",
   "county": "Perry",
@@ -6340,8 +6340,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.7873173,
-  "lon": -77.3685984,
+  "lat": 39.7606369,
+  "lon": -77.3685341,
   "callSign": "N2JEH",
   "location": "Fairfield - Liberty Mtn",
   "county": "Adams",
@@ -6526,8 +6526,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.9863619,
-  "lon": -75.1904696,
+  "lat": 40.9674472,
+  "lon": -75.1606809,
   "callSign": "K3ODX",
   "location": "Stroudsburg - Totts Gap",
   "county": "Monroe",
@@ -6574,8 +6574,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.1709768,
-  "lon": -80.2454528,
+  "lat": 40.1311827,
+  "lon": -80.2417273,
   "callSign": "K3PSP",
   "location": "Washington - Mt Wheeler",
   "county": "Washington",
@@ -6634,8 +6634,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.335345,
-  "lon": -75.9279495,
+  "lat": 40.3281484,
+  "lon": -75.8907603,
   "callSign": "K3TI",
   "location": "Reading - Mt Penn",
   "county": "Berks",
@@ -6682,8 +6682,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.0186921,
-  "lon": -78.5039069,
+  "lat": 40.013692,
+  "lon": -78.5552963,
   "callSign": "W3ZC",
   "location": "Bedford - Kinton Knob",
   "county": "Bedford",
@@ -6760,8 +6760,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.2464824,
-  "lon": -75.8817316,
+  "lat": 41.3089694,
+  "lon": -75.8946414,
   "callSign": "K3YTL",
   "location": "Wilkes-Barre - Bunker Hill",
   "county": "Luzerne",
@@ -6790,8 +6790,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7944504,
-  "lon": -77.8616386,
+  "lat": 40.8128971,
+  "lon": -77.8710571,
   "callSign": "K3CR",
   "location": "State College - Penn State University",
   "county": "Centre",
@@ -6952,8 +6952,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.7168591,
-  "lon": -75.4924198,
+  "lat": 41.7195945,
+  "lon": -75.5584303,
   "callSign": "N3KZ",
   "location": "Union Dale - Elk Mtn Ski Resort",
   "county": "Susquehanna",
@@ -7012,8 +7012,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.1184235,
-  "lon": -77.1899817,
+  "lat": 40.0499989,
+  "lon": -77.4398938,
   "callSign": "N3TWT",
   "location": "Mount Holly Springs - South Mtn",
   "county": "Cumberland",
@@ -7234,8 +7234,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.2411041,
-  "lon": -76.3722167,
+  "lat": 40.2454143,
+  "lon": -76.3665482,
   "callSign": "W3AD",
   "location": "Cornwall - Cornwall Mtn",
   "county": "Lancaster",
@@ -7294,8 +7294,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.841027,
-  "lon": -76.0795248,
+  "lat": 40.8385839,
+  "lon": -76.0981073,
   "callSign": "W3SC",
   "location": "Delano - Park Place",
   "county": "Schuylkill",
@@ -7324,8 +7324,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.3097663,
-  "lon": -77.3620998,
+  "lat": 41.2845162,
+  "lon": -77.3244183,
   "callSign": "KB3DXU",
   "location": "Waterville - Ramsey",
   "county": "Lycoming",
@@ -7384,8 +7384,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.232947,
-  "lon": -80.5078056,
+  "lat": 41.2042245,
+  "lon": -80.4082407,
   "callSign": "W3LIF",
   "location": "Sharon - Keel Ridge",
   "county": "Mercer",
@@ -7474,8 +7474,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.2411556,
-  "lon": -77.0011096,
+  "lat": 41.2161964,
+  "lon": -76.9085709,
   "callSign": "KB3DXU",
   "location": "Williamsport - Bald Eagle Mtn",
   "county": "Lycoming",
@@ -7504,8 +7504,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.3732693,
-  "lon": -79.9756206,
+  "lat": 40.4527442,
+  "lon": -79.9657066,
   "callSign": "AB3PJ",
   "location": "Brentwood - Fire Dept",
   "county": "Allegheny",
@@ -7732,8 +7732,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7647869,
-  "lon": -79.7664403,
+  "lat": 40.77306,
+  "lon": -79.7634854,
   "callSign": "K3PSG",
   "location": "Cabot - Winfield Twp Community Park",
   "county": "Butler",
@@ -7762,8 +7762,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.844166,
-  "lon": -79.1421229,
+  "lat": 41.8438079,
+  "lon": -79.1449601,
   "callSign": "AB3AA",
   "location": "Warren",
   "county": "Warren",
@@ -7846,8 +7846,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6916081,
-  "lon": -75.2099866,
+  "lat": 40.7414881,
+  "lon": -75.2429201,
   "callSign": "KB3VPK",
   "location": "Easton - Braden Airport",
   "county": "Northampton",
@@ -8320,8 +8320,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.4406968,
-  "lon": -80.0025666,
+  "lat": 40.4439193,
+  "lon": -79.9428267,
   "callSign": "W3VC",
   "location": "Pittsburgh - CMU",
   "county": "Allegheny",
@@ -8350,8 +8350,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.5992395,
-  "lon": -77.571382,
+  "lat": 40.5509069,
+  "lon": -77.6730487,
   "callSign": "W3DBB",
   "location": "Lewistown - Strodes Mills",
   "county": "Mifflin",
@@ -8440,8 +8440,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.0178522,
-  "lon": -79.5894828,
+  "lat": 40.1195174,
+  "lon": -79.7794877,
   "callSign": "WB3JNP",
   "location": "Connellsville - Rich Hill",
   "county": "Fayette",
@@ -8470,8 +8470,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.3861872,
-  "lon": -77.0569132,
+  "lat": 41.452579,
+  "lon": -77.0022222,
   "callSign": "KB3DXU",
   "location": "Trout Run - Shrivers Ridge",
   "county": "Lycoming",
@@ -8500,8 +8500,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.3339589,
-  "lon": -79.2997573,
+  "lat": 40.3470148,
+  "lon": -79.2255891,
   "callSign": "W3CRC",
   "location": "Derry - Bear Cave",
   "county": "Westmoreland",
@@ -8530,8 +8530,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.0405675,
-  "lon": -75.4927891,
+  "lat": 40.0444264,
+  "lon": -75.5020241,
   "callSign": "WB3JOE",
   "location": "Paoli - Hospital",
   "county": "Chester",
@@ -8674,8 +8674,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.9822921,
-  "lon": -79.3408607,
+  "lat": 41.917659,
+  "lon": -79.3841479,
   "callSign": "W3GFD",
   "location": "Sugar Grove - Stilson Hill",
   "county": "Warren",
@@ -8704,8 +8704,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.2663107,
-  "lon": -76.8861122,
+  "lat": 40.3995314,
+  "lon": -76.8524726,
   "callSign": "W3ND",
   "location": "Harrisburg - Ellendale Forge",
   "county": "Dauphin",
@@ -8806,8 +8806,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.122926,
-  "lon": -77.0268312,
+  "lat": 40.2012021,
+  "lon": -76.8655283,
   "callSign": "KA3TKW",
   "location": "Harrisburg - Reesers Summit",
   "county": "York",
@@ -8896,8 +8896,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.8147866,
-  "lon": -76.0312371,
+  "lat": 40.7918123,
+  "lon": -76.1251575,
   "callSign": "W3TWA",
   "location": "Barnesville - Mtn Valley Golf Course",
   "county": "Schuylkill",
@@ -9262,8 +9262,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.3509735,
-  "lon": -76.2109164,
+  "lat": 40.3148789,
+  "lon": -76.1563476,
   "callSign": "N3SWH",
   "location": "Newmanstown - Texter Mtn",
   "county": "Lebanon",
@@ -9520,8 +9520,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.8320468,
-  "lon": -76.3274593,
+  "lat": 39.8740386,
+  "lon": -76.3198613,
   "callSign": "N3TPL",
   "location": "Holtwood - Martic Twp",
   "county": "Lancaster",
@@ -9550,8 +9550,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.9449316,
-  "lon": -75.4429717,
+  "lat": 41.0289774,
+  "lon": -75.5082423,
   "callSign": "KC2IRV",
   "location": "Effort - Pimple Hill",
   "county": "Monroe",
@@ -9574,8 +9574,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.053422,
-  "lon": -75.4629636,
+  "lat": 41.0289774,
+  "lon": -75.5082423,
   "callSign": "W3IIY",
   "location": "Long Pond - Pimple Hill",
   "county": "Monroe",
@@ -9742,8 +9742,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6022552,
-  "lon": -75.4716115,
+  "lat": 40.5734119,
+  "lon": -75.4328773,
   "callSign": "WA3PNY",
   "location": "Allentown - Salisbury Twp",
   "county": "Lehigh",
@@ -9766,8 +9766,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6348182,
-  "lon": -75.5843529,
+  "lat": 40.6209289,
+  "lon": -75.6382436,
   "callSign": "KA3ZAT",
   "location": "Orefield - Leather Corner Post",
   "county": "Lehigh",
@@ -9820,8 +9820,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6511137,
-  "lon": -75.4422336,
+  "lat": 40.565144,
+  "lon": -75.4375379,
   "callSign": "W3PLG",
   "location": "Bethlehem - South Mtn",
   "county": "Lehigh",
@@ -9904,8 +9904,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.0853435,
-  "lon": -75.1940207,
+  "lat": 40.1220543,
+  "lon": -75.2165658,
   "callSign": "K3PDR",
   "location": "Wyndmoor - Whitemarsh",
   "county": "Montgomery",
@@ -9928,8 +9928,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6022552,
-  "lon": -75.4716115,
+  "lat": 40.5734119,
+  "lon": -75.4328773,
   "callSign": "W3PLG",
   "location": "Allentown - Salisbury Twp",
   "county": "Lehigh",
@@ -9958,8 +9958,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.7168591,
-  "lon": -75.4924198,
+  "lat": 41.7195945,
+  "lon": -75.5584303,
   "callSign": "N3HPY",
   "location": "Union Dale - Elk Mtn",
   "county": "Susquehanna",
@@ -9988,8 +9988,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.7486838,
-  "lon": -77.3005305,
+  "lat": 41.7483971,
+  "lon": -77.3752862,
   "callSign": "KB3EAR",
   "location": "Wellsboro - Dutch Hill",
   "county": "Tioga",
@@ -10018,8 +10018,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.053422,
-  "lon": -75.4629636,
+  "lat": 41.0289774,
+  "lon": -75.5082423,
   "callSign": "KG3I",
   "location": "Long Pond - Pimple Hill",
   "county": "Monroe",
@@ -10078,8 +10078,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.9993729,
-  "lon": -75.7507811,
+  "lat": 40.0014111,
+  "lon": -75.7697697,
   "callSign": "AA3VI",
   "location": "Thorndale - Caln Township",
   "county": "Chester",
@@ -10372,8 +10372,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.122926,
-  "lon": -77.0268312,
+  "lat": 40.2012021,
+  "lon": -76.8655283,
   "callSign": "N3FYI",
   "location": "Harrisburg - Reesers Summit",
   "county": "York",
@@ -10492,8 +10492,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.1747599,
-  "lon": -75.6625203,
+  "lat": 40.1716153,
+  "lon": -75.6747641,
   "callSign": "W3EOC",
   "location": "Bucktown - South Coventry Township",
   "county": "Chester",
@@ -10522,8 +10522,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.0044958,
-  "lon": -76.4537302,
+  "lat": 40.9170311,
+  "lon": -76.3168866,
   "callSign": "K4MTP",
   "location": "Bloomsburg - Catawissa Mtn",
   "county": "Columbia",
@@ -10582,8 +10582,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.0164681,
-  "lon": -75.613172,
+  "lat": 41.0003673,
+  "lon": -75.4846309,
   "callSign": "K4MTP",
   "location": "Albrightsville - Pohopoco Mtn",
   "county": "Monroe",
@@ -10636,8 +10636,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.8136949,
-  "lon": -75.4479586,
+  "lat": 41.7914726,
+  "lon": -75.4554594,
   "callSign": "WA3REC",
   "location": "Orson - Mt Ararat",
   "county": "Wayne",
@@ -10720,8 +10720,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.1747599,
-  "lon": -75.6625203,
+  "lat": 40.1716153,
+  "lon": -75.6747641,
   "callSign": "KB3SLR",
   "location": "Bucktown - South Coventry Township",
   "county": "Chester",
@@ -10774,8 +10774,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.2411556,
-  "lon": -77.0011096,
+  "lat": 41.2161964,
+  "lon": -76.9085709,
   "callSign": "KB3AWQ",
   "location": "Williamsport - Bald Eagle Mtn",
   "county": "Lycoming",
@@ -10834,8 +10834,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.1294712,
-  "lon": -80.0852695,
+  "lat": 42.1114452,
+  "lon": -80.0799335,
   "callSign": "W3GV",
   "location": "Erie - St Vincent Hosp.",
   "county": "Erie",
@@ -10894,8 +10894,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.1799111,
-  "lon": -76.1789242,
+  "lat": 40.1748168,
+  "lon": -76.1585605,
   "callSign": "W3XP",
   "location": "Ephrata - Ephrata Mtn",
   "county": "Lancaster",
@@ -10945,7 +10945,7 @@
   "lat": 40.0306496,
   "lon": -75.2135556,
   "callSign": "W3QV",
-  "location": "Roxborough - Roxborough Antenna farm",
+  "location": "Roxborough",
   "county": "Philadelphia",
   "state": "Pennsylvania",
   "approximate": false,
@@ -11194,8 +11194,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6916081,
-  "lon": -75.2099866,
+  "lat": 40.6259329,
+  "lon": -75.2551771,
   "callSign": "N3MSK",
   "location": "Easton - Gaffney Hill",
   "county": "Northampton",
@@ -11314,8 +11314,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.4778612,
-  "lon": -77.1305373,
+  "lat": 40.541195,
+  "lon": -77.0360908,
   "callSign": "W3ND",
   "location": "Newport - Buffalo Mtn",
   "county": "Perry",
@@ -11344,8 +11344,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.1842455,
-  "lon": -75.1390524,
+  "lat": 40.1989202,
+  "lon": -75.1654682,
   "callSign": "WA3TSW",
   "location": "Horsham - Horsham Township",
   "county": "Montgomery",
@@ -11374,8 +11374,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.8091097,
-  "lon": -78.446264,
+  "lat": 41.824175,
+  "lon": -78.4883727,
   "callSign": "KD3IJ",
   "location": "Smethport - Keating Township",
   "county": "McKean",
@@ -11464,8 +11464,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.4406968,
-  "lon": -80.0025666,
+  "lat": 40.4309025,
+  "lon": -80.0103312,
   "callSign": "W3KWH",
   "location": "Pittsburgh - Mt Washington",
   "county": "Allegheny",
@@ -11518,8 +11518,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.5250489,
-  "lon": -80.0074179,
+  "lat": 40.4954592,
+  "lon": -80.0103269,
   "callSign": "W3EXW",
   "location": "North Hills - WPXI TV-11",
   "county": "Allegheny",
@@ -11728,8 +11728,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.9039569,
-  "lon": -77.7619374,
+  "lat": 41.8797906,
+  "lon": -77.7141576,
   "callSign": "WA3HLC",
   "location": "Ulysses - Bailey Hill",
   "county": "Potter",
@@ -11878,8 +11878,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6022552,
-  "lon": -75.4716115,
+  "lat": 40.5734119,
+  "lon": -75.4328773,
   "callSign": "N3KZ",
   "location": "Allentown - Salisbury Twp",
   "county": "Lehigh",
@@ -11938,8 +11938,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6022552,
-  "lon": -75.4716115,
+  "lat": 40.565144,
+  "lon": -75.4375379,
   "callSign": "KA3NRJ",
   "location": "Allentown - South Mtn",
   "county": "Lehigh",
@@ -11968,8 +11968,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.7861639,
-  "lon": -76.7873891,
+  "lat": 41.8103524,
+  "lon": -76.7160638,
   "callSign": "KB3DOL",
   "location": "Troy - Mt Pisgah",
   "county": "Bradford",
@@ -12280,8 +12280,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.0970507,
-  "lon": -75.4696358,
+  "lat": 40.1066072,
+  "lon": -75.4989563,
   "callSign": "N3KZ",
   "location": "Valley Forge - Schuylkill Township",
   "county": "Chester",
@@ -12310,8 +12310,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.9819616,
-  "lon": -76.5140508,
+  "lat": 41.9510995,
+  "lon": -76.5317035,
   "callSign": "KA3EQU",
   "location": "Sayre - Round Top Park",
   "county": "Bradford",
@@ -12340,8 +12340,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.8136931,
-  "lon": -79.024748,
+  "lat": 39.7859857,
+  "lon": -79.1767539,
   "callSign": "K3SMT",
   "location": "Meyersdale - Mt Davis",
   "county": "Somerset",
@@ -12370,8 +12370,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.0400917,
-  "lon": -75.3057387,
+  "lat": 41.042313,
+  "lon": -75.3521284,
   "callSign": "KC2IRV",
   "location": "Tannersville - Camelback Mountain",
   "county": "Monroe",
@@ -12598,8 +12598,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.3732693,
-  "lon": -79.9756206,
+  "lat": 40.4527442,
+  "lon": -79.9657066,
   "callSign": "KW3LO",
   "location": "Brentwood - Fire Dept",
   "county": "Allegheny",
@@ -12688,8 +12688,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.1106341,
-  "lon": -78.8019657,
+  "lat": 40.117902,
+  "lon": -78.8657113,
   "callSign": "KE3UC",
   "location": "Central City - Statler Hill",
   "county": "Somerset",
@@ -13048,8 +13048,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.2397986,
-  "lon": -78.8350223,
+  "lat": 40.1118909,
+  "lon": -78.7643562,
   "callSign": "N3LZV",
   "location": "Windber - Shaffer Mtn",
   "county": "Somerset",
@@ -13078,8 +13078,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.805687,
-  "lon": -77.0792881,
+  "lat": 41.9097964,
+  "lon": -77.0107992,
   "callSign": "KB3DOL",
   "location": "Mansfield - Tower Hill",
   "county": "Tioga",
@@ -13138,8 +13138,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.2411556,
-  "lon": -77.0011096,
+  "lat": 41.2161964,
+  "lon": -76.9085709,
   "callSign": "N3SSL",
   "location": "Williamsport - Bald Eagle Mtn",
   "county": "Lycoming",
@@ -13288,8 +13288,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.9834074,
-  "lon": -76.9385738,
+  "lat": 41.9434075,
+  "lon": -77.0166329,
   "callSign": "N3FE",
   "location": "Millerton - Jackson Summit",
   "county": "Tioga",
@@ -13696,8 +13696,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.0400917,
-  "lon": -75.3057387,
+  "lat": 41.042313,
+  "lon": -75.3521284,
   "callSign": "N3KZ",
   "location": "Tannersville - Camelback Mtn",
   "county": "Monroe",
@@ -13726,8 +13726,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.1709768,
-  "lon": -80.2454528,
+  "lat": 40.1311827,
+  "lon": -80.2417273,
   "callSign": "K3SEM",
   "location": "Washington - Mt Wheeler",
   "county": "Washington",
@@ -13810,13 +13810,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.3380947,
-  "lon": -76.1493723,
+  "lat": 40.375713,
+  "lon": -76.4626118,
   "callSign": "N3KZ",
   "location": "Robesonia - Eagles Peak Camping Resort",
   "county": "Lebanon",
   "state": "Pennsylvania",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -13900,8 +13900,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.8227373,
-  "lon": -75.7041323,
+  "lat": 41.2471158,
+  "lon": -78.6456245,
   "callSign": "N3RZL",
   "location": "Pennfield - Boone Mtn",
   "county": "Clearfield",
@@ -13948,8 +13948,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.8604672,
-  "lon": -79.8970522,
+  "lat": 40.8518341,
+  "lon": -79.9418612,
   "callSign": "K3PSG",
   "location": "Butler - Butler Township",
   "county": "Butler",
@@ -13978,8 +13978,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.3339589,
-  "lon": -79.2997573,
+  "lat": 40.3470148,
+  "lon": -79.2255891,
   "callSign": "KE3PO",
   "location": "Derry - Bear Cave Lookout",
   "county": "Westmoreland",
@@ -14032,8 +14032,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.844166,
-  "lon": -79.1421229,
+  "lat": 41.8438079,
+  "lon": -79.1449601,
   "callSign": "KB3BSA",
   "location": "Warren",
   "county": "Warren",
@@ -14056,8 +14056,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.289618,
-  "lon": -78.4471366,
+  "lat": 40.2738259,
+  "lon": -78.580822,
   "callSign": "NR3T",
   "location": "Claysburg - State Park",
   "county": "Bedford",
@@ -14080,8 +14080,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.2464824,
-  "lon": -75.8817316,
+  "lat": 41.263789,
+  "lon": -75.7936658,
   "callSign": "N3KZ",
   "location": "Wilkes-Barre - Plains Township",
   "county": "Luzerne",
@@ -14110,8 +14110,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.3080686,
-  "lon": -76.9351445,
+  "lat": 40.2859475,
+  "lon": -76.9430287,
   "callSign": "N3KZ",
   "location": "Summerdale - East Pennsboro Township",
   "county": "Cumberland",
@@ -14164,8 +14164,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.3024514,
-  "lon": -79.5443274,
+  "lat": 40.3115162,
+  "lon": -79.494542,
   "callSign": "WC3PS",
   "location": "Greensburg - Westmoreland County 911",
   "county": "Westmoreland",
@@ -14224,8 +14224,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.5193586,
-  "lon": -78.3968299,
+  "lat": 40.5296564,
+  "lon": -78.2720976,
   "callSign": "NU3T",
   "location": "Altoona - Brush Mtn",
   "county": "Blair",
@@ -14338,13 +14338,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.2810055,
-  "lon": -75.2971393,
+  "lat": 40.4597204,
+  "lon": -79.9760405,
   "callSign": "W3OC",
   "location": "Lincoln Borough - Lincoln VFC Station 184",
   "county": "Allegheny",
   "state": "Pennsylvania",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -14416,8 +14416,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.7673567,
-  "lon": -76.44291,
+  "lat": 41.6811862,
+  "lon": -76.4804988,
   "callSign": "N3XXH",
   "location": "Towanda - Kellogg Mtn",
   "county": "Bradford",
@@ -14470,8 +14470,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.0778812,
-  "lon": -75.6877086,
+  "lat": 40.0886271,
+  "lon": -75.7050455,
   "callSign": "W3EOC",
   "location": "Eagle - Upper Uwchlan Township",
   "county": "Chester",
@@ -14500,13 +14500,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.1950837,
-  "lon": -76.3835528,
+  "lat": 41.1749635,
+  "lon": -75.9695233,
   "callSign": "N3KZ",
   "location": "Benton - Red Rock Mtn",
   "county": "Luzerne",
   "state": "Pennsylvania",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -14584,8 +14584,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.0756158,
-  "lon": -78.6530827,
+  "lat": 41.0315784,
+  "lon": -78.4409644,
   "callSign": "N3KZ",
   "location": "Rockton - Rockton Mtn",
   "county": "Clearfield",
@@ -14692,8 +14692,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.0400917,
-  "lon": -75.3057387,
+  "lat": 41.042313,
+  "lon": -75.3521284,
   "callSign": "WR3IRS",
   "location": "Tannersville - Camelback Mtn",
   "county": "Monroe",
@@ -14800,8 +14800,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.2962791,
-  "lon": -76.2643081,
+  "lat": 41.290119,
+  "lon": -76.3005327,
   "callSign": "WR3IRS",
   "location": "Fairmount Twp - Red Rock",
   "county": "Luzerne",
@@ -14872,8 +14872,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.962493,
-  "lon": -76.7276989,
+  "lat": 40.0049833,
+  "lon": -76.6042475,
   "callSign": "WR3IRS",
   "location": "York - Hallam",
   "county": "York",
@@ -14926,8 +14926,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.114354,
-  "lon": -75.1216878,
+  "lat": 40.1196538,
+  "lon": -75.120194,
   "callSign": "K3DN",
   "location": "Abington - Hospital",
   "county": "Montgomery",
@@ -15141,8 +15141,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.9195322,
-  "lon": -75.4427497,
+  "lat": 39.9174644,
+  "lon": -75.4465339,
   "callSign": "W3AEC",
   "location": "Lima - Fair Acres",
   "county": "Delaware",
@@ -15783,8 +15783,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.933431,
-  "lon": -74.9214226,
+  "lat": 39.0832889,
+  "lon": -74.8238143,
   "callSign": "W2CMC",
   "location": "Cape May - Courthouse",
   "county": "Cape May",
@@ -16305,8 +16305,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.9025989,
-  "lon": -74.4070971,
+  "lat": 40.9195431,
+  "lon": -74.4059861,
   "callSign": "W2TW",
   "location": "Boonton - Sheep Hill",
   "county": "Morris",
@@ -16335,8 +16335,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6967671,
-  "lon": -74.9407248,
+  "lat": 40.6920449,
+  "lon": -74.9248909,
   "callSign": "WB2NQV",
   "location": "Glen Gardner - Mt Kipp",
   "county": "Hunterdon",
@@ -17322,7 +17322,7 @@
   "lat": 39.9528389,
   "lon": -74.196741,
   "callSign": "W2NJR",
-  "location": "Toms River - Holiday City",
+  "location": "Toms River",
   "county": "Ocean",
   "state": "New Jersey",
   "approximate": false,
@@ -17444,8 +17444,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.8893288,
-  "lon": -74.1969657,
+  "lat": 40.8839986,
+  "lon": -74.1852803,
   "callSign": "NJ2PC",
   "location": "Woodland Park - Rifle Camp Park",
   "county": "Passaic",
@@ -17642,8 +17642,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.9257935,
-  "lon": -75.0941913,
+  "lat": 40.9591695,
+  "lon": -75.0484656,
   "callSign": "WB2NMI",
   "location": "Columbia - Hainesburg",
   "county": "Warren",
@@ -17786,8 +17786,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.8617005,
-  "lon": -74.3653715,
+  "lat": 40.8489884,
+  "lon": -74.4929333,
   "callSign": "N2FED",
   "location": "Parsippany Twp - Watnong Mtn",
   "county": "Morris",
@@ -18296,8 +18296,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.9491723,
-  "lon": -74.2376802,
+  "lat": 40.9471535,
+  "lon": -74.2036855,
   "callSign": "KD2KWT",
   "location": "Wayne - St Joseph's Hospital",
   "county": "Passaic",
@@ -18806,8 +18806,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.5052296,
-  "lon": -74.6732941,
+  "lat": 40.4667713,
+  "lon": -74.7259943,
   "callSign": "N2BEI",
   "location": "Hillsborough - Sourland Mtn",
   "county": "Somerset",
@@ -19364,8 +19364,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6915611,
-  "lon": -75.1952543,
+  "lat": 40.7019807,
+  "lon": -75.1781942,
   "callSign": "W2MCC",
   "location": "Phillipsburg - St Luke's Hospital",
   "county": "Warren",
@@ -19634,8 +19634,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.933431,
-  "lon": -74.9214226,
+  "lat": 39.0832889,
+  "lon": -74.8238143,
   "callSign": "NJ2DS",
   "location": "Cape May - Courthouse",
   "county": "Cape May",
@@ -19934,8 +19934,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6967671,
-  "lon": -74.9407248,
+  "lat": 40.6920449,
+  "lon": -74.9248909,
   "callSign": "W2CRA",
   "location": "Glen Gardner - Mt Kipp",
   "county": "Hunterdon",
@@ -20144,8 +20144,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6527033,
-  "lon": -74.2579418,
+  "lat": 40.6787951,
+  "lon": -74.293917,
   "callSign": "N2PSU",
   "location": "Roselle - Fire Dept",
   "county": "Union",
@@ -20372,8 +20372,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.5792701,
-  "lon": -74.4115401,
+  "lat": 40.5876598,
+  "lon": -74.4095829,
   "callSign": "W2LPC",
   "location": "South Plainfield - Spring Lake Park",
   "county": "Middlesex",
@@ -21146,8 +21146,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.8813513,
-  "lon": -74.228185,
+  "lat": 40.8671454,
+  "lon": -74.1974013,
   "callSign": "N2HWY",
   "location": "Little Falls - MSU",
   "county": "Passaic",
@@ -21500,8 +21500,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.94855,
-  "lon": -73.9281139,
+  "lat": 40.9606923,
+  "lon": -73.9226679,
   "callSign": "WO2X",
   "location": "Alpine - Armstrong Tower",
   "county": "Bergen",
@@ -21655,8 +21655,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6639916,
-  "lon": -74.2107006,
+  "lat": 40.6649103,
+  "lon": -74.3725452,
   "callSign": "WB2CMN",
   "location": "Elizabeth - Private",
   "county": "Union",
@@ -22045,8 +22045,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.0167639,
-  "lon": -74.2057012,
+  "lat": 41.0550257,
+  "lon": -74.1997547,
   "callSign": "W2IP",
   "location": "Franklin Lakes - Campgaw Mtn",
   "county": "Bergen",
@@ -22135,8 +22135,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7215682,
-  "lon": -74.047455,
+  "lat": 40.7362084,
+  "lon": -74.0484666,
   "callSign": "N2DCS",
   "location": "Jersey City - Christ Hospital",
   "county": "Hudson",
@@ -22585,8 +22585,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.7027677,
-  "lon": -75.1119434,
+  "lat": 39.7103526,
+  "lon": -75.1193267,
   "callSign": "KD2LNB",
   "location": "Glassboro - Rowan University",
   "county": "Gloucester",
@@ -22873,8 +22873,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.7459468,
-  "lon": -75.546589,
+  "lat": 39.738331,
+  "lon": -75.5527467,
   "callSign": "W3DRA",
   "location": "Wilmington",
   "county": "New Castle",
@@ -22987,8 +22987,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.158168,
-  "lon": -75.5243682,
+  "lat": 39.189649,
+  "lon": -75.5300468,
   "callSign": "N3YMS",
   "location": "Dover - Dover Motor Speedway",
   "county": "Kent",
@@ -23041,8 +23041,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.6828358,
-  "lon": -75.7515682,
+  "lat": 39.7779718,
+  "lon": -75.5565613,
   "callSign": "W3DRA",
   "location": "Newark - Water Tower",
   "county": "New Castle",
@@ -23407,8 +23407,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.7459468,
-  "lon": -75.546589,
+  "lat": 39.738331,
+  "lon": -75.5527467,
   "callSign": "WR3IRS",
   "location": "Wilmington",
   "county": "New Castle",
@@ -23431,8 +23431,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.7459468,
-  "lon": -75.546589,
+  "lat": 39.738331,
+  "lon": -75.5527467,
   "callSign": "KI6OM",
   "location": "Wilmington - Kennett Square",
   "county": "New Castle",
@@ -23461,8 +23461,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.6828358,
-  "lon": -75.7515682,
+  "lat": 39.7727412,
+  "lon": -75.7112086,
   "callSign": "W3CER",
   "location": "Newark - ChristianaCare",
   "county": "New Castle",
@@ -23551,8 +23551,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.7459468,
-  "lon": -75.546589,
+  "lat": 39.7727412,
+  "lon": -75.7112086,
   "callSign": "W3CER",
   "location": "Wilmington - ChristianaCare",
   "county": "New Castle",
@@ -23773,8 +23773,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.7459468,
-  "lon": -75.546589,
+  "lat": 39.738331,
+  "lon": -75.5527467,
   "callSign": "N3KZ",
   "location": "Wilmington",
   "county": "New Castle",
@@ -23881,8 +23881,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.256483,
-  "lon": -74.3598755,
+  "lat": 41.2414828,
+  "lon": -74.2907059,
   "callSign": "N2IXA",
   "location": "Warwick - Mt Peter",
   "county": "Orange",
@@ -23971,13 +23971,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.62884,
-  "lon": -74.813805,
+  "lat": 44.4973591,
+  "lon": -75.0657043,
   "callSign": "W2SLV",
   "location": "Parishville",
   "county": "St Lawrence",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -24511,8 +24511,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.157285,
-  "lon": -77.615214,
+  "lat": 43.118084,
+  "lon": -77.6234891,
   "callSign": "WR2ROC",
   "location": "Rochester - URMC",
   "county": "Monroe",
@@ -24631,8 +24631,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.199239,
-  "lon": -77.4063715,
+  "lat": 42.2024027,
+  "lon": -77.4868476,
   "callSign": "N2AAR",
   "location": "Cameron - Travis Hill",
   "county": "Steuben",
@@ -24715,7 +24715,7 @@
   "location": "Staten Island",
   "county": "Richmond",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -24805,8 +24805,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.0481221,
-  "lon": -76.1474244,
+  "lat": 43.0056477,
+  "lon": -76.1973428,
   "callSign": "K2OCR",
   "location": "Syracuse - OCC",
   "county": "Onondaga",
@@ -24901,8 +24901,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.2325723,
-  "lon": -76.3422525,
+  "lat": 42.2381296,
+  "lon": -76.3099345,
   "callSign": "K2OQ",
   "location": "Candor - Candor Hill",
   "county": "Tioga",
@@ -25099,13 +25099,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "W2ABC",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -25249,8 +25249,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.730441,
-  "lon": -73.3263791,
+  "lat": 40.7278717,
+  "lon": -73.331201,
   "callSign": "KB2UR",
   "location": "North Babylon - Town Hall",
   "county": "Suffolk",
@@ -25321,8 +25321,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.9005956,
-  "lon": -78.669997,
+  "lat": 42.9076585,
+  "lon": -78.6178677,
   "callSign": "W2SO",
   "location": "Lancaster",
   "county": "Erie",
@@ -25429,13 +25429,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "K2NYR",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -25459,8 +25459,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.077916,
-  "lon": -75.383377,
+  "lat": 43.0375695,
+  "lon": -75.4440619,
   "callSign": "K2LIZ",
   "location": "Kirkland - Prospect Hill",
   "county": "Oneida",
@@ -25489,8 +25489,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0884072,
-  "lon": -74.0395723,
+  "lat": 43.119114,
+  "lon": -74.0076431,
   "callSign": "K2DLL",
   "location": "Barkersville - Lake Nancy",
   "county": "Saratoga",
@@ -25549,8 +25549,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.74844,
-  "lon": -74.564896,
+  "lat": 44.7562268,
+  "lon": -74.5874159,
   "callSign": "KC2HMF",
   "location": "Dickinson - Heath Hill",
   "county": "Franklin",
@@ -25705,8 +25705,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.1217938,
-  "lon": -77.9480013,
+  "lat": 42.0495116,
+  "lon": -78.0122264,
   "callSign": "NK2O",
   "location": "Wellsville - Alma Hill",
   "county": "Allegany",
@@ -25735,8 +25735,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.0481221,
-  "lon": -76.1474244,
+  "lat": 42.9500664,
+  "lon": -76.1149239,
   "callSign": "W2CM",
   "location": "Syracuse - Sentinel Heights",
   "county": "Onondaga",
@@ -25879,8 +25879,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.8842482,
-  "lon": -72.3897131,
+  "lat": 40.8859235,
+  "lon": -72.3805514,
   "callSign": "KE2DTJ",
   "location": "Southampton - Southampton Hosp",
   "county": "Suffolk",
@@ -25939,13 +25939,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "N2BEI",
   "location": "Manhattan - Lincoln Center",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -26029,13 +26029,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "KB2NGU",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -26239,8 +26239,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.6960855,
-  "lon": -73.4542915,
+  "lat": 44.7714294,
+  "lon": -73.6126392,
   "callSign": "W2UXC",
   "location": "Plattsburgh - Rand Hill",
   "county": "Clinton",
@@ -26299,13 +26299,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.750632,
-  "lon": -73.9687884,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "N2JDW",
   "location": "New York City - Washington Heights",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -26394,13 +26394,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.247904,
-  "lon": -75.137901,
+  "lat": 44.4973591,
+  "lon": -75.0657043,
   "callSign": "WA2NAN",
   "location": "Fine",
   "county": "St Lawrence",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -26544,8 +26544,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.6914837,
-  "lon": -73.9867272,
+  "lat": 43.672954,
+  "lon": -74.0488526,
   "callSign": "W2WCR",
   "location": "North Creek - Gore Mtn",
   "county": "Warren",
@@ -26586,8 +26586,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.3645382,
-  "lon": -74.1059775,
+  "lat": 41.3917605,
+  "lon": -74.1162557,
   "callSign": "N2ACF",
   "location": "Woodbury - Schunnemunk Mtn",
   "county": "Orange",
@@ -26664,8 +26664,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0256259,
-  "lon": -74.9859889,
+  "lat": 43.0321572,
+  "lon": -75.0093678,
   "callSign": "W2RJO",
   "location": "Herkimer - College Hill",
   "county": "Herkimer",
@@ -26849,8 +26849,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.157285,
-  "lon": -77.615214,
+  "lat": 43.0826701,
+  "lon": -77.6729322,
   "callSign": "K2GXT",
   "location": "Rochester - RIT",
   "county": "Monroe",
@@ -26897,8 +26897,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.7170379,
-  "lon": -74.39571,
+  "lat": 41.6703848,
+  "lon": -74.3616633,
   "callSign": "KQ2H",
   "location": "Ellenville - Sam's Point",
   "county": "Ulster",
@@ -27131,8 +27131,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.208429,
-  "lon": -74.952164,
+  "lat": 43.1911804,
+  "lon": -74.8970987,
   "callSign": "W2RJO",
   "location": "Norway - Dairy Hill",
   "county": "Herkimer",
@@ -27161,8 +27161,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.721256,
-  "lon": -73.9608072,
+  "lat": 41.7203712,
+  "lon": -73.9948618,
   "callSign": "N2OXV",
   "location": "Highland - Illinois Mtn",
   "county": "Ulster",
@@ -27311,8 +27311,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.2186623,
-  "lon": -74.1040191,
+  "lat": 43.2686825,
+  "lon": -74.0834632,
   "callSign": "K2DLL",
   "location": "Edinburg - Fraker Mtn",
   "county": "Saratoga",
@@ -27461,13 +27461,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "WB2ZSE",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -27665,8 +27665,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.1487726,
-  "lon": -74.6487018,
+  "lat": 42.1823099,
+  "lon": -74.5718204,
   "callSign": "NS2V",
   "location": "Margaretville - Hog Mtn",
   "county": "Delaware",
@@ -27695,8 +27695,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.4374175,
-  "lon": -76.5483724,
+  "lat": 42.3864621,
+  "lon": -76.6691152,
   "callSign": "AF2A",
   "location": "Ithaca - Connecticut Hill",
   "county": "Tompkins",
@@ -27790,8 +27790,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.5048402,
-  "lon": -73.9695409,
+  "lat": 41.4814101,
+  "lon": -73.9445568,
   "callSign": "N2FZC",
   "location": "Beacon - Mt Beacon",
   "county": "Dutchess",
@@ -27934,8 +27934,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.138322,
-  "lon": -75.570831,
+  "lat": 43.1451421,
+  "lon": -75.5464058,
   "callSign": "K1DCC",
   "location": "Verona - Curtis Airport (NY62)",
   "county": "Oneida",
@@ -28054,8 +28054,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.4374175,
-  "lon": -76.5483724,
+  "lat": 42.4581281,
+  "lon": -76.3843808,
   "callSign": "AF2A",
   "location": "Ithaca - Mt Pleasant",
   "county": "Tompkins",
@@ -28114,13 +28114,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.4292998,
-  "lon": -75.1501054,
+  "lat": 44.4973591,
+  "lon": -75.0657043,
   "callSign": "KA2JXI",
   "location": "Russell - Kimball Hill",
   "county": "St Lawrence",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -28192,8 +28192,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.8979369,
-  "lon": -76.0149673,
+  "lat": 42.8993865,
+  "lon": -76.0159437,
   "callSign": "W2CM",
   "location": "Pompey - Pompey Hill",
   "county": "Onondaga",
@@ -28252,13 +28252,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.6697996,
-  "lon": -74.9813349,
+  "lat": 44.4973591,
+  "lon": -75.0657043,
   "callSign": "K2CC",
   "location": "Potsdam - Clarkson University",
   "county": "St Lawrence",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -28378,7 +28378,7 @@
   "location": "Staten Island",
   "county": "Richmond",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -28594,8 +28594,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.098698,
-  "lon": -75.9125187,
+  "lat": 42.0617421,
+  "lon": -75.9510305,
   "callSign": "WA2QEL",
   "location": "Binghamton - Ingraham Hill",
   "county": "Broome",
@@ -28737,8 +28737,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.322846,
-  "lon": -76.417159,
+  "lat": 43.3509269,
+  "lon": -76.3895574,
   "callSign": "K2QQY",
   "location": "Fulton - Oswego Co Airport",
   "county": "Oswego",
@@ -29019,8 +29019,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.1157038,
-  "lon": -75.9587873,
+  "lat": 42.2106484,
+  "lon": -75.9815509,
   "callSign": "WA2QEL",
   "location": "Johnson City - BGM Airport",
   "county": "Broome",
@@ -29109,8 +29109,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.0410578,
-  "lon": -74.1182492,
+  "lat": 42.0850792,
+  "lon": -74.0932336,
   "callSign": "WA2MJM",
   "location": "Woodstock - Overlook Mtn",
   "county": "Ulster",
@@ -29205,8 +29205,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.9147939,
-  "lon": -74.9515431,
+  "lat": 42.9390484,
+  "lon": -74.8776735,
   "callSign": "KA2FWN",
   "location": "Jordanville - Aney Hill",
   "county": "Herkimer",
@@ -29235,8 +29235,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.3370164,
-  "lon": -77.3177577,
+  "lat": 42.3814611,
+  "lon": -77.1869189,
   "callSign": "KS2ARR",
   "location": "Bath - Mt Washington",
   "county": "Steuben",
@@ -29265,8 +29265,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.157285,
-  "lon": -77.615214,
+  "lat": 43.1355245,
+  "lon": -77.606251,
   "callSign": "WR2ROC",
   "location": "Rochester - Highland Hospital",
   "county": "Monroe",
@@ -29295,13 +29295,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.6975256,
-  "lon": -75.4924943,
+  "lat": 44.4973591,
+  "lon": -75.0657043,
   "callSign": "KC2KVE",
   "location": "Ogdensburg",
   "county": "St Lawrence",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -29385,8 +29385,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.8979369,
-  "lon": -76.0149673,
+  "lat": 42.8993865,
+  "lon": -76.0159437,
   "callSign": "W2CNY",
   "location": "Pompey - Pompey Hill",
   "county": "Onondaga",
@@ -29445,8 +29445,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.287778,
-  "lon": -73.334167,
+  "lat": 43.3330215,
+  "lon": -73.3367592,
   "callSign": "N2ZTC",
   "location": "Hebron - Big Burch Hill",
   "county": "Washington",
@@ -29475,8 +29475,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.1009031,
-  "lon": -75.2326641,
+  "lat": 43.1447919,
+  "lon": -75.176274,
   "callSign": "K2IQ",
   "location": "Utica - Smith Hill",
   "county": "Oneida",
@@ -29745,8 +29745,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6736812,
-  "lon": -73.6190736,
+  "lat": 40.7169083,
+  "lon": -73.6000225,
   "callSign": "WA2LQO",
   "location": "Hempstead - Hofstra University",
   "county": "Nassau",
@@ -29775,13 +29775,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "NB2A",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -29805,8 +29805,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.1886976,
-  "lon": -74.7857138,
+  "lat": 42.2211973,
+  "lon": -74.7357125,
   "callSign": "N2ZPY",
   "location": "Andes - Mt Pisgah",
   "county": "Delaware",
@@ -29907,13 +29907,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "KC2RC",
   "location": "Brooklyn - Brooklyn Bridge",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -29937,8 +29937,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.098698,
-  "lon": -75.9125187,
+  "lat": 42.0617421,
+  "lon": -75.9510305,
   "callSign": "N2YOW",
   "location": "Binghamton - Ingraham Hill",
   "county": "Broome",
@@ -30009,8 +30009,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.157285,
-  "lon": -77.615214,
+  "lat": 43.0347854,
+  "lon": -77.4233251,
   "callSign": "W2DUC",
   "location": "Rochester - Baker Hill",
   "county": "Monroe",
@@ -30159,8 +30159,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0505021,
-  "lon": -74.3457623,
+  "lat": 43.0524818,
+  "lon": -74.3615605,
   "callSign": "K2JJI",
   "location": "Gloversville - GHS",
   "county": "Fulton",
@@ -30189,8 +30189,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.0897965,
-  "lon": -76.8077338,
+  "lat": 42.1064633,
+  "lon": -76.8705146,
   "callSign": "W2ZJ",
   "location": "Elmira - Hawley Hill",
   "county": "Chemung",
@@ -30363,8 +30363,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0481221,
-  "lon": -76.1474244,
+  "lat": 42.9500664,
+  "lon": -76.1149239,
   "callSign": "KD2SL",
   "location": "Syracuse - Sentinel Heights",
   "county": "Onondaga",
@@ -30561,8 +30561,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.7300571,
-  "lon": -77.3999695,
+  "lat": 42.700277,
+  "lon": -77.4085588,
   "callSign": "WR2ROC",
   "location": "South Bristol - Mees Observatory",
   "county": "Ontario",
@@ -30621,8 +30621,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.4843153,
-  "lon": -75.3357941,
+  "lat": 43.4331248,
+  "lon": -75.3523944,
   "callSign": "KC2NBU",
   "location": "Boonville - Jackson Hill",
   "county": "Oneida",
@@ -30825,8 +30825,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.098698,
-  "lon": -75.9125187,
+  "lat": 42.0877998,
+  "lon": -75.9706607,
   "callSign": "N2VFD",
   "location": "Binghamton - Binghamton University",
   "county": "Broome",
@@ -30855,8 +30855,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.6511674,
-  "lon": -73.754968,
+  "lat": 42.6550629,
+  "lon": -73.8039756,
   "callSign": "K2ALB",
   "location": "Albany - St Peter's Hospital",
   "county": "Albany",
@@ -30975,8 +30975,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.157285,
-  "lon": -77.615214,
+  "lat": 43.1396073,
+  "lon": -77.573128,
   "callSign": "W2ARM",
   "location": "Rochester - Cobbs Hill",
   "county": "Monroe",
@@ -31053,8 +31053,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.4374175,
-  "lon": -76.5483724,
+  "lat": 42.452916,
+  "lon": -76.4800635,
   "callSign": "W2CXM",
   "location": "Ithaca - Cornell Univ",
   "county": "Tompkins",
@@ -31083,13 +31083,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "KB2RNI",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -31317,8 +31317,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.578486,
-  "lon": -73.527031,
+  "lat": 44.571434,
+  "lon": -73.6812513,
   "callSign": "WA2LRE",
   "location": "Peru - Terry Mtn",
   "county": "Clinton",
@@ -31437,8 +31437,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.0850703,
-  "lon": -76.053813,
+  "lat": 42.0021034,
+  "lon": -76.033339,
   "callSign": "N2VFD",
   "location": "Vestal - Kopernik Observatory",
   "county": "Broome",
@@ -31497,8 +31497,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0424027,
-  "lon": -76.8364232,
+  "lat": 42.9975285,
+  "lon": -76.7599945,
   "callSign": "KA2NDW",
   "location": "Clyde",
   "county": "Seneca",
@@ -31575,8 +31575,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.6160647,
-  "lon": -77.4030253,
+  "lat": 42.7002141,
+  "lon": -77.4083883,
   "callSign": "W2ONT",
   "location": "Naples - Gannett Hill",
   "county": "Ontario",
@@ -31647,8 +31647,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.8559314,
-  "lon": -73.2006687,
+  "lat": 40.8213585,
+  "lon": -73.2246676,
   "callSign": "W2LRC",
   "location": "Smithtown - H Lee Dennison Bldg",
   "county": "Suffolk",
@@ -31737,8 +31737,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0377112,
-  "lon": -77.4534728,
+  "lat": 43.0347854,
+  "lon": -77.4233251,
   "callSign": "N2HJD",
   "location": "Victor - Baker Hill",
   "county": "Monroe",
@@ -31917,8 +31917,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.098698,
-  "lon": -75.9125187,
+  "lat": 42.1443718,
+  "lon": -75.8050268,
   "callSign": "WA2QEL",
   "location": "Binghamton - Old State Road",
   "county": "Broome",
@@ -32265,8 +32265,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.0481221,
-  "lon": -76.1474244,
+  "lat": 42.9500664,
+  "lon": -76.1149239,
   "callSign": "KC2VER",
   "location": "Syracuse - Sentinel Heights",
   "county": "Onondaga",
@@ -32469,8 +32469,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.7370093,
-  "lon": -77.5416596,
+  "lat": 42.7145094,
+  "lon": -77.5808272,
   "callSign": "W2XRX",
   "location": "Canadice - Bald Hill",
   "county": "Ontario",
@@ -32631,8 +32631,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7684351,
-  "lon": -73.7770774,
+  "lat": 40.747377,
+  "lon": -73.8516136,
   "callSign": "KC2PXT",
   "location": "Bayside - Hall of Science",
   "county": "Queens",
@@ -32691,8 +32691,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.3645382,
-  "lon": -74.1059775,
+  "lat": 41.3917605,
+  "lon": -74.1162557,
   "callSign": "WB2BQW",
   "location": "Woodbury - Schunnemunk Mtn",
   "county": "Orange",
@@ -32829,8 +32829,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.9695113,
-  "lon": -75.7868544,
+  "lat": 42.9525671,
+  "lon": -75.7393524,
   "callSign": "W2MO",
   "location": "Fenner - Mutton Hill",
   "county": "Madison",
@@ -33057,8 +33057,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0940841,
-  "lon": -75.6511005,
+  "lat": 43.0430804,
+  "lon": -75.6344482,
   "callSign": "W2MO",
   "location": "Oneida - Forest Ave",
   "county": "Madison",
@@ -33087,8 +33087,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.9465118,
-  "lon": -73.0691257,
+  "lat": 40.9461302,
+  "lon": -73.0609682,
   "callSign": "W2RC",
   "location": "Port Jefferson - St Charles Hospital",
   "county": "Suffolk",
@@ -33189,8 +33189,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.4266361,
-  "lon": -73.6788272,
+  "lat": 41.4563974,
+  "lon": -73.7180066,
   "callSign": "K2PUT",
   "location": "Carmel - Mt Ninham",
   "county": "Putnam",
@@ -33231,8 +33231,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.3884389,
-  "lon": -73.8153004,
+  "lat": 44.3657845,
+  "lon": -73.9029843,
   "callSign": "N2JKG",
   "location": "Wilmington - Whiteface Mtn",
   "county": "Essex",
@@ -33339,8 +33339,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.8453424,
-  "lon": -77.424156,
+  "lat": 42.7311768,
+  "lon": -77.426099,
   "callSign": "WR2AHL",
   "location": "Bristol - Worden Hill",
   "county": "Ontario",
@@ -33411,8 +33411,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.6960855,
-  "lon": -73.4542915,
+  "lat": 44.7714294,
+  "lon": -73.6126392,
   "callSign": "KD2MAJ",
   "location": "Plattsburgh - Rand Hill",
   "county": "Clinton",
@@ -33465,8 +33465,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.698056,
-  "lon": -73.699167,
+  "lat": 41.6884272,
+  "lon": -73.6929068,
   "callSign": "N2DXL",
   "location": "Union Vale - Clove Mtn",
   "county": "Dutchess",
@@ -33615,8 +33615,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.6960855,
-  "lon": -73.4542915,
+  "lat": 44.7714294,
+  "lon": -73.6126392,
   "callSign": "N2MMV",
   "location": "Plattsburgh - Rand Hill",
   "county": "Clinton",
@@ -33645,13 +33645,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "WB2JNQ",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -33699,13 +33699,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "K2MAK",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -33729,8 +33729,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.768967,
-  "lon": -73.4509464,
+  "lat": 42.7128957,
+  "lon": -73.6609939,
   "callSign": "K2RHI",
   "location": "Grafton - Willard Mtn",
   "county": "Rensselaer",
@@ -33837,8 +33837,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.4021497,
-  "lon": -74.3242129,
+  "lat": 41.4086218,
+  "lon": -74.3550208,
   "callSign": "KC2OUR",
   "location": "Goshen - Emergency Services Center",
   "county": "Orange",
@@ -33867,13 +33867,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "W2CSW",
   "location": "Brooklyn - Coney Island",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -33921,8 +33921,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.5048402,
-  "lon": -73.9695409,
+  "lat": 41.4814101,
+  "lon": -73.9445568,
   "callSign": "WA2GZW",
   "location": "Beacon - Mt Beacon",
   "county": "Dutchess",
@@ -34011,8 +34011,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.091121,
-  "lon": -73.9196794,
+  "lat": 41.0706167,
+  "lon": -73.8731956,
   "callSign": "WR2I",
   "location": "Nyack - Tappan Zee Bridge",
   "county": "Rockland",
@@ -34065,8 +34065,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7834607,
-  "lon": -73.4738844,
+  "lat": 40.7407697,
+  "lon": -73.6425623,
   "callSign": "W2KPQ",
   "location": "Plainview - Long Island",
   "county": "Nassau",
@@ -34119,8 +34119,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.1009031,
-  "lon": -75.2326641,
+  "lat": 43.1447919,
+  "lon": -75.176274,
   "callSign": "KA2FWN",
   "location": "Utica - Smith Hill",
   "county": "Oneida",
@@ -34203,8 +34203,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.677853,
-  "lon": -74.4854172,
+  "lat": 42.6254432,
+  "lon": -74.4363139,
   "callSign": "WA2ZWM",
   "location": "Cobleskill - Petersburg State forest",
   "county": "Schoharie",
@@ -34633,13 +34633,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "N2JDW",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -34663,13 +34663,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.3856188,
-  "lon": -73.5717469,
+  "lat": 41.7194303,
+  "lon": -73.7516205,
   "callSign": "",
   "location": "Danbury",
   "county": "Dutchess",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -34711,8 +34711,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.6659088,
-  "lon": -74.3095787,
+  "lat": 42.6289647,
+  "lon": -74.267079,
   "callSign": "K2RHI",
   "location": "Schoharie - Cotton Hill",
   "county": "Schoharie",
@@ -34903,13 +34903,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.750632,
-  "lon": -73.9687884,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "N2MCC",
   "location": "New York City",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -34963,8 +34963,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.4735023,
-  "lon": -74.5380905,
+  "lat": 41.4462154,
+  "lon": -74.5788727,
   "callSign": "KC2OUR",
   "location": "Otisville - Graham Mtn",
   "county": "Orange",
@@ -35023,13 +35023,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "K2MAK",
   "location": "Manhattan - Empire State Bldg",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -35269,8 +35269,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.3111581,
-  "lon": -74.0026498,
+  "lat": 44.3657845,
+  "lon": -73.9029843,
   "callSign": "N2JKG",
   "location": "Whiteface - Whiteface Mtn",
   "county": "Essex",
@@ -35335,7 +35335,7 @@
   "location": "Staten Island",
   "county": "Richmond",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -35527,8 +35527,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0903515,
-  "lon": -73.4993904,
+  "lat": 43.019722,
+  "lon": -73.5222418,
   "callSign": "N2LEN",
   "location": "Greenwich - Willard Mtn",
   "county": "Washington",
@@ -35617,13 +35617,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "KF2GV",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -35647,13 +35647,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.750632,
-  "lon": -73.9687884,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "K2RMX",
   "location": "New York City",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -35719,8 +35719,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.3111581,
-  "lon": -74.0026498,
+  "lat": 44.3657845,
+  "lon": -73.9029843,
   "callSign": "N2NGK",
   "location": "Whiteface - Whiteface Mtn",
   "county": "Essex",
@@ -35743,13 +35743,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "WA2JNF",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -35803,7 +35803,7 @@
   "location": "Staten Island",
   "county": "Richmond",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -35821,13 +35821,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.750632,
-  "lon": -73.9687884,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "KB2LFH",
   "location": "New York City - Yorktown Heights",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -36007,13 +36007,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "N2UOL",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -36163,7 +36163,7 @@
   "location": "Staten Island",
   "county": "Richmond",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -36253,7 +36253,7 @@
   "location": "Staten Island",
   "county": "Richmond",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -36427,13 +36427,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "WA2CBS",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -36535,8 +36535,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.7370093,
-  "lon": -77.5416596,
+  "lat": 42.7145094,
+  "lon": -77.5808272,
   "callSign": "WR2AHL",
   "location": "Canadice - Bald Hill",
   "county": "Ontario",
@@ -36589,8 +36589,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7945457,
-  "lon": -73.8184674,
+  "lat": 40.8020501,
+  "lon": -73.8297471,
   "callSign": "W2BAT",
   "location": "Whitestone - Whitestone Bridge",
   "county": "Queens",
@@ -36853,8 +36853,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.8453424,
-  "lon": -77.424156,
+  "lat": 42.7311768,
+  "lon": -77.426099,
   "callSign": "W2XRX",
   "location": "Bristol - Worden Hill",
   "county": "Ontario",
@@ -36925,8 +36925,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.2542334,
-  "lon": -77.7906062,
+  "lat": 42.2562884,
+  "lon": -77.8164835,
   "callSign": "KD2PFE",
   "location": "Alfred - Moland Hill",
   "county": "Allegany",
@@ -36979,8 +36979,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.3645382,
-  "lon": -74.1059775,
+  "lat": 41.3917605,
+  "lon": -74.1162557,
   "callSign": "WB2ERS",
   "location": "Woodbury - Schunnemunk Mtn",
   "county": "Orange",
@@ -37099,8 +37099,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.721256,
-  "lon": -73.9608072,
+  "lat": 41.7203712,
+  "lon": -73.9948618,
   "callSign": "WB2ERS",
   "location": "Highland - Illinois Mtn",
   "county": "Ulster",
@@ -37885,8 +37885,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.0850703,
-  "lon": -76.053813,
+  "lat": 42.0021034,
+  "lon": -76.033339,
   "callSign": "WA2QEL",
   "location": "Vestal - Kopernik Observatory",
   "county": "Broome",
@@ -37975,8 +37975,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.0125667,
-  "lon": -78.0577834,
+  "lat": 42.0495116,
+  "lon": -78.0122264,
   "callSign": "NK2O",
   "location": "Alma - Alma Hill",
   "county": "Allegany",
@@ -38005,8 +38005,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.9005956,
-  "lon": -78.669997,
+  "lat": 42.9076585,
+  "lon": -78.6178677,
   "callSign": "W2BRW",
   "location": "Lancaster",
   "county": "Erie",
@@ -38059,13 +38059,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "N2ION",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -38137,8 +38137,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.6511674,
-  "lon": -73.754968,
+  "lat": 42.6497603,
+  "lon": -73.9958281,
   "callSign": "KM4WUD",
   "location": "Albany - Helderberg Escarpment",
   "county": "Albany",
@@ -38191,8 +38191,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.172555,
-  "lon": -79.035878,
+  "lat": 43.1528285,
+  "lon": -79.0429399,
   "callSign": "N3AU",
   "location": "Lewiston - Queenston-Lewiston Bridge",
   "county": "Niagara",
@@ -38317,13 +38317,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.750632,
-  "lon": -73.9687884,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "N2NSA",
   "location": "New York City - George Washington Bridge",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -38376,8 +38376,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.077916,
-  "lon": -75.383377,
+  "lat": 43.0375695,
+  "lon": -75.4440619,
   "callSign": "KA2FWN",
   "location": "Kirkland - Prospect Hill",
   "county": "Oneida",
@@ -38520,13 +38520,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "N2YN",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -38550,8 +38550,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.425996,
-  "lon": -73.712425,
+  "lat": 43.4247919,
+  "lon": -73.745675,
   "callSign": "W2GFL",
   "location": "Lake George - Prospect Mtn",
   "county": "Warren",
@@ -38706,8 +38706,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 41.5048402,
-  "lon": -73.9695409,
+  "lat": 41.4814101,
+  "lon": -73.9445568,
   "callSign": "KC2OUR",
   "location": "Beacon - Mt Beacon",
   "county": "Dutchess",
@@ -38766,8 +38766,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.425996,
-  "lon": -73.712425,
+  "lat": 43.436372,
+  "lon": -73.742339,
   "callSign": "W2WCR",
   "location": "Lake George - Prospect Mt",
   "county": "Warren",
@@ -39041,8 +39041,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.425996,
-  "lon": -73.712425,
+  "lat": 43.4247919,
+  "lon": -73.745675,
   "callSign": "N2ZTC",
   "location": "Lake George - Prospect Mtn",
   "county": "Warren",
@@ -39137,8 +39137,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 43.0481221,
-  "lon": -76.1474244,
+  "lat": 43.0470782,
+  "lon": -76.1553621,
   "callSign": "K2MST",
   "location": "Syracuse - MOST",
   "county": "Onondaga",
@@ -39305,8 +39305,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7835914,
-  "lon": -73.4075575,
+  "lat": 40.8153123,
+  "lon": -73.4252637,
   "callSign": "WB2CIK",
   "location": "Melville - Jaynes Hill",
   "county": "Suffolk",
@@ -39425,13 +39425,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.6975256,
-  "lon": -75.4924943,
+  "lat": 44.4973591,
+  "lon": -75.0657043,
   "callSign": "W2SLV",
   "location": "Ogdensburg - Golden Dome",
   "county": "St Lawrence",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -39569,8 +39569,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 43.9019102,
-  "lon": -74.4059589,
+  "lat": 43.856339,
+  "lon": -74.4315339,
   "callSign": "N2MNT",
   "location": "Lake Placid - Blue Mtn Lake",
   "county": "Hamilton",
@@ -39719,8 +39719,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.961748,
-  "lon": -78.870914,
+  "lat": 42.9779557,
+  "lon": -78.8806824,
   "callSign": "N4NJJ",
   "location": "Kenmore - Kenmore Mercy Hospital",
   "county": "Erie",
@@ -39941,13 +39941,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 44.4292998,
-  "lon": -75.1501054,
+  "lat": 44.4973591,
+  "lon": -75.0657043,
   "callSign": "W2SLV",
   "location": "Russell - Kimball Hill",
   "county": "St Lawrence",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -39989,8 +39989,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 42.0897965,
-  "lon": -76.8077338,
+  "lat": 42.1036855,
+  "lon": -76.8960715,
   "callSign": "N2EUS",
   "location": "Elmira - Harris Hill",
   "county": "Chemung",
@@ -40019,8 +40019,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.578486,
-  "lon": -73.527031,
+  "lat": 44.571434,
+  "lon": -73.6812513,
   "callSign": "KD2LRZ",
   "location": "Peru - Terry Mtn",
   "county": "Clinton",
@@ -40043,8 +40043,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 42.3556399,
-  "lon": -73.9006841,
+  "lat": 43.019722,
+  "lon": -73.5222418,
   "callSign": "K2RHI",
   "location": "Earlton - Willard Mtn",
   "county": "Washington",
@@ -40103,8 +40103,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.192921,
-  "lon": -75.9700158,
+  "lat": 44.3333806,
+  "lon": -75.9996756,
   "callSign": "KD2WYL",
   "location": "La Fargeville - Thousand Islands",
   "county": "Jefferson",
@@ -40205,13 +40205,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.7585152,
-  "lon": -73.9746069,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "NY4Z",
   "location": "Midtown Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -40229,13 +40229,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "",
   "location": "Manhattan - Midtown",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -40283,13 +40283,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 44.247904,
-  "lon": -75.137901,
+  "lat": 44.4973591,
+  "lon": -75.0657043,
   "callSign": "WA2NAN",
   "location": "Fine - Adirondack Foothills",
   "county": "St Lawrence",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -40337,13 +40337,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.750632,
-  "lon": -73.9687884,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "K2IRT",
   "location": "New York City - Bowling Green",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -40367,8 +40367,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.5048402,
-  "lon": -73.9695409,
+  "lat": 41.4814101,
+  "lon": -73.9445568,
   "callSign": "NY4Z",
   "location": "Beacon - Mt Beacon",
   "county": "Dutchess",
@@ -40481,13 +40481,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "N2ROW",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -40511,8 +40511,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 41.5048402,
-  "lon": -73.9695409,
+  "lat": 41.4814101,
+  "lon": -73.9445568,
   "callSign": "K2ATY",
   "location": "Beacon - Mt. Beacon",
   "county": "Dutchess",
@@ -40570,8 +40570,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7654301,
-  "lon": -73.8174291,
+  "lat": 40.7367029,
+  "lon": -73.8187956,
   "callSign": "WB2HWW",
   "location": "Flushing - Queens College",
   "county": "Queens",
@@ -40630,13 +40630,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "NY4Z",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -40660,13 +40660,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "KC2GOW",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -40834,7 +40834,7 @@
   "location": "Staten Island",
   "county": "Richmond",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -40965,13 +40965,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.7579554,
-  "lon": -73.9855319,
+  "lat": 40.7814865,
+  "lon": -73.9590532,
   "callSign": "K2JRC",
   "location": "Manhattan",
   "county": "New York",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -41073,13 +41073,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 40.6526006,
-  "lon": -73.9497211,
+  "lat": 40.64559,
+  "lon": -73.9558866,
   "callSign": "WB2ZEX",
   "location": "Brooklyn",
   "county": "Kings",
   "state": "New York",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -41097,13 +41097,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.2912431,
-  "lon": -76.6357946,
+  "lat": 38.206621,
+  "lon": -76.5389973,
   "callSign": "KC3FOQ",
   "location": "Leonardtown - Fairgrounds",
   "county": "St Mary's",
   "state": "Maryland",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -41385,8 +41385,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.5306463,
-  "lon": -79.0175279,
+  "lat": 39.5445649,
+  "lon": -79.096638,
   "callSign": "KK3L",
   "location": "Barton - Big Savage Mtn",
   "county": "Garrett",
@@ -41541,13 +41541,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.44191,
-  "lon": -76.747398,
+  "lat": 38.206621,
+  "lon": -76.5389973,
   "callSign": "N3PX",
   "location": "Mechanicsville",
   "county": "St Mary's",
   "state": "Maryland",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -41781,8 +41781,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.6520715,
-  "lon": -77.7168283,
+  "lat": 39.6964843,
+  "lon": -77.5127675,
   "callSign": "W3CWC",
   "location": "Pen Mar - Quirauk Mtn",
   "county": "Washington",
@@ -42099,8 +42099,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.6430455,
-  "lon": -77.7191081,
+  "lat": 39.6559285,
+  "lon": -77.9691659,
   "callSign": "W3CWC",
   "location": "Hagerstown - Fairview Mtn",
   "county": "Washington",
@@ -42291,8 +42291,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.6583325,
-  "lon": -78.9284241,
+  "lat": 39.5541618,
+  "lon": -78.9278969,
   "callSign": "W3YMW",
   "location": "Frostburg - Dans Mtn",
   "county": "Allegany",
@@ -42339,8 +42339,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.319275,
-  "lon": -75.8738299,
+  "lat": 38.2576221,
+  "lon": -75.8568757,
   "callSign": "N3MRG",
   "location": "Tyaskin - Muddy Hole",
   "county": "Wicomico",
@@ -42411,13 +42411,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.3380008,
-  "lon": -76.5600957,
+  "lat": 38.206621,
+  "lon": -76.5389973,
   "callSign": "W3BPT",
   "location": "Hollywood",
   "county": "St Mary's",
   "state": "Maryland",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -42501,8 +42501,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.4099097,
-  "lon": -79.4062658,
+  "lat": 39.3923162,
+  "lon": -79.3024358,
   "callSign": "KB8NUF",
   "location": "Oakland - Eagle Rock Rd",
   "county": "Garrett",
@@ -42681,8 +42681,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.415779,
-  "lon": -77.4127562,
+  "lat": 39.4753546,
+  "lon": -77.4937336,
   "callSign": "W3FDK",
   "location": "Frederick - Gambrill State Park",
   "county": "Frederick",
@@ -42849,13 +42849,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.2494165,
-  "lon": -76.4469969,
+  "lat": 38.206621,
+  "lon": -76.5389973,
   "callSign": "K3HKI",
   "location": "Lexington Park",
   "county": "St Mary's",
   "state": "Maryland",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -42993,8 +42993,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.980666,
-  "lon": -76.9369189,
+  "lat": 38.9904124,
+  "lon": -76.9438586,
   "callSign": "W3EAX",
   "location": "College Park - UMD",
   "county": "Prince George's",
@@ -43065,8 +43065,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.6526498,
-  "lon": -78.762383,
+  "lat": 39.6077356,
+  "lon": -78.6237121,
   "callSign": "W3YMW",
   "location": "Cumberland - Warrior Mtn WMA",
   "county": "Allegany",
@@ -43203,13 +43203,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.3380008,
-  "lon": -76.5600957,
+  "lat": 38.206621,
+  "lon": -76.5389973,
   "callSign": "N3PPH",
   "location": "Hollywood - Hollywood Fire Department",
   "county": "St Mary's",
   "state": "Maryland",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -43323,8 +43323,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.9812726,
-  "lon": -77.1233587,
+  "lat": 39.0000143,
+  "lon": -77.1040039,
   "callSign": "K3YGG",
   "location": "Bethesda - NIH",
   "county": "Montgomery",
@@ -43383,13 +43383,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.3680201,
-  "lon": -76.7818953,
+  "lat": 38.206621,
+  "lon": -76.5389973,
   "callSign": "N3KUN",
   "location": "Chaptico",
   "county": "St Mary's",
   "state": "Maryland",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
@@ -43503,8 +43503,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 37.9842257,
-  "lon": -75.852267,
+  "lat": 37.9971189,
+  "lon": -75.8523897,
   "callSign": "W3OR",
   "location": "Crisfield - McCready Hospital",
   "county": "Somerset",
@@ -43731,8 +43731,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.2089986,
-  "lon": -76.0666126,
+  "lat": 39.217439,
+  "lon": -76.0649553,
   "callSign": "K3ARS",
   "location": "Chestertown - Shore Med Ctr",
   "county": "Kent",
@@ -43815,8 +43815,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.2624351,
-  "lon": -76.4870585,
+  "lat": 39.2221392,
+  "lon": -76.5215404,
   "callSign": "KC3APF",
   "location": "Dundalk - Key Bridge",
   "county": "Baltimore",
@@ -43905,8 +43905,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.415779,
-  "lon": -77.4127562,
+  "lat": 39.4753546,
+  "lon": -77.4937336,
   "callSign": "K3ERM",
   "location": "Frederick - Gambrill State Park",
   "county": "Frederick",
@@ -43995,8 +43995,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.965365,
-  "lon": -76.8417927,
+  "lat": 38.9828121,
+  "lon": -76.8651605,
   "callSign": "K3ERA",
   "location": "Lanham - Doctors Community Hospital",
   "county": "Prince George's",
@@ -44055,8 +44055,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.3615713,
-  "lon": -76.4418759,
+  "lat": 38.3815437,
+  "lon": -76.4434062,
   "callSign": "K3CAL",
   "location": "Lusby - Appeal Landfill",
   "county": "Calvert",
@@ -44649,8 +44649,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.5737254,
-  "lon": -75.9749456,
+  "lat": 39.7034697,
+  "lon": -75.8664794,
   "callSign": "N3RCN",
   "location": "Charlestown - Water Tower",
   "county": "Cecil",
@@ -45039,8 +45039,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.9786401,
-  "lon": -76.492786,
+  "lat": 38.9773472,
+  "lon": -76.56995,
   "callSign": "KB3CMA",
   "location": "Annapolis - Broad Creek Park",
   "county": "Anne Arundel",
@@ -45081,8 +45081,8 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.252377,
-  "lon": -76.7089181,
+  "lat": 39.2398292,
+  "lon": -76.6802471,
   "callSign": "WA3KOK",
   "location": "Baltimore - Halethorpe",
   "county": "Baltimore",
@@ -45189,8 +45189,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 39.415779,
-  "lon": -77.4127562,
+  "lat": 39.4753546,
+  "lon": -77.4937336,
   "callSign": "K3DO",
   "location": "Frederick - Gambrill State Park",
   "county": "Frederick",
@@ -45261,13 +45261,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.44191,
-  "lon": -76.747398,
+  "lat": 38.206621,
+  "lon": -76.5389973,
   "callSign": "N3PPH",
   "location": "Mechanicsville",
   "county": "St Mary's",
   "state": "Maryland",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "70cm",
@@ -45309,8 +45309,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.6712298,
-  "lon": -76.5980147,
+  "lat": 38.6741012,
+  "lon": -76.5945112,
   "callSign": "N3PPH",
   "location": "Sunderland - Mt Hope Comm Ctr",
   "county": "Calvert",
@@ -45469,7 +45469,7 @@
   "lon": -75.2782097,
   "callSign": "W3QV",
   "location": "Gibbstown",
-  "county": "Mercer",
+  "county": "Gloucester",
   "state": "New Jersey",
   "approximate": false,
   "entries": [
@@ -45495,13 +45495,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.0717549,
-  "lon": -75.2412941,
+  "lat": 40.2154361,
+  "lon": -75.3702305,
   "callSign": "W3QV",
   "location": "Roxboro",
   "county": "Montgomery",
   "state": "Pennsylvania",
-  "approximate": false,
+  "approximate": true,
   "entries": [
    {
     "band": "2m",
