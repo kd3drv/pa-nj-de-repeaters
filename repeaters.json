@@ -17675,7 +17675,7 @@
   "lat": 40.3009876,
   "lon": -74.7373728,
   "callSign": "N2RE",
-  "location": "Lawrenceville - WNJT Tower",
+  "location": "Lawrenceville",
   "county": "Mercer",
   "state": "New Jersey",
   "approximate": false,
@@ -21071,7 +21071,7 @@
   "lat": 40.3009876,
   "lon": -74.7373728,
   "callSign": "WR3IRS",
-  "location": "Lawrenceville - WNJT Tower",
+  "location": "Lawrenceville",
   "county": "Mercer",
   "state": "New Jersey",
   "approximate": false,
@@ -45525,12 +45525,12 @@
   "linkedRepeater": true
  },
  {
-  "lat": 40.467569,
+  "lat": 40.3009876,
   "lon": -79.9606078,
   "callSign": "W3QV",
-  "location": "Lawrenceville",
-  "county": "Bucks",
-  "state": "Pennsylvania",
+  "location": "-74.7373728",
+  "county": "Mercer",
+  "state": "New Jersey",
   "approximate": false,
   "entries": [
    {
