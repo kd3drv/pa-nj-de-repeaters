@@ -18,7 +18,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_54c5a7443ca6ff10a1706a9173cb19b8 {
+                #map_c11c85b85e859cd64e9ff601e28a3198 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -309,7 +309,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
 
 <header id="topbar">
     <button class="tb-btn icon" id="menuBtn" type="button" aria-label="Menu">&#9776;</button>
-    <div class="brand">Dave's Repeater View</div>
+    <div class="brand">PA/NJ Repeaters</div>
     <div id="searchWrap">
         <input id="locationInput" type="text" placeholder="Search a city or place" autocomplete="off" enterkeyhint="search">
         <button class="ghost" id="searchBtn" type="button" aria-label="Search">&#128269;</button>
@@ -385,7 +385,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
 </div>
 
     
-            <div class="folium-map" id="map_54c5a7443ca6ff10a1706a9173cb19b8" ></div>
+            <div class="folium-map" id="map_c11c85b85e859cd64e9ff601e28a3198" ></div>
         
 </body>
 <script>
@@ -561,7 +561,7 @@ var PIN_SVG =
 
 function boot() {
 
-    var map = map_54c5a7443ca6ff10a1706a9173cb19b8;
+    var map = map_c11c85b85e859cd64e9ff601e28a3198;
 
     // ------------------------------------------------------
     // STATE
@@ -1535,32 +1535,63 @@ function boot() {
     // ------------------------------------------------------
     // LOAD DATA
     // ------------------------------------------------------
-    fetch("repeaters.json")
+    function showLoadError(headline, detail) {
+        var pill = $("resultPill");
+        pill.textContent = headline;
+        pill.classList.add("warn");
+        toast(detail, 14000);
+    }
+
+    function initFromData(data) {
+        sites = data;
+        buildMarkers();
+
+        var restored = restoreFromHash();
+        if (!restored) { updateMarkers(); }
+
+        map.invalidateSize();
+        updateMarkerPositions();
+        setTimeout(function () { map.invalidateSize(); updateMarkerPositions(); }, 400);
+
+        var seen = false;
+        try { seen = !!window.localStorage.getItem(TOUR_KEY); } catch (err) { /* ignore */ }
+        if (!restored && !seen) { setTimeout(startTour, 700); }
+    }
+
+    // "no-cache" makes the browser re-check the server instead of
+    // reusing a stale repeaters.json (GitHub Pages caches for minutes).
+    fetch("repeaters.json", { cache: "no-cache" })
         .then(function (r) {
-            if (!r.ok) { throw new Error("HTTP " + r.status); }
-            return r.json();
+            if (!r.ok) { throw { kind: "http", status: r.status }; }
+            return r.json().catch(function () { throw { kind: "parse" }; });
         })
         .then(function (data) {
-            sites = data;
-            buildMarkers();
-
-            var restored = restoreFromHash();
-            if (!restored) { updateMarkers(); }
-
-            map.invalidateSize();
-            updateMarkerPositions();
-            setTimeout(function () { map.invalidateSize(); updateMarkerPositions(); }, 400);
-
-            var seen = false;
-            try { seen = !!window.localStorage.getItem(TOUR_KEY); } catch (err) { /* ignore */ }
-            if (!restored && !seen) { setTimeout(startTour, 700); }
+            if (!Array.isArray(data) || (data.length > 0 && !data[0].entries)) {
+                throw { kind: "format" };
+            }
+            try {
+                initFromData(data);
+            } catch (err) {
+                console.error(err);
+                showLoadError("Loaded the data but hit an error",
+                    "Loaded repeaters.json but the page failed to draw it: " + (err && err.message ? err.message : err));
+            }
         })
         .catch(function (err) {
             console.error(err);
-            var pill = $("resultPill");
-            pill.textContent = "Couldn't load repeaters.json";
-            pill.classList.add("warn");
-            toast("Couldn't load repeaters.json. Open this page through a web server (for example: python -m http.server) or host both files together.", 9000);
+            if (err && err.kind === "http") {
+                showLoadError("repeaters.json not found (" + err.status + ")",
+                    "repeaters.json returned HTTP " + err.status + ". Upload it to the same folder as index.html.");
+            } else if (err && err.kind === "parse") {
+                showLoadError("repeaters.json isn't valid JSON",
+                    "repeaters.json was found but couldn't be read. Re-run the script and upload a fresh copy.");
+            } else if (err && err.kind === "format") {
+                showLoadError("repeaters.json is the old format",
+                    "This page needs the NEW repeaters.json. Re-run the script, upload BOTH index.html and repeaters.json, then hard-refresh.");
+            } else {
+                showLoadError("Couldn't fetch repeaters.json",
+                    "Couldn't fetch repeaters.json. Check it is in the same folder as index.html and that you're online.");
+            }
         });
 }
 
@@ -1573,8 +1604,8 @@ if (document.readyState === "loading") {
 })();
 
     
-            var map_54c5a7443ca6ff10a1706a9173cb19b8 = L.map(
-                "map_54c5a7443ca6ff10a1706a9173cb19b8",
+            var map_c11c85b85e859cd64e9ff601e28a3198 = L.map(
+                "map_c11c85b85e859cd64e9ff601e28a3198",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -1586,13 +1617,13 @@ if (document.readyState === "loading") {
 
                 }
             );
-            L.control.scale().addTo(map_54c5a7443ca6ff10a1706a9173cb19b8);
+            L.control.scale().addTo(map_c11c85b85e859cd64e9ff601e28a3198);
 
             
 
         
     
-            var tile_layer_f171304513ff948ebc0e7c12f62c8a58 = L.tileLayer(
+            var tile_layer_c27943bf844ae209532ec234a56ac2f2 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -1609,7 +1640,7 @@ if (document.readyState === "loading") {
             );
         
     
-            tile_layer_f171304513ff948ebc0e7c12f62c8a58.addTo(map_54c5a7443ca6ff10a1706a9173cb19b8);
+            tile_layer_c27943bf844ae209532ec234a56ac2f2.addTo(map_c11c85b85e859cd64e9ff601e28a3198);
         
 </script>
 </html>
