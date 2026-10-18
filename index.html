@@ -18,7 +18,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_c11c85b85e859cd64e9ff601e28a3198 {
+                #map_c24599870bb0c66dca961ca02e4ac958 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -119,6 +119,10 @@ body { font-family: Arial, Helvetica, sans-serif; }
     background: #dc2626; color: #fff; font: 700 11px/16px Arial, sans-serif; text-align: center;
 }
 .badge:empty { display: none; }
+
+@media (max-width: 420px) {
+    #helpBtn { display: none; }
+}
 
 @media (max-width: 760px) {
     .brand, .tb-btn .lbl { display: none; }
@@ -315,6 +319,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
         <button class="ghost" id="searchBtn" type="button" aria-label="Search">&#128269;</button>
         <button class="ghost" id="locateBtn" type="button" aria-label="Use my location">&#128205;</button>
     </div>
+    <button class="tb-btn icon" id="resetBtn" type="button" aria-label="Reset view" title="Reset view">&#8634;</button>
     <button class="tb-btn" id="filtersBtn" type="button" aria-label="Filters">&#9881;&#65039;<span class="lbl">Filters</span><span class="badge" id="filterBadge"></span></button>
     <button class="tb-btn" id="listBtn" type="button" aria-label="List">&#128203;<span class="lbl">List</span></button>
     <button class="tb-btn icon" id="helpBtn" type="button" aria-label="Help">?</button>
@@ -335,8 +340,8 @@ body { font-family: Arial, Helvetica, sans-serif; }
         <div class="sec">Radius (applies to a location search)</div>
         <select id="radiusSelect" class="field">
             <option value="5">5 miles</option>
-            <option value="10">10 miles</option>
-            <option value="25" selected>25 miles</option>
+            <option value="10" selected>10 miles</option>
+            <option value="25">25 miles</option>
             <option value="50">50 miles</option>
             <option value="100">100 miles</option>
         </select>
@@ -385,7 +390,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
 </div>
 
     
-            <div class="folium-map" id="map_c11c85b85e859cd64e9ff601e28a3198" ></div>
+            <div class="folium-map" id="map_c24599870bb0c66dca961ca02e4ac958" ></div>
         
 </body>
 <script>
@@ -552,6 +557,7 @@ var DEFAULT_VIEW = { lat: 40.1, lon: -76.5, zoom: 8 };
 var DATA_UPDATED = "Oct 18, 2026";
 var TOUR_KEY = "rm_tour_done_v1";
 var LIST_LIMIT = 150;
+var DEFAULT_RADIUS = "10";
 
 var PIN_SVG =
     "<svg viewBox=\"0 0 28 42\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\">" +
@@ -561,7 +567,7 @@ var PIN_SVG =
 
 function boot() {
 
-    var map = map_c11c85b85e859cd64e9ff601e28a3198;
+    var map = map_c24599870bb0c66dca961ca02e4ac958;
 
     // ------------------------------------------------------
     // STATE
@@ -696,7 +702,7 @@ function boot() {
 
     function getRadius() {
         var r = parseFloat($("radiusSelect").value);
-        return isFinite(r) ? r : 25;
+        return isFinite(r) ? r : 10;
     }
 
     function syncAllBand() {
@@ -1205,7 +1211,7 @@ function boot() {
         $("locationInput").value = "";
         $("frequencyInput").value = "";
         $("echoLinkSelect").value = "all";
-        $("radiusSelect").value = "25";
+        $("radiusSelect").value = DEFAULT_RADIUS;
         bandCheckboxes().forEach(function (cb) { cb.checked = true; });
         syncAllBand();
 
@@ -1217,6 +1223,16 @@ function boot() {
 
         map.setView([DEFAULT_VIEW.lat, DEFAULT_VIEW.lon], DEFAULT_VIEW.zoom, { animate: false });
         updateMarkers();
+    }
+
+    // Reset EVERYTHING: search, radius, filters, selection, cards,
+    // panels, and the map view.
+    function resetView() {
+        closePanels();
+        closeMenu();
+        closeModal();
+        clearAll();
+        toast("View reset", 1500);
     }
 
     // ------------------------------------------------------
@@ -1321,7 +1337,7 @@ function boot() {
         { target: null, title: "Welcome \ud83d\udc4b",
           text: "A 30-second tour of the repeater map. You can replay it any time from the menu." },
         { target: "#searchWrap", title: "Search",
-          text: "Type a city or place to center the map there. Press Enter or tap the magnifier." },
+          text: "Type a city or place to center the map there. Press Enter or tap the magnifier. The \u21ba button next to it resets everything." },
         { target: "#locateBtn", title: "Near me",
           text: "Tap the pin icon to search around your current location." },
         { target: "#filtersBtn", title: "Filters",
@@ -1410,6 +1426,7 @@ function boot() {
     });
     $("applyCloseBtn").addEventListener("click", function () { closePanel("filterPanel"); });
     $("clearAllBtn").addEventListener("click", clearAll);
+    $("resetBtn").addEventListener("click", resetView);
 
     $("menu").addEventListener("click", function (e) {
         var b = e.target.closest("[data-menu]");
@@ -1604,8 +1621,8 @@ if (document.readyState === "loading") {
 })();
 
     
-            var map_c11c85b85e859cd64e9ff601e28a3198 = L.map(
-                "map_c11c85b85e859cd64e9ff601e28a3198",
+            var map_c24599870bb0c66dca961ca02e4ac958 = L.map(
+                "map_c24599870bb0c66dca961ca02e4ac958",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -1617,13 +1634,13 @@ if (document.readyState === "loading") {
 
                 }
             );
-            L.control.scale().addTo(map_c11c85b85e859cd64e9ff601e28a3198);
+            L.control.scale().addTo(map_c24599870bb0c66dca961ca02e4ac958);
 
             
 
         
     
-            var tile_layer_c27943bf844ae209532ec234a56ac2f2 = L.tileLayer(
+            var tile_layer_b41efd981c96fd31aecc5c91a9592512 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -1640,7 +1657,7 @@ if (document.readyState === "loading") {
             );
         
     
-            tile_layer_c27943bf844ae209532ec234a56ac2f2.addTo(map_c11c85b85e859cd64e9ff601e28a3198);
+            tile_layer_b41efd981c96fd31aecc5c91a9592512.addTo(map_c24599870bb0c66dca961ca02e4ac958);
         
 </script>
 </html>
