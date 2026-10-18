@@ -1,60 +1,927 @@
-<!DOCTYPE html>
-<html>
-<head>
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>PA/NJ Repeater Map</title><meta name="theme-color" content="#ffffff">
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_f7b2dc187924d4bc996d783c316d1369 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
+import pandas as pd
+import folium
+import requests
+import os
+import html
+import json
+import time
+import re
+import argparse
+import datetime
 
-            <style>html, body {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
+
+# ============================================================
+# FILE SETTINGS
+# ============================================================
+
+try:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+except NameError:               # e.g. running in a notebook
+    BASE_DIR = os.getcwd()
+
+excel_file = "repeaterbook_master_2.xlsx"
+cache_file = os.path.join(BASE_DIR, "location_coordinates.csv")
+map_file = "index.html"
+json_file = "repeaters.json"
+
+
+def resolve_input_path(filename):
+
+    # Look in the current folder first, then next to this script
+    for folder in (os.getcwd(), BASE_DIR):
+
+        candidate = os.path.join(folder, filename)
+
+        if os.path.exists(candidate):
+            return candidate
+
+    raise FileNotFoundError(
+        f"Could not find {filename} in {os.getcwd()} "
+        f"or {BASE_DIR}"
+    )
+
+
+# ============================================================
+# COMMAND LINE OPTIONS
+# ============================================================
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument(
+    "--retry-failed",
+    action="store_true",
+    help=(
+        "Retry locations that previously failed to geocode, "
+        "or that fell back to an approximate county position."
+    )
+)
+
+args, _ = parser.parse_known_args()
+
+
+# ============================================================
+# TEXT / NUMBER HELPERS
+# ============================================================
+
+def clean_text(value):
+
+    if value is None:
+        return ""
+
+    try:
+        if pd.isna(value):
+            return ""
+    except (TypeError, ValueError):
+        pass
+
+    text = " ".join(str(value).split())
+
+    return "" if text.lower() == "nan" else text
+
+
+def format_number(value, decimals=5):
+
+    """
+    147.39 -> "147.39", 100.0 -> "100", 7.0 -> "7".
+    Non-numeric text (e.g. "CSQ", "D023") is returned as is.
+    """
+
+    text = clean_text(value)
+
+    if not text:
+        return ""
+
+    try:
+        number = float(text)
+    except ValueError:
+        return text
+
+    return f"{number:.{decimals}f}".rstrip("0").rstrip(".")
+
+
+def to_float(value):
+
+    try:
+        return float(clean_text(value))
+    except ValueError:
+        return None
+
+
+def compact(text):
+
+    return re.sub(r"[\s_\-]", "", str(text)).lower()
+
+
+# ============================================================
+# LOAD EXCEL DATA (single sheet)
+# ============================================================
+
+excel_path = resolve_input_path(excel_file)
+
+raw_df = pd.read_excel(excel_path)      # first (only) sheet
+
+raw_df.columns = [
+    " ".join(str(col).split())
+    for col in raw_df.columns
+]
+
+print(f"Loaded {len(raw_df)} rows from {excel_path}")
+
+
+# ============================================================
+# MAP SPREADSHEET COLUMNS
+#
+# Expected headers (matching is forgiving about spaces,
+# capitalization and a truncated header):
+#
+#   Output Freq | Input Freq | Offset | Uplink Tone |
+#   Downlink Tone | Call | Location | County | State |
+#   Modes | Digital Access
+# ============================================================
+
+COLUMN_CANDIDATES = {
+
+    "output":   ["Output Freq", "Output Frequency", "Output"],
+    "input":    ["Input Freq", "Input Frequency", "Input"],
+    "offset":   ["Offset", "Duplex"],
+    "uplink":   ["Uplink Tone", "Uplink"],
+    "downlink": ["Downlink Tone", "Downlink"],
+    "call":     ["Call", "Call Sign", "Callsign"],
+    "location": ["Location", "City"],
+    "county":   ["County"],
+    "state":    ["State"],
+    "modes":    ["Modes", "Mode"],
+    "digital":  ["Digital Access", "Digital"]
+}
+
+REQUIRED_COLUMNS = [
+    "output", "call", "location", "state", "modes"
+]
+
+
+def find_column(columns, candidates):
+
+    lookup = {compact(col): col for col in columns}
+
+    # exact (normalized) match
+    for candidate in candidates:
+
+        key = compact(candidate)
+
+        if key in lookup:
+            return lookup[key]
+
+    # prefix match, e.g. a header cut off as "Digital Acces"
+    for candidate in candidates:
+
+        key = compact(candidate)
+
+        for col_key, col in lookup.items():
+
+            if col_key.startswith(key) and len(key) >= 5:
+                return col
+
+    return None
+
+
+column_map = {
+    field: find_column(raw_df.columns, candidates)
+    for field, candidates in COLUMN_CANDIDATES.items()
+}
+
+missing = [
+    field for field in REQUIRED_COLUMNS
+    if column_map[field] is None
+]
+
+if missing:
+
+    raise ValueError(
+        f"Missing required column(s): {missing}. "
+        f"Columns found: {list(raw_df.columns)}"
+    )
+
+for field, col in column_map.items():
+
+    if col is None:
+        print(f"Note: no column found for '{field}'. Left blank.")
+
+
+def get_field(row, field):
+
+    col = column_map[field]
+
+    if col is None:
+        return ""
+
+    return row[col]
+
+
+# ============================================================
+# PARSE EACH ROW INTO A CLEAN RECORD
+# ============================================================
+
+ECHOLINK_PATTERN = re.compile(
+    r"echo[\s\-_]*link",
+    re.IGNORECASE
+)
+
+
+def band_for_frequency(freq):
+
+    if freq is None:
+        return "Other"
+
+    if 144 <= freq < 148:
+        return "2m"
+
+    if 420 <= freq < 450:
+        return "70cm"
+
+    if 462 <= freq < 468:
+        return "GMRS"
+
+    return "Other"
+
+
+def split_location(location):
+
+    """
+    "Hegins - Lancaster Rd" -> ("Hegins", "Lancaster Rd")
+    "Galeton"               -> ("Galeton", "")
+    The text before " - " is treated as the city. Requiring
+    spaces around the dash keeps "Wilkes-Barre" intact.
+    """
+
+    parts = re.split(
+        r"\s+[-\u2013\u2014]\s+",
+        location,
+        maxsplit=1
+    )
+
+    city = parts[0].strip()
+
+    site = parts[1].strip() if len(parts) > 1 else ""
+
+    return city, site
+
+
+def get_duplex_and_offset(sign, out_freq, in_freq):
+
+    # Frequencies are the most reliable source
+    if out_freq is not None and in_freq is not None:
+
+        diff = round(in_freq - out_freq, 4)
+
+        if diff != 0:
+
+            return (
+                "+" if diff > 0 else "-",
+                format_number(abs(diff))
+            )
+
+    sign = clean_text(sign)
+
+    return (sign if sign in ("+", "-") else ""), ""
+
+
+def is_no_tone(value):
+
+    return clean_text(value).upper() in (
+        "", "CSQ", "NONE", "-"
+    )
+
+
+def describe_tone(value):
+
+    text = format_number(value)
+
+    # DCS codes such as D023 or 023N
+    if re.fullmatch(r"D\d{3}[NI]?", text, re.IGNORECASE):
+        return f"DCS {text.upper()}"
+
+    return f"{text} Hz"
+
+
+records = []
+
+for _, row in raw_df.iterrows():
+
+    call_sign = clean_text(
+        get_field(row, "call")
+    ).upper()
+
+    location = clean_text(get_field(row, "location"))
+    county = clean_text(get_field(row, "county"))
+    state = clean_text(get_field(row, "state"))
+    modes = clean_text(get_field(row, "modes"))
+
+    out_freq = to_float(get_field(row, "output"))
+    in_freq = to_float(get_field(row, "input"))
+
+    duplex, offset = get_duplex_and_offset(
+        get_field(row, "offset"),
+        out_freq,
+        in_freq
+    )
+
+    city, site = split_location(location)
+
+    records.append({
+
+        "call_sign": call_sign,
+        "location": location,
+        "city": city,
+        "site": site,
+        "county": county,
+        "state": state,
+        "modes": modes,
+
+        "frequency": format_number(
+            get_field(row, "output")
+        ),
+
+        "input_frequency": format_number(
+            get_field(row, "input")
+        ),
+
+        "band": band_for_frequency(out_freq),
+
+        "duplex": duplex,
+        "offset": offset,
+
+        "uplink": get_field(row, "uplink"),
+        "downlink": get_field(row, "downlink"),
+
+        "digital": format_number(
+            get_field(row, "digital")
+        ),
+
+        "echolink": bool(
+            ECHOLINK_PATTERN.search(modes)
+        )
+    })
+
+
+# ============================================================
+# KEEP ONLY 2m, 70cm, GMRS
+# ============================================================
+
+before = len(records)
+
+records = [
+    r for r in records
+    if r["band"] in ("2m", "70cm", "GMRS")
+    and r["city"]
+    and r["state"]
+]
+
+print(
+    f"Kept {len(records)} of {before} rows "
+    f"(2m / 70cm / GMRS with a location)."
+)
+
+
+# ============================================================
+# LOCATION COORDINATE CACHE
+#
+# location_coordinates.csv columns:
+#   Place, County, State, Latitude, Longitude, Status
+#
+# Status:
+#   ok      -> matched the city/place
+#   county  -> city not found; approximate county position
+#   failed  -> nothing found at all
+#
+# "failed" results are cached so they are not re-queried every
+# run. Temporary network errors are NOT cached.
+# Use --retry-failed to retry "failed" and "county" entries.
+# ============================================================
+
+def make_cache_key(place, county, state):
+
+    return tuple(
+        " ".join(str(part).split()).lower()
+        for part in (place, county, state)
+    )
+
+
+city_cache = {}     # key -> dict
+
+
+def save_city_cache():
+
+    rows = [
+        {
+            "Place": v["place"],
+            "County": v["county"],
+            "State": v["state"],
+            "Latitude": v["lat"],
+            "Longitude": v["lon"],
+            "Status": v["status"]
+        }
+        for v in city_cache.values()
+    ]
+
+    tmp_file = cache_file + ".tmp"
+
+    pd.DataFrame(
+        rows,
+        columns=[
+            "Place", "County", "State",
+            "Latitude", "Longitude", "Status"
+        ]
+    ).to_csv(tmp_file, index=False)
+
+    # Atomic replace so a crash can't corrupt the cache
+    os.replace(tmp_file, cache_file)
+
+
+if os.path.exists(cache_file):
+
+    cache_df = pd.read_csv(cache_file, keep_default_na=False)
+
+    for _, row in cache_df.iterrows():
+
+        place = str(row["Place"])
+        county = str(row["County"])
+        state = str(row["State"])
+        status = str(row["Status"]).strip().lower()
+
+        try:
+            lat = float(row["Latitude"])
+            lon = float(row["Longitude"])
+        except ValueError:
+            lat, lon, status = None, None, "failed"
+
+        city_cache[make_cache_key(place, county, state)] = {
+            "place": place,
+            "county": county,
+            "state": state,
+            "lat": lat,
+            "lon": lon,
+            "status": status
+        }
+
+    print(f"Loaded {len(city_cache)} cached locations.")
+
+else:
+
+    print("No coordinate cache found. A new one will be created.")
+
+
+# ============================================================
+# GEOCODING
+# ============================================================
+
+def nominatim_search(query):
+
+    """Returns (lat, lon) or None. Raises on network errors."""
+
+    response = requests.get(
+        "https://nominatim.openstreetmap.org/search",
+        params={
+            "q": query,
+            "format": "json",
+            "limit": 1
+        },
+        headers={"User-Agent": "PA_NJ_Repeater_Map"},
+        timeout=10
+    )
+
+    response.raise_for_status()
+
+    results = response.json()
+
+    # Respect Nominatim's 1 request/second policy
+    time.sleep(1)
+
+    if results:
+        return float(results[0]["lat"]), float(results[0]["lon"])
+
+    return None
+
+
+def geocode_place(city, site, county, state):
+
+    """
+    Tries, in order:
+      1. "City, County County, State"
+      2. "City, State"
+      3. "Site, County County, State"  (in case the part after
+         the dash is the real town name)
+      4. "County County, State"        (approximate)
+    Stores the outcome in city_cache.
+    """
+
+    attempts = []
+
+    if county:
+        attempts.append(
+            (f"{city}, {county} County, {state}, USA", "ok")
+        )
+
+    attempts.append(
+        (f"{city}, {state}, USA", "ok")
+    )
+
+    if site and county:
+        attempts.append(
+            (f"{site}, {county} County, {state}, USA", "ok")
+        )
+
+    if county:
+        attempts.append(
+            (f"{county} County, {state}, USA", "county")
+        )
+
+    key = make_cache_key(city, county, state)
+
+    for query, status in attempts:
+
+        try:
+            result = nominatim_search(query)
+
+        except Exception as e:
+
+            # Temporary problem: do NOT cache, retry next run
+            print(f"Geocoding error for {query}: {e}")
+
+            return
+
+        if result:
+
+            city_cache[key] = {
+                "place": city,
+                "county": county,
+                "state": state,
+                "lat": result[0],
+                "lon": result[1],
+                "status": status
             }
-            </style>
 
-            <style>#map {
-                position:absolute;
-                top:0;
-                bottom:0;
-                right:0;
-                left:0;
-                }
-            </style>
+            label = (
+                "Geocoded" if status == "ok"
+                else "Approximate (county)"
+            )
 
-            <script>
-                L_NO_TOUCH = false;
-                L_DISABLE_3D = false;
-            </script>
+            print(f"{label}: {query} -> {result[0]}, {result[1]}")
 
-        
-</head>
-<body>
-    
-    
+            return
+
+    city_cache[key] = {
+        "place": city,
+        "county": county,
+        "state": state,
+        "lat": None,
+        "lon": None,
+        "status": "failed"
+    }
+
+    print(f"Could not geocode (cached as failed): {city}, {county}, {state}")
+
+
+# ============================================================
+# GEOCODE UNIQUE LOCATIONS ONLY
+# ============================================================
+
+unique_places = {}
+
+for r in records:
+
+    unique_places.setdefault(
+        make_cache_key(r["city"], r["county"], r["state"]),
+        (r["city"], r["site"], r["county"], r["state"])
+    )
+
+print(
+    f"{len(records)} repeaters -> "
+    f"{len(unique_places)} unique locations."
+)
+
+to_lookup = []
+
+for key, place in unique_places.items():
+
+    cached = city_cache.get(key)
+
+    if cached is None:
+        to_lookup.append(place)
+
+    elif (
+        cached["status"] in ("failed", "county")
+        and args.retry_failed
+    ):
+        to_lookup.append(place)
+
+print(
+    f"{len(unique_places) - len(to_lookup)} found in cache, "
+    f"{len(to_lookup)} to look up."
+)
+
+SAVE_EVERY = 10
+
+try:
+
+    for n, place in enumerate(to_lookup, start=1):
+
+        geocode_place(*place)
+
+        if n % SAVE_EVERY == 0:
+            save_city_cache()
+
+finally:
+
+    # Runs even on Ctrl+C or a crash, so progress is never lost
+    save_city_cache()
+
+    print(f"Saved coordinate cache to {cache_file}")
+
+
+# ============================================================
+# APPLY COORDINATES
+# ============================================================
+
+located = []
+
+for r in records:
+
+    cached = city_cache.get(
+        make_cache_key(r["city"], r["county"], r["state"])
+    )
+
+    if cached is None or cached["status"] == "failed":
+        continue
+
+    r["lat"] = cached["lat"]
+    r["lon"] = cached["lon"]
+    r["approximate"] = cached["status"] == "county"
+
+    located.append(r)
+
+print(
+    f"Dropped {len(records) - len(located)} repeaters "
+    f"with no coordinates."
+)
+
+records = located
+
+print(
+    f"Processing {len(records)} repeaters "
+    f"across 2m, 70cm, and GMRS."
+)
+
+
+# ============================================================
+# REMOVE EXACT DUPLICATE ROWS
+#
+# A row is an exact duplicate when every displayed field matches
+# (call sign, location, county, state, output/input frequency,
+# tones, modes, digital access).
+# ============================================================
+
+def site_key(r):
+
+    return (
+        r["call_sign"],
+        r["location"].lower(),
+        r["county"].lower(),
+        r["state"].lower()
+    )
+
+
+seen_signatures = set()
+
+unique_records = []
+
+for r in records:
+
+    signature = (
+        site_key(r),
+        r["frequency"],
+        r["input_frequency"],
+        format_number(r["uplink"]),
+        format_number(r["downlink"]),
+        r["modes"].lower(),
+        r["digital"]
+    )
+
+    if signature in seen_signatures:
+        continue
+
+    seen_signatures.add(signature)
+
+    unique_records.append(r)
+
+print(
+    f"Removed {len(records) - len(unique_records)} exact duplicate rows."
+)
+
+records = unique_records
+
+
+# ============================================================
+# MERGE ROWS AT THE SAME SITE INTO ONE PIN
+#
+# Same call sign + same exact location text + same county/state
+# = one physical site. Its different band entries (for example a
+# 2m row and a 70cm row) become "entries" on a single pin.
+# Rows with no call sign are never merged.
+# ============================================================
+
+BAND_ORDER = {"2m": 0, "70cm": 1, "GMRS": 2}
+
+
+def build_tone_lines(uplink, downlink):
+
+    up_none = is_no_tone(uplink)
+    down_none = is_no_tone(downlink)
+
+    if up_none and down_none:
+        return []
+
+    if (
+        not up_none
+        and not down_none
+        and format_number(uplink) == format_number(downlink)
+    ):
+        return [{
+            "label": "CTCSS",
+            "value": describe_tone(uplink),
+            "copy": format_number(uplink)
+        }]
+
+    lines = []
+
+    if not up_none:
+        lines.append({
+            "label": "Uplink tone",
+            "value": describe_tone(uplink),
+            "copy": format_number(uplink)
+        })
+
+    if not down_none:
+        lines.append({
+            "label": "Downlink tone",
+            "value": describe_tone(downlink),
+            "copy": format_number(downlink)
+        })
+
+    return lines
+
+
+def digital_label(modes):
+
+    upper = modes.upper()
+
+    has_dmr = "DMR" in upper
+    has_p25 = "P-25" in upper or "P25" in upper
+
+    if has_dmr and not has_p25:
+        return "Color Code"
+
+    if has_p25 and not has_dmr:
+        return "NAC"
+
+    return "Digital Access"
+
+
+def build_entry(r):
+
+    return {
+        "band": r["band"],
+        "frequency": r["frequency"],
+        "inputFrequency": r["input_frequency"],
+        "duplex": r["duplex"],
+        "offset": r["offset"],
+        "tones": build_tone_lines(r["uplink"], r["downlink"]),
+        "modes": r["modes"],
+        "digital": r["digital"],
+        "digitalLabel": digital_label(r["modes"]) if r["digital"] else "",
+        "echoLink": r["echolink"]
+    }
+
+
+sites = {}
+
+for n, r in enumerate(records):
+
+    key = site_key(r) if r["call_sign"] else ("__row__", n)
+
+    if key not in sites:
+
+        sites[key] = {
+            "lat": float(r["lat"]),
+            "lon": float(r["lon"]),
+            "callSign": r["call_sign"],
+            "location": r["location"],
+            "county": r["county"],
+            "state": r["state"],
+            "approximate": bool(r["approximate"]),
+            "entries": []
+        }
+
+    sites[key]["entries"].append(build_entry(r))
+
+
+def entry_sort_key(entry):
+
+    try:
+        freq = float(entry["frequency"])
+    except ValueError:
+        freq = 0.0
+
+    return (BAND_ORDER.get(entry["band"], 9), freq)
+
+
+repeater_data = list(sites.values())
+
+for site in repeater_data:
+    site["entries"].sort(key=entry_sort_key)
+
+
+# ============================================================
+# LINKED REPEATERS
+#
+# A call sign is "linked" when it appears at 2 or more DIFFERENT
+# sites. Rows at the same site were merged above, so a repeater
+# listed on two bands no longer counts as a network by itself.
+# ============================================================
+
+call_sign_site_counts = {}
+
+for site in repeater_data:
+
+    if site["callSign"]:
+
+        call_sign_site_counts[site["callSign"]] = (
+            call_sign_site_counts.get(site["callSign"], 0) + 1
+        )
+
+for site in repeater_data:
+
+    site["linkedRepeater"] = bool(
+        site["callSign"]
+        and call_sign_site_counts[site["callSign"]] > 1
+    )
+
+n_entries = sum(len(s["entries"]) for s in repeater_data)
+
+n_multi = sum(1 for s in repeater_data if len(s["entries"]) > 1)
+
+print(
+    f"{n_entries} band entries -> {len(repeater_data)} pins "
+    f"({n_multi} pins carry more than one entry)."
+)
+
+print(
+    f"EchoLink entries: "
+    f"{sum(e['echoLink'] for s in repeater_data for e in s['entries'])}"
+)
+
+print(
+    f"Linked sites: "
+    f"{sum(s['linkedRepeater'] for s in repeater_data)} "
+    f"in {sum(1 for c in call_sign_site_counts.values() if c > 1)} networks"
+)
+
+
+# ============================================================
+# SAVE REPEATER JSON
+# ============================================================
+
+with open(
+    json_file,
+    "w",
+    encoding="utf-8"
+) as f:
+
+    json.dump(
+        repeater_data,
+        f,
+        ensure_ascii=False,
+        indent=1
+    )
+
+print(f"Saved repeater data to {json_file}")
+
+
+# ============================================================
+# BUILD THE MAP PAGE
+#
+# The page's code (PANEL_HTML + PURE_JS + APP_JS) is embedded
+# below as plain strings. __MAP__ and __DATA_UPDATED__ are
+# filled in at build time.
+#
+# IMPORTANT: folium writes the map-creation script AFTER the
+# page body, so the page's JavaScript is added to folium's
+# "script" section (after the map exists) and also waits for
+# DOMContentLoaded before touching the map.
+# ============================================================
+
+DATA_UPDATED = datetime.date.today().strftime("%b %d, %Y")
+
+PANEL_HTML = r"""
 <style>
 :root {
     --ink: #0f172a;
@@ -309,7 +1176,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
 
 <header id="topbar">
     <button class="tb-btn icon" id="menuBtn" type="button" aria-label="Menu">&#9776;</button>
-    <div class="brand">PA/NJ Repeaters</div>
+    <div class="brand">Dave's Repeater View</div>
     <div id="searchWrap">
         <input id="locationInput" type="text" placeholder="Search a city or place" autocomplete="off" enterkeyhint="search">
         <button class="ghost" id="searchBtn" type="button" aria-label="Search">&#128269;</button>
@@ -384,13 +1251,9 @@ body { font-family: Arial, Helvetica, sans-serif; }
     <div id="tourCard"></div>
 </div>
 
-    
-            <div class="folium-map" id="map_f7b2dc187924d4bc996d783c316d1369" ></div>
-        
-</body>
-<script>
-    
-    
+"""
+
+PURE_JS = r"""
 // ==========================================================
 // PURE HELPERS (no DOM / map access)
 // ==========================================================
@@ -542,14 +1405,15 @@ var RM = (function () {
     };
 })();
 
+"""
 
-
+APP_JS = r"""
 (function () {
 "use strict";
 
 var ALL_BANDS = ["2m", "70cm", "GMRS"];
 var DEFAULT_VIEW = { lat: 40.1, lon: -76.5, zoom: 8 };
-var DATA_UPDATED = "Oct 17, 2026";
+var DATA_UPDATED = "__DATA_UPDATED__";
 var TOUR_KEY = "rm_tour_done_v1";
 var LIST_LIMIT = 150;
 
@@ -561,7 +1425,7 @@ var PIN_SVG =
 
 function boot() {
 
-    var map = map_f7b2dc187924d4bc996d783c316d1369;
+    var map = __MAP__;
 
     // ------------------------------------------------------
     // STATE
@@ -1572,44 +2436,54 @@ if (document.readyState === "loading") {
 
 })();
 
-    
-            var map_f7b2dc187924d4bc996d783c316d1369 = L.map(
-                "map_f7b2dc187924d4bc996d783c316d1369",
-                {
-                    center: [40.1, -76.5],
-                    crs: L.CRS.EPSG3857,
-                    ...{
-  "zoom": 8,
-  "zoomControl": true,
-  "preferCanvas": false,
-}
+"""
 
-                }
-            );
-            L.control.scale().addTo(map_f7b2dc187924d4bc996d783c316d1369);
+m = folium.Map(
+    location=[40.1, -76.5],
+    zoom_start=8,
+    control_scale=True
+)
 
-            
+m.get_root().header.add_child(
+    folium.Element(
+        "<title>PA/NJ Repeater Map</title>"
+        '<meta name="theme-color" content="#ffffff">'
+    )
+)
 
-        
-    
-            var tile_layer_1d0b85d2310b04de23339d3e6233e136 = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {
-  "minZoom": 0,
-  "maxZoom": 19,
-  "maxNativeZoom": 19,
-  "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
-  "subdomains": "abc",
-  "detectRetina": false,
-  "tms": false,
-  "opacity": 1,
-}
+m.get_root().html.add_child(
+    folium.Element(PANEL_HTML)
+)
 
-            );
-        
-    
-            tile_layer_1d0b85d2310b04de23339d3e6233e136.addTo(map_f7b2dc187924d4bc996d783c316d1369);
-        
-</script>
-</html>
+map_name = m.get_name()
+
+page_script = (
+    (PURE_JS + "\n" + APP_JS)
+    .replace("__MAP__", map_name)
+    .replace("__DATA_UPDATED__", DATA_UPDATED)
+)
+
+m.get_root().script.add_child(
+    folium.Element(page_script)
+)
+
+
+# ============================================================
+# SAVE MAP
+# ============================================================
+
+m.save(map_file)
+
+
+print()
+print("==========================================")
+print("MAP & JSON CREATED SUCCESSFULLY")
+print("==========================================")
+print(f"HTML file saved to: {os.path.abspath(map_file)}")
+print(f"JSON file saved to: {os.path.abspath(json_file)}")
+print()
+print(
+    "Keep index.html and repeaters.json in the same folder and open "
+    "the page through a web server (for example: "
+    "python -m http.server) or host both files together."
+)
