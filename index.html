@@ -18,7 +18,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_c24599870bb0c66dca961ca02e4ac958 {
+                #map_89affdb8159b2d5d9e71833c4fc3139b {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -251,28 +251,38 @@ body { font-family: Arial, Helvetica, sans-serif; }
 /* ---------- Pins ---------- */
 .repeater-pin svg { display: block; width: 100%; height: 100%; }
 
-/* Linked network glow.
-   Idle: no repeater selected -> faint static glow.
-   Active: members of the selected network -> strong pulse.
-   Off: linked repeaters in some other network -> no glow. */
-.linked-repeater-marker {
-    filter: drop-shadow(0 0 2px rgba(255, 200, 0, .65)) drop-shadow(0 0 4px rgba(255, 200, 0, .35));
+/* Linked network glow: a cheap radial-gradient halo behind the pin
+   (no blur filters, which are very slow with many pins).
+   Idle: faint halo. Active: selected network pulses.
+   Off: linked pins in some other network get no halo. */
+.linked-repeater-marker::before {
+    content: ""; position: absolute; left: 50%; top: 42%;
+    width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 205, 0, .55) 0%, rgba(255, 205, 0, .28) 45%, rgba(255, 205, 0, 0) 72%);
+    z-index: -1; pointer-events: none;
 }
-.linked-repeater-marker.linked-repeater-active { animation: linkedGlowStrong 1.2s ease-in-out infinite; }
-.linked-repeater-marker.linked-repeater-off { animation: none; filter: none; }
+.linked-repeater-marker.linked-repeater-active::before {
+    width: 60px; height: 60px; margin: -30px 0 0 -30px;
+    background: radial-gradient(circle, rgba(255, 212, 0, .95) 0%, rgba(255, 212, 0, .6) 40%, rgba(255, 212, 0, 0) 72%);
+    animation: linkedPulse 1.2s ease-in-out infinite;
+}
+.linked-repeater-marker.linked-repeater-off::before { display: none; }
 
-@keyframes linkedGlowStrong {
-    0%, 100% { filter: drop-shadow(0 0 3px #ffd400) drop-shadow(0 0 7px #ffd400) drop-shadow(0 0 12px #ffd400); }
-    50% { filter: drop-shadow(0 0 6px #ffd400) drop-shadow(0 0 13px #ffd400) drop-shadow(0 0 22px #ffd400); }
+@keyframes linkedPulse {
+    0%, 100% { transform: scale(.85); opacity: .75; }
+    50% { transform: scale(1.15); opacity: 1; }
 }
 
-/* Count badge on pins stacked at the same spot */
-.stack-badge {
-    position: absolute; top: -7px; right: -9px; min-width: 17px; height: 17px; padding: 0 4px;
-    box-sizing: border-box; background: #dc2626; color: #fff; border: 1.5px solid #fff; border-radius: 999px;
-    font: bold 10px/14px Arial, sans-serif; text-align: center; pointer-events: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+/* Numbered circles that group nearby sites */
+.cluster-icon { background: transparent; border: 0; }
+.cluster-bubble {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%; box-sizing: border-box; border-radius: 50%;
+    background: rgba(37, 99, 235, .9); color: #fff; border: 3px solid rgba(255, 255, 255, .92);
+    font: 700 13px Arial, sans-serif; box-shadow: 0 1px 4px rgba(0, 0, 0, .35); cursor: pointer;
 }
+.cluster-bubble.m { background: rgba(29, 78, 216, .92); }
+.cluster-bubble.l { background: rgba(30, 58, 138, .94); font-size: 14px; }
 
 /* ---------- Selected network chip ---------- */
 #networkChip {
@@ -390,7 +400,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
 </div>
 
     
-            <div class="folium-map" id="map_c24599870bb0c66dca961ca02e4ac958" ></div>
+            <div class="folium-map" id="map_89affdb8159b2d5d9e71833c4fc3139b" ></div>
         
 </body>
 <script>
@@ -567,7 +577,7 @@ var PIN_SVG =
 
 function boot() {
 
-    var map = map_c24599870bb0c66dca961ca02e4ac958;
+    var map = map_89affdb8159b2d5d9e71833c4fc3139b;
 
     // ------------------------------------------------------
     // STATE
@@ -658,9 +668,9 @@ function boot() {
         "<h2>How to read the map</h2>" +
         "<div class=\"m-row\"><div class=\"ic\"><span class=\"repeater-pin\" style=\"display:inline-block;width:22px;height:33px\">" + PIN_SVG + "</span></div>" +
         "<div><b>One pin = one repeater site.</b> Tap it for a card with every band at that site, plus tones, offsets and modes. Tap a frequency or tone to copy it.</div></div>" +
-        "<div class=\"m-row\"><div class=\"ic\"><span class=\"stack-badge\" style=\"position:static;display:inline-block\">3</span></div>" +
-        "<div><b>Red number:</b> several sites share the same spot. Zoom in and they fan out.</div></div>" +
-        "<div class=\"m-row\"><div class=\"ic\"><span class=\"repeater-pin linked-repeater-marker\" style=\"display:inline-block;width:22px;height:33px\">" + PIN_SVG + "</span></div>" +
+        "<div class=\"m-row\"><div class=\"ic\"><span class=\"cluster-bubble s\" style=\"display:inline-flex;width:30px;height:30px\">12</span></div>" +
+        "<div><b>Numbered circle:</b> a group of nearby sites. Tap it to zoom in and split it up. Zoomed far out the map shows groups instead of every pin to stay fast.</div></div>" +
+        "<div class=\"m-row\"><div class=\"ic\"><span class=\"repeater-pin linked-repeater-marker\" style=\"position:relative;isolation:isolate;display:inline-block;width:22px;height:33px\">" + PIN_SVG + "</span></div>" +
         "<div><b>Soft yellow glow:</b> a linked network (same call sign at more than one site). Tap one and its whole network pulses while other linked pins go dark. The bar at the bottom has <b>Fit</b> to show every link, even outside your search radius.</div></div>" +
         "<div class=\"m-row\"><div class=\"ic\" style=\"color:#d97706;font-weight:700\">- - -</div>" +
         "<div><b>Dashed lines</b> connect the selected site to its links.</div></div>" +
@@ -711,7 +721,21 @@ function boot() {
 
     // ------------------------------------------------------
     // MARKERS
+    //
+    // Markers are created lazily and only the ones that are needed
+    // are drawn: sites inside the (padded) view. When too many would
+    // be on screen, nearby sites are grouped into numbered circles.
     // ------------------------------------------------------
+    var PIN_BUDGET = 300;        // more pins than this in view -> group into circles
+    var CLUSTER_OFF_ZOOM = 13;   // from this zoom on, never group
+    var CLUSTER_CELL = 60;       // grouping grid size in pixels
+
+    var shownPins = [];          // items currently drawn as pins
+    var clusterMarkers = {};     // key -> circle marker
+    var activeIdx = null;        // pin whose card is open (never hidden)
+    var lastSig = "";
+    var rendering = false;
+
     function makeIcon(site) {
         return L.divIcon({
             className: "repeater-pin" + (site.linkedRepeater ? " linked-repeater-marker" : ""),
@@ -733,6 +757,35 @@ function boot() {
         };
     }
 
+    function ensureMarker(item) {
+        if (item.marker) { return item.marker; }
+
+        var site = item.site;
+        var idx = item.idx;
+        var marker = L.marker([site.lat, site.lon], { icon: makeIcon(site) });
+
+        marker.__rmIdx = idx;
+
+        marker.bindPopup(function () {
+            return RM.buildPopupHtml(site, idx, popupContext(idx));
+        }, {
+            maxWidth: 290,
+            minWidth: 210,
+            maxHeight: Math.round(window.innerHeight * 0.55),
+            autoPanPaddingTopLeft: [16, 76],
+            autoPanPaddingBottomRight: [16, 16]
+        });
+
+        marker.on("click", function () {
+            activeIdx = idx;
+            selectNetwork(idx);
+            updateMarkers();
+        });
+
+        item.marker = marker;
+        return marker;
+    }
+
     function buildMarkers() {
         networkSizes = {};
         sites.forEach(function (site) {
@@ -740,26 +793,9 @@ function boot() {
         });
 
         sites.forEach(function (site, idx) {
-            var marker = L.marker([site.lat, site.lon], { icon: makeIcon(site) });
-
-            marker.bindPopup(function () {
-                return RM.buildPopupHtml(site, idx, popupContext(idx));
-            }, {
-                maxWidth: 290,
-                minWidth: 210,
-                maxHeight: Math.round(window.innerHeight * 0.55),
-                autoPanPaddingTopLeft: [16, 76],
-                autoPanPaddingBottomRight: [16, 16]
-            });
-
-            marker.on("click", function () {
-                selectNetwork(idx);
-                updateMarkers();
-            });
-
             markerLayers.push({
-                site: site, marker: marker, idx: idx,
-                distance: null, outside: false, raised: false
+                site: site, marker: null, idx: idx,
+                pass: false, distance: null, outside: false, raised: false
             });
         });
 
@@ -802,17 +838,17 @@ function boot() {
 
     function fitNetwork() {
         if (selectedCall === null) { return; }
-        var onMap = networkMembers().filter(function (it) { return map.hasLayer(it.marker); });
-        if (onMap.length === 0) { return; }
+        var shown = networkMembers().filter(function (it) { return it.pass; });
+        if (shown.length === 0) { return; }
 
         map.closePopup();
 
-        if (onMap.length === 1) {
-            map.setView([onMap[0].site.lat, onMap[0].site.lon], Math.max(map.getZoom(), 12), { animate: false });
+        if (shown.length === 1) {
+            map.setView([shown[0].site.lat, shown[0].site.lon], Math.max(map.getZoom(), 12), { animate: false });
             return;
         }
 
-        var points = onMap.map(function (it) { return [it.site.lat, it.site.lon]; });
+        var points = shown.map(function (it) { return [it.site.lat, it.site.lon]; });
         map.fitBounds(L.latLngBounds(points), {
             paddingTopLeft: [50, 84],
             paddingBottomRight: [50, 120],
@@ -824,13 +860,11 @@ function boot() {
     function updateLinkedHighlight() {
         var hasSelection = selectedCall !== null;
 
-        markerLayers.forEach(function (item) {
-            var el = item.marker.getElement();
+        shownPins.forEach(function (item) {
+            var el = item.marker && item.marker.getElement();
             if (!el) { return; }
 
-            if (!item.site.linkedRepeater) {
-                el.classList.remove("linked-repeater-active", "linked-repeater-off");
-            } else if (!hasSelection) {
+            if (!item.site.linkedRepeater || !hasSelection) {
                 el.classList.remove("linked-repeater-active", "linked-repeater-off");
             } else if (item.site.callSign === selectedCall) {
                 el.classList.add("linked-repeater-active");
@@ -847,10 +881,10 @@ function boot() {
         if (selectedCall === null || selectedIdx === null) { return; }
 
         var hub = markerLayers[selectedIdx];
-        if (!hub || !map.hasLayer(hub.marker)) { return; }
+        if (!hub || !hub.pass) { return; }
 
         markerLayers.forEach(function (item) {
-            if (item === hub || !isMember(item.site) || !map.hasLayer(item.marker)) { return; }
+            if (item === hub || !isMember(item.site) || !item.pass) { return; }
             L.polyline(
                 [[hub.site.lat, hub.site.lon], [item.site.lat, item.site.lon]],
                 { color: "#d97706", weight: 2, opacity: 0.85, dashArray: "6 6", interactive: false }
@@ -867,7 +901,7 @@ function boot() {
         }
 
         var members = networkMembers();
-        var shown = members.filter(function (it) { return map.hasLayer(it.marker); });
+        var shown = members.filter(function (it) { return it.pass; });
         var outside = searchLocationState
             ? shown.filter(function (it) { return it.outside; }).length
             : 0;
@@ -882,7 +916,7 @@ function boot() {
     }
 
     // ------------------------------------------------------
-    // SPREAD STACKED PINS (same coordinates)
+    // SPREAD STACKED PINS (identical coordinates) INTO RINGS
     // ------------------------------------------------------
     function setMarkerPosition(marker, lat, lon) {
         var cur = marker.getLatLng();
@@ -891,27 +925,24 @@ function boot() {
     }
 
     function updateMarkerPositions() {
-        var zoom = map.getZoom();
-        var spreadFactor = Math.max(0, Math.min(1, (zoom - 6) / 2));
-
         var groups = {};
-        markerLayers.forEach(function (item, index) {
-            if (!map.hasLayer(item.marker)) { return; }
+
+        shownPins.forEach(function (item) {
             var key = item.site.lat.toFixed(7) + "," + item.site.lon.toFixed(7);
             if (!groups[key]) { groups[key] = []; }
-            groups[key].push(index);
+            groups[key].push(item);
         });
 
-        var targets = markerLayers.map(function (item) { return [item.site.lat, item.site.lon]; });
-        var wantRaised = markerLayers.map(function () { return false; });
+        var targets = {};
+        var raised = {};
 
         Object.keys(groups).forEach(function (key) {
-            var indexes = groups[key];
-            var count = indexes.length;
+            var group = groups[key];
+            var count = group.length;
             if (count <= 1) { return; }
 
-            wantRaised[indexes[0]] = true;
-            if (spreadFactor === 0) { return; }
+            // The first pin of a stack is raised so it is the one you tap
+            raised[group[0].idx] = true;
 
             var placed = 0;
             var ring = 0;
@@ -920,11 +951,10 @@ function boot() {
                 var baseRadius = 26 + ring * 24;
                 var capacity = Math.max(6, Math.floor((2 * Math.PI * baseRadius) / 22));
                 var inRing = Math.min(capacity, count - placed);
-                var ringRadius = Math.max(baseRadius, (inRing * 22) / (2 * Math.PI)) * spreadFactor;
+                var ringRadius = Math.max(baseRadius, (inRing * 22) / (2 * Math.PI));
 
                 for (var k = 0; k < inRing; k++) {
-                    var markerIndex = indexes[placed + k];
-                    var item = markerLayers[markerIndex];
+                    var item = group[placed + k];
                     var angle = (2 * Math.PI * k / inRing) - Math.PI / 2 + (ring % 2) * (Math.PI / inRing);
 
                     var point = map.latLngToLayerPoint(L.latLng(item.site.lat, item.site.lon));
@@ -932,7 +962,7 @@ function boot() {
                     point.y += Math.sin(angle) * ringRadius;
 
                     var offset = map.layerPointToLatLng(point);
-                    targets[markerIndex] = [offset.lat, offset.lng];
+                    targets[item.idx] = [offset.lat, offset.lng];
                 }
 
                 placed += inRing;
@@ -940,32 +970,154 @@ function boot() {
             }
         });
 
-        markerLayers.forEach(function (item, index) {
-            setMarkerPosition(item.marker, targets[index][0], targets[index][1]);
+        shownPins.forEach(function (item) {
+            var t = targets[item.idx] || [item.site.lat, item.site.lon];
+            setMarkerPosition(item.marker, t[0], t[1]);
 
-            if (item.raised !== wantRaised[index]) {
-                item.raised = wantRaised[index];
-                item.marker.setZIndexOffset(wantRaised[index] ? 1000 : 0);
+            var want = !!raised[item.idx];
+            if (item.raised !== want) {
+                item.raised = want;
+                item.marker.setZIndexOffset(want ? 1000 : 0);
             }
         });
+    }
 
-        // Count badges on stacks that are not yet fully fanned out
-        markerLayers.forEach(function (item) {
-            var el = item.marker.getElement();
-            if (!el) { return; }
-            var old = el.querySelector(".stack-badge");
-            if (old) { old.remove(); }
+    // ------------------------------------------------------
+    // DRAW ONLY WHAT IS NEEDED
+    // ------------------------------------------------------
+    function makeClusterMarker(group) {
+        var n = group.length;
+        var lat = 0, lon = 0;
+
+        group.forEach(function (it) { lat += it.site.lat; lon += it.site.lon; });
+
+        var cls = n < 10 ? "s" : (n < 100 ? "m" : "l");
+        var size = n < 10 ? 34 : (n < 100 ? 42 : 50);
+
+        var marker = L.marker([lat / n, lon / n], {
+            icon: L.divIcon({
+                className: "cluster-icon",
+                html: "<div class=\"cluster-bubble " + cls + "\">" + n + "</div>",
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2]
+            }),
+            keyboard: false,
+            zIndexOffset: -500
         });
 
-        if (spreadFactor < 1) {
-            Object.keys(groups).forEach(function (key) {
-                var indexes = groups[key];
-                if (indexes.length <= 1) { return; }
-                var el = markerLayers[indexes[0]].marker.getElement();
-                if (el) {
-                    el.insertAdjacentHTML("beforeend", "<div class=\"stack-badge\">" + indexes.length + "</div>");
+        marker.on("click", function () { zoomToGroup(group); });
+        return marker;
+    }
+
+    function zoomToGroup(group) {
+        var points = group.map(function (it) { return [it.site.lat, it.site.lon]; });
+        map.closePopup();
+        map.fitBounds(L.latLngBounds(points), {
+            padding: [50, 50],
+            maxZoom: CLUSTER_OFF_ZOOM,
+            animate: false
+        });
+    }
+
+    function removeLayerSafe(layer) {
+        if (layer && map.hasLayer(layer)) { map.removeLayer(layer); }
+    }
+
+    function render(force) {
+        if (rendering || markerLayers.length === 0) { return; }
+
+        var zoom = map.getZoom();
+        var c = map.getCenter();
+        var sig = zoom + "|" + c.lat.toFixed(4) + "," + c.lng.toFixed(4);
+
+        if (!force && sig === lastSig) { return; }
+        lastSig = sig;
+
+        rendering = true;
+
+        try {
+            var bounds = map.getBounds().pad(0.3);
+
+            var mustShow = [];   // selected network + open card: always individual pins
+            var inView = [];
+
+            markerLayers.forEach(function (item) {
+                if (!item.pass) { return; }
+
+                if (isMember(item.site) || item.idx === activeIdx) {
+                    mustShow.push(item);
+                } else if (bounds.contains([item.site.lat, item.site.lon])) {
+                    inView.push(item);
                 }
             });
+
+            var desiredPins = mustShow;
+            var clusters = [];
+
+            if (zoom >= CLUSTER_OFF_ZOOM || inView.length <= PIN_BUDGET) {
+                desiredPins = mustShow.concat(inView);
+            } else {
+                // Too many to draw: group by a pixel grid
+                var cells = {};
+
+                inView.forEach(function (item) {
+                    var p = map.project(L.latLng(item.site.lat, item.site.lon), zoom);
+                    var key = Math.floor(p.x / CLUSTER_CELL) + "," + Math.floor(p.y / CLUSTER_CELL);
+                    if (!cells[key]) { cells[key] = []; }
+                    cells[key].push(item);
+                });
+
+                Object.keys(cells).forEach(function (key) {
+                    var group = cells[key];
+                    if (group.length === 1) {
+                        desiredPins.push(group[0]);
+                    } else {
+                        clusters.push({
+                            key: key + "@" + zoom + "#" + group.length + ":" + group[0].idx,
+                            items: group
+                        });
+                    }
+                });
+            }
+
+            // --- pins: remove what is no longer wanted, add what is new
+            var wanted = {};
+            desiredPins.forEach(function (item) { wanted[item.idx] = true; });
+
+            shownPins.forEach(function (item) {
+                if (!wanted[item.idx]) { removeLayerSafe(item.marker); }
+            });
+
+            shownPins = desiredPins;
+
+            shownPins.forEach(function (item) {
+                var marker = ensureMarker(item);
+                if (!map.hasLayer(marker)) { marker.addTo(map); }
+            });
+
+            // --- circles
+            var wantedClusters = {};
+            clusters.forEach(function (cl) { wantedClusters[cl.key] = true; });
+
+            Object.keys(clusterMarkers).forEach(function (key) {
+                if (!wantedClusters[key]) {
+                    removeLayerSafe(clusterMarkers[key]);
+                    delete clusterMarkers[key];
+                }
+            });
+
+            clusters.forEach(function (cl) {
+                if (!clusterMarkers[cl.key]) {
+                    clusterMarkers[cl.key] = makeClusterMarker(cl.items).addTo(map);
+                }
+            });
+
+            updateMarkerPositions();
+            updateLinkedHighlight();
+            drawNetworkLines();
+            updateChip();
+        } finally {
+            rendering = false;
         }
     }
 
@@ -977,7 +1129,7 @@ function boot() {
     function updateMarkers() {
         var f = readFilters();
         var radius = getRadius();
-        var visibleCount = 0;
+        var count = 0;
 
         markerLayers.forEach(function (item) {
             var site = item.site;
@@ -995,20 +1147,13 @@ function boot() {
             // A selected linked network ignores the radius (not the other filters)
             if (visible && item.outside) { visible = isMember(site); }
 
-            if (visible) {
-                visibleCount++;
-                if (!map.hasLayer(item.marker)) { item.marker.addTo(map); }
-            } else if (map.hasLayer(item.marker)) {
-                map.removeLayer(item.marker);
-            }
+            item.pass = visible;
+            if (visible) { count++; }
         });
 
-        lastVisible = visibleCount;
+        lastVisible = count;
 
-        updateMarkerPositions();
-        updateLinkedHighlight();
-        drawNetworkLines();
-        updateChip();
+        render(true);
         updateResultPill();
         updateFilterBadge();
         scheduleListRender();
@@ -1059,7 +1204,7 @@ function boot() {
     }
 
     function renderList() {
-        var items = markerLayers.filter(function (it) { return map.hasLayer(it.marker); });
+        var items = markerLayers.filter(function (it) { return it.pass; });
         var byDistance = !!searchLocationState;
 
         items.sort(function (a, b) {
@@ -1100,14 +1245,17 @@ function boot() {
 
     function focusSite(idx) {
         var item = markerLayers[idx];
-        if (!item || !map.hasLayer(item.marker)) { return; }
+        if (!item || !item.pass) { return; }
 
         if (isMobile()) { closePanels(); }
 
+        activeIdx = idx;
         selectNetwork(idx);
-        map.setView([item.site.lat, item.site.lon], Math.max(map.getZoom(), 13), { animate: false });
+        map.setView([item.site.lat, item.site.lon], Math.max(map.getZoom(), CLUSTER_OFF_ZOOM), { animate: false });
         updateMarkers();
-        item.marker.openPopup();
+
+        var marker = ensureMarker(item);
+        if (map.hasLayer(marker)) { marker.openPopup(); }
     }
 
     // ------------------------------------------------------
@@ -1219,6 +1367,7 @@ function boot() {
         clearSearchVisuals();
         selectedCall = null;
         selectedIdx = null;
+        activeIdx = null;
         map.closePopup();
 
         map.setView([DEFAULT_VIEW.lat, DEFAULT_VIEW.lon], DEFAULT_VIEW.zoom, { animate: false });
@@ -1343,7 +1492,7 @@ function boot() {
         { target: "#filtersBtn", title: "Filters",
           text: "Choose the radius, bands, a frequency prefix, or EchoLink only. The red number shows how many filters are on." },
         { target: null, title: "Pins & linked networks",
-          text: "Each pin is one site with every band on its card. A red number means pins are stacked \u2014 zoom in to fan them out. " +
+          text: "Each pin is one site with every band on its card. A numbered circle groups nearby sites \u2014 tap it to zoom in. " +
                 "Pins with a yellow glow belong to linked networks: tap one to light up its links, then tap Fit to see them all, even beyond your radius." },
         { target: "#listBtn", title: "List view",
           text: "See the same results as a list, nearest first. Tap a row to jump to it on the map." },
@@ -1520,24 +1669,30 @@ function boot() {
 
     window.addEventListener("resize", function () {
         map.invalidateSize();
-        updateMarkerPositions();
+        render(true);
         if (tourOpen()) { showTourStep(); }
     });
     window.addEventListener("orientationchange", function () {
         map.invalidateSize();
-        updateMarkerPositions();
+        render(true);
     });
 
-    // Re-spread stacked pins whenever the map settles
+    // Redraw what is needed whenever the map settles
     map.on("moveend", function () {
-        updateMarkerPositions();
+        render(false);
         scheduleHashWrite();
     });
-    map.on("zoomend", updateMarkerPositions);
+    map.on("zoomend", function () { render(false); });
 
     // Tapping empty map clears the selected network, but the tap
     // that merely dismisses an open card does not.
-    map.on("popupclose", function () {
+    map.on("popupopen", function (e) {
+        var src = e.popup && e.popup._source;
+        if (src && src.__rmIdx != null) { activeIdx = src.__rmIdx; }
+    });
+    map.on("popupclose", function (e) {
+        var src = e.popup && e.popup._source;
+        if (src && src.__rmIdx === activeIdx) { activeIdx = null; }
         popupJustClosed = true;
         setTimeout(function () { popupJustClosed = false; }, 0);
     });
@@ -1567,8 +1722,8 @@ function boot() {
         if (!restored) { updateMarkers(); }
 
         map.invalidateSize();
-        updateMarkerPositions();
-        setTimeout(function () { map.invalidateSize(); updateMarkerPositions(); }, 400);
+        render(true);
+        setTimeout(function () { map.invalidateSize(); render(true); }, 400);
 
         var seen = false;
         try { seen = !!window.localStorage.getItem(TOUR_KEY); } catch (err) { /* ignore */ }
@@ -1621,8 +1776,8 @@ if (document.readyState === "loading") {
 })();
 
     
-            var map_c24599870bb0c66dca961ca02e4ac958 = L.map(
-                "map_c24599870bb0c66dca961ca02e4ac958",
+            var map_89affdb8159b2d5d9e71833c4fc3139b = L.map(
+                "map_89affdb8159b2d5d9e71833c4fc3139b",
                 {
                     center: [40.1, -76.5],
                     crs: L.CRS.EPSG3857,
@@ -1634,13 +1789,13 @@ if (document.readyState === "loading") {
 
                 }
             );
-            L.control.scale().addTo(map_c24599870bb0c66dca961ca02e4ac958);
+            L.control.scale().addTo(map_89affdb8159b2d5d9e71833c4fc3139b);
 
             
 
         
     
-            var tile_layer_b41efd981c96fd31aecc5c91a9592512 = L.tileLayer(
+            var tile_layer_46d11756da50c1dae43851238ee98d10 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -1657,7 +1812,7 @@ if (document.readyState === "loading") {
             );
         
     
-            tile_layer_b41efd981c96fd31aecc5c91a9592512.addTo(map_c24599870bb0c66dca961ca02e4ac958);
+            tile_layer_46d11756da50c1dae43851238ee98d10.addTo(map_89affdb8159b2d5d9e71833c4fc3139b);
         
 </script>
 </html>
