@@ -2789,11 +2789,11 @@
   "linkedRepeater": false
  },
  {
-  "lat": 39.9527237,
-  "lon": -75.1635262,
+  "lat": 40.0306496,
+  "lon": -75.2135556,
   "callSign": "W3QV",
-  "location": "Philadelphia",
-  "county": "Philadelphia",
+  "location": "Roxborough",
+  "county": "Montgomery",
   "state": "Pennsylvania",
   "approximate": false,
   "entries": [
@@ -2805,7 +2805,7 @@
     "offset": "0.6",
     "tones": [
      {
-      "label": "CTCSS",
+      "label": "Uplink tone",
       "value": "91.5 Hz",
       "copy": "91.5"
      }
@@ -2814,6 +2814,24 @@
     "digital": "",
     "digitalLabel": "",
     "echoLink": true
+   },
+   {
+    "band": "70cm",
+    "frequency": "444.8",
+    "inputFrequency": "449.8",
+    "duplex": "+",
+    "offset": "5",
+    "tones": [
+     {
+      "label": "Uplink tone",
+      "value": "91.5 Hz",
+      "copy": "91.5"
+     }
+    ],
+    "modes": "Fusion WIRES-X",
+    "digital": "",
+    "digitalLabel": "",
+    "echoLink": false
    }
   ],
   "linkedRepeater": true
@@ -10936,30 +10954,6 @@
     "modes": "DMR",
     "digital": "8",
     "digitalLabel": "Color Code",
-    "echoLink": false
-   }
-  ],
-  "linkedRepeater": true
- },
- {
-  "lat": 40.0306496,
-  "lon": -75.2135556,
-  "callSign": "W3QV",
-  "location": "Roxborough",
-  "county": "Philadelphia",
-  "state": "Pennsylvania",
-  "approximate": false,
-  "entries": [
-   {
-    "band": "70cm",
-    "frequency": "444.8",
-    "inputFrequency": "449.8",
-    "duplex": "+",
-    "offset": "5",
-    "tones": [],
-    "modes": "Fusion WIRES-X",
-    "digital": "",
-    "digitalLabel": "",
     "echoLink": false
    }
   ],
@@ -45489,36 +45483,6 @@
     "modes": "Echolink Allstar",
     "digital": "",
     "digitalLabel": "",
-    "echoLink": true
-   }
-  ],
-  "linkedRepeater": true
- },
- {
-  "lat": 40.2154361,
-  "lon": -75.3702305,
-  "callSign": "W3QV",
-  "location": "Roxboro",
-  "county": "Montgomery",
-  "state": "Pennsylvania",
-  "approximate": true,
-  "entries": [
-   {
-    "band": "2m",
-    "frequency": "147.03",
-    "inputFrequency": "147.63",
-    "duplex": "+",
-    "offset": "0.6",
-    "tones": [
-     {
-      "label": "Uplink tone",
-      "value": "91.5 Hz",
-      "copy": "91.5"
-     }
-    ],
-    "modes": "Echolink Allstar",
-    "digital": "1",
-    "digitalLabel": "Digital Access",
     "echoLink": true
    }
   ],
