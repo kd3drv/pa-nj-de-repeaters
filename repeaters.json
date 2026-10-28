@@ -65132,13 +65132,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.227928,
+  "lon": -77.4019268,
   "callSign": "WA4FC",
   "location": "Petersburg",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -65360,13 +65360,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8493695,
+  "lon": -76.2899539,
   "callSign": "W4VB",
   "location": "Norfolk",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -65738,13 +65738,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.8051095,
+  "lon": -77.0470229,
   "callSign": "W4HFH",
   "location": "Alexandria",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -65810,13 +65810,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8496579,
+  "lon": -75.9760751,
   "callSign": "WN4HRT",
   "location": "Virginia Beach",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -66008,13 +66008,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0527719,
+  "lon": -79.8813093,
   "callSign": "WT4FB",
   "location": "Franklin",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -66038,13 +66038,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.5385087,
+  "lon": -77.43428,
   "callSign": "W4FJ",
   "location": "Richmond - State Capitol",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -66308,13 +66308,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0264414,
+  "lon": -76.3442846,
   "callSign": "KA4VXR",
   "location": "Hampton",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -66638,13 +66638,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.9775016,
+  "lon": -76.42977,
   "callSign": "W4CM",
   "location": "Newport News",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -66668,13 +66668,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.5385087,
+  "lon": -77.43428,
   "callSign": "KC4VDZ",
   "location": "Richmond - James Monroe Bldg",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -66794,13 +66794,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.2712497,
+  "lon": -76.700035,
   "callSign": "KB4ZIN",
   "location": "Williamsburg",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -66980,13 +66980,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8493695,
+  "lon": -76.2899539,
   "callSign": "KC2HTT",
   "location": "Norfolk - Waterfront",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -67526,13 +67526,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.9775016,
+  "lon": -76.42977,
   "callSign": "WN4HRT",
   "location": "Newport News - Riverside Reg Med Ctr",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -67604,13 +67604,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.227928,
+  "lon": -77.4019268,
   "callSign": "KE4SCS",
   "location": "Petersburg",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -67628,13 +67628,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8496579,
+  "lon": -75.9760751,
   "callSign": "W4KXV",
   "location": "Virginia Beach - Fire Sta 10",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -67874,13 +67874,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.5385087,
+  "lon": -77.43428,
   "callSign": "KN4SKI",
   "location": "Richmond - VSP",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -68072,13 +68072,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8496579,
+  "lon": -75.9760751,
   "callSign": "W4KXV",
   "location": "Virginia Beach",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -68390,13 +68390,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8320081,
+  "lon": -76.297699,
   "callSign": "W4POX",
   "location": "Portsmouth - Naval Hospital",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -68666,13 +68666,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.7168315,
+  "lon": -76.2494453,
   "callSign": "W4CAR",
   "location": "Chesapeake - Greenbriar",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -68744,13 +68744,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.7281341,
+  "lon": -76.5834683,
   "callSign": "N4SD",
   "location": "Suffolk - Old WTKR Tower",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -68954,13 +68954,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0527719,
+  "lon": -79.8813093,
   "callSign": "N4WFU",
   "location": "Franklin",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -68984,13 +68984,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0264414,
+  "lon": -76.3442846,
   "callSign": "W4QR",
   "location": "Hampton - Executive Towers",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -69140,13 +69140,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.1495947,
+  "lon": -79.072557,
   "callSign": "N4KYM",
   "location": "Staunton",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -69398,13 +69398,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0264414,
+  "lon": -76.3442846,
   "callSign": "KG4NJA",
   "location": "Hampton - NASA Gantry",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -69446,13 +69446,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.8051095,
+  "lon": -77.0470229,
   "callSign": "K4US",
   "location": "Alexandria - GW National Masonic Memorial",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -69692,13 +69692,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.7168315,
+  "lon": -76.2494453,
   "callSign": "W4CAR",
   "location": "Chesapeake - Bowers Hill",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -69812,13 +69812,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0264414,
+  "lon": -76.3442846,
   "callSign": "KE4UP",
   "location": "Hampton",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -70028,13 +70028,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.5385087,
+  "lon": -77.43428,
   "callSign": "KG4MRA",
   "location": "Richmond - WTVR Tower",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -70286,13 +70286,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.9479966,
+  "lon": -81.0869747,
   "callSign": "K4EZ",
   "location": "Wytheville",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -70382,13 +70382,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8493695,
+  "lon": -76.2899539,
   "callSign": "W4VB",
   "location": "Norfolk - Downtown",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -70616,13 +70616,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.9775016,
+  "lon": -76.42977,
   "callSign": "W4MT",
   "location": "Newport News",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -71042,13 +71042,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8496579,
+  "lon": -75.9760751,
   "callSign": "KE4HGP",
   "location": "Virginia Beach",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -71072,13 +71072,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0264414,
+  "lon": -76.3442846,
   "callSign": "W4HPT",
   "location": "Hampton - City Hall",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -71240,13 +71240,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.7168315,
+  "lon": -76.2494453,
   "callSign": "WA4ZUA",
   "location": "Chesapeake",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -71360,13 +71360,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.2712497,
+  "lon": -76.700035,
   "callSign": "W4TJ",
   "location": "Williamsburg",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -71426,13 +71426,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.7168315,
+  "lon": -76.2494453,
   "callSign": "W4FOS",
   "location": "Chesapeake",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -71456,13 +71456,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.7168315,
+  "lon": -76.2494453,
   "callSign": "K4AMG",
   "location": "Chesapeake",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -71624,13 +71624,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.5385087,
+  "lon": -77.43428,
   "callSign": "WA4MAS",
   "location": "Richmond",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "2m",
@@ -71732,13 +71732,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.8051095,
+  "lon": -77.0470229,
   "callSign": "N4FRS",
   "location": "Alexandria",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -72092,13 +72092,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.882334,
+  "lon": -77.1710914,
   "callSign": "W4AVA",
   "location": "Falls Church",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -72194,13 +72194,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8496579,
+  "lon": -75.9760751,
   "callSign": "W4KXV",
   "location": "Virginia Beach - Town Center",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -72284,13 +72284,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.029306,
+  "lon": -78.4766781,
   "callSign": "WA4FC",
   "location": "Charlottesville",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -72614,13 +72614,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.2712497,
+  "lon": -76.700035,
   "callSign": "WC4R",
   "location": "Williamsburg - I-64/Exit 242",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -72962,13 +72962,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8493695,
+  "lon": -76.2899539,
   "callSign": "W4VB",
   "location": "Norfolk - Fire Sta 10",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -73496,13 +73496,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8320081,
+  "lon": -76.297699,
   "callSign": "W4POX",
   "location": "Portsmouth",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -73604,13 +73604,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.5385087,
+  "lon": -77.43428,
   "callSign": "W4FJ",
   "location": "Richmond",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -73748,13 +73748,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.7509488,
+  "lon": -77.4752667,
   "callSign": "K4GVT",
   "location": "Manassas",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -73778,13 +73778,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0264414,
+  "lon": -76.3442846,
   "callSign": "W4HPT",
   "location": "Hampton - Big Bethel Rd and Saunders Rd",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -73832,8 +73832,8 @@
   "linkedRepeater": true
  },
  {
-  "lat": 36.6637339,
-  "lon": -81.2506523,
+  "lat": 36.6778996,
+  "lon": -81.2892661,
   "callSign": "W4TOW",
   "location": "Independence - Buck Mtn",
   "county": "Grayson",
@@ -74048,13 +74048,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.8051095,
+  "lon": -77.0470229,
   "callSign": "N3JLT",
   "location": "Alexandria",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -74270,13 +74270,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.3001159,
+  "lon": -77.4571472,
   "callSign": "AE4ML",
   "location": "Fredericksburg",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -74330,13 +74330,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8496579,
+  "lon": -75.9760751,
   "callSign": "WB4JCX",
   "location": "Virginia Beach - VB Oceanfront",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -74780,13 +74780,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.3001159,
+  "lon": -77.4571472,
   "callSign": "WX4EMC",
   "location": "Fredericksburg",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -74888,13 +74888,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.5385087,
+  "lon": -77.43428,
   "callSign": "KC4VDZ",
   "location": "Richmond",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -74948,13 +74948,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 36.8496579,
+  "lon": -75.9760751,
   "callSign": "WB4JCX",
   "location": "Virginia Beach - Mt Trashmore",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -75032,13 +75032,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0264414,
+  "lon": -76.3442846,
   "callSign": "N6GVG",
   "location": "Hampton",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -75116,13 +75116,13 @@
   "linkedRepeater": true
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.8051095,
+  "lon": -77.0470229,
   "callSign": "W4HFH",
   "location": "Alexandria - Hospital",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -75170,13 +75170,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 38.1495947,
+  "lon": -79.072557,
   "callSign": "K3RFP",
   "location": "Staunton - Gypsy Hill Park",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
@@ -75619,13 +75619,13 @@
   "linkedRepeater": false
  },
  {
-  "lat": 38.7055939,
-  "lon": -78.1623991,
+  "lat": 37.0264414,
+  "lon": -76.3442846,
   "callSign": "K4LCT",
   "location": "Hampton",
-  "county": "(independent)",
+  "county": "",
   "state": "Virginia",
-  "approximate": true,
+  "approximate": false,
   "entries": [
    {
     "band": "70cm",
